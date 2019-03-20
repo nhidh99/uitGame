@@ -1,0 +1,23 @@
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\bin\Debug\CreateTileMap.exe.config
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\bin\Debug\CreateTileMap.exe
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\bin\Debug\CreateTileMap.pdb
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\obj\Debug\CreateTileMap.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\obj\Debug\CreateTileMap.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\obj\Debug\CreateTileMap.exe
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\obj\Debug\CreateTileMap.pdb
+C:\Users\Admin\Desktop\CreateTileMap\CreateTileMap\bin\Debug\CreateTileMap.exe.config
+C:\Users\Admin\Desktop\CreateTileMap\CreateTileMap\bin\Debug\CreateTileMap.exe
+C:\Users\Admin\Desktop\CreateTileMap\CreateTileMap\bin\Debug\CreateTileMap.pdb
+C:\Users\Admin\Desktop\CreateTileMap\CreateTileMap\obj\Debug\CreateTileMap.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\CreateTileMap\CreateTileMap\obj\Debug\CreateTileMap.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\CreateTileMap\CreateTileMap\obj\Debug\CreateTileMap.exe
+C:\Users\Admin\Desktop\CreateTileMap\CreateTileMap\obj\Debug\CreateTileMap.pdb
+D:\UIT - Exercise\SE102 - Nhap mon PTGame\SE102 - P4\CreateTileMap\CreateTileMap32x32\CreateTileMap\bin\Debug\CreateTileMap.exe.config
+D:\UIT - Exercise\SE102 - Nhap mon PTGame\SE102 - P4\CreateTileMap\CreateTileMap32x32\CreateTileMap\bin\Debug\CreateTileMap.exe
+D:\UIT - Exercise\SE102 - Nhap mon PTGame\SE102 - P4\CreateTileMap\CreateTileMap32x32\CreateTileMap\bin\Debug\CreateTileMap.pdb
+D:\UIT - Exercise\SE102 - Nhap mon PTGame\SE102 - P4\CreateTileMap\CreateTileMap32x32\CreateTileMap\obj\Debug\CreateTileMap.csprojAssemblyReference.cache
+D:\UIT - Exercise\SE102 - Nhap mon PTGame\SE102 - P4\CreateTileMap\CreateTileMap32x32\CreateTileMap\obj\Debug\CreateTileMap.csproj.CoreCompileInputs.cache
+D:\UIT - Exercise\SE102 - Nhap mon PTGame\SE102 - P4\CreateTileMap\CreateTileMap32x32\CreateTileMap\obj\Debug\CreateTileMap.exe
+D:\UIT - Exercise\SE102 - Nhap mon PTGame\SE102 - P4\CreateTileMap\CreateTileMap32x32\CreateTileMap\obj\Debug\CreateTileMap.pdb
+D:\UIT - Exercise\SE102 - Nhap mon PTGame\SE102 - P4\CreateTileMap\CreateTileMap32x32\CreateTileMap\bin\Debug\CreateTileMap.exe.CodeAnalysisLog.xml
+D:\UIT - Exercise\SE102 - Nhap mon PTGame\SE102 - P4\CreateTileMap\CreateTileMap32x32\CreateTileMap\bin\Debug\CreateTileMap.exe.lastcodeanalysissucceeded

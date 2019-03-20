@@ -1,0 +1,13 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (03-Keyboard-States.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - documents\se102 - nhap mon ptgame\samples 2\s3 - keyboard-states\game.h(7): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\uit - documents\se102 - nhap mon ptgame\samples 2\s3 - keyboard-states\gameobject.h(32): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\uit - documents\se102 - nhap mon ptgame\samples 2\s3 - keyboard-states\gameobject.h(33): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\uit - documents\se102 - nhap mon ptgame\samples 2\s3 - keyboard-states\gameobject.h(40): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - documents\se102 - nhap mon ptgame\samples 2\s3 - keyboard-states\gameobject.h(42): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - documents\se102 - nhap mon ptgame\samples 2\s3 - keyboard-states\main.cpp(52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\uit - documents\se102 - nhap mon ptgame\samples 2\s3 - keyboard-states\main.cpp(156): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\uit - documents\se102 - nhap mon ptgame\samples 2\s3 - keyboard-states\main.cpp(164): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  03-Keyboard-States.vcxproj -> D:\UIT - Documents\SE102 - Nhap mon PTGame\Samples 2\Debug\S3 - Keyboard-States.exe

@@ -1,0 +1,34 @@
+﻿  Player.cpp
+c:\users\admin\desktop\game (fixed)\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\admin\desktop\game (fixed)\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\admin\desktop\game (fixed)\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\admin\desktop\game (fixed)\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\admin\desktop\game (fixed)\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\admin\desktop\game (fixed)\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\admin\desktop\game (fixed)\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\admin\desktop\game (fixed)\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\admin\desktop\game (fixed)\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\admin\desktop\game (fixed)\player.cpp(81): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\admin\desktop\game (fixed)\player.cpp(83): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  PlayerRunningState.cpp
+c:\users\admin\desktop\game (fixed)\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\admin\desktop\game (fixed)\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\admin\desktop\game (fixed)\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\admin\desktop\game (fixed)\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\admin\desktop\game (fixed)\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\admin\desktop\game (fixed)\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\admin\desktop\game (fixed)\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\admin\desktop\game (fixed)\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\admin\desktop\game (fixed)\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerStandingState.cpp
+c:\users\admin\desktop\game (fixed)\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\admin\desktop\game (fixed)\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\admin\desktop\game (fixed)\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\admin\desktop\game (fixed)\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\admin\desktop\game (fixed)\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\admin\desktop\game (fixed)\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\admin\desktop\game (fixed)\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\admin\desktop\game (fixed)\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\admin\desktop\game (fixed)\playerhandler.h(3): note: see declaration of 'PlayerState'
+  Generating Code...
+  Game.vcxproj -> C:\Users\Admin\Desktop\Game (FIXED)\Debug\Game.exe

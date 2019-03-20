@@ -1,0 +1,14 @@
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\bin\Debug\CreateTileMap.exe.config
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\bin\Debug\CreateTileMap.exe
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\bin\Debug\CreateTileMap.pdb
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\obj\Debug\CreateTileMap.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\obj\Debug\CreateTileMap.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\obj\Debug\CreateTileMap.exe
+C:\Users\Admin\source\repos\CreateTileMap\CreateTileMap\obj\Debug\CreateTileMap.pdb
+C:\Users\Admin\Desktop\CreateTileMap - Copy\CreateTileMap\obj\Debug\CreateTileMap.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\CreateTileMap - Copy\CreateTileMap\obj\Debug\CreateTileMap.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\CreateTileMap - Copy\CreateTileMap\obj\Debug\CreateTileMap.exe
+C:\Users\Admin\Desktop\CreateTileMap - Copy\CreateTileMap\obj\Debug\CreateTileMap.pdb
+C:\Users\Admin\Desktop\CreateTileMap - Copy\CreateTileMap\bin\Debug\CreateTileMap.exe.config
+C:\Users\Admin\Desktop\CreateTileMap - Copy\CreateTileMap\bin\Debug\CreateTileMap.exe
+C:\Users\Admin\Desktop\CreateTileMap - Copy\CreateTileMap\bin\Debug\CreateTileMap.pdb

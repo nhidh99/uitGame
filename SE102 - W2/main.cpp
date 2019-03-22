@@ -154,7 +154,7 @@ void Update(DWORD dt)
 		++score2;
 		ball->SetPosition(SCREEN_WIDTH >> 1, SCREEN_HEIGHT >> 1);
 		srand(time(NULL));
-		ball->SetSpeed((rand() & 2 ? -1 : 1) * 0.2f, (rand() & 2 ? -1 : 1)*(rand() % 5 + 1) / 10.0f);
+		ball->SetSpeed((rand() & 1 ? -1 : 1) * 0.2f, (rand() & 2 ? -1 : 1)*(rand() % 5 + 1) / 10.0f);
 	}
 	
 	else if (ball->GetPosX() > paddle2->GetPosX())
@@ -162,7 +162,7 @@ void Update(DWORD dt)
 		++score1;
 		ball->SetPosition(SCREEN_WIDTH >> 1, SCREEN_HEIGHT >> 1);
 		srand(time(NULL));
-		ball->SetSpeed((rand() & 2 ? -1 : 1) * 0.2f, (rand() & 2 ? -1 : 1)*(rand() % 5 + 1) / 10.0f);
+		ball->SetSpeed((rand() & 1 ? -1 : 1) * 0.2f, (rand() & 2 ? -1 : 1)*(rand() % 5 + 1) / 10.0f);
 	}
 }
 

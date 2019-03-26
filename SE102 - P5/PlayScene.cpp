@@ -4,15 +4,15 @@ PlayScene::PlayScene()
 {
 	_player = new Player();
 	_camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
-	_item = new ObjectItemShuriken();
 	_map = MapFactory::GetInstance()->GetMap(0);
-
-	_player->posX = SCREEN_WIDTH >> 1;
-	_player->posY = SCREEN_HEIGHT >> 1;
-	_player->item = _item;
 
 	_camera->posX = _map->width >> 1;
 	_camera->posY = _map->height >> 1;
+
+	_player->posX = SCREEN_WIDTH >> 1;
+	_player->posY = SCREEN_HEIGHT >> 1;
+	_player->item = _map->item;
+
 	_map->camera = _camera;
 
 	_leftEdge = _camera->width >> 1;
@@ -22,7 +22,6 @@ PlayScene::PlayScene()
 PlayScene::~PlayScene()
 {
 	if (_player) delete _player;
-	if (_item) delete _item;
 }
 
 void PlayScene::CameraUpdate(float dt)
@@ -59,8 +58,12 @@ void PlayScene::CameraUpdate(float dt)
 void PlayScene::Update(float dt)
 {
 	_player->Update(dt);
-	_item->Update(dt);
 	CameraUpdate(dt);
+
+	for (auto i : _map->objects)
+	{
+		Collision::GetInstance()->SweptAABB(_player->GetBoundingBox(_camera->posX, _camera->posY), i->GetBoundingBox());
+	}
 }
 
 // Tải Scene lên màn hình bằng cách vẽ object có trong trong Scene
@@ -68,7 +71,6 @@ void PlayScene::Render()
 {
 	_map->Render();
 	_player->Render();
-	_item->Render();
 }
 
 // Xử lí Scene khi nhấn phím

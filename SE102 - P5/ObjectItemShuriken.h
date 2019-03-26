@@ -9,5 +9,5 @@ private:
 public:
 	ObjectItemShuriken();
 	void Update(float dt);
-	void Render();
+	void Render(float translateX = 0, float translateY = 0);
 };

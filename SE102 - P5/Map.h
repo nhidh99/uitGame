@@ -1,9 +1,12 @@
 #pragma once
 #include "GameGlobal.h"
 #include <fstream>
-#include <map>
 #include "Sprite.h"
 #include "Camera.h"
+#include "Quadtree.h"
+#include "Object.h"
+#include "ObjectItemShuriken.h"
+#include "Player.h"
 
 class Map
 {
@@ -19,7 +22,11 @@ public:
 	void Render();
 	bool IsContain(RECT rect1, RECT rect2);
 
+	ObjectItem* item;
+	QuadTree* quadtree;
 	Camera* camera;
+	std::vector<ObjectItem*> objects;
+
 	int width;
 	int height;
 };

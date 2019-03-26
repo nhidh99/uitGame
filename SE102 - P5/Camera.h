@@ -6,13 +6,11 @@ class Camera
 public:
 	int width, height;
 	int posX, posY;
-	int vx;	
 	
 	Camera(int width, int height)
 	{
 		this->width = width;
 		this->height = height;
-		vx = 0;
 	}
 
 	RECT GetBound()

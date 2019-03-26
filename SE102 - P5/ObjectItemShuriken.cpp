@@ -20,11 +20,11 @@ void ObjectItemShuriken::Update(float dt)
 	}
 }
 
-void ObjectItemShuriken::Render()
+void ObjectItemShuriken::Render(float translateX, float translateY)
 {
 	if (isOnScreen)
 	{
 		_sprite->isReverse = this->isReverse;
-		_sprite->Render(posX, posY);
+		_sprite->Render(posX, posY, translateX, translateY);
 	}
 }

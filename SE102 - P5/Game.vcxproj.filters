@@ -105,6 +105,12 @@
     <ClCompile Include="MapFactory.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
+    <ClCompile Include="Quadtree.cpp">
+      <Filter>Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Game Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -201,6 +207,12 @@
       <Filter>Game Components</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
+      <Filter>Game Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Quadtree.h">
+      <Filter>Game Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
       <Filter>Game Components</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "SpriteFactory.h"
 #include "Animation.h"
+#include "Collision.h"
 
 class Object
 {
@@ -12,7 +13,29 @@ public:
 	int width, height;							// Kích thước
 	bool isReverse;								// Kiểm tra lật hình theo chiều dọc
 
+	RECT GetBound()
+	{
+		RECT bound;
+		bound.left = posX - (width >> 1);
+		bound.right = bound.left + width;
+		bound.top = posY - (height >> 1);
+		bound.bottom = bound.top + height;
+		return bound;
+	}
+
+	BoundingBox GetBoundingBox()
+	{
+		BoundingBox bound;
+		bound.height = height;
+		bound.width = width;
+		bound.x = posX - (width >> 1);
+		bound.y = posY - (height >> 1);
+		bound.vx = vx;
+		bound.vy = vy;
+		return bound;
+	}
+
 	virtual void Update(float dt) {};			// Update thông số của Object sau khoảng thời gian delta-time
-	virtual void Render() = 0;					// Render Object
-	virtual void Render(float x, float y) {}
+	virtual void Render() {}
+	virtual void Render(float translateX = 0, float translateY = 0) {}
 };

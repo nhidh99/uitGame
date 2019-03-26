@@ -1,1 +1,17 @@
-﻿  Game.vcxproj -> D:\UIT - Project\uitGD\SE102 - P5\Debug\Game.exe
+﻿  Collision.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\collision.cpp(27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\uit - project\uitgd\se102 - p5\collision.cpp(28): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\uit - project\uitgd\se102 - p5\collision.cpp(35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\uit - project\uitgd\se102 - p5\collision.cpp(36): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\uit - project\uitgd\se102 - p5\collision.cpp(41): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\uit - project\uitgd\se102 - p5\collision.cpp(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\uit - project\uitgd\se102 - p5\collision.cpp(47): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\uit - project\uitgd\se102 - p5\collision.cpp(48): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\uit - project\uitgd\se102 - p5\collision.cpp(53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\uit - project\uitgd\se102 - p5\collision.cpp(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Game.vcxproj -> D:\UIT - Project\uitGD\SE102 - P5\Debug\Game.exe

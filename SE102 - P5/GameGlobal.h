@@ -10,7 +10,7 @@
 #define WINDOW_CLASS_NAME "Ninja Gaiden"		// Class Windows
 #define MAIN_WINDOW_TITLE "Ninja Gaiden"		// Tên cửa sổ
 #define SCREEN_WIDTH 208						// Chiều rộng cửa sổ
-#define SCREEN_HEIGHT 208						// Chiều dài cửa sổ
+#define SCREEN_HEIGHT 176						// Chiều dài cửa sổ
 #define MAX_FRAME_RATE 60						// FPS
 #define BACK_COLOR D3DCOLOR_XRGB(0, 0, 0)		// Màu nền BackBuffer
 #define TIME_PER_FRAME 150						// Thời gian tồn tại của mỗi Frame (cho Animation)
@@ -37,8 +37,8 @@
 #define ITEM_SWORD_HEIGHT 12
 
 // ===== Các thông số cho ITEM SHURIKEN ====
-#define ITEM_SHURIKEN_WIDTH 8
-#define ITEM_SHURIKEN_HEIGHT 8
+#define ITEM_SHURIKEN_WIDTH 30
+#define ITEM_SHURIKEN_HEIGHT 30
 #define ITEM_SHURIKEN_SPEED 0.15f
 #define ITEM_SWINGSWORD_WIDTH 18
 #define ITEM_SWINGSWORD_HEIGHT 18
@@ -83,4 +83,13 @@ extern enum State
 	CLIMBING,
 	DEAD,
 	INJURED
+};
+
+extern enum Direction
+{
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT,
+	NONE
 };

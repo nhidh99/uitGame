@@ -12,7 +12,6 @@ class PlayScene : public Scene
 {
 private:
 	Player* _player;
-	ObjectItem* _item;
 	Map* _map;
 	Camera* _camera;
 	int _leftEdge, _rightEdge;

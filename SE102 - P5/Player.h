@@ -33,4 +33,16 @@ public:
 
 	void ChangeState(PlayerState* newState);				// Đổi State
 	void AttackWith(Type item);
+
+	BoundingBox GetBoundingBox(int cameraX, int cameraY)
+	{
+		BoundingBox bound;
+		bound.width = width;
+		bound.height = height;
+		bound.x = cameraX - width;
+		bound.y = cameraY - height;
+		bound.vx = vx;
+		bound.vy = vy;
+		return bound;
+	}
 };

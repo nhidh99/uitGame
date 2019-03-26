@@ -33,6 +33,29 @@ Map::Map(int level)
 		}
 	}
 	ifile.close();
+
+	// Cài đặt Quadtree
+	RECT rect;
+	rect.left = 0;
+	rect.top = 0;
+	rect.right = width;
+	rect.bottom = height;
+	quadtree = new QuadTree(1, rect);
+
+	// Init Shuriken
+	item = new ObjectItemShuriken();
+
+	// Init Objects
+	for (int i = 0; i < 10; ++i)
+	{
+		ObjectItemShuriken* shuriken = new ObjectItemShuriken();
+		shuriken->posX = (width >> 1) - i * 10;
+		shuriken->posY = (height >> 1) - i * 10;
+		shuriken->vx = 0;
+		shuriken->vy = 0;
+		shuriken->isOnScreen = true;
+		objects.push_back(shuriken);
+	}
 }
 
 void Map::Render()
@@ -52,9 +75,14 @@ void Map::Render()
 
 			if (IsContain(objBound, camera->GetBound()))
 			{
-				sprite->Render(objBound.left + (TILE_SIZE >> 1), objBound.top - (TILE_SIZE >> 1), trans.x, trans.y);
+				sprite->Render(objBound.left + (TILE_SIZE >> 1), objBound.top + (TILE_SIZE>>1), trans.x, trans.y);
 			}
 		}
+	}
+
+	for (auto i : objects)
+	{
+		i->Render(trans.x, trans.y);
 	}
 }
 

@@ -10,12 +10,12 @@ ObjectItemShuriken::ObjectItemShuriken()
 	type = SHURIKEN;
 }
 
-void ObjectItemShuriken::Update(float dt)
+void ObjectItemShuriken::Update(float dt, int leftScreen, int rightScreen)
 {
 	if (isOnScreen)
 	{
 		posX += vx * dt;
-		if (posX > SCREEN_WIDTH || posX < 0)
+		if (posX > rightScreen || posX < leftScreen)
 			isOnScreen = false;
 	}
 }

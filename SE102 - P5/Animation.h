@@ -16,7 +16,7 @@ public:
 	Animation() {};
 	Animation(Tag tag, int index);
 	Animation(Tag tag, int firstIndex, int lastIndex, int timePerFrame = TIME_PER_FRAME);									
-	void Render(float x, float y);											
+	void Render(float x, float y, float translateX = 0, float translateY = 0);
 	void Update(float dt);
 
 	int CurFrameIndex;

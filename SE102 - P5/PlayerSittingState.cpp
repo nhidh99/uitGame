@@ -4,6 +4,7 @@
 PlayerSittingState::PlayerSittingState(PlayerHandler * playerHandler)
 {
 	_playerHandler = playerHandler;
+	_playerHandler->Player->allow[JUMPING] = false;
 	_playerHandler->Player->posY += 5;
 	_playerHandler->Player->vx = 0;
 	_playerHandler->Player->vy = 0;

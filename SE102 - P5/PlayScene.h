@@ -14,7 +14,8 @@ private:
 	Player* _player;
 	Map* _map;
 	Camera* _camera;
-	int _leftEdge, _rightEdge;
+	int _leftCamera, _rightCamera;
+	int _leftScreen, _rightScreen;
 
 public:
 	PlayScene();

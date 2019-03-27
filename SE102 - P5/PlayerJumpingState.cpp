@@ -32,11 +32,11 @@ void PlayerJumpingState::Update(float dt)
 
 	if (_playerHandler->Player->allow[CLINGING] && _playerHandler->Player->posY < (SCREEN_HEIGHT >> 1) - 20)
 	{
-		if (_playerHandler->Player->posX == SCREEN_WIDTH - _playerHandler->Player->width)
-		{
-			_playerHandler->Player->ChangeState(new PlayerClingingState(_playerHandler));
-			return;
-		}
+		//if (_playerHandler->Player->posX == SCREEN_WIDTH - _playerHandler->Player->width)
+		//{
+		//	_playerHandler->Player->ChangeState(new PlayerClingingState(_playerHandler));
+		//	return;
+		//}
 
 		if (_playerHandler->Player->posX == _playerHandler->Player->width >> 1)
 		{

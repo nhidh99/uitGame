@@ -8,7 +8,6 @@ PlayerClingingState::PlayerClingingState(PlayerHandler * playerHandler)
 	_playerHandler->Player->allow[JUMPING] = true;
 
 	_playerHandler->Player->sword->isOnScreen = false;
-	_playerHandler->Player->swingSword->isOnScreen = false;
 
 	_playerHandler->Player->vx = 0;
 	_playerHandler->Player->vy = 0;

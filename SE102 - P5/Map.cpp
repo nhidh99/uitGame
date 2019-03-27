@@ -49,7 +49,7 @@ Map::Map(int level)
 	for (int i = 0; i < 10; ++i)
 	{
 		ObjectItemShuriken* shuriken = new ObjectItemShuriken();
-		shuriken->posX = (width >> 1) - i * 10;
+		shuriken->posX = (width >> 1) - i * 100;
 		shuriken->posY = (height >> 1) - i * 10;
 		shuriken->vx = 0;
 		shuriken->vy = 0;
@@ -58,9 +58,17 @@ Map::Map(int level)
 	}
 }
 
+void Map::Update(float dt)
+{
+	for (auto i : objects)
+	{
+		i->Update(dt);
+	}
+}
+
 void Map::Render()
 {
-	D3DXVECTOR2 trans = D3DXVECTOR2((SCREEN_WIDTH >> 1) - camera->posX, (SCREEN_HEIGHT >> 1) - camera->posY);
+	auto trans = D3DXVECTOR2((SCREEN_WIDTH >> 1) - camera->posX, 0);
 
 	for (auto r = 0; r < _rows; ++r)
 	{
@@ -84,6 +92,8 @@ void Map::Render()
 	{
 		i->Render(trans.x, trans.y);
 	}
+
+	item->Render(trans.x, trans.y);
 }
 
 bool Map::IsContain(RECT rect1, RECT rect2)

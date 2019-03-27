@@ -9,6 +9,7 @@ public:
 	bool isOnScreen;
 	Type type;
 
-	virtual void Update(float dt) = 0;			// Update thông số của Object sau khoảng thời gian delta-time
+	virtual void Update(float dt) {};			// Update thông số của Object sau khoảng thời gian delta-time
+	virtual void Update(float dt, int leftScreen, int rightScreen) {};
 	virtual void Render(float translateX = 0, float translateY = 0) {};
 };

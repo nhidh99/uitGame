@@ -9,5 +9,5 @@ private:
 public:
 	ObjectItemSwingSword();
 	void Update(float dt);
-	void Render(float x, float y, int frameIndex);
+	void Render(float x, float y, int frameIndex, float translateX, float translateY);
 };

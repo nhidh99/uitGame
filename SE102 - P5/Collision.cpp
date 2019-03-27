@@ -87,6 +87,7 @@ CollisionResult Collision::SweptAABB(BoundingBox b1, BoundingBox b2)
 	{
 		result.isCollide = true;
 		result.entryTime = entryTime;
+		OutputDebugString("COLLISION\n");
 
 		if (txEntry > tyEntry)
 		{
@@ -94,12 +95,10 @@ CollisionResult Collision::SweptAABB(BoundingBox b1, BoundingBox b2)
 			{
 
 				result.dir = LEFT;
-				OutputDebugString("LEFT COLLISION\n");
 			}
 			else
 			{
 				result.dir = RIGHT;
-				OutputDebugString("RIGHT COLLISION\n");
 			}
 		}
 		else
@@ -107,12 +106,10 @@ CollisionResult Collision::SweptAABB(BoundingBox b1, BoundingBox b2)
 			if (b1.vy > 0.0f)
 			{
 				result.dir = UP;
-				OutputDebugString("UP COLLISION\n");
 			}
 			else
 			{
 				result.dir = DOWN;
-				OutputDebugString("DOWN COLLISION\n");
 			}
 		}
 		return result;

@@ -19,6 +19,7 @@ private:
 
 public:
 	Map(int level);
+	void Update(float dt);
 	void Render();
 	bool IsContain(RECT rect1, RECT rect2);
 

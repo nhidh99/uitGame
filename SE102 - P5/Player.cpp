@@ -19,13 +19,12 @@ Player::Player()
 	// Allow State when construct
 	allow[JUMPING] = true;
 	allow[ATTACKING] = true;
-	
+
 	// Init sword for player
 	tag = PLAYER;
 	width = PLAYER_WIDTH;
 	height = PLAYER_STANDING_HEIGHT;
 	sword = new ObjectItemSword();
-	swingSword = new ObjectItemSwingSword();
 
 	// Set state
 	_playerHandler = new PlayerHandler();
@@ -58,16 +57,17 @@ void Player::Update(float dt)
 
 	_playerHandler->State->Update(dt);
 
+	posX += vx * dt;
+
 	posY += vy * dt;
 }
 
 // Render Player and sword / item if it's on screen
-void Player::Render()
+void Player::Render(float translateX, float translateY)
 {
 	_curAnimation->isReverse = this->isReverse;
-	_curAnimation->Render(posX, posY);
-	sword->Render(posX, posY, _curAnimation->CurFrameIndex);
-	swingSword->Render(posX, posY, _curAnimation->CurFrameIndex);
+	_curAnimation->Render(posX, posY, translateX, translateY);
+	sword->Render(posX, posY, _curAnimation->CurFrameIndex, translateX, translateY);
 }
 
 // Handle KeyDown for state change can change in others
@@ -75,9 +75,9 @@ void Player::OnKeyDown(int keyCode)
 {
 	switch (keyCode)
 	{
-	// Attacking State (with sword)
+		// Attacking State (with sword)
 	case DIK_A:
-		if (allow[ATTACKING] && !swingSword->isOnScreen)
+		if (allow[ATTACKING])
 		{
 			allow[ATTACKING] = false;
 			ChangeState(new PlayerAttackingState(_playerHandler));
@@ -85,7 +85,7 @@ void Player::OnKeyDown(int keyCode)
 		}
 		break;
 
-	// Attacking State (with item)
+		// Attacking State (with item)
 	case DIK_S:
 		if (allow[ATTACKING] && !item->isOnScreen)
 		{
@@ -95,7 +95,7 @@ void Player::OnKeyDown(int keyCode)
 		}
 		break;
 
-	// Attacking State (with swing sword)
+		// Attacking State (with swing sword)
 	case DIK_D:
 		if (state == JUMPING || state == FALLING)
 		{
@@ -104,7 +104,7 @@ void Player::OnKeyDown(int keyCode)
 		}
 		break;
 
-	// Jumping State
+		// Jumping State
 	case DIK_SPACE:
 		if (allow[JUMPING])
 		{
@@ -120,7 +120,7 @@ void Player::OnKeyUp(int keyCode)
 {
 	switch (keyCode)
 	{
-	// While KeyDown is Up while attacking
+		// While KeyDown is Up while attacking
 	case DIK_DOWN:
 		if (state == SITTING)
 			state = STANDING;
@@ -161,7 +161,7 @@ void Player::AttackWith(Type item)
 		if (item != NULL)
 		{
 			this->item->isReverse = isReverse;
-			this->item->posX = isReverse ? this->posX - 3: this->posX + 3;
+			this->item->posX = isReverse ? this->posX - 3 : this->posX + 3;
 			this->item->posY = this->posY - 8;
 			this->item->vx = isReverse ? -ITEM_SHURIKEN_SPEED : ITEM_SHURIKEN_SPEED;
 			this->item->isOnScreen = true;

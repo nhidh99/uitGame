@@ -6,7 +6,6 @@ PlayerStandingState::PlayerStandingState(PlayerHandler * playerHandler)
 	_playerHandler = playerHandler;
 	_playerHandler->Player->vx = 0;
 	_playerHandler->Player->vy = 0;
-	_playerHandler->Player->swingSword->isOnScreen = false;
 	_playerHandler->Player->allow[JUMPING] = true;
 	_playerHandler->Player->allow[ATTACKING] = true;
 	StateName = STANDING;

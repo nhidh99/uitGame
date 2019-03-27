@@ -27,22 +27,10 @@ public:
 	std::unordered_map<State, bool> allow;
 
 	void Update(float dt);
-	void Render();
+	void Render(float translateX = 0, float translateY = 0);
 	void OnKeyDown(int keyCode);							// Xử lí sự kiện của nhân vật theo phím nhấn
 	void OnKeyUp(int keyCode);								// Xử lí sự kiện của nhân vật theo phím thả
 
 	void ChangeState(PlayerState* newState);				// Đổi State
 	void AttackWith(Type item);
-
-	BoundingBox GetBoundingBox(int cameraX, int cameraY)
-	{
-		BoundingBox bound;
-		bound.width = width;
-		bound.height = height;
-		bound.x = cameraX - width;
-		bound.y = cameraY - height;
-		bound.vx = vx;
-		bound.vy = vy;
-		return bound;
-	}
 };

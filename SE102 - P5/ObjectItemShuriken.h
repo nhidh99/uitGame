@@ -8,6 +8,6 @@ private:
 
 public:
 	ObjectItemShuriken();
-	void Update(float dt);
+	void Update(float dt, int leftScreen, int rightScreen);
 	void Render(float translateX = 0, float translateY = 0);
 };

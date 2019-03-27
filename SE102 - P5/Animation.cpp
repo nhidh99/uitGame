@@ -1,10 +1,10 @@
 ﻿#include "Animation.h"
 
 // Render Animation tại vị trí (x,y) lên màn hình
-void Animation::Render(float x, float y)
+void Animation::Render(float x, float y, float translateX, float translateY)
 {
 	_sprites[CurFrameIndex]->isReverse = this->isReverse;
-	_sprites[CurFrameIndex]->Render(x, y);
+	_sprites[CurFrameIndex]->Render(x, y, translateX, translateY);
 }
 
 // Update Animation sau thời gian delta-time

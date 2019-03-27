@@ -5,7 +5,7 @@ class Camera
 {
 public:
 	int width, height;
-	int posX, posY;
+	float posX, posY;
 	
 	Camera(int width, int height)
 	{

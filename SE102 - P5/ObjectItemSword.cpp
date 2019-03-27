@@ -14,7 +14,7 @@ void ObjectItemSword::Update(float dt)
 {
 }
 
-void ObjectItemSword::Render(float x, float y, int frameIndex)
+void ObjectItemSword::Render(float x, float y, int frameIndex, float translateX, float translateY)
 {
 	if (!isOnScreen || frameIndex == 0)
 		return;
@@ -25,11 +25,11 @@ void ObjectItemSword::Render(float x, float y, int frameIndex)
 	switch (frameIndex)
 	{
 	case 0:
-		sprite->Render(x, y, isReverse ? -22 : 22, -10);
+		sprite->Render(x, y, translateX + (isReverse ? -22 : 22), translateY - 10);
 		break;
 
 	case 1:
-		sprite->Render(x, y, isReverse ? -13 : 13, -10);
+		sprite->Render(x, y, translateX + (isReverse ? -13 : 13), translateY - 10);
 		isOnScreen = false;
 		break;
 	}

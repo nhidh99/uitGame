@@ -3,8 +3,13 @@
 d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
 d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
 d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
 d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
 d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
 d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
   d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
 d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
@@ -14,3 +19,4 @@ d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion o
 d:\uit - project\uitgd\se102 - p5\game.cpp(41): error C2065: 'GWL_HINSTANCE': undeclared identifier
 d:\uit - project\uitgd\se102 - p5\game.cpp(120): warning C4018: '>=': signed/unsigned mismatch
 d:\uit - project\uitgd\se102 - p5\game.cpp(124): warning C4244: 'argument': conversion from 'unsigned long' to 'float', possible loss of data
+  Map.cpp

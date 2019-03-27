@@ -1,4 +1,13 @@
-﻿  Collision.cpp
+﻿  Animation.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\animation.cpp(30): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+  Collision.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
 d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
 d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
@@ -14,4 +23,390 @@ d:\uit - project\uitgd\se102 - p5\collision.cpp(47): warning C4244: '=': convers
 d:\uit - project\uitgd\se102 - p5\collision.cpp(48): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 d:\uit - project\uitgd\se102 - p5\collision.cpp(53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 d:\uit - project\uitgd\se102 - p5\collision.cpp(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Game.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\game.cpp(120): warning C4018: '>=': signed/unsigned mismatch
+d:\uit - project\uitgd\se102 - p5\game.cpp(124): warning C4244: 'argument': conversion from 'unsigned long' to 'float', possible loss of data
+  GameGlobal.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+  Map.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\map.cpp(52): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\uit - project\uitgd\se102 - p5\map.cpp(53): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\uit - project\uitgd\se102 - p5\map.cpp(86): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  MapFactory.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  ObjectItemShuriken.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  ObjectItemSwingSword.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  ObjectItemSword.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  PlayScene.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playscene.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playscene.cpp(26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playscene.cpp(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playscene.cpp(35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playscene.cpp(39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Player.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerAttackingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerClimbingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerclimbingstate.cpp(22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  PlayerClingingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerDeadState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerFallingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerInjuredState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerJumpingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerRunningState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerSittingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  Generating Code...
+  Compiling...
+  PlayerStandingState.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  Quadtree.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  Scene.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  SceneManager.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  Sprite.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\sprite.cpp(12): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\sprite.cpp(25): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  SpriteFactory.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  TextureFactory.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+  main.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
+  Generating Code...
   Game.vcxproj -> D:\UIT - Project\uitGD\SE102 - P5\Debug\Game.exe

@@ -2,18 +2,21 @@
 
 PlayScene::PlayScene()
 {
-	_map = MapFactory::GetInstance()->GetMap(0);
-	_map->camera = _camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
-
 	_player = new Player();
+	_camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
+	_map = MapFactory::GetInstance()->GetMap(0);
+
+	_camera->posX = SCREEN_WIDTH >> 1;
+	_camera->posY = _map->height >> 1;
+
 	_player->posX = 50;
 	_player->posY = SCREEN_HEIGHT >> 1;
 	_player->item = _map->item;
 
-	_camera->posX = SCREEN_WIDTH >> 1;
-	_camera->posY = _map->height >> 1;
-	_leftCamera = SCREEN_WIDTH >> 1;
-	_rightCamera = _map->width - (SCREEN_WIDTH >> 1);
+	_map->camera = _camera;
+
+	_leftEdge = _camera->width >> 1;
+	_rightEdge = _map->width - (_camera->width >> 1);
 }
 
 PlayScene::~PlayScene()
@@ -23,28 +26,48 @@ PlayScene::~PlayScene()
 
 void PlayScene::CameraUpdate(float dt)
 {
-	_camera->posX = _player->posX = int(_player->posX + 0.5);
-
-	if (_camera->posX <= _leftCamera)
+	if (_camera->posX <= _leftEdge)
 	{
-		_camera->posX = _leftCamera;
+		_camera->posX = max(_leftEdge, _camera->posX);
 		_player->posX = max(_player->width >> 1, _player->posX);
-	}
-	else if (_camera->posX >= _rightCamera)
-	{
-		_camera->posX = _rightCamera;
-		_player->posX = min(_map->width - _player->width, _player->posX);
-	}
+		_player->allow[MOVING] = true;
 
-	_leftScreen = _camera->posX - (SCREEN_WIDTH >> 1);
-	_rightScreen = _leftScreen + SCREEN_HEIGHT;
+		if (_player->posX > SCREEN_WIDTH >> 1)
+		{
+			_camera->posX++;
+			_player->allow[MOVING] = false;
+		}
+	}
+	else if (_camera->posX >= _rightEdge)
+	{
+		_camera->posX = min(_rightEdge, _camera->posX);
+		_player->posX = min(_map->width - _player->width, _player->posX);
+		_player->allow[MOVING] = true;
+
+		/*if (_player->posX < _map->width - (SCREEN_WIDTH >> 1))
+		{
+			_camera->posX--;
+			_player->allow[MOVING] = false;
+		}*/
+	}
+	else
+	{
+		_camera->posX += _player->vx * dt;
+
+		if (_player->isReverse)
+		{
+			_camera->posX = floor(_camera->posX);
+		}
+		else
+		{
+			_camera->posX = ceil(_camera->posX);
+		}
+	}
 }
 
 // Update các thông số các đối tượng trong Scene
 void PlayScene::Update(float dt)
 {
-	_map->Update(dt);
-	_player->item->Update(dt, _leftScreen, _rightScreen);
 	_player->Update(dt);
 	CameraUpdate(dt);
 
@@ -58,7 +81,7 @@ void PlayScene::Update(float dt)
 void PlayScene::Render()
 {
 	_map->Render();
-	_player->Render((SCREEN_WIDTH >> 1) - _camera->posX, 0);
+	_player->Render();
 }
 
 // Xử lí Scene khi nhấn phím

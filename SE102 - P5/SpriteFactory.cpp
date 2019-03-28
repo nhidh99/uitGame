@@ -4,7 +4,7 @@ SpriteFactory* SpriteFactory::_instance = NULL;
 
 void SpriteFactory::LoadResources()
 {
-	// ======================== PLAYER SPRITE ===========================
+	// ======================== PLAYER SPRITE ===========================s
 	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(STANDING, 0, 5, 22, 38));
 	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(RUNNING, 338, 5, 360, 38));
 	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(RUNNING, 368, 5, 390, 38));

@@ -6,8 +6,9 @@ Game::Game(HWND hWnd)
 	// Khởi tạo các Components cần thiết
 	this->Init(hWnd);
 
-	// Khởi tạo Scene
+	// Tạo CurScene
 	SceneManager::GetInstance()->ReplaceScene(new PlayScene());
+	CurScene = SceneManager::GetInstance()->GetCurScene();
 }
 
 // Khởi tạo Game từ Windows với các Device-Components cần thiết
@@ -78,10 +79,6 @@ void Game::ProcessKeyboard()
 	// Kiểm tra các sự kiện của keyboard
 	DWORD dwElements = KEYBOARD_BUFFER_SIZE;
 	hr = didv->GetDeviceData(sizeof(DIDEVICEOBJECTDATA), keyEvents, &dwElements, 0);
-	if (FAILED(hr))
-	{
-		return;
-	}
 
 	// Scan các sự kiện, xem có phím nào được nhấn hay thả hay không
 	for (DWORD i = 0; i < dwElements; ++i)
@@ -89,8 +86,8 @@ void Game::ProcessKeyboard()
 		int KeyCode = keyEvents[i].dwOfs;
 		int KeyState = keyEvents[i].dwData;
 		if ((KeyState & 0x80) > 0)
-			SceneManager::GetInstance()->GetCurScene()->OnKeyDown(KeyCode);
-		else SceneManager::GetInstance()->GetCurScene()->OnKeyUp(KeyCode);
+			CurScene->OnKeyDown(KeyCode);
+		else CurScene->OnKeyUp(KeyCode);
 	}
 }
 
@@ -120,8 +117,8 @@ void Game::Run()
 		if (dt >= tickPerFrame)
 		{
 			frameStart = now;
-			ProcessKeyboard();
 			Update(dt);
+			ProcessKeyboard();
 			Render();
 		}
 		else
@@ -133,19 +130,18 @@ void Game::Run()
 
 void Game::Update(float dt)
 {
-	SceneManager::GetInstance()->GetCurScene()->Update(dt);
+	CurScene->Update(dt);
 }
 
 // Render lại Frame hình sau khi đã Update các thông số
 void Game::Render()
 {
-	auto scene = SceneManager::GetInstance()->GetCurScene();
 	d3ddev->ColorFill(backBuffer, NULL, BACK_COLOR);
 
 	if (d3ddev->BeginScene())
 	{
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-		scene->Render();
+		CurScene->Render();
 		spriteHandler->End();
 		d3ddev->EndScene();
 	}

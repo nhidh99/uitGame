@@ -69,21 +69,21 @@ void Map::Update(float dt)
 void Map::Render()
 {
 	auto trans = D3DXVECTOR2((SCREEN_WIDTH >> 1) - camera->posX, 0);
-
+	
 	for (auto r = 0; r < _rows; ++r)
 	{
 		for (auto c = 0; c < _columns; ++c)
 		{
 			Sprite* sprite = SpriteFactory::GetInstance()->GetSprite(_mapLevel, _mapTiles[r][c]);
-			RECT objBound;
-			objBound.left = (c << 4);
-			objBound.right = objBound.left + TILE_SIZE;
-			objBound.top = (r << 4);
-			objBound.bottom = objBound.top + TILE_SIZE;
+			Rect rect;
+			rect.x = c << 4;
+			rect.y = r << 4;
+			rect.width = TILE_SIZE;
+			rect.height = TILE_SIZE;
 
-			if (IsContain(objBound, camera->GetBound()))
+			if (IsContain(rect, camera->GetRect()))
 			{
-				sprite->Render(objBound.left + (TILE_SIZE >> 1), objBound.top + (TILE_SIZE>>1), trans.x, trans.y);
+				sprite->Render(rect.x, rect.y, (TILE_SIZE >> 1) + trans.x, (TILE_SIZE >> 1) + trans.y);
 			}
 		}
 	}
@@ -96,7 +96,7 @@ void Map::Render()
 	item->Render(trans.x, trans.y);
 }
 
-bool Map::IsContain(RECT rect1, RECT rect2)
+bool Map::IsContain(Rect b1, Rect b2)
 {
-	return !(rect1.top > rect2.bottom || rect1.bottom < rect2.top || rect1.left > rect2.right || rect1.right < rect2.left);
+	return !(b1.x + b1.width < b2.x || b1.x > b2.x + b2.width || b1.y + b1.height < b2.y || b1.y > b2.y + b2.height);
 }

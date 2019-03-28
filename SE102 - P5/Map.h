@@ -21,7 +21,7 @@ public:
 	Map(int level);
 	void Update(float dt);
 	void Render();
-	bool IsContain(RECT rect1, RECT rect2);
+	bool IsContain(Rect rect1, Rect rect2);
 
 	ObjectItem* item;
 	QuadTree* quadtree;

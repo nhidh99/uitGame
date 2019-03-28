@@ -11,8 +11,9 @@ private:
 	LPDIRECTINPUTDEVICE8 didv;								// The keyboard device
 	BYTE  keyStates[256];									// DirectInput keyboard state buffer 
 	DIDEVICEOBJECTDATA keyEvents[KEYBOARD_BUFFER_SIZE];		// Buffered keyboard data
-
+	
 public:
+	Scene* CurScene;
 	Game(HWND hWnd);				// Constructor Game từ Windows đã tạo
 	void Init(HWND hWnd);			// Khởi tạo các thông số cho Game
 	void Run();						// Khởi chạy game, đồng thời chứa vòng lặp game

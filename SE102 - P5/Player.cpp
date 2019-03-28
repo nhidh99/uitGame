@@ -38,7 +38,6 @@ Player::~Player()
 	if (_playerHandler) delete _playerHandler;
 	if (_curAnimation) delete _curAnimation;
 	if (sword) delete sword;
-	if (swingSword) delete swingSword;
 	if (item) delete item;
 
 	for (auto it = _animations.begin(); it != _animations.end(); ++it)
@@ -51,8 +50,6 @@ Player::~Player()
 // Update player: Animation, State and Position after delta-time
 void Player::Update(float dt)
 {
-	isLastFrame = _curAnimation->isLastFrame;
-
 	_curAnimation->Update(dt);
 
 	_playerHandler->State->Update(dt);
@@ -149,13 +146,13 @@ void Player::AttackWith(Type item)
 		}
 		break;
 
-	case SWINGSWORD:
+	/*case SWINGSWORD:
 		if (swingSword != NULL)
 		{
 			swingSword->isReverse = isReverse;
 			swingSword->isOnScreen = true;
 		}
-		break;
+		break;*/
 
 	case SHURIKEN:
 		if (item != NULL)

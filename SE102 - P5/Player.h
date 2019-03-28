@@ -12,7 +12,6 @@ class Player : public Object
 {
 private:
 	PlayerHandler* _playerHandler;							// PlayerHandler - trung gian giữa Player và PlayerState
-	Animation* _curAnimation;								// Animation hiện tại
 	std::unordered_map<State, Animation*> _animations;		// Danh sách các Animation tương ứng với từng State
 
 public:
@@ -20,9 +19,9 @@ public:
 	~Player();
 
 	bool isLastFrame;
-	State state;
+	State state; 
+	Animation* _curAnimation;								// Animation hiện tại
 	ObjectItemSword* sword;
-	ObjectItemSwingSword* swingSword;
 	ObjectItem* item;										// Item đang giữ để ném
 	std::unordered_map<State, bool> allow;
 

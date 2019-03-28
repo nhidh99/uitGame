@@ -1,10 +1,16 @@
 #pragma once
 #include "GameGlobal.h"
 
+struct Rect
+{
+	float x, y;
+	float width, height;
+};
+
 struct BoundingBox
 {
 	float x, y;
-	int width, height;
+	float width, height;
 	float vx, vy;
 };
 
@@ -18,8 +24,8 @@ struct CollisionResult
 class Collision
 {
 private:
-	int dxEntry, dxExit;
-	int dyEntry, dyExit;
+	float dxEntry, dxExit;
+	float dyEntry, dyExit;
 
 	float txEntry, tyEntry;
 	float txExit, tyExit;

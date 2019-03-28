@@ -16,7 +16,7 @@ void PlayerAttackingState::Update(float dt)
 	this->HandleKeyboard();
 
 	// Khi đã đánh xong
-	if (_playerHandler->Player->isLastFrame && !_playerHandler->Player->allow[ATTACKING])
+	if (_playerHandler->Player->_curAnimation->isLastFrame /*&& !_playerHandler->Player->allow[ATTACKING]*/)
 	{
 		_playerHandler->Player->allow[ATTACKING] = true;
 

@@ -21,16 +21,19 @@ CollisionResult Collision::SweptAABB(BoundingBox b1, BoundingBox b2)
 	result.entryTime = 1;
 	result.dir = NONE;
 
+	float vx = b1.vx - b2.vx;
+	float vy = b1.vy - b2.vy;
+
 	BoundingBox b;
-	b.x = b1.vx > 0 ? b1.x : b1.x + b1.vx;
-	b.y = b1.vy > 0 ? b1.y : b1.y + b1.vy;
-	b.width = b1.vx > 0 ? b1.vx + b1.width : b1.width - b1.vx;
-	b.height = b1.vy > 0 ? b1.vy + b1.height : b1.height - b1.vy;
+	b.x = vx > 0 ? b1.x : b1.x + vx;
+	b.y = vy > 0 ? b1.y : b1.y + vy;
+	b.width = vx > 0 ? vx + b1.width : b1.width - vx;
+	b.height = vy > 0 ? vy + b1.height : b1.height - vy;
 
 	if (!IsCollision(b, b2))
 		return result;
 
-	if (b1.vx > 0)
+	if (vx > 0.0f)
 	{
 		dxEntry = b2.x - (b1.x + b1.width);
 		dxExit = (b2.x + b2.width) - b1.x;
@@ -42,7 +45,7 @@ CollisionResult Collision::SweptAABB(BoundingBox b1, BoundingBox b2)
 		dxExit = b2.x - (b1.x + b1.width);
 	}
 
-	if (b1.vy > 0)
+	if (vy > 0.0f)
 	{
 		dyEntry = b2.y - (b1.y + b1.height);
 		dyExit = (b2.y + b2.height) - b1.y;
@@ -50,30 +53,30 @@ CollisionResult Collision::SweptAABB(BoundingBox b1, BoundingBox b2)
 
 	else
 	{
- 		dyEntry = (b2.y + b2.height) - b1.y;
+		dyEntry = (b2.y + b2.height) - b1.y;
 		dyExit = b2.y - (b1.y + b1.height);
 	}
 
-	if (b1.vx == 0)
+	if (vx == 0.0f)
 	{
 		txEntry = -std::numeric_limits<float>::infinity();
 		txExit = std::numeric_limits<float>::infinity();
 	}
 	else
 	{
-		txEntry = dxEntry / b1.vx;
-		txExit = dxExit / b1.vx;
+		txEntry = dxEntry / vx;
+		txExit = dxExit / vx;
 	}
 
-	if (b1.vy == 0)
+	if (vy == 0.0f)
 	{
 		tyEntry = -std::numeric_limits<float>::infinity();
 		tyExit = std::numeric_limits<float>::infinity();
 	}
 	else
 	{
-		tyEntry = dyEntry / b1.vy;
-		tyExit = dyExit / b1.vy;
+		tyEntry = dyEntry / vy;
+		tyExit = dyExit / vy;
 	}
 
 	entryTime = max(txEntry, tyEntry);
@@ -85,13 +88,13 @@ CollisionResult Collision::SweptAABB(BoundingBox b1, BoundingBox b2)
 	}
 	else
 	{
+		OutputDebugString("COLLISION\n");
 		result.isCollide = true;
 		result.entryTime = entryTime;
-		OutputDebugString("COLLISION\n");
 
 		if (txEntry > tyEntry)
 		{
-			if (b1.vx > 0.0f)
+			if (vx > 0.0f)
 			{
 
 				result.dir = LEFT;
@@ -103,7 +106,7 @@ CollisionResult Collision::SweptAABB(BoundingBox b1, BoundingBox b2)
 		}
 		else
 		{
-			if (b1.vy > 0.0f)
+			if (vy > 0.0f)
 			{
 				result.dir = UP;
 			}

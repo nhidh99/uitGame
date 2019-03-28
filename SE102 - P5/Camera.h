@@ -1,25 +1,26 @@
 #pragma once
 #include "GameGlobal.h"
+#include "Collision.h"
 
 class Camera
 {
 public:
 	int width, height;
 	float posX, posY;
-	
+
 	Camera(int width, int height)
 	{
 		this->width = width;
 		this->height = height;
 	}
 
-	RECT GetBound()
+	Rect GetRect()
 	{
-		RECT bound;
-		bound.left = posX - (width >> 1);
-		bound.right = bound.left + width;
-		bound.top = posY - (height >> 1);
-		bound.bottom = bound.top + height;
-		return bound;
+		Rect rect;
+		rect.x = posX - (width >> 1);
+		rect.y = posY - (height >> 1);
+		rect.width = width;
+		rect.height = height;
+		return rect;
 	}
 };

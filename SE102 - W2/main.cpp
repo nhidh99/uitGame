@@ -144,12 +144,12 @@ void Update(DWORD dt)
 		ball->SetVx(-ball->GetVx());
 	}
 
-	else if (ball->GetPosY() < ball->GetHeight() >> 1 || ball->GetPosY() > (SCREEN_HEIGHT - ball->GetHeight()))
+	if (ball->GetPosY() < (ball->GetHeight() >> 1) - 1 || ball->GetPosY() > (SCREEN_HEIGHT - ball->GetHeight() + 1))
 	{
 		ball->SetVy(-ball->GetVy());
 	}
 	
-	else if (ball->GetPosX() < paddle1->GetPosX())
+	if (ball->GetPosX() < paddle1->GetPosX())
 	{
 		++score2;
 		ball->SetPosition(SCREEN_WIDTH >> 1, SCREEN_HEIGHT >> 1);

@@ -13,14 +13,14 @@
 #define SCREEN_HEIGHT 176						// Chiều dài cửa sổ
 #define MAX_FRAME_RATE 60						// FPS
 #define BACK_COLOR D3DCOLOR_XRGB(0, 0, 0)		// Màu nền BackBuffer
-#define TIME_PER_FRAME 150						// Thời gian tồn tại của mỗi Frame (cho Animation)
+#define DEFAULT_TPS 150							// Thời gian tồn tại của mỗi Frame (cho Animation)
 #define GRAVITY_SPEED 0.25f						// Tốc độ trọng lực
 #define KEYBOARD_BUFFER_SIZE 1024
 #define NUMBER_MAP_LEVEL 1
 #define TILE_SIZE 16
 
 // ===== Các thông số cho PLAYER ====
-#define PLAYER_RUNNING_SPEED 0.1f
+#define PLAYER_RUNNING_SPEED 0.08f
 #define PLAYER_JUMPING_SPEED 0.013f
 #define PLAYER_CLIMBING_SPEED 0.1f
 #define PLAYER_WIDTH 24
@@ -37,8 +37,8 @@
 #define ITEM_SWORD_HEIGHT 12
 
 // ===== Các thông số cho ITEM SHURIKEN ====
-#define ITEM_SHURIKEN_WIDTH 8
-#define ITEM_SHURIKEN_HEIGHT 8
+#define ITEM_SHURIKEN_WIDTH 18
+#define ITEM_SHURIKEN_HEIGHT 18
 #define ITEM_SHURIKEN_SPEED 0.15f
 #define ITEM_SWINGSWORD_WIDTH 18
 #define ITEM_SWINGSWORD_HEIGHT 18

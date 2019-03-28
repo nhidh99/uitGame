@@ -8,7 +8,7 @@ public:
 	int width, height;
 	float posX, posY;
 
-	Camera(int width, int height)
+	Camera(float width, float height)
 	{
 		this->width = width;
 		this->height = height;

@@ -10,6 +10,7 @@ public:
 	Tag tag;									// Tag định loại Object
 	float posX, posY;							// Vị trí (đồng thời là tâm của Object đó)
 	float vx, vy;								// Vận tốc
+	float dx, dy;
 	int width, height;							// Kích thước
 	bool isReverse;								// Kiểm tra lật hình theo chiều dọc
 
@@ -30,12 +31,18 @@ public:
 		bound.width = width;
 		bound.x = posX - (width >> 1);
 		bound.y = posY - (height >> 1);
-		bound.vx = vx;
-		bound.vy = vy;
+		bound.vx = dx;
+		bound.vy = dy;
 		return bound;
 	}
 
-	virtual void Update(float dt) {};			// Update thông số của Object sau khoảng thời gian delta-time
+	virtual void Update(float dt) 
+	{
+		dx = vx * dt;
+		dy = vy * dt;
+		posX += dx;
+		posY += dy;
+	};			// Update thông số của Object sau khoảng thời gian delta-time
 	virtual void Render() {}
 	virtual void Render(float translateX = 0, float translateY = 0) {}
 };

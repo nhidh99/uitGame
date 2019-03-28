@@ -11,6 +11,8 @@
 class Map
 {
 private:
+	int _cBegin;
+	int _cEnd;
 	int _columns;
 	int _rows;
 	int _numSetTiles;
@@ -26,7 +28,9 @@ public:
 	ObjectItem* item;
 	QuadTree* quadtree;
 	Camera* camera;
-	std::vector<ObjectItem*> objects;
+	Player* player;
+
+	ObjectItem* shuriken;
 
 	int width;
 	int height;

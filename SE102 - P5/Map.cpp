@@ -19,7 +19,7 @@ Map::Map(int level)
 	// Tải các Sprite tương ứng của map vào Factry
 	for (int i = 0; i < _numSetTiles; ++i)
 	{
-		SpriteFactory::GetInstance()->AddSprite(new Sprite(_mapLevel, i << 4, 0, (i + 1) << 4, 16));
+		SpriteFactory::GetInstance()->AddSprite(new Sprite(_mapLevel, i << 4, 0, i + 1 << 4, 16));
 	}
 
 	// Tạo ma trận tương ứng của Map đang xét
@@ -46,35 +46,30 @@ Map::Map(int level)
 	item = new ObjectItemShuriken();
 
 	// Init Objects
-	for (int i = 0; i < 10; ++i)
-	{
-		ObjectItemShuriken* shuriken = new ObjectItemShuriken();
-		shuriken->posX = (width >> 1) - i * 100;
-		shuriken->posY = (height >> 1) - i * 10;
-		shuriken->vx = 0;
-		shuriken->vy = 0;
-		shuriken->isOnScreen = true;
-		objects.push_back(shuriken);
-	}
+	shuriken = new ObjectItemShuriken();
+	shuriken->posX = (width >> 1) - 500;
+	shuriken->posY = (height >> 1) - 30;
+	shuriken->vx = 0;
+	shuriken->vy = 0;
+	shuriken->isOnScreen = true;
 }
 
 void Map::Update(float dt)
 {
-	for (auto i : objects)
-	{
-		i->Update(dt);
-	}
+	shuriken->Update(dt);
 }
 
 void Map::Render()
 {
-	auto trans = D3DXVECTOR2((SCREEN_WIDTH >> 1) - camera->posX, 0);
-	
+	auto trans = D3DXVECTOR2((SCREEN_WIDTH >> 1) - (int)camera->posX, 0);
+
+	_cBegin = (camera->posX - (camera->width >> 1)) / 16;
+	_cEnd = min(_cBegin + (SCREEN_WIDTH >> 4) + 1, _columns);
+
 	for (auto r = 0; r < _rows; ++r)
 	{
-		for (auto c = 0; c < _columns; ++c)
+		for (auto c = _cBegin; c < _cEnd; ++c)
 		{
-			Sprite* sprite = SpriteFactory::GetInstance()->GetSprite(_mapLevel, _mapTiles[r][c]);
 			Rect rect;
 			rect.x = c << 4;
 			rect.y = r << 4;
@@ -83,15 +78,13 @@ void Map::Render()
 
 			if (IsContain(rect, camera->GetRect()))
 			{
-				sprite->Render(rect.x, rect.y, (TILE_SIZE >> 1) + trans.x, (TILE_SIZE >> 1) + trans.y);
+				SpriteFactory::GetInstance()->GetSprite(_mapLevel, _mapTiles[r][c])
+					->Render(rect.x, rect.y, (TILE_SIZE >> 1) + trans.x, (TILE_SIZE >> 1) + trans.y);
 			}
 		}
 	}
 
-	for (auto i : objects)
-	{
-		i->Render(trans.x, trans.y);
-	}
+	shuriken->Render(trans.x, trans.y);
 
 	item->Render(trans.x, trans.y);
 }

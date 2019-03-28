@@ -43,17 +43,14 @@ void PlayScene::CameraUpdate(float dt)
 // Update các thông số các đối tượng trong Scene
 void PlayScene::Update(float dt)
 {
-	for (auto i : _map->objects)
-	{
-		Collision::GetInstance()->SweptAABB(_player->GetBoundingBox(), i->GetBoundingBox());
-	}
+	Collision::GetInstance()->SweptAABB(_player->GetBoundingBox(), _map->shuriken->GetBoundingBox());
 
 	_map->Update(dt);
 
 	_player->Update(dt);
 
 	_player->item->Update(dt, _leftScreen, _rightScreen);
-	
+
 	CameraUpdate(dt);
 }
 

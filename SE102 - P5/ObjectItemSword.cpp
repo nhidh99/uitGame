@@ -2,7 +2,7 @@
 
 ObjectItemSword::ObjectItemSword()
 {
-	_animation = new Animation(ITEM, 0, 1, TIME_PER_FRAME >> 1);
+	_animation = new Animation(ITEM, 0, 1, DEFAULT_TPS >> 1);
 	isOnScreen = false;
 	width = ITEM_SWORD_WIDTH;
 	height = ITEM_SWORD_HEIGHT;

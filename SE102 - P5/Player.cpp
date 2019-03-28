@@ -5,12 +5,12 @@ Player::Player()
 {
 	// Load Animations for Player
 	_animations[STANDING] = new Animation(PLAYER, 0);
-	_animations[RUNNING] = new Animation(PLAYER, 1, 3, TIME_PER_FRAME >> 1);
+	_animations[RUNNING] = new Animation(PLAYER, 1, 3, DEFAULT_TPS >> 1);
 	_animations[SITTING] = new Animation(PLAYER, 4, 4);
-	_animations[JUMPING] = new Animation(PLAYER, 5, 8, TIME_PER_FRAME >> 2);
-	_animations[FALLING] = new Animation(PLAYER, 5, 8, TIME_PER_FRAME >> 2);
-	_animations[ATTACKING_STAND] = new Animation(PLAYER, 9, 11, TIME_PER_FRAME >> 1);
-	_animations[ATTACKING_SIT] = new Animation(PLAYER, 12, 14, TIME_PER_FRAME >> 1);
+	_animations[JUMPING] = new Animation(PLAYER, 5, 8, DEFAULT_TPS >> 2);
+	_animations[FALLING] = new Animation(PLAYER, 5, 8, DEFAULT_TPS >> 2);
+	_animations[ATTACKING_STAND] = new Animation(PLAYER, 9, 11, DEFAULT_TPS >> 1);
+	_animations[ATTACKING_SIT] = new Animation(PLAYER, 12, 14, DEFAULT_TPS >> 1);
 	_animations[CLINGING] = new Animation(PLAYER, 15);
 	_animations[CLIMBING] = new Animation(PLAYER, 15, 16);
 	_animations[DEAD] = new Animation(PLAYER, 5);
@@ -54,9 +54,7 @@ void Player::Update(float dt)
 
 	_playerHandler->State->Update(dt);
 
-	posX += vx * dt;
-
-	posY += vy * dt;
+	Object::Update(dt);
 }
 
 // Render Player and sword / item if it's on screen

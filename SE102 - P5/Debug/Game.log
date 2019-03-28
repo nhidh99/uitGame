@@ -1,25 +1,7 @@
-﻿  Map.cpp
+﻿  Collision.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
 d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
 d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
 d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
 d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
-d:\uit - project\uitgd\se102 - p5\camera.h(22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\uit - project\uitgd\se102 - p5\camera.h(23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-d:\uit - project\uitgd\se102 - p5\object.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-d:\uit - project\uitgd\se102 - p5\object.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-d:\uit - project\uitgd\se102 - p5\object.h(29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\uit - project\uitgd\se102 - p5\object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\uit - project\uitgd\se102 - p5\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
-  d:\uit - project\uitgd\se102 - p5\playerhandler.h(2): note: see declaration of 'Player'
-d:\uit - project\uitgd\se102 - p5\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
-  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
-d:\uit - project\uitgd\se102 - p5\playerhandler.h(20): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
-  d:\uit - project\uitgd\se102 - p5\playerhandler.h(3): note: see declaration of 'PlayerState'
-d:\uit - project\uitgd\se102 - p5\map.cpp(52): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\uit - project\uitgd\se102 - p5\map.cpp(53): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\uit - project\uitgd\se102 - p5\map.cpp(79): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\uit - project\uitgd\se102 - p5\map.cpp(80): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Game.vcxproj -> D:\UIT - Project\uitGD\SE102 - P5\Debug\Game.exe

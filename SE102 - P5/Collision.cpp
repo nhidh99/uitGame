@@ -14,12 +14,13 @@ bool Collision::IsCollision(BoundingBox b1, BoundingBox b2)
 	return !(b1.x + b1.width < b2.x || b1.x > b2.x + b2.width || b1.y + b1.height < b2.y || b1.y > b2.y + b2.height);
 }
 
+
 CollisionResult Collision::SweptAABB(BoundingBox b1, BoundingBox b2)
 {
 	CollisionResult result;
 	result.isCollide = false;
-	result.entryTime = 1;
-	result.dir = NONE;
+	result.entryTime = 1.0f;
+	result.nx = result.ny = 0;
 
 	float vx = b1.vx - b2.vx;
 	float vy = b1.vy - b2.vy;
@@ -93,30 +94,65 @@ CollisionResult Collision::SweptAABB(BoundingBox b1, BoundingBox b2)
 
 		if (txEntry > tyEntry)
 		{
-			if (vx > 0.0f)
-			{
-				OutputDebugString("L-COLLISION\n");
-				result.dir = LEFT;
-			}
-			else
-			{
-				OutputDebugString("R-COLLISION\n");
-				result.dir = RIGHT;
-			}
+			result.nx = (vx > 0.0f ? -1 : 1);
 		}
 		else
 		{
-			if (vy > 0.0f)
-			{
-				OutputDebugString("U-COLLISION\n");
-				result.dir = UP;
-			}
-			else
-			{
-				OutputDebugString("D-COLLISION\n");
-				result.dir = DOWN;
-			}
+			result.ny = (vy > 0.0f ? 1 : -1);
 		}
 		return result;
 	}
+}
+
+bool Collision::SweptGround(BoundingBox b1, BoundingBox b2)
+{
+	BoundingBox b;
+	b.x = b1.vx > 0 ? b1.x : b1.x + b1.vx;
+	b.y = b1.vy > 0 ? b1.y : b1.y + b1.vy;
+	b.width = b1.vx > 0 ? b1.vx + b1.width : b1.width - b1.vx;
+	b.height = b1.vy > 0 ? b1.vy + b1.height : b1.height - b1.vy;
+
+	if (b1.x + b1.width < b2.x || b1.x > b2.x + b2.width || b1.y + b1.height < b2.y || b1.y > b2.y + b2.height)
+		return false;
+
+	if (b1.vx > 0.0f)
+	{
+		dxEntry = b2.x - (b1.x + b1.width);
+		dxExit = (b2.x + b2.width) - b1.x;
+	}
+
+	else
+	{
+		dxEntry = (b2.x + b2.width) - b1.x;
+		dxExit = b2.x - (b1.x + b1.width);
+	}
+
+	if (b1.vy > 0.0f)
+	{
+		dyEntry = b2.y - (b1.y + b1.height);
+		dyExit = (b2.y + b2.height) - b1.y;
+	}
+	
+	else
+	{
+		dyEntry = (b2.y + b2.height) - b1.y;
+		dyExit = b2.y - (b1.y + b1.height);
+	}
+
+	if (b1.vx == 0.0f)
+	{
+		txEntry = -std::numeric_limits<float>::infinity();
+		txExit = std::numeric_limits<float>::infinity();
+	}
+
+	else
+	{
+		txEntry = dxEntry / b1.vx;
+		txExit = dxExit / b1.vx;
+	}
+
+	tyEntry = dyEntry / b1.vy;
+	tyExit = dyExit / b1.vy;
+
+	return tyEntry > txEntry;
 }

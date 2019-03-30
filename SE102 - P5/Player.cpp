@@ -30,13 +30,14 @@ Player::Player()
 	_playerHandler = new PlayerHandler();
 	_playerHandler->Player = this;
 	ChangeState(new PlayerStandingState(_playerHandler));
+
 }
 
 // Destructor
 Player::~Player()
 {
 	if (_playerHandler) delete _playerHandler;
-	if (_curAnimation) delete _curAnimation;
+	if (curAnimation) delete curAnimation;
 	if (sword) delete sword;
 	if (item) delete item;
 
@@ -47,22 +48,98 @@ Player::~Player()
 	}
 }
 
-// Update player: Animation, State and Position after delta-time
-void Player::Update(float dt)
+void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 {
-	_curAnimation->Update(dt);
+	curAnimation->Update(dt);
 
 	_playerHandler->State->Update(dt);
 
-	Object::Update(dt);
+	std::vector<CollisionResult> ResultCollisions;
+	ResultCollisions.clear();
+
+	for (auto obj : ColliableObjects)
+	{
+		auto result = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
+		if (result.isCollide)
+		{
+			ResultCollisions.push_back(result);
+		}
+	}
+
+	if (!ResultCollisions.size())
+	{
+		Object::Update(dt);
+	}
+	else
+	{
+		float minEntryTimeX = 1.0f;
+		float minEntryTimeY = 1.0f;
+		int nx = 0, ny = 0;
+
+		for (auto result : ResultCollisions)
+		{
+			if (result.entryTime < minEntryTimeX)
+			{
+				minEntryTimeX = result.entryTime;
+				nx = result.nx;
+			}
+
+			if (result.entryTime < minEntryTimeY)
+			{
+				minEntryTimeY = result.entryTime;
+				ny = result.ny;
+			}
+		}
+
+		/*posX += (minEntryTimeX * dx + nx * 2.0f);
+		posY += (minEntryTimeY * dy);*/
+
+		//if (nx != 0)
+		//{
+		//	vx = (vx > 0) ? -0.05 : 0.05;
+		//	this->allow[CLINGING] = true;
+		//}
+
+		if (ny != 0)
+		{
+			this->vy = 0;
+			this->isOnGround = true;
+		}
+	}
+}
+
+void Player::CheckOnGround(std::vector<BoundingBox> grounds)
+{
+	if (this->vy == 0)
+	{
+		if (this->GetBoundingBox().x > curGroundBound.x + curGroundBound.width
+			|| this->GetBoundingBox().x + this->width < curGroundBound.x)
+		{
+			this->ChangeState(new PlayerFallingState(_playerHandler));
+		}
+		else this->posY = curGroundBound.y - this->height;
+	}
+
+	else if (this->vy > 0)
+	{
+		for (auto g : grounds)
+		{
+			if (Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), g).ny)
+			{
+				this->ChangeState(new PlayerStandingState(_playerHandler));
+				curGroundBound = g;
+				return;
+			}
+		}
+	}
 }
 
 // Render Player and sword / item if it's on screen
 void Player::Render(float translateX, float translateY)
 {
-	_curAnimation->isReverse = this->isReverse;
-	_curAnimation->Render(posX, posY, translateX, translateY);
-	sword->Render(posX, posY, _curAnimation->CurFrameIndex, translateX, translateY);
+	curAnimation->isReverse = this->isReverse;
+	curAnimation->Render(posX, posY, translateX, translateY);
+	sword->Render(posX, posY, curAnimation->CurFrameIndex, translateX, translateY);
 }
 
 // Handle KeyDown for state change can change in others
@@ -128,7 +205,7 @@ void Player::ChangeState(PlayerState * newState)
 {
 	state = newState->StateName;
 	_playerHandler->SetState(newState);
-	_curAnimation = _animations[state];
+	curAnimation = _animations[state];
 }
 
 // Attack with item
@@ -144,13 +221,13 @@ void Player::AttackWith(Type item)
 		}
 		break;
 
-	/*case SWINGSWORD:
-		if (swingSword != NULL)
-		{
-			swingSword->isReverse = isReverse;
-			swingSword->isOnScreen = true;
-		}
-		break;*/
+		/*case SWINGSWORD:
+			if (swingSword != NULL)
+			{
+				swingSword->isReverse = isReverse;
+				swingSword->isOnScreen = true;
+			}
+			break;*/
 
 	case SHURIKEN:
 		if (item != NULL)

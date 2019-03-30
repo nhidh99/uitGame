@@ -18,7 +18,7 @@ struct CollisionResult
 {
 	bool isCollide;
 	float entryTime;
-	Direction dir;
+	int nx, ny;
 };
 
 class Collision
@@ -38,4 +38,5 @@ public:
 	static Collision* GetInstance();
 	bool IsCollision(BoundingBox b1, BoundingBox b2);
 	CollisionResult SweptAABB(BoundingBox b1, BoundingBox b2);
+	bool SweptGround(BoundingBox b1, BoundingBox b2);
 };

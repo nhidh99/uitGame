@@ -16,7 +16,7 @@ void PlayerAttackingState::Update(float dt)
 	this->HandleKeyboard();
 
 	// Khi đã đánh xong
-	if (_playerHandler->Player->_curAnimation->isLastFrame /*&& !_playerHandler->Player->allow[ATTACKING]*/)
+	if (_playerHandler->Player->curAnimation->isLastFrame)
 	{
 		_playerHandler->Player->allow[ATTACKING] = true;
 
@@ -55,7 +55,7 @@ void PlayerAttackingState::Update(float dt)
 		case JUMPING:
 		{
 			// Nếu đã nhảy đến độ cao nhất định -> _curState về trạng thái FALLING
-			_playerHandler->Player->vy += PLAYER_JUMPING_SPEED;
+			_playerHandler->Player->vy += GRAVITY_SPEED;
 
 			if ((_playerHandler->Player->vx == SCREEN_WIDTH - _playerHandler->Player->width
 				|| _playerHandler->Player->vx == _playerHandler->Player->width >> 1) && _playerHandler->Player->allow[CLINGING])
@@ -67,28 +67,19 @@ void PlayerAttackingState::Update(float dt)
 			else if (_playerHandler->Player->vy >= 0)
 			{
 				_curState = FALLING;
-				_playerHandler->Player->vy = GRAVITY_SPEED;
+				_playerHandler->Player->vy = PLAYER_FALLING_SPEED;
 			}
 			break;
 		}
 
-		case FALLING:
-			// Nếu đã rơi xuống điểm va chạm
-			if (_playerHandler->Player->posY >= SCREEN_HEIGHT >> 1)
-			{
-				_curState = STANDING;
-				_playerHandler->Player->posY = SCREEN_HEIGHT >> 1;
-				_playerHandler->Player->vx = 0;
-				_playerHandler->Player->vy = 0;
-			}
-
+		/*case FALLING:
 			if ((_playerHandler->Player->posX == SCREEN_WIDTH - _playerHandler->Player->width
 				|| _playerHandler->Player->posX == _playerHandler->Player->width >> 1) && _playerHandler->Player->allow[CLINGING])
 			{
 				_playerHandler->Player->ChangeState(new PlayerClingingState(_playerHandler));
 				return;
 			}
-			break;
+			break;*/
 		}
 	}
 }
@@ -105,6 +96,5 @@ void PlayerAttackingState::HandleKeyboard()
 	{
 		_playerHandler->Player->vx = !_reverse ? PLAYER_RUNNING_SPEED : PLAYER_RUNNING_SPEED / 2;
 	}
-
 	else _playerHandler->Player->vx = 0;
 }

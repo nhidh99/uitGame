@@ -6,7 +6,6 @@
 class PlayerFallingState : public PlayerState
 {
 private:
-	float _fallingSpeed;
 	bool _reverse;
 
 public:

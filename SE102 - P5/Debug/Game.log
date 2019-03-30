@@ -1,7 +1,2 @@
 ﻿  Collision.cpp
-  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\uit - project\uitgd\se102 - p5\gameglobal.h(61): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
-d:\uit - project\uitgd\se102 - p5\gameglobal.h(68): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
-d:\uit - project\uitgd\se102 - p5\gameglobal.h(86): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
-d:\uit - project\uitgd\se102 - p5\gameglobal.h(95): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
-  Game.vcxproj -> D:\UIT - Project\uitGD\SE102 - P5\Debug\Game.exe
+d:\uit - project\uitgd\se102 - p5\collision.cpp : fatal error C1041: cannot open program database 'D:\UIT - Project\uitGD\SE102 - P5\Debug\vc141.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS

@@ -6,7 +6,6 @@
 class PlayerJumpingState : public PlayerState
 {
 private:
-	float _jumpingSpeed;
 	bool _reverse;
 
 public:

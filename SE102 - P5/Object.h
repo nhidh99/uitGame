@@ -36,13 +36,13 @@ public:
 		return bound;
 	}
 
-	virtual void Update(float dt) 
+	virtual void Update(float dt)  // Update thông số của Object sau khoảng thời gian delta-time
 	{
 		dx = vx * dt;
 		dy = vy * dt;
 		posX += dx;
 		posY += dy;
-	};			// Update thông số của Object sau khoảng thời gian delta-time
+	};			
 	virtual void Render() {}
 	virtual void Render(float translateX = 0, float translateY = 0) {}
 };

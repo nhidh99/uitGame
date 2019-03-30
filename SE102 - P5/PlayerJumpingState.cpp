@@ -6,15 +6,15 @@ PlayerJumpingState::PlayerJumpingState(PlayerHandler * playerHandler)
 {
 	_playerHandler = playerHandler;
 	_reverse = _playerHandler->Player->isReverse;
-	_jumpingSpeed = PLAYER_JUMPING_SPEED;
 
+	_playerHandler->Player->isOnGround = false;
 	_playerHandler->Player->allow[ATTACKING] = true;
 	_playerHandler->Player->allow[CLINGING] = true;
 
 	State prevState = playerHandler->State->StateName;
 
 	if (prevState == RUNNING || prevState == STANDING || prevState == CLINGING)
-		_playerHandler->Player->vy = -GRAVITY_SPEED;
+		_playerHandler->Player->vy = -PLAYER_JUMPING_SPEED;
 
 	StateName = JUMPING;
 }
@@ -22,7 +22,7 @@ PlayerJumpingState::PlayerJumpingState(PlayerHandler * playerHandler)
 void PlayerJumpingState::Update(float dt)
 {
 	// Cập nhật tốc độ vy đến khi vy >= 0 -> FALLING
-	_playerHandler->Player->vy += _jumpingSpeed;
+	_playerHandler->Player->vy += GRAVITY_SPEED;
 
 	if (_playerHandler->Player->vy >= 0)
 	{

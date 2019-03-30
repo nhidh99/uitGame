@@ -215,6 +215,9 @@
     <ClInclude Include="Collision.h">
       <Filter>Game Components</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectGround.h">
+      <Filter>Game Objects\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Player.cd" />

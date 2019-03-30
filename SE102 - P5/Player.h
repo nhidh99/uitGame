@@ -6,6 +6,7 @@
 #include "PlayerStandingState.h"
 #include "ObjectItemSword.h"
 #include "ObjectItemSwingSword.h"
+#include "ObjectGround.h"
 #include <map>
 
 class Player : public Object
@@ -19,13 +20,18 @@ public:
 	~Player();
 
 	bool isLastFrame;
+	bool isOnGround;
+
 	State state; 
-	Animation* _curAnimation;								// Animation hiện tại
+	Animation* curAnimation;								// Animation hiện tại
 	ObjectItemSword* sword;
 	ObjectItem* item;										// Item đang giữ để ném
+	BoundingBox curGroundBound;
 	std::unordered_map<State, bool> allow;
 
-	void Update(float dt);
+	void Update(float dt, std::vector<Object*> ColliableObjects);
+	void CheckOnGround(std::vector<ObjectGround*> grounds);
+	void CheckOnGround(std::vector<BoundingBox> grounds);
 	void Render(float translateX = 0, float translateY = 0);
 	void OnKeyDown(int keyCode);							// Xử lí sự kiện của nhân vật theo phím nhấn
 	void OnKeyUp(int keyCode);								// Xử lí sự kiện của nhân vật theo phím thả

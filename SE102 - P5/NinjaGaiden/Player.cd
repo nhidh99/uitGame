@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Object">
+    <Position X="0.75" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AHYAAAhEAACAAAAgAAACAQDAABAgAgAAgBBCAEAAYgA=</HashCode>
+      <FileName>Object.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player">
+    <Position X="4.25" Y="6" Width="3.5" />
+    <InheritanceLine Type="Object">
+      <InheritanceModifierLabel ManuallyPlaced="true">
+        <Position X="0.293" Y="0.102" />
+      </InheritanceModifierLabel>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAggAAQEiAJkAQQwAACOABABJAAABAABCBAQAAgBA=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerState">
+    <Position X="13.5" Y="6" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAABAAAAABAAAQAAAAAAAAAAAAAAAAAAAAAAAABQA=</HashCode>
+      <FileName>PlayerState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerHandler">
+    <Position X="10" Y="6" Width="2.5" />
+    <AssociationLine Name="_player" Type="Player">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.518" Y="0.031" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAABEAAAAAAABAAAAEACAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlayerHandler.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_player" />
+      <Field Name="_state" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PlayerStandingState">
+    <Position X="8.5" Y="2" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAABQA=</HashCode>
+      <FileName>PlayerStandingState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerRunningState">
+    <Position X="12.5" Y="1.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAJQA=</HashCode>
+      <FileName>PlayerRunningState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerSittingState">
+    <Position X="16.5" Y="2.25" Width="3.5" />
+    <InheritanceLine Type="PlayerState" ManuallyRouted="true">
+      <Path>
+        <Point X="15.25" Y="6" />
+        <Point X="15.25" Y="4.576" />
+        <Point X="18.25" Y="4.576" />
+        <Point X="18.25" Y="4.06" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABRA=</HashCode>
+      <FileName>PlayerSittingState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerJumpingState">
+    <Position X="20.5" Y="10.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAAAIAAABQA=</HashCode>
+      <FileName>PlayerJumpingState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerFallingState">
+    <Position X="20.5" Y="5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAKAAAABQA=</HashCode>
+      <FileName>PlayerFallingState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerClingingState">
+    <Position X="20.5" Y="7.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAABQA=</HashCode>
+      <FileName>PlayerClingingState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerClimbingState">
+    <Position X="20.5" Y="1.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAACABQA=</HashCode>
+      <FileName>PlayerClimbingState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAttackingState">
+    <Position X="16.5" Y="10.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAEAAACAEBQA=</HashCode>
+      <FileName>PlayerAttackingState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerDeadState">
+    <Position X="12.5" Y="10.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBQA=</HashCode>
+      <FileName>PlayerDeadState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerInjuredState">
+    <Position X="8.5" Y="10.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAABwA=</HashCode>
+      <FileName>PlayerInjuredState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

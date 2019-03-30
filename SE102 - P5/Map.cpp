@@ -44,19 +44,10 @@ Map::Map(int level)
 
 	// Init Shuriken
 	item = new ObjectItemShuriken();
-
-	// Init Objects
-	shuriken = new ObjectItemShuriken();
-	shuriken->posX = (width >> 1) - 500;
-	shuriken->posY = (height >> 1) - 30;
-	shuriken->vx = 0;
-	shuriken->vy = 0;
-	shuriken->isOnScreen = true;
 }
 
 void Map::Update(float dt)
 {
-	shuriken->Update(dt);
 }
 
 void Map::Render()
@@ -83,8 +74,6 @@ void Map::Render()
 			}
 		}
 	}
-
-	shuriken->Render(trans.x, trans.y);
 
 	item->Render(trans.x, trans.y);
 }

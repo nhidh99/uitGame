@@ -1,5 +1,7 @@
 ﻿#include "Player.h"
 
+Player* Player::_instance = NULL;
+
 // Constructor
 Player::Player()
 {
@@ -25,18 +27,11 @@ Player::Player()
 	width = PLAYER_WIDTH;
 	height = PLAYER_STANDING_HEIGHT;
 	sword = new ObjectItemSword();
-
-	// Set state
-	_playerHandler = new PlayerHandler();
-	_playerHandler->Player = this;
-	ChangeState(new PlayerStandingState(_playerHandler));
-
 }
 
 // Destructor
 Player::~Player()
 {
-	if (_playerHandler) delete _playerHandler;
 	if (curAnimation) delete curAnimation;
 	if (sword) delete sword;
 	if (item) delete item;
@@ -48,11 +43,18 @@ Player::~Player()
 	}
 }
 
+Player * Player::GetInstance()
+{
+	if (_instance == NULL)
+		_instance = new Player();
+	return _instance;
+}
+
 void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 {
 	curAnimation->Update(dt);
 
-	_playerHandler->State->Update(dt);
+	state->Update(dt);
 
 	Object::Update(dt);
 
@@ -122,7 +124,7 @@ void Player::CheckOnGround(std::vector<BoundingBox> grounds)
 		if (!this->IsOnGround())
 		{
 			curGroundBound = BoundingBox();
-			this->ChangeState(new PlayerFallingState(_playerHandler));
+			this->ChangeState(new PlayerFallingState());
 		}
 		else this->posY = curGroundBound.y - this->height;
 	}
@@ -131,15 +133,15 @@ void Player::CheckOnGround(std::vector<BoundingBox> grounds)
 	{
 		if (this->IsOnGround() && this->posY > this->curGroundBound.y - this->height)
 		{
-			this->ChangeState(new PlayerStandingState(_playerHandler));
+			this->ChangeState(new PlayerStandingState());
 			return;
 		}
 
 		for (auto g : grounds)
 		{
-			if (Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), g).ny == 1)
+			if (Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), g).ny)
 			{
-				this->ChangeState(new PlayerStandingState(_playerHandler));
+				this->ChangeState(new PlayerStandingState());
 				curGroundBound = g;
 				return;
 			}
@@ -155,7 +157,7 @@ void Player::Render(float translateX, float translateY)
 	sword->Render(posX, posY, curAnimation->CurFrameIndex, translateX, translateY);
 }
 
-// Handle KeyDown for state change can change in others
+// Handle KeyDown for stateName change can change in others
 void Player::OnKeyDown(int keyCode)
 {
 	switch (keyCode)
@@ -165,7 +167,7 @@ void Player::OnKeyDown(int keyCode)
 		if (allow[ATTACKING])
 		{
 			allow[ATTACKING] = false;
-			ChangeState(new PlayerAttackingState(_playerHandler));
+			ChangeState(new PlayerAttackingState());
 			AttackWith(SWORD);
 		}
 		break;
@@ -175,14 +177,14 @@ void Player::OnKeyDown(int keyCode)
 		if (allow[ATTACKING] && !item->isOnScreen)
 		{
 			allow[ATTACKING] = false;
-			ChangeState(new PlayerAttackingState(_playerHandler));
+			ChangeState(new PlayerAttackingState());
 			AttackWith(item->type);
 		}
 		break;
 
 		// Attacking State (with swing sword)
 	case DIK_D:
-		if (state == JUMPING || state == FALLING)
+		if (stateName == JUMPING || stateName == FALLING)
 		{
 			allow[ATTACKING] = false;
 			AttackWith(SWINGSWORD);
@@ -194,21 +196,21 @@ void Player::OnKeyDown(int keyCode)
 		if (allow[JUMPING])
 		{
 			allow[JUMPING] = false;
-			ChangeState(new PlayerJumpingState(_playerHandler));
+			ChangeState(new PlayerJumpingState());
 		}
 		break;
 	}
 }
 
-// Handle keyboard up for state can change in others 
+// Handle keyboard up for stateName can change in others 
 void Player::OnKeyUp(int keyCode)
 {
 	switch (keyCode)
 	{
 		// While KeyDown is Up while attacking
 	case DIK_DOWN:
-		if (state == SITTING)
-			state = STANDING;
+		if (stateName == SITTING)
+			stateName = STANDING;
 		break;
 	}
 }
@@ -216,9 +218,10 @@ void Player::OnKeyUp(int keyCode)
 // Change State 
 void Player::ChangeState(PlayerState * newState)
 {
-	state = newState->StateName;
-	_playerHandler->SetState(newState);
-	curAnimation = _animations[state];
+	if (state) delete state;
+	state = newState;
+	stateName = newState->StateName;
+	curAnimation = _animations[stateName];
 }
 
 // Attack with item

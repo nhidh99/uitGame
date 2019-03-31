@@ -1,9 +1,8 @@
 ﻿#include "PlayerInjuredState.h"
 
-PlayerInjuredState::PlayerInjuredState(PlayerHandler * playerHandler)
+PlayerInjuredState::PlayerInjuredState()
 {
-	_playerHandler = playerHandler;
-	_isReverse = _playerHandler->Player->isReverse;
+	_isReverse = player->isReverse;
 
 	/*
 	TODO: Update Vận tốc (như JUMPING -> FALLING -> STANDING nhưng ngược hướng)

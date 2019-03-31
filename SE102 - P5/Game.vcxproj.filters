@@ -164,9 +164,6 @@
     <ClInclude Include="PlayerFallingState.h">
       <Filter>Game Objects\Player\Control</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerHandler.h">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerJumpingState.h">
       <Filter>Game Objects\Player\Control</Filter>
     </ClInclude>

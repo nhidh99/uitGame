@@ -9,7 +9,7 @@ private:
 	bool _reverse;
 
 public:
-	PlayerJumpingState(PlayerHandler* playerHandler);
+	PlayerJumpingState();
 	void Update(float dt);
 	void HandleKeyboard();
 };

@@ -10,7 +10,7 @@ private:
 	bool _reverse;
 
 public:
-	PlayerAttackingState(PlayerHandler* playerHandler);
+	PlayerAttackingState();
 	void Update(float dt);
 	void HandleKeyboard();
 };

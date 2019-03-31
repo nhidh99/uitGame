@@ -1,12 +1,11 @@
 ﻿#include "PlayerAttackingState.h"
 
 // Khởi tạo State ATTACK (tùy vào trạng thái trước đó là đánh hoặc ngồi)
-PlayerAttackingState::PlayerAttackingState(PlayerHandler * playerHandler)
+PlayerAttackingState::PlayerAttackingState()
 {
-	_playerHandler = playerHandler;
-	_curState = _playerHandler->State->StateName;
-	_reverse = _playerHandler->Player->isReverse;
-	_playerHandler->Player->allow[JUMPING] = false;
+	_curState = player->state->StateName;
+	_reverse = player->isReverse;
+	player->allow[JUMPING] = false;
 	StateName = (_curState == SITTING) ? ATTACKING_SIT : ATTACKING_STAND;
 }
 
@@ -16,67 +15,67 @@ void PlayerAttackingState::Update(float dt)
 	this->HandleKeyboard();
 
 	// Khi đã đánh xong
-	if (_playerHandler->Player->curAnimation->isLastFrame)
+	if (player->curAnimation->isLastFrame)
 	{
-		_playerHandler->Player->allow[ATTACKING] = true;
+		player->allow[ATTACKING] = true;
 
 		switch (_curState)
 		{
 		case STANDING: case RUNNING:
-			_playerHandler->Player->ChangeState(new PlayerStandingState(_playerHandler));
+			player->ChangeState(new PlayerStandingState());
 			return;
 
 		case SITTING:
-			_playerHandler->Player->posY -= 5;
-			_playerHandler->Player->ChangeState(new PlayerSittingState(_playerHandler));
+			player->posY -= 5;
+			player->ChangeState(new PlayerSittingState());
 			return;
 
 		case FALLING:
-			_playerHandler->Player->ChangeState(new PlayerFallingState(_playerHandler));
+			player->ChangeState(new PlayerFallingState());
 			return;
 
 		case JUMPING:
-			_playerHandler->Player->ChangeState(new PlayerJumpingState(_playerHandler));
+			player->ChangeState(new PlayerJumpingState());
 			return;
 		}
 	}
 	else
 	{
 		// Khi chưa đánh xong / bắt đầu đánh
-		_playerHandler->Player->allow[ATTACKING] = false;
+		player->allow[ATTACKING] = false;
 
 		switch (_curState)
 		{
 		case RUNNING: case STANDING: case SITTING:
-			_playerHandler->Player->vx = 0;
-			_playerHandler->Player->vy = 0;
+			player->vx = 0;
+			player->vy = 0;
 			break;
 
 		case JUMPING:
 		{
 			// Nếu đã nhảy đến độ cao nhất định -> _curState về trạng thái FALLING
-			_playerHandler->Player->vy += GRAVITY_SPEED;
+			player->vy += GRAVITY_SPEED;
 
-			if ((_playerHandler->Player->vx == SCREEN_WIDTH - _playerHandler->Player->width
-				|| _playerHandler->Player->vx == _playerHandler->Player->width >> 1) && _playerHandler->Player->allow[CLINGING])
+			if ((player->vx == SCREEN_WIDTH - player->width
+				|| player->vx == player->width >> 1) && player->allow[CLINGING])
 			{
-				_playerHandler->Player->ChangeState(new PlayerClingingState(_playerHandler));
+				player->ChangeState(new PlayerClingingState());
 				return;
 			}
 
-			else if (_playerHandler->Player->vy >= 0)
+			else if (player->vy >= 0)
 			{
 				_curState = FALLING;
-				_playerHandler->Player->vy = PLAYER_FALLING_SPEED;
+				player->vy = PLAYER_FALLING_SPEED;
 			}
 			break;
 		}
 
 		/*case FALLING:
-			if ((_playerHandler->Player->posX == SCREEN_WIDTH - _playerHandler->Player->width
-				|| _playerHandler->Player->posX == _playerHandler->Player->width >> 1) && _playerHandler->Player->allow[CLINGING])
+			if ((player->posX == SCREEN_WIDTH - player->width
+				|| player->posX == player->width >> 1) && player->allow[CLINGING])
 			{
-				_playerHandler->Player->ChangeState(new PlayerClingingState(_playerHandler));
+				player->ChangeState(new PlayerClingingState());
 				return;
 			}
 			break;*/
@@ -89,12 +88,12 @@ void PlayerAttackingState::HandleKeyboard()
 {
 	if (keyCode[DIK_LEFT])
 	{
-		_playerHandler->Player->vx = _reverse ? -PLAYER_RUNNING_SPEED : -PLAYER_RUNNING_SPEED / 2;
+		player->vx = _reverse ? -PLAYER_RUNNING_SPEED : -PLAYER_RUNNING_SPEED / 2;
 	}
 
 	else if (keyCode[DIK_RIGHT])
 	{
-		_playerHandler->Player->vx = !_reverse ? PLAYER_RUNNING_SPEED : PLAYER_RUNNING_SPEED / 2;
+		player->vx = !_reverse ? PLAYER_RUNNING_SPEED : PLAYER_RUNNING_SPEED / 2;
 	}
-	else _playerHandler->Player->vx = 0;
+	else player->vx = 0;
 }

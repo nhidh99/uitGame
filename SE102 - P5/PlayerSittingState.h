@@ -5,7 +5,7 @@
 class PlayerSittingState : public PlayerState
 {
 public:
-	PlayerSittingState(PlayerHandler* playerHandler);
+	PlayerSittingState();
 	void Update(float dt);
 	void HandleKeyboard();
 };

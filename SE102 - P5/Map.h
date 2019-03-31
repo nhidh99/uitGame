@@ -29,7 +29,6 @@ public:
 	ObjectItem* item;
 	QuadTree* quadtree;
 	Camera* camera;
-	Player* player;
 
 	int width;
 	int height;

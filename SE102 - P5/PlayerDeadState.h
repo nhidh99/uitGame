@@ -5,7 +5,7 @@
 class PlayerDeadState : public PlayerState
 {
 public:
-	PlayerDeadState(PlayerHandler* playerHandler);
+	PlayerDeadState();
 	void Update(float dt) {};
 	void HandleKeyboard() {};
 	State GetName();

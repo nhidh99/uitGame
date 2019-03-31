@@ -11,7 +11,7 @@
 class PlayerStandingState : public PlayerState
 {
 public:
-	PlayerStandingState(PlayerHandler* playerHandler);
+	PlayerStandingState();
 	~PlayerStandingState() {}
 	void Update(float dt);
 	void HandleKeyboard();

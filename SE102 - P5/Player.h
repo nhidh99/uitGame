@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "Object.h"
 #include "PlayerSprite.h"
-#include "PlayerHandler.h"
 #include "PlayerState.h"
 #include "PlayerStandingState.h"
 #include "ObjectItemSword.h"
@@ -12,16 +11,18 @@
 class Player : public Object
 {
 private:
-	PlayerHandler* _playerHandler;							// PlayerHandler - trung gian giữa Player và PlayerState
 	std::unordered_map<State, Animation*> _animations;		// Danh sách các Animation tương ứng với từng State
+	static Player* _instance;
 	bool IsOnGround();
 
 public:
 	Player();
 	~Player();
+	static Player* GetInstance();
+	PlayerState* state;
 
 	bool isLastFrame;
-	State state; 
+	State stateName; 
 	Animation* curAnimation;								// Animation hiện tại
 	ObjectItemSword* sword;
 	ObjectItem* item;										// Item đang giữ để ném

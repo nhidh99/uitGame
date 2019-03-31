@@ -1,13 +1,11 @@
 ﻿#include "PlayerRunningState.h"
 
 // Khởi tạo RUNNING với tốc độ chạy cho trước
-PlayerRunningState::PlayerRunningState(PlayerHandler * playerHandler)
+PlayerRunningState::PlayerRunningState()
 {
-	_playerHandler = playerHandler;
-	_runningSpeed = PLAYER_RUNNING_SPEED;
-	_playerHandler->Player->allow[ATTACKING] = true;
-	_playerHandler->Player->allow[JUMPING] = true;
-	_playerHandler->Player->vy = 0;
+	player->allow[ATTACKING] = true;
+	player->allow[JUMPING] = true;
+	player->vy = 0;
 	StateName = RUNNING;
 }
 
@@ -21,18 +19,18 @@ void PlayerRunningState::HandleKeyboard()
 {
 	if (keyCode[DIK_RIGHT])
 	{
-		_playerHandler->Player->isReverse = false;
-		_playerHandler->Player->vx = _runningSpeed;
+		player->isReverse = false;
+		player->vx = PLAYER_RUNNING_SPEED;
 	}
 
 	else if (keyCode[DIK_LEFT])
 	{
-		_playerHandler->Player->isReverse = true;
-		_playerHandler->Player->vx = -_runningSpeed;
+		player->isReverse = true;
+		player->vx = -PLAYER_RUNNING_SPEED;
 	}
 
 	else
 	{
-		_playerHandler->Player->ChangeState(new PlayerStandingState(_playerHandler));
+		player->ChangeState(new PlayerStandingState());
 	}
 }

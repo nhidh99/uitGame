@@ -2,18 +2,16 @@
 
 // Khởi tạo trạng thái JUMPING với Vector JUMPING dùng để giảm tốc
 // Xem vận tốc ban đầu = -Gravity_Speed
-PlayerJumpingState::PlayerJumpingState(PlayerHandler * playerHandler)
+PlayerJumpingState::PlayerJumpingState()
 {
-	_playerHandler = playerHandler;
-	_reverse = _playerHandler->Player->isReverse;
+	_reverse = player->isReverse;
+	player->allow[ATTACKING] = true;
+	player->allow[CLINGING] = true;
 
-	_playerHandler->Player->allow[ATTACKING] = true;
-	_playerHandler->Player->allow[CLINGING] = true;
-
-	State prevState = playerHandler->State->StateName;
+	State prevState = player->state->StateName;
 
 	if (prevState == RUNNING || prevState == STANDING || prevState == CLINGING)
-		_playerHandler->Player->vy = -PLAYER_JUMPING_SPEED;
+		player->vy = -PLAYER_JUMPING_SPEED;
 
 	StateName = JUMPING;
 }
@@ -21,25 +19,25 @@ PlayerJumpingState::PlayerJumpingState(PlayerHandler * playerHandler)
 void PlayerJumpingState::Update(float dt)
 {
 	// Cập nhật tốc độ vy đến khi vy >= 0 -> FALLING
-	_playerHandler->Player->vy += GRAVITY_SPEED;
+	player->vy += GRAVITY_SPEED;
 
-	if (_playerHandler->Player->vy >= 0)
+	if (player->vy >= 0)
 	{
-		_playerHandler->Player->ChangeState(new PlayerFallingState(_playerHandler));
+		player->ChangeState(new PlayerFallingState());
 		return;
 	}
 
-	if (_playerHandler->Player->allow[CLINGING] && _playerHandler->Player->posY < (SCREEN_HEIGHT >> 1) - 20)
+	if (player->allow[CLINGING] && player->posY < (SCREEN_HEIGHT >> 1) - 20)
 	{
-		//if (_playerHandler->Player->posX == SCREEN_WIDTH - _playerHandler->Player->width)
+		//if (player->posX == SCREEN_WIDTH - player->width)
 		//{
-		//	_playerHandler->Player->ChangeState(new PlayerClingingState(_playerHandler));
+		//	player->ChangeState(new PlayerClingingState());
 		//	return;
 		//}
 
-		if (_playerHandler->Player->posX == _playerHandler->Player->width >> 1)
+		if (player->posX == player->width >> 1)
 		{
-			_playerHandler->Player->ChangeState(new PlayerClingingState(_playerHandler));
+			player->ChangeState(new PlayerClingingState());
 			return;
 		}
 	}
@@ -49,17 +47,17 @@ void PlayerJumpingState::Update(float dt)
 
 void PlayerJumpingState::HandleKeyboard()
 {
-	_playerHandler->Player->vx = 0;
+	player->vx = 0;
 
 	if (keyCode[DIK_LEFT])
 	{
-		_playerHandler->Player->isReverse = true;
-		_playerHandler->Player->vx = _reverse ? -PLAYER_RUNNING_SPEED : -PLAYER_RUNNING_SPEED / 2;
+		player->isReverse = true;
+		player->vx = _reverse ? -PLAYER_RUNNING_SPEED : -PLAYER_RUNNING_SPEED / 2;
 	}
 
 	else if (keyCode[DIK_RIGHT])
 	{
-		_playerHandler->Player->isReverse = false;
-		_playerHandler->Player->vx = _reverse ? PLAYER_RUNNING_SPEED / 2 : PLAYER_RUNNING_SPEED;
+		player->isReverse = false;
+		player->vx = _reverse ? PLAYER_RUNNING_SPEED / 2 : PLAYER_RUNNING_SPEED;
 	}
 }

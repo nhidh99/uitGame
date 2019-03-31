@@ -1,25 +1,23 @@
 #include "PlayerClimbingState.h"
 
 
-PlayerClimbingState::PlayerClimbingState(PlayerHandler * playerHandler)
+PlayerClimbingState::PlayerClimbingState()
 {
-	_playerHandler = playerHandler;
-	_climbingSpeed = PLAYER_CLIMBING_SPEED;
 	StateName = CLIMBING;
 }
 
 void PlayerClimbingState::Update(float dt)
 {
-	if (_playerHandler->Player->posY > (SCREEN_HEIGHT >> 1) - 20)
+	if (Player::GetInstance()->posY > (SCREEN_HEIGHT >> 1) - 20)
 	{
-		_playerHandler->Player->posY++;
-		_playerHandler->Player->ChangeState(new PlayerFallingState(_playerHandler));
+		Player::GetInstance()->posY++;
+		Player::GetInstance()->ChangeState(new PlayerFallingState());
 		return;
 	}
 
-	if (_playerHandler->Player->posY < _playerHandler->Player->height >> 1)
+	if (Player::GetInstance()->posY < Player::GetInstance()->height >> 1)
 	{
-		_playerHandler->Player->posY = _playerHandler->Player->height >> 1;
+		Player::GetInstance()->posY = Player::GetInstance()->height >> 1;
 	}
 
 	this->HandleKeyboard();
@@ -29,14 +27,14 @@ void PlayerClimbingState::HandleKeyboard()
 {
 	if (keyCode[DIK_UP])
 	{
-		_playerHandler->Player->vy = -_climbingSpeed;
+		Player::GetInstance()->vy = -PLAYER_CLIMBING_SPEED;
 	}
 	else if (keyCode[DIK_DOWN])
 	{
-		_playerHandler->Player->vy = _climbingSpeed;
+		Player::GetInstance()->vy = PLAYER_CLIMBING_SPEED;
 	}
 	else
 	{
-		_playerHandler->Player->ChangeState(new PlayerClingingState(_playerHandler));
+		Player::GetInstance()->ChangeState(new PlayerClingingState());
 	}
 }

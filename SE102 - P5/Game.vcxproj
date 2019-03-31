@@ -180,7 +180,6 @@
     <ClInclude Include="PlayerClingingState.h" />
     <ClInclude Include="PlayerDeadState.h" />
     <ClInclude Include="PlayerFallingState.h" />
-    <ClInclude Include="PlayerHandler.h" />
     <ClInclude Include="PlayerInjuredState.h" />
     <ClInclude Include="PlayerJumpingState.h" />
     <ClInclude Include="PlayerRunningState.h" />

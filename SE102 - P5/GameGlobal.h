@@ -20,6 +20,7 @@
 #define TILE_SIZE 16
 
 // ===== Các thông số cho PLAYER ====
+#define player Player::GetInstance()
 #define PLAYER_RUNNING_SPEED 0.1f
 #define PLAYER_JUMPING_SPEED 0.25f
 #define PLAYER_FALLING_SPEED 0.25f

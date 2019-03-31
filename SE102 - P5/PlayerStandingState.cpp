@@ -1,13 +1,12 @@
 ﻿#include "PlayerStandingState.h"
 
 // Khởi tạo State đang đứng của nhân vật
-PlayerStandingState::PlayerStandingState(PlayerHandler * playerHandler)
+PlayerStandingState::PlayerStandingState()
 {
-	_playerHandler = playerHandler;
-	_playerHandler->Player->vx = 0;
-	_playerHandler->Player->vy = 0;
-	_playerHandler->Player->allow[JUMPING] = true;
-	_playerHandler->Player->allow[ATTACKING] = true;
+	player->vx = 0;
+	player->vy = 0;
+	player->allow[JUMPING] = true;
+	player->allow[ATTACKING] = true;
 	StateName = STANDING;
 }
 
@@ -22,11 +21,11 @@ void PlayerStandingState::HandleKeyboard()
 	// Nhấn phím di chuyển -> RUNNING
 	if (keyCode[DIK_LEFT] || keyCode[DIK_RIGHT])
 	{
-		_playerHandler->Player->ChangeState(new PlayerRunningState(_playerHandler));
+		player->ChangeState(new PlayerRunningState());
 	}
 	// Nhấn phím DOWN -> SITTING
 	else if (keyCode[DIK_DOWN])
 	{
-		_playerHandler->Player->ChangeState(new PlayerSittingState(_playerHandler));
+		player->ChangeState(new PlayerSittingState());
 	}
 }

@@ -1,14 +1,9 @@
 ﻿#include "PlayerFallingState.h"
 
-Player* player;
-
 // Khởi tạo State Falling
-PlayerFallingState::PlayerFallingState(PlayerHandler * playerHandler)
+PlayerFallingState::PlayerFallingState()
 {
-	_playerHandler = playerHandler;
-	player = _playerHandler->Player;
 	_reverse = player->isReverse;
-
 	player->allow[ATTACKING] = true;
 	player->allow[CLINGING] = true;
 	player->vy = PLAYER_FALLING_SPEED;
@@ -24,7 +19,7 @@ void PlayerFallingState::Update(float dt)
 		if (player->posX == player->width >> 1)
 		{
 			player->isReverse = true;
-			player->ChangeState(new PlayerClingingState(_playerHandler));
+			player->ChangeState(new PlayerClingingState());
 			return;
 		}
 	}

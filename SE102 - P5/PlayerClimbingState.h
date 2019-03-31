@@ -4,11 +4,8 @@
 
 class PlayerClimbingState : public PlayerState
 {
-private:
-	float _climbingSpeed;
-
 public:
-	PlayerClimbingState(PlayerHandler* playerHandler);
+	PlayerClimbingState();
 	void Update(float dt);
 	void HandleKeyboard();
 };

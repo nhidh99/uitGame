@@ -10,7 +10,7 @@ private:
 	float _runningSpeed;
 
 public:
-	PlayerRunningState(PlayerHandler* playerHandler);
+	PlayerRunningState();
 	void Update(float dt);
 	void HandleKeyboard();
 };

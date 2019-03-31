@@ -5,10 +5,10 @@ PlayScene::PlayScene()
 	_map = MapFactory::GetInstance()->GetMap(0);
 	_map->camera = _camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-	_player = new Player();
-	_player->item = _map->item;
-	_player->posX = 50;
-	_player->posY = SCREEN_HEIGHT >> 1;
+	player->item = _map->item;
+	player->posX = 50;
+	player->posY = SCREEN_HEIGHT >> 1;
+	player->ChangeState(new PlayerStandingState());
 
 	_camera->posX = SCREEN_WIDTH >> 1;
 	_camera->posY = _map->height >> 1;
@@ -37,43 +37,40 @@ PlayScene::PlayScene()
 		grounds.push_back(g);
 	}
 
-	_player->curGroundBound = grounds[0];
+	player->curGroundBound = grounds[0];
 }
 
 PlayScene::~PlayScene()
 {
-	if (_player) delete _player;
 }
 
 void PlayScene::CameraUpdate()
 {
-	_camera->posX = _player->posX;
+	_camera->posX = player->posX;
 
 	if (_camera->posX <= _leftCamera)
 	{
 		_camera->posX = _leftCamera;
-		_player->posX = max(_player->width >> 1, _player->posX);
+		player->posX = max(player->width >> 1, player->posX);
 	}
 	else if (_camera->posX >= _rightCamera)
 	{
 		_camera->posX = _rightCamera;
-		_player->posX = min(_map->width - _player->width, _player->posX);
+		player->posX = min(_map->width - player->width, player->posX);
 	}
 
 	_leftScreen = _camera->posX - (SCREEN_WIDTH >> 1);
 	_rightScreen = _leftScreen + SCREEN_HEIGHT;
 }
 
-BoundingBox curGroundBound;
-
 // Update các thông số các đối tượng trong Scene
 void PlayScene::Update(float dt)
 {
-	_player->CheckOnGround(this->grounds);
+	player->CheckOnGround(this->grounds);
 	//_map->Update(dt);
 	CameraUpdate();
 
-	_player->Update(dt, std::vector<Object*>());
+	player->Update(dt, std::vector<Object*>());
 
 }
 
@@ -81,19 +78,19 @@ void PlayScene::Update(float dt)
 void PlayScene::Render()
 {
 	_map->Render();
-	_player->Render((SCREEN_WIDTH >> 1) - _camera->posX, 0);
+	player->Render((SCREEN_WIDTH >> 1) - _camera->posX, 0);
 }
 
 // Xử lí Scene khi nhấn phím
 void PlayScene::OnKeyDown(int key)
 {
 	keyCode[key] = true;
-	_player->OnKeyDown(key);
+	player->OnKeyDown(key);
 }
 
 // Xử lí Scene khi thả phím
 void PlayScene::OnKeyUp(int key)
 {
 	keyCode[key] = false;
-	_player->OnKeyUp(key);
+	player->OnKeyUp(key);
 }

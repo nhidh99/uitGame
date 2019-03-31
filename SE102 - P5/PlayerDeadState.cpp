@@ -1,10 +1,9 @@
 #include "PlayerDeadState.h"
 
-PlayerDeadState::PlayerDeadState(PlayerHandler * playerHandler)
+PlayerDeadState::PlayerDeadState()
 {
-	_playerHandler = playerHandler;
-	_playerHandler->Player->vx = 0;
-	_playerHandler->Player->vy = 0;
+	player->vx = 0;
+	player->vy = 0;
 }
 
 State PlayerDeadState::GetName()

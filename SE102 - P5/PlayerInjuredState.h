@@ -8,7 +8,7 @@ private:
 	bool _isReverse;
 
 public:
-	PlayerInjuredState(PlayerHandler* playerHandler);
+	PlayerInjuredState();
 	void Update(float dt);
 	void HandleKeyboard() {};
 	State GetName();

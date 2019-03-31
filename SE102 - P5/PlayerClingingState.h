@@ -6,7 +6,7 @@
 class PlayerClingingState : public PlayerState
 {
 public:
-	PlayerClingingState(PlayerHandler* playerHandler);
+	PlayerClingingState();
 	void Update(float dt);
 	void HandleKeyboard();
 };

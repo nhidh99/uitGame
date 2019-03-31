@@ -14,14 +14,13 @@ class Player : public Object
 private:
 	PlayerHandler* _playerHandler;							// PlayerHandler - trung gian giữa Player và PlayerState
 	std::unordered_map<State, Animation*> _animations;		// Danh sách các Animation tương ứng với từng State
+	bool IsOnGround();
 
 public:
 	Player();
 	~Player();
 
 	bool isLastFrame;
-	bool isOnGround;
-
 	State state; 
 	Animation* curAnimation;								// Animation hiện tại
 	ObjectItemSword* sword;

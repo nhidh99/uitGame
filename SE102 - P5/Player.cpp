@@ -54,7 +54,9 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 
 	_playerHandler->State->Update(dt);
 
-	std::vector<CollisionResult> ResultCollisions;
+	Object::Update(dt);
+
+	/*std::vector<CollisionResult> ResultCollisions;
 	ResultCollisions.clear();
 
 	for (auto obj : ColliableObjects)
@@ -89,7 +91,7 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 				minEntryTimeY = result.entryTime;
 				ny = result.ny;
 			}
-		}
+		}*/
 
 		/*posX += (minEntryTimeX * dx + nx * 2.0f);
 		posY += (minEntryTimeY * dy);*/
@@ -100,21 +102,26 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 		//	this->allow[CLINGING] = true;
 		//}
 
-		if (ny != 0)
+		/*if (ny != 0)
 		{
 			this->vy = 0;
-			this->isOnGround = true;
-		}
-	}
+		}*/
+		/*}*/
+}
+
+bool Player::IsOnGround()
+{
+	return !(this->GetBoundingBox().x > curGroundBound.x + curGroundBound.width
+		|| this->GetBoundingBox().x + this->width < curGroundBound.x);
 }
 
 void Player::CheckOnGround(std::vector<BoundingBox> grounds)
 {
 	if (this->vy == 0)
 	{
-		if (this->GetBoundingBox().x > curGroundBound.x + curGroundBound.width
-			|| this->GetBoundingBox().x + this->width < curGroundBound.x)
+		if (!this->IsOnGround())
 		{
+			curGroundBound = BoundingBox();
 			this->ChangeState(new PlayerFallingState(_playerHandler));
 		}
 		else this->posY = curGroundBound.y - this->height;
@@ -122,9 +129,15 @@ void Player::CheckOnGround(std::vector<BoundingBox> grounds)
 
 	else if (this->vy > 0)
 	{
+		if (this->IsOnGround() && this->posY > this->curGroundBound.y - this->height)
+		{
+			this->ChangeState(new PlayerStandingState(_playerHandler));
+			return;
+		}
+
 		for (auto g : grounds)
 		{
-			if (Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), g).ny)
+			if (Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), g).ny == 1)
 			{
 				this->ChangeState(new PlayerStandingState(_playerHandler));
 				curGroundBound = g;

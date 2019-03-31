@@ -7,7 +7,6 @@ PlayerJumpingState::PlayerJumpingState(PlayerHandler * playerHandler)
 	_playerHandler = playerHandler;
 	_reverse = _playerHandler->Player->isReverse;
 
-	_playerHandler->Player->isOnGround = false;
 	_playerHandler->Player->allow[ATTACKING] = true;
 	_playerHandler->Player->allow[CLINGING] = true;
 

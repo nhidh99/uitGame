@@ -14,13 +14,24 @@ public:
 		this->height = height;
 	}
 
-	Rect GetRect()
+	RECT GetBound()
 	{
-		Rect rect;
-		rect.x = posX - (width >> 1);
-		rect.y = posY - (height >> 1);
-		rect.width = width;
-		rect.height = height;
-		return rect;
+		RECT bound;
+		bound.left = posX - (width / 2);
+		bound.right = bound.left + width;
+		bound.top = posY - (height / 2);
+		bound.bottom = bound.top + height;
+		return bound;
+	}
+
+	BoundingBox GetBoundingBox()
+	{
+		BoundingBox bound;
+		bound.x = posX - (width / 2);
+		bound.y = posY - (height / 2);
+		bound.width = this->width;
+		bound.height = this->height;
+		bound.vx = bound.vy = 0;
+		return bound;
 	}
 };

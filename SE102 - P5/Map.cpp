@@ -40,7 +40,6 @@ Map::Map(int level)
 	rect.top = 0;
 	rect.right = width;
 	rect.bottom = height;
-	quadtree = new QuadTree(1, rect);
 
 	// Init Shuriken
 	item = new ObjectItemShuriken();
@@ -54,7 +53,7 @@ void Map::Render()
 {
 	auto trans = D3DXVECTOR2((SCREEN_WIDTH >> 1) - (int)camera->posX, 0);
 
-	_cBegin = (camera->posX - (camera->width >> 1)) / 16;
+	_cBegin = max(0, (camera->posX - (camera->width >> 1)) / 16);
 	_cEnd = min(_cBegin + (SCREEN_WIDTH >> 4) + 1, _columns);
 
 	for (auto r = 0; r < _rows; ++r)
@@ -67,11 +66,8 @@ void Map::Render()
 			rect.width = TILE_SIZE;
 			rect.height = TILE_SIZE;
 
-			if (IsContain(rect, camera->GetRect()))
-			{
-				SpriteFactory::GetInstance()->GetSprite(_mapLevel, _mapTiles[r][c])
-					->Render(rect.x, rect.y, (TILE_SIZE >> 1) + trans.x, (TILE_SIZE >> 1) + trans.y);
-			}
+			SpriteFactory::GetInstance()->GetSprite(_mapLevel, _mapTiles[r][c])
+				->Render(rect.x, rect.y, (TILE_SIZE >> 1) + trans.x, (TILE_SIZE >> 1) + trans.y);
 		}
 	}
 

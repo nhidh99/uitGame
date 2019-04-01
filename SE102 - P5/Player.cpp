@@ -111,39 +111,37 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 		/*}*/
 }
 
-bool Player::IsOnGround()
+bool Player::IsOnGround(BoundingBox ground)
 {
-	return !(this->GetBoundingBox().x > curGroundBound.x + curGroundBound.width
-		|| this->GetBoundingBox().x + this->width < curGroundBound.x);
+	return !(this->posX - (this->width >> 1) > ground.x + ground.width
+		|| this->posX + (this->width >> 1) < ground.x);
 }
 
 void Player::CheckOnGround(std::vector<BoundingBox> grounds)
 {
-	if (this->vy == 0)
+	if (this->IsOnGround(curGroundBound) && this->vy > 0 && this->posY > curGroundBound.y - (this->height >> 1))
 	{
-		if (!this->IsOnGround())
-		{
-			curGroundBound = BoundingBox();
-			this->ChangeState(new PlayerFallingState());
-		}
-		else this->posY = curGroundBound.y - this->height;
+		this->ChangeState(new PlayerStandingState());
+		return;
 	}
 
-	else if (this->vy > 0)
+	if (!this->IsOnGround(curGroundBound))
 	{
-		if (this->IsOnGround() && this->posY > this->curGroundBound.y - this->height)
+		if (this->vy == 0)
 		{
-			this->ChangeState(new PlayerStandingState());
-			return;
+			this->ChangeState(new PlayerFallingState());
 		}
 
-		for (auto g : grounds)
+		else if (this->vy > 0)
 		{
-			if (Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), g).ny)
+			for (auto g : grounds)
 			{
-				this->ChangeState(new PlayerStandingState());
-				curGroundBound = g;
-				return;
+				if (Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), g).ny)
+				{
+					curGroundBound = g;
+					this->ChangeState(new PlayerStandingState());
+					return;
+				}
 			}
 		}
 	}

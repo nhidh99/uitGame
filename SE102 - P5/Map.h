@@ -27,7 +27,6 @@ public:
 	bool IsContain(Rect rect1, Rect rect2);
 
 	ObjectItem* item;
-	QuadTree* quadtree;
 	Camera* camera;
 
 	int width;

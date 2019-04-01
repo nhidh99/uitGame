@@ -6,9 +6,6 @@
 
 class PlayerRunningState : public PlayerState
 {
-private:
-	float _runningSpeed;
-
 public:
 	PlayerRunningState();
 	void Update(float dt);

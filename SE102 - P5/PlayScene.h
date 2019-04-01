@@ -12,11 +12,10 @@
 class PlayScene : public Scene
 {
 private:
-	Map* _map;
-	Camera* _camera;
-	int _leftCamera, _rightCamera;
-	int _leftScreen, _rightScreen;
-	std::vector<BoundingBox> grounds;
+	Map* map;
+	Camera* camera;
+	std::vector<BoundingBox> grounds, visibleGrounds;
+	QuadTree* quadtree;
 
 public:
 	PlayScene();

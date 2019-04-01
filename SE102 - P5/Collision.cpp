@@ -104,55 +104,55 @@ CollisionResult Collision::SweptAABB(BoundingBox b1, BoundingBox b2)
 	}
 }
 
-bool Collision::SweptGround(BoundingBox b1, BoundingBox b2)
-{
-	BoundingBox b;
-	b.x = b1.vx > 0 ? b1.x : b1.x + b1.vx;
-	b.y = b1.vy > 0 ? b1.y : b1.y + b1.vy;
-	b.width = b1.vx > 0 ? b1.vx + b1.width : b1.width - b1.vx;
-	b.height = b1.vy > 0 ? b1.vy + b1.height : b1.height - b1.vy;
-
-	if (b1.x + b1.width < b2.x || b1.x > b2.x + b2.width || b1.y + b1.height < b2.y || b1.y > b2.y + b2.height)
-		return false;
-
-	if (b1.vx > 0.0f)
-	{
-		dxEntry = b2.x - (b1.x + b1.width);
-		dxExit = (b2.x + b2.width) - b1.x;
-	}
-
-	else
-	{
-		dxEntry = (b2.x + b2.width) - b1.x;
-		dxExit = b2.x - (b1.x + b1.width);
-	}
-
-	if (b1.vy > 0.0f)
-	{
-		dyEntry = b2.y - (b1.y + b1.height);
-		dyExit = (b2.y + b2.height) - b1.y;
-	}
-	
-	else
-	{
-		dyEntry = (b2.y + b2.height) - b1.y;
-		dyExit = b2.y - (b1.y + b1.height);
-	}
-
-	if (b1.vx == 0.0f)
-	{
-		txEntry = -std::numeric_limits<float>::infinity();
-		txExit = std::numeric_limits<float>::infinity();
-	}
-
-	else
-	{
-		txEntry = dxEntry / b1.vx;
-		txExit = dxExit / b1.vx;
-	}
-
-	tyEntry = dyEntry / b1.vy;
-	tyExit = dyExit / b1.vy;
-
-	return tyEntry > txEntry;
-}
+//bool Collision::SweptGround(BoundingBox b1, BoundingBox b2)
+//{
+//	BoundingBox b;
+//	b.x = b1.vx > 0 ? b1.x : b1.x + b1.vx;
+//	b.y = b1.vy > 0 ? b1.y : b1.y + b1.vy;
+//	b.width = b1.vx > 0 ? b1.vx + b1.width : b1.width - b1.vx;
+//	b.height = b1.vy > 0 ? b1.vy + b1.height : b1.height - b1.vy;
+//
+//	if (b1.x + b1.width < b2.x || b1.x > b2.x + b2.width || b1.y + b1.height < b2.y || b1.y > b2.y + b2.height)
+//		return false;
+//
+//	if (b1.vx > 0.0f)
+//	{
+//		dxEntry = b2.x - (b1.x + b1.width);
+//		dxExit = (b2.x + b2.width) - b1.x;
+//	}
+//
+//	else
+//	{
+//		dxEntry = (b2.x + b2.width) - b1.x;
+//		dxExit = b2.x - (b1.x + b1.width);
+//	}
+//
+//	if (b1.vy > 0.0f)
+//	{
+//		dyEntry = b2.y - (b1.y + b1.height);
+//		dyExit = (b2.y + b2.height) - b1.y;
+//	}
+//	
+//	else
+//	{
+//		dyEntry = (b2.y + b2.height) - b1.y;
+//		dyExit = b2.y - (b1.y + b1.height);
+//	}
+//
+//	if (b1.vx == 0.0f)
+//	{
+//		txEntry = -std::numeric_limits<float>::infinity();
+//		txExit = std::numeric_limits<float>::infinity();
+//	}
+//
+//	else
+//	{
+//		txEntry = dxEntry / b1.vx;
+//		txExit = dxExit / b1.vx;
+//	}
+//
+//	tyEntry = dyEntry / b1.vy;
+//	tyExit = dyExit / b1.vy;
+//
+//	return tyEntry > txEntry;
+//}

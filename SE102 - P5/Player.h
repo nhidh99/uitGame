@@ -26,16 +26,16 @@ public:
 	State stateName; 
 	Animation* curAnimation;								// Animation hiện tại
 	ObjectItemSword* sword;
-	ObjectItem* item;										// Item đang giữ để ném
+	ObjectItem* item;							
 	BoundingBox curGroundBound;
 	std::unordered_map<State, bool> allow;
 
 	void Update(float dt, std::vector<Object*> ColliableObjects);
 	void CheckOnGround(std::vector<BoundingBox> grounds);
 	void Render(float translateX = 0, float translateY = 0);
-	void OnKeyDown(int keyCode);							// Xử lí sự kiện của nhân vật theo phím nhấn
-	void OnKeyUp(int keyCode);								// Xử lí sự kiện của nhân vật theo phím thả
+	void OnKeyDown(int keyCode);							
+	void OnKeyUp(int keyCode);							
 
-	void ChangeState(PlayerState* newState);				// Đổi State
+	void ChangeState(PlayerState* newState);				
 	void AttackWith(Type item);
 };

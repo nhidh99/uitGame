@@ -21,7 +21,7 @@
 
 // ===== Các thông số cho PLAYER ====
 #define player Player::GetInstance()
-#define PLAYER_RUNNING_SPEED 0.12f
+#define PLAYER_RUNNING_SPEED 0.1f
 #define PLAYER_JUMPING_SPEED 0.28f
 #define PLAYER_FALLING_SPEED 0.25f
 #define PLAYER_CLIMBING_SPEED 0.1f

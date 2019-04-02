@@ -24,7 +24,6 @@ public:
 	Map(int level);
 	void Update(float dt);
 	void Render();
-	bool IsContain(Rect rect1, Rect rect2);
 
 	ObjectItem* item;
 	Camera* camera;

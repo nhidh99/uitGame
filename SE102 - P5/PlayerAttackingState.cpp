@@ -1,6 +1,6 @@
 ﻿#include "PlayerAttackingState.h"
 
-// Khởi tạo State ATTACK (tùy vào trạng thái trước đó là đánh hoặc ngồi)
+// Khởi tạo State ATTACK (StateName tùy vào trạng thái trước đó là đánh hoặc ngồi)
 PlayerAttackingState::PlayerAttackingState()
 {
 	_curState = player->state->StateName;
@@ -84,6 +84,7 @@ void PlayerAttackingState::Update(float dt)
 }
 
 // Xử lí sự kiện bàn phím khi đang ATTACK
+// Khi đang nhảy / rơi: nếu ngược hướng thì vận tốc theo x chậm hơn (khoảng 1/2)
 void PlayerAttackingState::HandleKeyboard()
 {
 	if (keyCode[DIK_LEFT])

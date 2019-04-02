@@ -11,4 +11,5 @@ d:\uit - project\uitgd\se102 - p5\object.h(20): warning C4244: '=': conversion f
 d:\uit - project\uitgd\se102 - p5\object.h(22): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
 d:\uit - project\uitgd\se102 - p5\object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 d:\uit - project\uitgd\se102 - p5\object.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\uit - project\uitgd\se102 - p5\player.cpp(142): warning C4715: 'Player::DetectGround': not all control paths return a value
   Game.vcxproj -> D:\UIT - Project\uitGD\SE102 - P5\Debug\Game.exe

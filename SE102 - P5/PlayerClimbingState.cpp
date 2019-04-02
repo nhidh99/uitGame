@@ -1,6 +1,5 @@
 #include "PlayerClimbingState.h"
 
-
 PlayerClimbingState::PlayerClimbingState()
 {
 	StateName = CLIMBING;

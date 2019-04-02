@@ -6,24 +6,25 @@ PlayScene::PlayScene()
 	map->camera = camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	player->item = map->item;
-	player->posX = 1250;
+	player->posX = 50;
 	player->posY = SCREEN_HEIGHT >> 1;
 	player->ChangeState(new PlayerStandingState());
 
 	camera->posX = SCREEN_WIDTH >> 1;
 	camera->posY = map->height >> 1;
 
-	int groundx[18] = { 0,576,640,704,768,805,832, 1023,1125,1409, 1444,1474,1603,1665,1729,1780,1280,1216 };
+	int groundx[18] = { 0,576,640,704,770,802,834, 1023,1125,1409, 1444,1474,1603,1665,1729,1800,1280,1216 };
 	int groundy[18] = { 160,154,154,154,154,120,90,154,160,120,90,58,154,154,154,160,90,90 };
-	int groundw[18] = { 540,32,32,32,32,32,128,66,280,30,30,65,18,18,18,255,96,32 };
+	int groundw[18] = { 540,32,32,32, 32,32,128,66,280,30,30,65,18,18,18,255,96,32 };
 
+	// Tạo mảng các vùng đất: nâng tọa độ positionY nhằm tạo trigger xét trước va chạm
 	for (int i = 0; i < 18; ++i)
 	{
 		BoundingBox g;
-		g.x = groundx[i] + (player->width>>1);
-		g.y = groundy[i] - (player->height>>1);
-		g.width = groundw[i]- (player->width>>1);
-		g.height = 5;
+		g.x = groundx[i];
+		g.y = groundy[i];
+		g.width = groundw[i];
+		g.height = 1;
 		g.vx = g.vy = 0;
 		grounds.push_back(g);
 	}
@@ -37,6 +38,7 @@ void PlayScene::CameraUpdate()
 {
 	camera->posX = player->posX;
 
+	// Đưa các vùng đất đang hiển thị trên màn hỉnh vào mảng
 	visibleGrounds.clear();
 	for (auto g : grounds)
 	{
@@ -64,7 +66,6 @@ void PlayScene::CameraUpdate()
 void PlayScene::Update(float dt)
 {
 	CameraUpdate();
-
 	player->CheckOnGround(this->visibleGrounds);
 	//map->Update(dt);
 	player->Update(dt, std::vector<Object*>());

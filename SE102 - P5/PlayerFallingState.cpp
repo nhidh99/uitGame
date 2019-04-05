@@ -14,6 +14,12 @@ PlayerFallingState::PlayerFallingState()
 // Nếu đã rơi xuống điểm va chạm -> _curState về trạng thái RUNNING
 void PlayerFallingState::Update(float dt)
 {
+	if (player->vy == 0)
+	{
+		player->ChangeState(new PlayerStandingState());
+		return;
+	}
+
 	if (player->allow[CLINGING] && player->posY < SCREEN_HEIGHT - 20)
 	{
 		if (player->posX == player->width >> 1)

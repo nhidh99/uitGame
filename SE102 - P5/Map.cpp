@@ -7,7 +7,7 @@ Map::Map(int level)
 	char fileName[30];
 	sprintf_s(fileName, "Resources\\matrix%d.txt", level + 1);
 	ifile.open(fileName);
-	_mapLevel = Tag(MAP1 + level);
+	_mapLevel = Tag((int)MAP1 + level);
 
 	// Lấy thông tin hàng, cột và chiều dài, rộng của Map tương ứng
 	ifile >> _numSetTiles;

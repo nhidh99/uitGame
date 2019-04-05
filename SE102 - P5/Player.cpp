@@ -122,49 +122,95 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 // Kiểm tra Player còn đang đứng trên vùng đất hiện tại không
 bool Player::IsOnGround(BoundingBox ground)
 {
-	return !(this->posX > ground.x + ground.width
-		|| this->posX < ground.x || this->posY - (this->height >> 1) > ground.y);
+	return !(this->posX - (this->width >> 1) > ground.x + ground.width
+		|| this->posX + (this->width >> 1) < ground.x || this->posY - (this->height >> 1) > ground.y);
 }
 
 // Duyệt tìm lại vùng đất va chạm của player khi ra khỏi vùng hiện tại
 // Dùng cách nâng sàn Collision duyệt trước
-BoundingBox Player::DetectGround(std::vector<BoundingBox> grounds)
+bool Player::DetectGround(std::vector<BoundingBox> grounds)
 {
+	auto tg = curGroundBound;
+	tg.y -= this->height;
+
+	if (Collision::GetInstance()->IsCollision(this->GetBoundingBox(), tg))
+		return true;
+
 	for (auto g : grounds)
 	{
-		g.y -= this->height;
-		if (Collision::GetInstance()->IsCollision(this->GetBoundingBox(), g))
+		tg = g;
+		tg.y -= this->height;
+		if (Collision::GetInstance()->IsCollision(this->GetBoundingBox(), tg))
 		{
-			g.y += this->height;
-			return g;
+			curGroundBound = g;
+			return true;
 		}
 	}
+	return false;
+}
+
+// Duyệt tìm tường va chạm
+// Bằng cách dịch tường và duyệt trước
+bool Player::DectectWall(std::vector<BoundingBox> walls)
+{
+	auto tw = curWallBound;
+	this->vx > 0 ? tw.x -= this->width : tw.x += this->width;
+
+	if (Collision::GetInstance()->IsCollision(this->GetBoundingBox(), tw))
+		return true;
+
+	for (auto w : walls)
+	{
+		tw = w;
+		this->vx > 0 ? tw.x -= this->width : tw.x += this->width;
+
+		if (Collision::GetInstance()->IsCollision(this->GetBoundingBox(), tw))
+		{
+			curWallBound = w;
+			return true;
+		}
+	}
+	return false;
 }
 
 // Xử lí va chạm với mặt đất theo các vùng đất hiển thị
 void Player::CheckOnGround(std::vector<BoundingBox> grounds)
 {
-	// Ra khỏi vùng đất đang đứng
-	if (!this->IsOnGround(curGroundBound))
+	// Tìm được vùng đất va chạm
+	if (DetectGround(grounds))
 	{
-		// Đang chạy -> rơi
-		if (this->vy == 0)
+		if (this->vy > 0 && this->posY > curGroundBound.y - this->height)
 		{
-			this->ChangeState(new PlayerFallingState());
-		}
+			this->posY = curGroundBound.y - this->height;
+			this->vy = 0;
 
-		// Đang rơi -> quét tìm vùng đất đang đứng khác và lưu lại
-		else if (this->vy > 0)
-		{
-			curGroundBound = DetectGround(grounds);
+			if (stateName == ATTACKING_STAND)
+				this->allow[MOVING] = false;
 		}
 	}
 
-	// Đang còn trong vùng đất đang đứng (hoặc tìm được vùng đất mới) và vị trí thấp hơn nó -> đứng
-	else if (this->vy > 0 && this->posY > curGroundBound.y - this->height)
+	// Nếu không thì đang chạy -> rơi
+	else if (this->vy == 0)
 	{
-		this->posY = curGroundBound.y - this->height;
-		this->ChangeState(new PlayerStandingState());
+		this->ChangeState(new PlayerFallingState());
+	}
+}
+
+// Kiểm tra va chạm tường
+void Player::CheckOnWall(std::vector<BoundingBox> walls)
+{
+	// Khi đang chạy và tìm được tường -> set lại khi quá giới hạn
+	if (this->vx && this->DectectWall(walls))
+	{
+		if (this->posX > curWallBound.x - (this->width >> 1) && this->vx > 0)
+		{
+			this->posX = curWallBound.x - (this->width >> 1);
+		}
+
+		else if (this->posX < curWallBound.x + curWallBound.width + (this->width >> 1) && this->vx < 0)
+		{
+			this->posX = curWallBound.x + curWallBound.width + (this->width >> 1);
+		}
 	}
 }
 
@@ -179,9 +225,9 @@ void Player::Render(float translateX, float translateY)
 // Xử lí nhấn phím (chung cho các State)
 void Player::OnKeyDown(int keyCode)
 {
-	switch(keyCode)
+	switch (keyCode)
 	{
-	// Phím A: tấn công với vũ khí
+		// Phím A: tấn công với vũ khí
 	case DIK_A:
 		if (allow[ATTACKING])
 		{
@@ -230,7 +276,7 @@ void Player::OnKeyUp(int keyCode)
 // Đổi State
 void Player::ChangeState(PlayerState * newState)
 {
-	if (state) delete state;
+	delete state;
 	state = newState;
 	stateName = newState->StateName;
 	curAnimation = _animations[stateName];

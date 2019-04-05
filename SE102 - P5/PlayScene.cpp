@@ -13,20 +13,22 @@ PlayScene::PlayScene()
 	camera->posX = SCREEN_WIDTH >> 1;
 	camera->posY = map->height >> 1;
 
-	int groundx[18] = { 0,576,640,704,770,802,834, 1023,1125,1409, 1444,1474,1603,1665,1729,1800,1280,1216 };
+	int groundx[18] = { 0,580,644,708,772,804,836, 1026,1125,1409, 1444,1474,1603,1665,1729,1800,1280,1216 };
 	int groundy[18] = { 160,154,154,154,154,120,90,154,160,120,90,58,154,154,154,160,90,90 };
 	int groundw[18] = { 540,32,32,32, 32,32,128,66,280,30,30,65,18,18,18,255,96,32 };
 
-	// Tạo mảng các vùng đất: nâng tọa độ positionY nhằm tạo trigger xét trước va chạm
+	int wallx[5] = { 800,832,1410,1442,1474 };
+	int wally[5] = { 115,85,115,85,48 };
+
+	// Tạo mảng các vùng đất
 	for (int i = 0; i < 18; ++i)
 	{
-		BoundingBox g;
-		g.x = groundx[i];
-		g.y = groundy[i];
-		g.width = groundw[i];
-		g.height = 1;
-		g.vx = g.vy = 0;
-		grounds.push_back(g);
+		grounds.push_back(BoundingBox(groundx[i], groundy[i], groundw[i], 1));
+	}
+
+	for (int i = 0; i < 5; ++i)
+	{
+		walls.push_back(BoundingBox(wallx[i], wally[i], 32, 32));
 	}
 }
 
@@ -48,12 +50,24 @@ void PlayScene::CameraUpdate()
 		}
 	}
 
+	// ---
+	visibleWalls.clear();
+	for (auto w : walls)
+	{
+		if (!(camera->GetBound().right < w.x || camera->GetBound().left > w.x + w.width))
+		{
+			visibleWalls.push_back(w);
+		}
+	}
+
+	// Camera về phần trái của map
 	if (camera->posX <= camera->width >> 1)
 	{
 		camera->posX = camera->width >> 1;
 		player->posX = max(player->width >> 1, player->posX);
 	}
 
+	// Camera về phần phải của map
 	else if (camera->posX >= map->width - (camera->width >> 1))
 	{
 		camera->posX = map->width - (camera->width >> 1);
@@ -62,11 +76,11 @@ void PlayScene::CameraUpdate()
 }
 
 // Update các thông số các đối tượng trong Scene
-
 void PlayScene::Update(float dt)
 {
 	CameraUpdate();
 	player->CheckOnGround(this->visibleGrounds);
+	player->CheckOnWall(this->visibleWalls);
 	//map->Update(dt);
 	player->Update(dt, std::vector<Object*>());
 

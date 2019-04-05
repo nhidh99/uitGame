@@ -153,7 +153,6 @@
     <ClCompile Include="PlayerSittingState.cpp" />
     <ClCompile Include="PlayerStandingState.cpp" />
     <ClCompile Include="PlayScene.cpp" />
-    <ClCompile Include="Quadtree.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -168,7 +167,6 @@
     <ClInclude Include="GameGlobal.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapFactory.h" />
-    <ClInclude Include="ObjectGround.h" />
     <ClInclude Include="ObjectItem.h" />
     <ClInclude Include="ObjectItemShuriken.h" />
     <ClInclude Include="ObjectItemSword.h" />
@@ -188,7 +186,6 @@
     <ClInclude Include="PlayerStandingState.h" />
     <ClInclude Include="PlayerState.h" />
     <ClInclude Include="PlayScene.h" />
-    <ClInclude Include="Quadtree.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Sprite.h" />

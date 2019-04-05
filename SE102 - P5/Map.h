@@ -3,11 +3,8 @@
 #include <fstream>
 #include "Sprite.h"
 #include "Camera.h"
-#include "Quadtree.h"
 #include "Object.h"
-#include "ObjectGround.h"
 #include "ObjectItemShuriken.h"
-#include "Player.h"
 
 class Map
 {

@@ -3,11 +3,9 @@
 #include "Animation.h"
 #include "GameGlobal.h"
 #include "Player.h"
-#include "ObjectGround.h"
 #include "ObjectItemSword.h"
-#include "ObjectItemShuriken.h"
 #include "Camera.h"
-#include <map>
+#include "Map.h"
 
 class PlayScene : public Scene
 {
@@ -15,7 +13,7 @@ private:
 	Map* map;
 	Camera* camera;
 	std::vector<BoundingBox> grounds, visibleGrounds;
-	QuadTree* quadtree;
+	std::vector<BoundingBox> walls, visibleWalls;
 
 public:
 	PlayScene();

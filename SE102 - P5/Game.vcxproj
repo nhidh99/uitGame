@@ -133,6 +133,8 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemySprite.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameGlobal.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -157,12 +159,15 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteFactory.cpp" />
+    <ClCompile Include="SwordMan.cpp" />
     <ClCompile Include="TextureFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemySprite.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameGlobal.h" />
     <ClInclude Include="Map.h" />
@@ -190,6 +195,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteFactory.h" />
+    <ClInclude Include="SwordMan.h" />
     <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="ObjectItemSprite.h" />
   </ItemGroup>

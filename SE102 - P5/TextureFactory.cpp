@@ -8,6 +8,8 @@ void TextureFactory::LoadResources()
 	TextureFactory::GetInstance()->AddTexture(PLAYER, "Resources\\player.png");
 	TextureFactory::GetInstance()->AddTexture(ITEM, "Resources\\item.png");
 	TextureFactory::GetInstance()->AddTexture(MAP1, "Resources\\tiles1.png");
+	TextureFactory::GetInstance()->AddTexture(ENEMY, "Resources\\Enemy.png");
+
 }
 
 // Thêm một Texture vào danh sách, quy định theo Tag

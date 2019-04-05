@@ -31,6 +31,11 @@ void SpriteFactory::LoadResources()
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 206, 37, 224, 47));
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 228, 29, 241, 47));
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 244, 35, 262, 47));
+
+	// ======================== ENEMY SPRITE ================================
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN,210,52,241,93));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN, 242, 52, 269, 93));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN, 272, 46, 304, 93));
 }
 
 // Thêm một Sprite vào danh sách các Sprite, quy định theo Tag của Sprite

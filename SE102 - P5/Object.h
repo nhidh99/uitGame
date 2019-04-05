@@ -12,7 +12,7 @@ public:
 	float vx, vy;								// Vận tốc
 	float dx, dy;
 	int width, height;							// Kích thước
-	bool isReverse;								// Kiểm tra lật hình theo chiều dọc
+	bool isReverse;								// Kiểm tra lật hình theo chiều ngang
 
 	RECT GetBound()
 	{

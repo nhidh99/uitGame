@@ -6,7 +6,7 @@ PlayScene::PlayScene()
 	_map->camera = _camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	player->item = _map->item;
-	player->posX = 50;
+	player->posX = 250;
 	player->posY = SCREEN_HEIGHT >> 1;
 	player->ChangeState(new PlayerStandingState());
 
@@ -38,6 +38,9 @@ PlayScene::PlayScene()
 	}
 
 	player->curGroundBound = grounds[0];
+
+	
+	this->LoadResources(SWORDMAN);
 }
 
 PlayScene::~PlayScene()
@@ -63,6 +66,54 @@ void PlayScene::CameraUpdate()
 	_rightScreen = _leftScreen + SCREEN_HEIGHT;
 }
 
+void PlayScene::LoadResources(EnemyType type)
+{
+	//Lấy filePath
+	std::string filePath;
+	switch (type) {
+	case SWORDMAN:
+		filePath = "Resources\\Swordman.txt";
+		break;
+	default:
+		break;
+	}
+
+	std::ifstream ifile;
+	ifile.open(filePath);
+
+	//Đọc số lượng đối tượng
+	float nums;
+	ifile >> nums;
+
+	for (float i = 0; i < nums; i++)
+	{
+		switch (type)
+		{
+		case SWORDMAN:
+		{
+			SwordMan* sw = new SwordMan();
+
+			//Đọc các posX, posY, isReverse
+			float pos;
+			ifile >> pos;
+			sw->posX = pos;
+			ifile >> pos;
+			sw->posY = pos;
+
+			ifile >> pos;
+			if (pos == 0)
+				sw->isReverse = false;
+			else
+				sw->isReverse = true;
+			_enemies.push_back(sw);
+			break;
+		}
+		default:
+			break;
+		}
+	}
+}
+
 // Update các thông số các đối tượng trong Scene
 void PlayScene::Update(float dt)
 {
@@ -72,6 +123,11 @@ void PlayScene::Update(float dt)
 
 	player->Update(dt, std::vector<Object*>());
 
+
+	for (auto i = 0; i < _enemies.size(); i++)
+	{
+		_enemies[i]->Update(dt);
+	}
 }
 
 // Tải Scene lên màn hình bằng cách vẽ object có trong trong Scene
@@ -79,6 +135,11 @@ void PlayScene::Render()
 {
 	_map->Render();
 	player->Render((SCREEN_WIDTH >> 1) - _camera->posX, 0);
+
+	for (auto i = 0; i < _enemies.size(); i++)
+	{
+		_enemies[i]->Render((SCREEN_WIDTH >> 1) - _camera->posX, 0);
+	}
 }
 
 // Xử lí Scene khi nhấn phím

@@ -25,6 +25,9 @@
     <Filter Include="Game Objects\Player\Uncoltrol">
       <UniqueIdentifier>{8fd43ed3-0676-45b6-ba8d-af64630cacb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Objects\Enemy">
+      <UniqueIdentifier>{0b3a1950-ceb3-4fe9-a4ab-3a0a239aa144}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TextureFactory.cpp">
@@ -110,6 +113,15 @@
     </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Game Objects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemySprite.cpp">
+      <Filter>Game Objects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SwordMan.cpp">
+      <Filter>Game Objects\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +226,15 @@
     </ClInclude>
     <ClInclude Include="ObjectGround.h">
       <Filter>Game Objects\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Game Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySprite.h">
+      <Filter>Game Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordMan.h">
+      <Filter>Game Objects\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

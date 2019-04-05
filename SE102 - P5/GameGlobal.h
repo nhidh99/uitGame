@@ -60,7 +60,8 @@ extern enum Tag
 	PLAYER,
 	ITEM,
 	GROUND,
-	MAP1
+	MAP1,
+	ENEMY,
 };
 
 extern enum Type
@@ -95,4 +96,8 @@ extern enum Direction
 	LEFT,
 	RIGHT,
 	NONE
+};
+
+extern enum EnemyType {
+	SWORDMAN,
 };

@@ -45,6 +45,10 @@
 #define ITEM_SWINGSWORD_WIDTH 18
 #define ITEM_SWINGSWORD_HEIGHT 18
 
+// ===== CÁC THÔNG SỐ CHO ENEMIES ====
+#define ENEMY_SWORDMAN_WIDTH 30
+#define ENEMY_SWORDMAN_HEIGHT 48
+
 extern HINSTANCE hInstance;										// hInstance của windows hiện tại
 extern HWND hWnd;												// hWnd hiện tại
 extern LPD3DXSPRITE spriteHandler;								// SpriteHanlder hiện tại
@@ -68,7 +72,8 @@ extern enum Type
 {
 	SWORD,
 	SHURIKEN,
-	SWINGSWORD
+	SWINGSWORD,
+	SWORDMAN
 };
 
 extern enum State
@@ -87,17 +92,4 @@ extern enum State
 	CLIMBING,
 	DEAD,
 	INJURED
-};
-
-extern enum Direction
-{
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT,
-	NONE
-};
-
-extern enum EnemyType {
-	SWORDMAN,
 };

@@ -5,7 +5,7 @@ PlayScene::PlayScene()
 	map = MapFactory::GetInstance()->GetMap(0);
 	map->camera = camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-	player->item = _map->item;
+	player->item = map->item;
 	player->posX = 50;
 	player->posY = SCREEN_HEIGHT >> 1;
 	player->ChangeState(new PlayerStandingState());
@@ -31,7 +31,7 @@ PlayScene::PlayScene()
 		walls.push_back(BoundingBox(wallx[i], wally[i], 32, 32));
 	}
 
-	player->curGroundBound = grounds[0];
+	this->LoadResources(SWORDMAN);
 }
 
 PlayScene::~PlayScene()
@@ -77,14 +77,17 @@ void PlayScene::CameraUpdate()
 	}
 }
 
-void PlayScene::LoadResources(EnemyType type)
+void PlayScene::LoadResources(Type tag)
 {
 	//Lấy filePath
 	std::string filePath;
-	switch (type) {
+	switch (tag)
+	{
 	case SWORDMAN:
+	{
 		filePath = "Resources\\Swordman.txt";
 		break;
+	}
 	default:
 		break;
 	}
@@ -93,36 +96,33 @@ void PlayScene::LoadResources(EnemyType type)
 	ifile.open(filePath);
 
 	//Đọc số lượng đối tượng
-	float nums;
-	ifile >> nums;
+	int numEnemies;
+	ifile >> numEnemies;
 
-	for (float i = 0; i < nums; i++)
+	for (float i = 0; i < numEnemies; ++i)
 	{
-		switch (type)
+		Enemy* enemy = NULL;
+		switch (tag)
 		{
 		case SWORDMAN:
 		{
-			SwordMan* sw = new SwordMan();
-
-			//Đọc các posX, posY, isReverse
-			float pos;
-			ifile >> pos;
-			sw->posX = pos;
-			ifile >> pos;
-			sw->posY = pos;
-
-			ifile >> pos;
-			if (pos == 0)
-				sw->isReverse = false;
-			else
-				sw->isReverse = true;
-			_enemies.push_back(sw);
+			enemy = new EnemySwordMan();
 			break;
 		}
 		default:
 			break;
 		}
+
+		//Đọc các posX, posY, isReverse
+		float posX, posY, isReverse;
+		ifile >> posX >> posY >> isReverse;
+		enemy->posX = posX;
+		enemy->posY = posY;
+		enemy->vx = 0;
+		enemy->isReverse = isReverse;
+		enemies.push_back(enemy);
 	}
+	ifile.close();
 }
 
 // Update các thông số các đối tượng trong Scene
@@ -134,18 +134,24 @@ void PlayScene::Update(float dt)
 	//map->Update(dt);
 	player->Update(dt, std::vector<Object*>());
 
-
-	for (auto i = 0; i < _enemies.size(); i++)
+	for (auto e : enemies)
 	{
-		_enemies[i]->Update(dt);
+		e->Update(dt);
 	}
 }
 
 // Tải Scene lên màn hình bằng cách vẽ object có trong trong Scene
 void PlayScene::Render()
 {
-	_map->Render();
-	player->Render((SCREEN_WIDTH >> 1) - _camera->posX, 0);
+	map->Render();
+
+	auto transX = (SCREEN_WIDTH >> 1) - camera->posX;
+
+	for (auto e : enemies)
+	{
+		e->Render(transX, 0);
+	}
+	player->Render(transX, 0);
 }
 
 // Xử lí Scene khi nhấn phím

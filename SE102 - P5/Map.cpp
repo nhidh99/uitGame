@@ -51,7 +51,7 @@ void Map::Update(float dt)
 
 void Map::Render()
 {
-	auto trans = D3DXVECTOR2((SCREEN_WIDTH >> 1) - (int)camera->posX, 0);
+	auto trans = D3DXVECTOR2((SCREEN_WIDTH / 2) - (int)camera->posX, 0);
 
 	_cBegin = max(0, (camera->posX - (camera->width >> 1)) / 16);
 	_cEnd = min(_cBegin + (SCREEN_WIDTH >> 4) + 1, _columns);

@@ -3,11 +3,8 @@
 #include <fstream>
 #include "Sprite.h"
 #include "Camera.h"
-#include "Quadtree.h"
 #include "Object.h"
-#include "ObjectGround.h"
 #include "ObjectItemShuriken.h"
-#include "Player.h"
 
 class Map
 {
@@ -24,10 +21,8 @@ public:
 	Map(int level);
 	void Update(float dt);
 	void Render();
-	bool IsContain(Rect rect1, Rect rect2);
 
 	ObjectItem* item;
-	QuadTree* quadtree;
 	Camera* camera;
 
 	int width;

@@ -3,33 +3,33 @@
 #include "Animation.h"
 #include "GameGlobal.h"
 #include "Player.h"
-#include "ObjectGround.h"
 #include "ObjectItemSword.h"
-#include "ObjectItemShuriken.h"
 #include "Camera.h"
-#include "SwordMan.h"
+#include "Map.h"
+#include "EnemySwordMan.h"
+#include "EnemyGunMan.h"
+#include "EnemyCloakMan.h"
+#include "EnemyEagle.h"
+#include "EnemyPanther.h"
+#include "EnemyFactory.h"
 #include <map>
-#include<fstream>
-#include<string>
-#include<iostream>
-
+#include <fstream>
+#include <string>
 
 class PlayScene : public Scene
 {
 private:
-	Map* _map;
-	Camera* _camera;
-	int _leftCamera, _rightCamera;
-	int _leftScreen, _rightScreen;
-	std::vector<BoundingBox> grounds;
-	std::vector<Enemy*> _enemies;
-
-	SwordMan* _sw;
+	Map* map;
+	Camera* camera;
+	std::vector<BoundingBox> grounds, visibleGrounds;
+	std::vector<BoundingBox> walls, visibleWalls;
+	std::vector<Enemy*> enemies;
+	EnemyFactory* enemyFactory;
 public:
 	PlayScene();
 	~PlayScene();
 	void CameraUpdate();
-	void LoadResources(EnemyType type);
+	void LoadResources();
 	void Update(float dt);							// Update các thông số các đối tượng trong Scene
 	void Render();									// Tải Scene lên màn hình
 	void OnKeyDown(int key);						// Xử lí Scene khi nhấn phím

@@ -12,6 +12,18 @@ struct BoundingBox
 	float x, y;
 	float width, height;
 	float vx, vy;
+
+	BoundingBox() {}
+
+	BoundingBox(float x, float y, float w, float h, float vx = 0, float vy = 0)
+	{
+		this->x = x;
+		this->y = y;
+		this->width = w;
+		this->height = h;
+		this->vx = vx;
+		this->vy = vy;
+	}
 };
 
 struct CollisionResult
@@ -38,5 +50,4 @@ public:
 	static Collision* GetInstance();
 	bool IsCollision(BoundingBox b1, BoundingBox b2);
 	CollisionResult SweptAABB(BoundingBox b1, BoundingBox b2);
-	bool SweptGround(BoundingBox b1, BoundingBox b2);
 };

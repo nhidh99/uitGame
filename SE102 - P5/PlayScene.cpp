@@ -31,7 +31,7 @@ PlayScene::PlayScene()
 		walls.push_back(BoundingBox(wallx[i], wally[i], 32, 32));
 	}
 
-	this->LoadResources(SWORDMAN);
+	this->LoadResources();
 }
 
 PlayScene::~PlayScene()
@@ -77,49 +77,27 @@ void PlayScene::CameraUpdate()
 	}
 }
 
-void PlayScene::LoadResources(Type tag)
+void PlayScene::LoadResources()
 {
 	//Lấy filePath
 	std::string filePath;
-	switch (tag)
-	{
-	case SWORDMAN:
-	{
-		filePath = "Resources\\Swordman.txt";
-		break;
-	}
-	default:
-		break;
-	}
+	filePath = "Resources\\Enemy.txt";
 
 	std::ifstream ifile;
 	ifile.open(filePath);
 
-	//Đọc số lượng đối tượng
-	int numEnemies;
-	ifile >> numEnemies;
 
-	for (float i = 0; i < numEnemies; ++i)
-	{
-		Enemy* enemy = NULL;
-		switch (tag)
-		{
-		case SWORDMAN:
-		{
-			enemy = new EnemySwordMan();
-			break;
-		}
-		default:
-			break;
-		}
+	while (!ifile.eof()) {
+		//Đọc các thông số của Enemy
+		int id, posX, posY;
+		ifile >> id >> posX >> posY;
 
-		//Đọc các posX, posY, isReverse
-		float posX, posY, isReverse;
-		ifile >> posX >> posY >> isReverse;
+		Enemy* enemy = enemyFactory->CreateEnemy(id);
+
 		enemy->posX = posX;
 		enemy->posY = posY;
-		enemy->vx = 0;
-		enemy->isReverse = isReverse;
+		//enemy->vx = 0;
+		enemy->isReverse = true;
 		enemies.push_back(enemy);
 	}
 	ifile.close();

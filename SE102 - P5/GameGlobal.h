@@ -9,7 +9,7 @@
 
 #define WINDOW_CLASS_NAME "Ninja Gaiden"		// Class Windows
 #define MAIN_WINDOW_TITLE "Ninja Gaiden"		// Tên cửa sổ
-#define SCREEN_WIDTH 316						// Chiều rộng cửa sổ
+#define SCREEN_WIDTH 313						// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176						// Chiều dài cửa sổ
 #define MAX_FRAME_RATE 80						// FPS
 #define BACK_COLOR D3DCOLOR_XRGB(0, 0, 0)		// Màu nền BackBuffer
@@ -48,6 +48,16 @@
 // ===== CÁC THÔNG SỐ CHO ENEMIES ====
 #define ENEMY_SWORDMAN_WIDTH 30
 #define ENEMY_SWORDMAN_HEIGHT 48
+#define ENEMY_GUNMAN_HEIGHT 30
+#define ENEMY_GUNMAN_WIDTH 32
+#define ENEMY_BAZOKAMAN_WIDTH 32
+#define ENEMY_BAZOKAMAN_HEIGHT 32
+#define ENEMY_CLOAKMAN_WIDTH 28
+#define ENEMY_CLOAKMAN_HEIGHT 48
+#define ENEMY_PANTHER_WIDTH 38
+#define ENEMY_PANTHER_HEIGHT 22
+#define ENEMY_EAGLE_WIDTH 26
+#define ENEMY_EAGLE_HEIGHT 38
 
 extern HINSTANCE hInstance;										// hInstance của windows hiện tại
 extern HWND hWnd;												// hWnd hiện tại
@@ -73,7 +83,13 @@ extern enum Type
 	SWORD,
 	SHURIKEN,
 	SWINGSWORD,
-	SWORDMAN
+	SWORDMAN,
+	BAZOKAMAN,
+	GUNMAN,
+	PANTHER,
+	CLOAKMAN,
+	EAGLE,
+	BULLET,
 };
 
 extern enum State
@@ -90,6 +106,7 @@ extern enum State
 	THROWING,
 	CLINGING,
 	CLIMBING,
+	FLYING,
 	DEAD,
 	INJURED
 };

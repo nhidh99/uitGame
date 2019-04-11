@@ -195,6 +195,7 @@
     <ClInclude Include="Game.h">
       <Filter>Game Components</Filter>
     </ClInclude>
+    <ClInclude Include="Cell.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game Components">

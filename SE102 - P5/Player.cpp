@@ -204,13 +204,11 @@ void Player::CheckOnWall(std::vector<BoundingBox> walls)
 	{
 		if (this->posX > curWallBound.x - (this->width >> 1) && this->vx > 0)
 		{
-			this->vx = 0;
 			this->posX = curWallBound.x - (this->width >> 1);
 		}
 
 		else if (this->posX < curWallBound.x + curWallBound.width + (this->width >> 1) && this->vx < 0)
 		{
-			this->vx = 0;
 			this->posX = curWallBound.x + curWallBound.width + (this->width >> 1);
 		}
 	}

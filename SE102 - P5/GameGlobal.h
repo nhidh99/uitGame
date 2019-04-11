@@ -9,7 +9,7 @@
 
 #define WINDOW_CLASS_NAME "Ninja Gaiden"		// Class Windows
 #define MAIN_WINDOW_TITLE "Ninja Gaiden"		// Tên cửa sổ
-#define SCREEN_WIDTH 313						// Chiều rộng cửa sổ
+#define SCREEN_WIDTH 316						// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176						// Chiều dài cửa sổ
 #define MAX_FRAME_RATE 80						// FPS
 #define BACK_COLOR D3DCOLOR_XRGB(0, 0, 0)		// Màu nền BackBuffer

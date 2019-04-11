@@ -4,7 +4,7 @@
 struct Rect
 {
 	float x, y;
-	int width, height;
+	float width, height;
 };
 
 struct BoundingBox

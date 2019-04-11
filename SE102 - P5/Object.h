@@ -14,14 +14,14 @@ public:
 	int width, height;							// Kích thước
 	bool isReverse;								// Kiểm tra lật hình theo chiều ngang
 
-	Rect GetRect()
+	RECT GetBound()
 	{
-		Rect rect;
-		rect.x = posX - (width >> 1);
-		rect.y = posY - (height >> 1);
-		rect.width = this->width;
-		rect.height = this->height;
-		return rect;
+		RECT bound;
+		bound.left = posX - (width >> 1);
+		bound.right = bound.left + width;
+		bound.top = posY - (height >> 1);
+		bound.bottom = bound.top + height;
+		return bound;
 	}
 
 	BoundingBox GetBoundingBox()

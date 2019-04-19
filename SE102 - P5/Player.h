@@ -13,7 +13,7 @@ class Player : public Object
 private:
 	std::unordered_map<State, Animation*> _animations;		// Danh sách các Animation tương ứng với từng State
 	static Player* _instance;
-
+	
 	bool IsOnGround(BoundingBox ground);
 	bool DetectGround(std::vector<BoundingBox> grounds);
 	bool DectectWall(std::vector<BoundingBox> walls);
@@ -25,10 +25,10 @@ public:
 	PlayerState* state;
 
 	bool isLastFrame;
-	State stateName;
+	State stateName; 
 	Animation* curAnimation;								// Animation hiện tại
 	ObjectItemSword* sword;
-	ObjectItem* item;
+	ObjectItem* item;							
 	BoundingBox curGroundBound, curWallBound;
 	std::unordered_map<State, bool> allow;
 
@@ -36,9 +36,9 @@ public:
 	void CheckOnGround(std::vector<BoundingBox> grounds);
 	void CheckOnWall(std::vector<BoundingBox> walls);
 	void Render(float translateX = 0, float translateY = 0);
-	void OnKeyDown(int keyCode);
-	void OnKeyUp(int keyCode);
+	void OnKeyDown(int keyCode);							
+	void OnKeyUp(int keyCode);							
 
-	void ChangeState(PlayerState* newState);
+	void ChangeState(PlayerState* newState);				
 	void AttackWith(Type item);
 };

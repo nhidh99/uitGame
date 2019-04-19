@@ -1,0 +1,20 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(376,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+  Player.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(64): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(71): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(89): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(98): warning C4091: 'extern ': ignored on left of 'Direction' when no variable is declared
+d:\uit - project\uitgd\se102 - p5\playersprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\objectitemsprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(20): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(22): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\uit - project\uitgd\se102 - p5\object.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(14): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(20): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(22): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\uit - project\uitgd\se102 - p5\camera.h(33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Game.vcxproj -> D:\UIT - Project\uitGD\SE102 - P5\Debug\Game.exe

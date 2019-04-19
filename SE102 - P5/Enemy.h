@@ -2,12 +2,12 @@
 #include "Object.h"
 #include "EnemySprite.h"
 
-
-class Enemy : public Object
+class Enemy : public Object 
 {
 protected:
 	Animation* curAnimation;
 	std::unordered_map<State, Animation*> animations;
+
 public:
 	Enemy() {};
 	~Enemy() {};

@@ -1,106 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Game Components">
-      <UniqueIdentifier>{12e2040a-18aa-48a3-b3aa-342d2fd4f4d6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Objects">
-      <UniqueIdentifier>{6d7e455a-c49c-49b2-a839-e5ac04b58c36}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Objects\Object">
-      <UniqueIdentifier>{6eade5db-d1c2-42a9-94c0-bc3663144741}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Objects\Player">
-      <UniqueIdentifier>{52de9033-e6f0-4f2f-90f3-178683878756}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Scenes">
-      <UniqueIdentifier>{35fadef5-241d-418e-99cf-487112f516e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Objects\Items">
-      <UniqueIdentifier>{d623cbc5-df90-4692-ab44-1bc9dc22e416}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Objects\Player\Control">
-      <UniqueIdentifier>{935ed9ff-cc6a-48da-bf10-0e4de34e609f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Objects\Player\Uncoltrol">
-      <UniqueIdentifier>{8fd43ed3-0676-45b6-ba8d-af64630cacb6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Objects\Enemy">
-      <UniqueIdentifier>{0b3a1950-ceb3-4fe9-a4ab-3a0a239aa144}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="TextureFactory.cpp">
-      <Filter>Game Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Game Components</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="Collision.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
     <ClCompile Include="GameGlobal.cpp">
       <Filter>Game Components</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Game Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayScene.cpp">
-      <Filter>Game Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>Game Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteFactory.cpp">
-      <Filter>Game Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Game Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectItemSword.cpp">
-      <Filter>Game Objects\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerAttackingState.cpp">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerClimbingState.cpp">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerClingingState.cpp">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerFallingState.cpp">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerJumpingState.cpp">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerRunningState.cpp">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerSittingState.cpp">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerStandingState.cpp">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerDeadState.cpp">
-      <Filter>Game Objects\Player\Uncoltrol</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerInjuredState.cpp">
-      <Filter>Game Objects\Player\Uncoltrol</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectItemShuriken.cpp">
-      <Filter>Game Objects\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectItemSwingSword.cpp">
-      <Filter>Game Objects\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Game Objects\Player\Control</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Game Components</Filter>
@@ -108,106 +16,91 @@
     <ClCompile Include="MapFactory.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
-    <ClCompile Include="Quadtree.cpp">
+    <ClCompile Include="Sprite.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
-    <ClCompile Include="Collision.cpp">
+    <ClCompile Include="SpriteFactory.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Game Objects\Enemy</Filter>
+    <ClCompile Include="TextureFactory.cpp">
+      <Filter>Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Game Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAttackingState.cpp">
+      <Filter>Game Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerClimbingState.cpp">
+      <Filter>Game Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerClingingState.cpp">
+      <Filter>Game Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDeadState.cpp">
+      <Filter>Game Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerFallingState.cpp">
+      <Filter>Game Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInjuredState.cpp">
+      <Filter>Game Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerJumpingState.cpp">
+      <Filter>Game Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerRunningState.cpp">
+      <Filter>Game Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSittingState.cpp">
+      <Filter>Game Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStandingState.cpp">
+      <Filter>Game Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectItemShuriken.cpp">
+      <Filter>Game Objects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectItemSwingSword.cpp">
+      <Filter>Game Objects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectItemSword.cpp">
+      <Filter>Game Objects\Items</Filter>
     </ClCompile>
     <ClCompile Include="EnemySprite.cpp">
-      <Filter>Game Objects\Enemy</Filter>
+      <Filter>Game Objects\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="SwordMan.cpp">
-      <Filter>Game Objects\Enemy</Filter>
+    <ClCompile Include="EnemySwordMan.cpp">
+      <Filter>Game Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>Game Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Game Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Game Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Game Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="Animation.h">
       <Filter>Game Components</Filter>
     </ClInclude>
-    <ClInclude Include="Animation.h">
+    <ClInclude Include="Camera.h">
+      <Filter>Game Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
       <Filter>Game Components</Filter>
     </ClInclude>
     <ClInclude Include="GameGlobal.h">
       <Filter>Game Components</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureFactory.h">
-      <Filter>Game Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Game Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Game Objects\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Game Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Game Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayScene.h">
-      <Filter>Game Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteFactory.h">
-      <Filter>Game Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectItemSprite.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectItem.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectItemSword.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerAttackingState.h">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerClimbingState.h">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerClingingState.h">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerFallingState.h">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerJumpingState.h">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerRunningState.h">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerSittingState.h">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerSprite.h">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerStandingState.h">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerState.h">
-      <Filter>Game Objects\Player\Control</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerDeadState.h">
-      <Filter>Game Objects\Player\Uncoltrol</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerInjuredState.h">
-      <Filter>Game Objects\Player\Uncoltrol</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectItemShuriken.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectItemSwingSword.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Game Objects\Player\Control</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Game Components</Filter>
@@ -215,29 +108,120 @@
     <ClInclude Include="MapFactory.h">
       <Filter>Game Components</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="Sprite.h">
       <Filter>Game Components</Filter>
     </ClInclude>
-    <ClInclude Include="Quadtree.h">
+    <ClInclude Include="SpriteFactory.h">
       <Filter>Game Components</Filter>
     </ClInclude>
-    <ClInclude Include="Collision.h">
+    <ClInclude Include="TextureFactory.h">
       <Filter>Game Components</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectGround.h">
-      <Filter>Game Objects\Object</Filter>
+    <ClInclude Include="Player.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAttackingState.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerClimbingState.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerClingingState.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerDeadState.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerFallingState.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInjuredState.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerJumpingState.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerRunningState.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSittingState.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSprite.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStandingState.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState.h">
+      <Filter>Game Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItem.h">
+      <Filter>Game Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItemShuriken.h">
+      <Filter>Game Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItemSprite.h">
+      <Filter>Game Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItemSwingSword.h">
+      <Filter>Game Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItemSword.h">
+      <Filter>Game Objects\Items</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Game Objects\Enemy</Filter>
+      <Filter>Game Objects\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="EnemySprite.h">
-      <Filter>Game Objects\Enemy</Filter>
+      <Filter>Game Objects\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="SwordMan.h">
-      <Filter>Game Objects\Enemy</Filter>
+    <ClInclude Include="EnemySwordMan.h">
+      <Filter>Game Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>Game Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Game Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Game Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Game Objects\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Game Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Player.cd" />
+    <Filter Include="Game Components">
+      <UniqueIdentifier>{172ff221-35c0-4c87-a822-83ad55170033}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects">
+      <UniqueIdentifier>{554a4e09-eec3-47f5-bbb4-0bfad268c3f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Player">
+      <UniqueIdentifier>{926c6d78-9f98-4b75-bc52-1798ff89c8f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Items">
+      <UniqueIdentifier>{9c15a219-2622-45d4-aa02-5bcbe4d98392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Enemies">
+      <UniqueIdentifier>{49202c04-ee6f-4a67-86f3-fdcd21b66279}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Scenes">
+      <UniqueIdentifier>{24633098-6da2-4532-abc5-aba5edb116d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Object">
+      <UniqueIdentifier>{d6e68f4f-36d4-48a2-956b-4e9a33791b8d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Player.cd">
+      <Filter>Game Objects\Player</Filter>
+    </None>
   </ItemGroup>
 </Project>

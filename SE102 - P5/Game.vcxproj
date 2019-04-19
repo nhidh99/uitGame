@@ -133,7 +133,6 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Collision.cpp" />
-    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemySprite.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameGlobal.cpp" />
@@ -155,12 +154,11 @@
     <ClCompile Include="PlayerSittingState.cpp" />
     <ClCompile Include="PlayerStandingState.cpp" />
     <ClCompile Include="PlayScene.cpp" />
-    <ClCompile Include="Quadtree.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteFactory.cpp" />
-    <ClCompile Include="SwordMan.cpp" />
+    <ClCompile Include="EnemySwordMan.cpp" />
     <ClCompile Include="TextureFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -173,7 +171,6 @@
     <ClInclude Include="GameGlobal.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapFactory.h" />
-    <ClInclude Include="ObjectGround.h" />
     <ClInclude Include="ObjectItem.h" />
     <ClInclude Include="ObjectItemShuriken.h" />
     <ClInclude Include="ObjectItemSword.h" />
@@ -193,12 +190,11 @@
     <ClInclude Include="PlayerStandingState.h" />
     <ClInclude Include="PlayerState.h" />
     <ClInclude Include="PlayScene.h" />
-    <ClInclude Include="Quadtree.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteFactory.h" />
-    <ClInclude Include="SwordMan.h" />
+    <ClInclude Include="EnemySwordMan.h" />
     <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="ObjectItemSprite.h" />
   </ItemGroup>

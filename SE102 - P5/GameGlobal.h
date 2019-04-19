@@ -48,16 +48,6 @@
 // ===== CÁC THÔNG SỐ CHO ENEMIES ====
 #define ENEMY_SWORDMAN_WIDTH 30
 #define ENEMY_SWORDMAN_HEIGHT 48
-#define ENEMY_GUNMAN_HEIGHT 30
-#define ENEMY_GUNMAN_WIDTH 32
-#define ENEMY_BAZOKAMAN_WIDTH 32
-#define ENEMY_BAZOKAMAN_HEIGHT 32
-#define ENEMY_CLOAKMAN_WIDTH 28
-#define ENEMY_CLOAKMAN_HEIGHT 48
-#define ENEMY_PANTHER_WIDTH 38
-#define ENEMY_PANTHER_HEIGHT 22
-#define ENEMY_EAGLE_WIDTH 26
-#define ENEMY_EAGLE_HEIGHT 38
 
 extern HINSTANCE hInstance;										// hInstance của windows hiện tại
 extern HWND hWnd;												// hWnd hiện tại
@@ -83,13 +73,7 @@ extern enum Type
 	SWORD,
 	SHURIKEN,
 	SWINGSWORD,
-	SWORDMAN,
-	BAZOKAMAN,
-	GUNMAN,
-	PANTHER,
-	CLOAKMAN,
-	EAGLE,
-	BULLET,
+	SWORDMAN
 };
 
 extern enum State
@@ -106,7 +90,6 @@ extern enum State
 	THROWING,
 	CLINGING,
 	CLIMBING,
-	FLYING,
 	DEAD,
 	INJURED
 };

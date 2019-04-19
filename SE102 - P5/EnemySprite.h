@@ -1,7 +1,7 @@
 #pragma once
 #include"Sprite.h"
 
-class EnemySprite : public Sprite
+class EnemySprite : public Sprite 
 {
 public:
 	Type type;

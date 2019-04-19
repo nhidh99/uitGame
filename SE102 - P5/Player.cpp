@@ -68,6 +68,7 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 
 	/*std::vector<CollisionResult> ResultCollisions;
 	ResultCollisions.clear();
+
 	for (auto obj : ColliableObjects)
 	{
 		auto result = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
@@ -76,6 +77,7 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 			ResultCollisions.push_back(result);
 		}
 	}
+
 	if (!ResultCollisions.size())
 	{
 		Object::Update(dt);
@@ -85,6 +87,7 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 		float minEntryTimeX = 1.0f;
 		float minEntryTimeY = 1.0f;
 		int nx = 0, ny = 0;
+
 		for (auto result : ResultCollisions)
 		{
 			if (result.entryTime < minEntryTimeX)
@@ -92,6 +95,7 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 				minEntryTimeX = result.entryTime;
 				nx = result.nx;
 			}
+
 			if (result.entryTime < minEntryTimeY)
 			{
 				minEntryTimeY = result.entryTime;

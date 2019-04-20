@@ -119,13 +119,6 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 		/*}*/
 }
 
-// Kiểm tra Player còn đang đứng trên vùng đất hiện tại không
-bool Player::IsOnGround(BoundingBox ground)
-{
-	return !(this->posX - (this->width >> 1) > ground.x + ground.width
-		|| this->posX + (this->width >> 1) < ground.x || this->posY - (this->height >> 1) > ground.y);
-}
-
 // Duyệt tìm lại vùng đất va chạm của player khi ra khỏi vùng hiện tại
 // Dùng cách nâng sàn Collision duyệt trước
 bool Player::DetectGround(std::vector<BoundingBox> grounds)
@@ -176,7 +169,6 @@ bool Player::DectectWall(std::vector<BoundingBox> walls)
 // Xử lí va chạm với mặt đất theo các vùng đất hiển thị
 void Player::CheckOnGround(std::vector<BoundingBox> grounds)
 {
-	// Tìm được vùng đất va chạm
 	if (DetectGround(grounds))
 	{
 		if (this->vy > 0 && this->posY > curGroundBound.y - this->height)
@@ -199,19 +191,15 @@ void Player::CheckOnGround(std::vector<BoundingBox> grounds)
 // Kiểm tra va chạm tường
 void Player::CheckOnWall(std::vector<BoundingBox> walls)
 {
-	// Khi đang chạy và tìm được tường -> set lại khi quá giới hạn
 	if (this->vx && this->DectectWall(walls))
 	{
-		if (this->posX > curWallBound.x - (this->width >> 1) && this->vx > 0)
+		if ((this->posX > curWallBound.x - (this->width >> 1) && this->vx > 0)
+			|| (this->posX < curWallBound.x + curWallBound.width + (this->width >> 1) && this->vx < 0))
 		{
-			this->posX = curWallBound.x - (this->width >> 1);
-		}
-
-		else if (this->posX < curWallBound.x + curWallBound.width + (this->width >> 1) && this->vx < 0)
-		{
-			this->posX = curWallBound.x + curWallBound.width + (this->width >> 1);
+			this->allow[MOVING] = false;
 		}
 	}
+	else this->allow[MOVING] = true;
 }
 
 // Render nhân vật (bản chất là Render Animation và vũ khí)

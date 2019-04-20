@@ -7,7 +7,7 @@ Map::Map(int level)
 	char fileName[30];
 	sprintf_s(fileName, "Resources\\matrix%d.txt", level + 1);
 	ifile.open(fileName);
-	_mapLevel = Tag((int)MAP1 + level);
+	_mapLevel = MAP1;
 
 	// Lấy thông tin hàng, cột và chiều dài, rộng của Map tương ứng
 	ifile >> _numSetTiles;
@@ -15,6 +15,10 @@ Map::Map(int level)
 	ifile >> _rows;
 	width = _columns << 4;
 	height = _rows << 4;
+	
+	rect.x = rect.y = 0;
+	rect.width = width;
+	rect.height = height;
 
 	// Tải các Sprite tương ứng của map vào Factry
 	for (int i = 0; i < _numSetTiles; ++i)
@@ -34,42 +38,28 @@ Map::Map(int level)
 	}
 	ifile.close();
 
-	// Cài đặt Quadtree
-	RECT rect;
-	rect.left = 0;
-	rect.top = 0;
-	rect.right = width;
-	rect.bottom = height;
-
 	// Init Shuriken
 	item = new ObjectItemShuriken();
 }
 
-void Map::Update(float dt)
+void Map::Update()
 {
+	_cBegin = max(0, (camera->posX - (camera->width >> 1)) / 16);
+	_cEnd = min(_cBegin + (SCREEN_WIDTH >> 4) + 1, _columns);
 }
 
 void Map::Render()
 {
-	auto trans = D3DXVECTOR2((SCREEN_WIDTH / 2) - (int)camera->posX, 0);
-
-	_cBegin = max(0, (camera->posX - (camera->width >> 1)) / 16);
-	_cEnd = min(_cBegin + (SCREEN_WIDTH >> 4) + 1, _columns);
+	auto transX = (SCREEN_WIDTH >> 1) - (int)camera->posX;
+	//auto trans = D3DXVECTOR2((SCREEN_WIDTH >> 1) - camera->posX, 0);
 
 	for (auto r = 0; r < _rows; ++r)
 	{
 		for (auto c = _cBegin; c < _cEnd; ++c)
 		{
-			Rect rect;
-			rect.x = c << 4;
-			rect.y = r << 4;
-			rect.width = TILE_SIZE;
-			rect.height = TILE_SIZE;
-
-			SpriteFactory::GetInstance()->GetSprite(_mapLevel, _mapTiles[r][c])
-				->Render(rect.x, rect.y, (TILE_SIZE >> 1) + trans.x, (TILE_SIZE >> 1) + trans.y);
+			auto sprite = SpriteFactory::GetInstance()->GetSprite(_mapLevel, _mapTiles[r][c]);
+			sprite->Render(c << 4, r << 4, (TILE_SIZE >> 1) + transX, TILE_SIZE >> 1);
 		}
 	}
-
-	item->Render(trans.x, trans.y);
+	item->Render(transX, 0);
 }

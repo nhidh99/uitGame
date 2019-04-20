@@ -1,0 +1,6 @@
+﻿  main.cpp
+D:\UIT - Project\uitGD\SE102 - W4\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - W4\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - W4\main.cpp(190): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\SE102 - W4\main.cpp(192): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  03-Keyboard-States.vcxproj -> D:\UIT - Project\uitGD\SE102 - W4\Debug\03-Keyboard-States.exe

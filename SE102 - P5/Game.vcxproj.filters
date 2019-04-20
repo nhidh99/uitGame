@@ -103,6 +103,12 @@
     <ClCompile Include="EnemyPanther.cpp">
       <Filter>Game Objects\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Game Objects\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -210,7 +216,6 @@
     <ClInclude Include="Game.h">
       <Filter>Game Components</Filter>
     </ClInclude>
-    <ClInclude Include="Cell.h" />
     <ClInclude Include="EnemyBazokaMan.h">
       <Filter>Game Objects\Enemies</Filter>
     </ClInclude>
@@ -228,6 +233,9 @@
     </ClInclude>
     <ClInclude Include="EnemyPanther.h">
       <Filter>Game Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Game Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

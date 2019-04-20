@@ -3,6 +3,7 @@
 PlayScene::PlayScene()
 {
 	map = MapFactory::GetInstance()->GetMap(0);
+	grid = new Grid(map->rect);
 	map->camera = camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	player->item = map->item;
@@ -38,10 +39,8 @@ PlayScene::~PlayScene()
 {
 }
 
-void PlayScene::CameraUpdate()
+void PlayScene::BoundsUpdate()
 {
-	camera->posX = player->posX;
-
 	// Đưa các vùng đất đang hiển thị trên màn hỉnh vào mảng
 	visibleGrounds.clear();
 	for (auto g : grounds)
@@ -61,6 +60,11 @@ void PlayScene::CameraUpdate()
 			visibleWalls.push_back(w);
 		}
 	}
+}
+
+void PlayScene::CameraUpdate()
+{
+	camera->posX = player->posX;
 
 	// Camera về phần trái của map
 	if (camera->posX <= camera->width >> 1)
@@ -93,12 +97,20 @@ void PlayScene::LoadResources()
 		ifile >> id >> posX >> posY;
 
 		Enemy* enemy = enemyFactory->CreateEnemy(id);
-
 		enemy->posX = posX;
 		enemy->posY = posY;
-		//enemy->vx = 0;
 		enemy->isReverse = true;
-		enemies.push_back(enemy);
+
+		for (auto row : grid->cells)
+		{
+			for (auto cell : row)
+			{
+				if (cell->IsContain(enemy->GetRect()))
+				{
+					cell->objects.push_back(enemy);
+				}
+			}
+		}
 	}
 	ifile.close();
 }
@@ -106,15 +118,20 @@ void PlayScene::LoadResources()
 // Update các thông số các đối tượng trong Scene
 void PlayScene::Update(float dt)
 {
-	CameraUpdate();
+	camera->Update(map->rect);
+	map->Update();
+
+	this->BoundsUpdate();
 	player->CheckOnGround(this->visibleGrounds);
 	player->CheckOnWall(this->visibleWalls);
-	//map->Update(dt);
 	player->Update(dt, std::vector<Object*>());
 
-	for (auto e : enemies)
+	visibleCells = grid->GetVisibleCells(camera->GetRect());
+	visibleObjects = grid->GetVisibleObjects(visibleCells);
+
+	for (auto o : visibleObjects)
 	{
-		e->Update(dt);
+		o->Update(dt);
 	}
 }
 
@@ -125,10 +142,11 @@ void PlayScene::Render()
 
 	auto transX = (SCREEN_WIDTH >> 1) - camera->posX;
 
-	for (auto e : enemies)
+	for (auto o : visibleObjects)
 	{
-		e->Render(transX, 0);
+		o->Render(transX, 0);
 	}
+
 	player->Render(transX, 0);
 }
 

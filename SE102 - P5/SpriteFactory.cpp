@@ -50,7 +50,6 @@ void SpriteFactory::LoadResources()
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(GUNMAN, 159, 55, 189, 90));
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(GUNMAN, 189, 62, 206, 73));
 
-
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 409, 0, 435, 49));
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 445, 0, 471, 49));
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 487, 0, 515, 49));

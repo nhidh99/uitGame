@@ -1,31 +1,6 @@
 #pragma once
 #include "GameGlobal.h"
 
-struct Rect
-{
-	float x, y;
-	int width, height;
-};
-
-struct BoundingBox
-{
-	float x, y;
-	float width, height;
-	float vx, vy;
-
-	BoundingBox() {}
-
-	BoundingBox(float x, float y, float w, float h, float vx = 0, float vy = 0)
-	{
-		this->x = x;
-		this->y = y;
-		this->width = w;
-		this->height = h;
-		this->vx = vx;
-		this->vy = vy;
-	}
-};
-
 struct CollisionResult
 {
 	bool isCollide;
@@ -38,7 +13,6 @@ class Collision
 private:
 	float dxEntry, dxExit;
 	float dyEntry, dyExit;
-
 	float txEntry, tyEntry;
 	float txExit, tyExit;
 	float entryTime;

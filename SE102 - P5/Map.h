@@ -3,6 +3,7 @@
 #include <fstream>
 #include "Sprite.h"
 #include "Camera.h"
+#include "Collision.h"
 #include "Object.h"
 #include "ObjectItemShuriken.h"
 
@@ -19,7 +20,7 @@ private:
 
 public:
 	Map(int level);
-	void Update(float dt);
+	void Update();
 	void Render();
 
 	ObjectItem* item;
@@ -27,4 +28,5 @@ public:
 
 	int width;
 	int height;
+	Rect rect;
 };

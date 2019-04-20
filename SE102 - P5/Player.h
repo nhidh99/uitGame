@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "Object.h"
-#include "SceneManager.h"
 #include "PlayerSprite.h"
 #include "PlayerState.h"
 #include "PlayerStandingState.h"
@@ -11,10 +10,9 @@
 class Player : public Object
 {
 private:
-	std::unordered_map<State, Animation*> _animations;		// Danh sách các Animation tương ứng với từng State
+	std::unordered_map<State, Animation*> _animations;		
 	static Player* _instance;
-	
-	bool IsOnGround(BoundingBox ground);
+
 	bool DetectGround(std::vector<BoundingBox> grounds);
 	bool DectectWall(std::vector<BoundingBox> walls);
 
@@ -26,7 +24,7 @@ public:
 
 	bool isLastFrame;
 	State stateName; 
-	Animation* curAnimation;								// Animation hiện tại
+	Animation* curAnimation;							
 	ObjectItemSword* sword;
 	ObjectItem* item;							
 	BoundingBox curGroundBound, curWallBound;

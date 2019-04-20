@@ -4,26 +4,29 @@
 #include "GameGlobal.h"
 #include "Player.h"
 #include "ObjectItemSword.h"
-#include "Camera.h"
 #include "Map.h"
 #include "EnemyFactory.h"
 #include <map>
 #include <fstream>
 #include <string>
+#include "Grid.h"
 
 class PlayScene : public Scene
 {
 private:
 	Map* map;
 	Camera* camera;
+	Grid* grid;
 	std::vector<BoundingBox> grounds, visibleGrounds;
 	std::vector<BoundingBox> walls, visibleWalls;
-	std::vector<Enemy*> enemies;
+	std::vector<Object*> visibleObjects;
+	std::vector<Cell*> visibleCells;
 	EnemyFactory* enemyFactory;
 
 public:
 	PlayScene();
 	~PlayScene();
+	void BoundsUpdate();
 	void CameraUpdate();
 	void LoadResources();
 	void Update(float dt);							// Update các thông số các đối tượng trong Scene

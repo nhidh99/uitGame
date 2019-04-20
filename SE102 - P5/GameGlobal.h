@@ -9,7 +9,7 @@
 
 #define WINDOW_CLASS_NAME "Ninja Gaiden"		// Class Windows
 #define MAIN_WINDOW_TITLE "Ninja Gaiden"		// Tên cửa sổ
-#define SCREEN_WIDTH 313						// Chiều rộng cửa sổ
+#define SCREEN_WIDTH 320						// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176						// Chiều dài cửa sổ
 #define MAX_FRAME_RATE 80						// FPS
 #define BACK_COLOR D3DCOLOR_XRGB(0, 0, 0)		// Màu nền BackBuffer
@@ -109,4 +109,37 @@ extern enum State
 	FLYING,
 	DEAD,
 	INJURED
+};
+
+struct Rect
+{
+	float x, y;
+	int width, height;
+
+	Rect() {}
+	Rect(float x, float y, float w, float h)
+	{
+		this->x = x;
+		this->y = y;
+		this->width = w;
+		this->height = h;
+	}
+};
+
+struct BoundingBox
+{
+	float x, y;
+	float width, height;
+	float vx, vy;
+
+	BoundingBox() {}
+	BoundingBox(float x, float y, float w, float h, float vx = 0, float vy = 0)
+	{
+		this->x = x;
+		this->y = y;
+		this->width = w;
+		this->height = h;
+		this->vx = vx;
+		this->vy = vy;
+	}
 };

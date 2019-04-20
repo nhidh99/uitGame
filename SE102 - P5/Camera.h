@@ -1,6 +1,5 @@
-#pragma once
-#include "GameGlobal.h"
-#include "Collision.h"
+﻿#pragma once
+#include "Player.h"
 
 class Camera
 {
@@ -24,6 +23,16 @@ public:
 		return bound;
 	}
 
+	Rect GetRect()
+	{
+		Rect bound;
+		bound.x = posX - (width >> 1);
+		bound.y = posY - (height >> 1);
+		bound.width = this->width;
+		bound.height = this->height;
+		return bound;
+	}
+
 	BoundingBox GetBoundingBox()
 	{
 		BoundingBox bound;
@@ -33,5 +42,24 @@ public:
 		bound.height = this->height;
 		bound.vx = bound.vy = 0;
 		return bound;
+	}
+
+	void Update(Rect MapRect)
+	{
+		this->posX = player->posX;
+
+		// Camera về phần trái của map
+		if (this->posX <= this->width >> 1)
+		{
+			this->posX = this->width >> 1;
+			player->posX = max(player->width >> 1, player->posX);
+		}
+
+		// Camera về phần phải của map
+		else if (this->posX >= MapRect.width - (this->width >> 1))
+		{
+			this->posX = MapRect.width - (this->width >> 1);
+			player->posX = min(MapRect.width - player->width, player->posX);
+		}
 	}
 };

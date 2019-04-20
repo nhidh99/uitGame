@@ -8,7 +8,6 @@ EnemyCloakMan::EnemyCloakMan()
 	type = CLOAKMAN;
 	height = ENEMY_CLOAKMAN_HEIGHT;	
 	width = ENEMY_CLOAKMAN_WIDTH;
-	vx = -0.02;
 }
 
 EnemyCloakMan::~EnemyCloakMan()

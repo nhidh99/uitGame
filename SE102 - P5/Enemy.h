@@ -9,7 +9,7 @@ protected:
 	std::unordered_map<State, Animation*> animations;
 
 public:
-	Enemy() {};
+	Enemy() { tag = ENEMY; }
 	~Enemy() {};
 	Type type;
 

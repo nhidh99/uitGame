@@ -3,6 +3,22 @@
 #include "Animation.h"
 #include "Collision.h"
 
+class Object;
+
+class Cell
+{
+	int xID, yID;
+
+public:
+	Rect rect;
+	static int width, height;
+	std::vector<Object*> objects;
+
+	Cell(int xID, int yID);
+	bool IsContain(Rect r);
+	void Update(std::vector<Object*> objs);
+};
+
 class Object
 {
 public:
@@ -42,7 +58,8 @@ public:
 		dy = vy * dt;
 		posX += dx;
 		posY += dy;
-	};			
+	};
+
 	virtual void Render() {}
 	virtual void Render(float translateX = 0, float translateY = 0) {}
 };

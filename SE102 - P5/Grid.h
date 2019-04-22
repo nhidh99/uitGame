@@ -4,6 +4,19 @@
 #include <set>
 #include "Object.h"
 
+class Cell
+{
+	int xID, yID;
+
+public:
+	Rect rect;
+	static int width, height;
+	std::vector<Object*> objects;
+
+	Cell(int xID, int yID);
+	bool IsContain(Rect r);
+};
+
 class Grid
 {
 private:
@@ -13,6 +26,5 @@ private:
 public:
 	std::vector<std::vector<Cell*>> cells;
 	Grid(Rect MapRect);
-	std::vector<Cell*> GetVisibleCells(Rect CameraRect);
-	std::vector<Object*> GetVisibleObjects(std::vector<Cell*> cells);
+	std::vector<Object*> GetVisibleObjects(Rect CameraRect);
 };

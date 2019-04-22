@@ -99,6 +99,7 @@ void PlayScene::LoadResources()
 		Enemy* enemy = enemyFactory->CreateEnemy(id);
 		enemy->posX = posX;
 		enemy->posY = posY;
+		enemy->vx = 0.01;
 		enemy->isReverse = true;
 
 		for (auto row : grid->cells)
@@ -126,12 +127,16 @@ void PlayScene::Update(float dt)
 	player->CheckOnWall(this->visibleWalls);
 	player->Update(dt, std::vector<Object*>());
 
-	visibleCells = grid->GetVisibleCells(camera->GetRect());
-	visibleObjects = grid->GetVisibleObjects(visibleCells);
+	visibleObjects = grid->GetVisibleObjects(camera->GetRect());
 
 	for (auto o : visibleObjects)
 	{
-		o->Update(dt);
+		if (o->tag == ENEMY)
+		{
+			Enemy* e = (Enemy*)o;
+			e->Update(dt, grid->cells);
+		}
+		else o->Update(dt);
 	}
 }
 

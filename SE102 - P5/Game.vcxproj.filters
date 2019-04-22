@@ -210,9 +210,6 @@
     <ClInclude Include="SceneManager.h">
       <Filter>Game Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Game Objects\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Game Components</Filter>
     </ClInclude>
@@ -236,6 +233,9 @@
     </ClInclude>
     <ClInclude Include="Grid.h">
       <Filter>Game Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Game Objects\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

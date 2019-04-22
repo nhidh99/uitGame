@@ -1,4 +1,118 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(396,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+  EnemyBazokaMan.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(79): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(93): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(112): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(124): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(125): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(48): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(49): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  EnemyCloakMan.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(79): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(93): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(112): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(124): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(125): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(48): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(49): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  EnemyEagle.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(79): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(93): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(112): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(124): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(125): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(48): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(49): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  EnemyGunMan.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(79): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(93): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(112): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(124): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(125): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(48): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(49): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  EnemyPanther.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(79): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(93): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(112): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(124): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(125): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(48): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(49): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  EnemySwordMan.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(79): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(93): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(112): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(124): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(125): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(48): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(49): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   Game.cpp
   C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
 D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(79): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
@@ -8,8 +122,8 @@ D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(124): warning C4244: '=': convers
 D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(125): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-D:\UIT - Project\uitGD\SE102 - P5\Object.h(46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\UIT - Project\uitGD\SE102 - P5\Object.h(47): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
@@ -18,6 +132,14 @@ D:\UIT - Project\uitGD\SE102 - P5\Camera.h(41): warning C4244: '=': conversion f
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(61): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(48): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(49): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Game.cpp(117): warning C4018: '>=': signed/unsigned mismatch
 D:\UIT - Project\uitGD\SE102 - P5\Game.cpp(120): warning C4244: 'argument': conversion from 'unsigned long' to 'float', possible loss of data
   Grid.cpp
@@ -29,12 +151,13 @@ D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(124): warning C4244: '=': convers
 D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(125): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-D:\UIT - Project\uitGD\SE102 - P5\Object.h(46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\UIT - Project\uitGD\SE102 - P5\Object.h(47): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\UIT - Project\uitGD\SE102 - P5\Grid.cpp(5): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\UIT - Project\uitGD\SE102 - P5\Grid.cpp(6): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\UIT - Project\uitGD\SE102 - P5\Grid.cpp(22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\UIT - Project\uitGD\SE102 - P5\Grid.cpp(23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Grid.cpp(10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Grid.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Grid.cpp(23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Grid.cpp(24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Grid.cpp(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   PlayScene.cpp
   C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
 D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(79): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
@@ -44,8 +167,8 @@ D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(124): warning C4244: '=': convers
 D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(125): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-D:\UIT - Project\uitGD\SE102 - P5\Object.h(46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\UIT - Project\uitGD\SE102 - P5\Object.h(47): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
@@ -54,6 +177,14 @@ D:\UIT - Project\uitGD\SE102 - P5\Camera.h(41): warning C4244: '=': conversion f
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(61): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(48): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(49): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\PlayScene.cpp(15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\PlayScene.cpp(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\PlayScene.cpp(32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
@@ -61,6 +192,7 @@ D:\UIT - Project\uitGD\SE102 - P5\PlayScene.cpp(72): warning C4244: '=': convers
 D:\UIT - Project\uitGD\SE102 - P5\PlayScene.cpp(79): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\PlayScene.cpp(100): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\PlayScene.cpp(101): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\PlayScene.cpp(102): warning C4305: '=': truncation from 'double' to 'float'
   main.cpp
   C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
 D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(79): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
@@ -70,8 +202,8 @@ D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(124): warning C4244: '=': convers
 D:\UIT - Project\uitGD\SE102 - P5\GameGlobal.h(125): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-D:\UIT - Project\uitGD\SE102 - P5\Object.h(46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\UIT - Project\uitGD\SE102 - P5\Object.h(47): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Object.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
@@ -80,5 +212,13 @@ D:\UIT - Project\uitGD\SE102 - P5\Camera.h(41): warning C4244: '=': conversion f
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\UIT - Project\uitGD\SE102 - P5\Camera.h(61): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(48): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(49): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\SE102 - P5\Enemy.h(50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   Generating Code...
   Game.vcxproj -> D:\UIT - Project\uitGD\SE102 - P5\Debug\Game.exe

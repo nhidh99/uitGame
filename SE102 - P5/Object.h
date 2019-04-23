@@ -14,42 +14,10 @@ public:
 	int width, height;							// Kích thước
 	bool isReverse;								// Kiểm tra lật hình theo chiều ngang
 
-	Rect GetRect()
-	{
-		Rect rect;
-		rect.x = posX - (width >> 1);
-		rect.y = posY - (height >> 1);
-		rect.width = this->width;
-		rect.height = this->height;
-		return rect;
-	}
-
-	BoundingBox GetBoundingBox()
-	{
-		BoundingBox bound;
-		bound.height = height;
-		bound.width = width;
-		bound.x = posX - (width >> 1);
-		bound.y = posY - (height >> 1);
-		bound.vx = dx;
-		bound.vy = dy;
-		return bound;
-	}
-
-	virtual void Update(float dt)  // Update thông số của Object sau khoảng thời gian delta-time
-	{
-		dx = vx * dt;
-		dy = vy * dt;
-		posX += dx;
-		posY += dy;
-	};
-
-	bool IsCollide(Rect r)
-	{
-		auto rect = this->GetRect();
-		return !(rect.x + rect.width < r.x || rect.x > r.x + r.width || rect.y + rect.height < r.y || rect.y > r.y + r.height);
-	}
-
+	Rect GetRect();
+	BoundingBox GetBoundingBox();
+	virtual void Update(float dt);
+	bool IsCollide(Rect r);
 	virtual void Render() {}
 	virtual void Render(float translateX = 0, float translateY = 0) {}
 };

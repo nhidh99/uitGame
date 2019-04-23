@@ -1,9 +1,8 @@
 #pragma once
 #include "Object.h"
 #include "EnemySprite.h"
-#include "Grid.h"
 #include <algorithm>
-
+#include "Cell.h"
 
 class Enemy : public Object
 {
@@ -15,6 +14,7 @@ public:
 	Enemy() { tag = ENEMY; }
 	~Enemy() {};
 	Type type;
+	float spawnX, spawnY;
 
 	void Render()
 	{

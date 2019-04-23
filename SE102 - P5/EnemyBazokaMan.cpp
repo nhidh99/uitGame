@@ -9,7 +9,3 @@ EnemyBazokaMan::EnemyBazokaMan()
 	width = ENEMY_BAZOKAMAN_WIDTH;
 	vy = 0;
 }
-
-EnemyBazokaMan::~EnemyBazokaMan()
-{
-}

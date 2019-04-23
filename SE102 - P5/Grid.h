@@ -2,20 +2,8 @@
 #include "GameGlobal.h"
 #include "Collision.h"
 #include <set>
-#include "Object.h"
-
-class Cell
-{
-	int xID, yID;
-
-public:
-	Rect rect;
-	static int width, height;
-	std::vector<Object*> objects;
-
-	Cell(int xID, int yID);
-	bool IsContain(Rect r);
-};
+#include "Cell.h"
+#include "Enemy.h"
 
 class Grid
 {
@@ -24,7 +12,15 @@ private:
 	int columns;
 
 public:
-	std::vector<std::vector<Cell*>> cells;
 	Grid(Rect MapRect);
+	std::vector<std::vector<Cell*>> cells;
+	std::vector<Cell*> visibleCells;
+
+	void Update(Rect CameraRect);
 	std::vector<Object*> GetVisibleObjects(Rect CameraRect);
+	std::vector<BoundingBox> GetVisibleWalls(Rect CameraRect);
+	std::vector<BoundingBox> GetVisibleGrounds(Rect CameraRect);
+
+	void InitEnemiesCell(std::vector<Enemy*> enemies);
+	void InitBoundsCell(std::vector<BoundingBox> grounds, std::vector<BoundingBox> walls);
 };

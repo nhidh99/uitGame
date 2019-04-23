@@ -1,23 +1,5 @@
 #include "Grid.h"
 
-int Cell::width = SCREEN_WIDTH >> 1;
-int Cell::height = SCREEN_HEIGHT >> 1;
-
-Cell::Cell(int xID, int yID)
-{
-	this->xID = xID;
-	this->yID = yID;
-	rect.x = xID * (SCREEN_WIDTH >> 1);
-	rect.y = yID * (SCREEN_HEIGHT >> 1);
-	width = rect.width = SCREEN_WIDTH >> 1;
-	height = rect.height = SCREEN_HEIGHT >> 1;
-}
-
-bool Cell::IsContain(Rect r)
-{
-	return !(rect.x + rect.width < r.x || rect.x > r.x + r.width || rect.y + rect.height < r.y || rect.y > r.y + r.height);
-}
-
 Grid::Grid(Rect MapRect)
 {
 	columns = floor((float)MapRect.width / (SCREEN_WIDTH >> 1));
@@ -34,9 +16,9 @@ Grid::Grid(Rect MapRect)
 	}
 }
 
-std::vector<Object*> Grid::GetVisibleObjects(Rect CameraRect)
+void Grid::Update(Rect CameraRect)
 {
-	std::vector<Cell*> visibleCells;
+	visibleCells.clear();
 	int left = CameraRect.x / Cell::width;
 	int right = left + (int)(SCREEN_WIDTH / Cell::width) + 1;
 	//int top = CameraRect.y / Cell::height;
@@ -49,14 +31,111 @@ std::vector<Object*> Grid::GetVisibleObjects(Rect CameraRect)
 			visibleCells.push_back(cells[r][c]);
 		}
 	}
+}
 
+std::vector<Object*> Grid::GetVisibleObjects(Rect CameraRect)
+{
 	std::set<Object*> setObjects;
 
 	for (auto c : visibleCells)
 	{
 		for (auto o : c->objects)
+		{
 			if (o->IsCollide(CameraRect))
+			{
 				setObjects.insert(o);
+			}
+			else if (o->tag == ENEMY)
+			{
+				Enemy* e = (Enemy*)o;
+				e->posX = e->spawnX;
+				e->posY = e->spawnY;
+			}
+		}
 	}
 	return std::vector<Object*>(setObjects.begin(), setObjects.end());
+}
+
+std::vector<BoundingBox> Grid::GetVisibleWalls(Rect CameraRect)
+{
+	std::set<BoundingBox> setWalls;
+
+	for (auto c : visibleCells)
+	{
+		for (auto w : c->walls)
+		{
+			if (w.IsContain(CameraRect))
+			{
+				setWalls.insert(w);
+			}
+		}
+	}
+	return std::vector<BoundingBox>(setWalls.begin(), setWalls.end());
+}
+
+std::vector<BoundingBox> Grid::GetVisibleGrounds(Rect CameraRect)
+{
+	std::set<BoundingBox> setGrounds;
+
+	for (auto c : visibleCells)
+	{
+		for (auto g : c->grounds)
+		{
+			if (g.IsContain(CameraRect))
+			{
+				setGrounds.insert(g);
+			}
+		}
+	}
+	return std::vector<BoundingBox>(setGrounds.begin(), setGrounds.end());
+}
+
+void Grid::InitEnemiesCell(std::vector<Enemy*> enemies)
+{
+	for (auto e : enemies)
+	{
+		for (auto row : cells)
+		{
+			for (auto cell : row)
+			{
+				if (cell->IsContain(e->GetRect()))
+				{
+					cell->objects.push_back(e);
+				}
+			}
+		}
+	}
+}
+
+void Grid::InitBoundsCell(std::vector<BoundingBox> grounds, std::vector<BoundingBox> walls)
+{
+	for (auto g : grounds)
+	{
+		Rect r = Rect(g.x, g.y, g.width, g.height);
+		for (auto row : cells)
+		{
+			for (auto cell : row)
+			{
+				if (cell->IsContain(r))
+				{
+					cell->grounds.push_back(g);
+				}
+			}
+		}
+	}
+
+	for (auto w : walls)
+	{
+		Rect r = Rect(w.x, w.y, w.width, w.height);
+		for (auto row : cells)
+		{
+			for (auto cell : row)
+			{
+				if (cell->IsContain(r))
+				{
+					cell->walls.push_back(w);
+				}
+			}
+		}
+	}
 }

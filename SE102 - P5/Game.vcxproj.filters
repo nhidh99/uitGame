@@ -109,6 +109,12 @@
     <ClCompile Include="Object.cpp">
       <Filter>Game Objects\Object</Filter>
     </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Loader.cpp">
+      <Filter>Game Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -236,6 +242,12 @@
     </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Game Objects\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Game Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Loader.h">
+      <Filter>Game Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

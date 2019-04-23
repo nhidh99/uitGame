@@ -1,6 +1,8 @@
 ﻿#include "Map.h"
 #include "SpriteFactory.h"
 
+auto addCols = (SCREEN_WIDTH >> 4) + 1;
+
 Map::Map(int level)
 {
 	std::ifstream ifile;
@@ -45,7 +47,7 @@ Map::Map(int level)
 void Map::Update()
 {
 	_cBegin = max(0, (camera->posX - (camera->width >> 1)) / 16);
-	_cEnd = min(_cBegin + (SCREEN_WIDTH >> 4) + 1, _columns);
+	_cEnd = min(_cBegin + addCols, _columns);
 }
 
 void Map::Render()

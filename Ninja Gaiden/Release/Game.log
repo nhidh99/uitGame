@@ -1,0 +1,69 @@
+﻿  Animation.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Collision.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  EnemyBazokaMan.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  EnemyCloakMan.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  EnemyEagle.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  EnemyGunMan.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  EnemyPanther.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  EnemySprite.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Game.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  GameGlobal.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Map.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  MapFactory.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  ObjectItemShuriken.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  ObjectItemSword.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  main.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  ObjectItemSwingSword.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Player.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerAttackingState.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerClimbingState.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerClingingState.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Compiling...
+  PlayerDeadState.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerFallingState.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerInjuredState.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerJumpingState.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerRunningState.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerSittingState.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerStandingState.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayScene.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Scene.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  SceneManager.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Sprite.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  SpriteFactory.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  EnemySwordMan.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  TextureFactory.cpp
+d:\uit - project\uitgd\se102 - p5\gameglobal.h(2): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory

@@ -1,0 +1,11 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(396,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+  Player.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(79): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(93): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(112): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(125): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  Game.vcxproj -> D:\UIT - Project\uitGD\Ninja Gaiden\Debug\Game.exe

@@ -1,6 +1,10 @@
 #pragma once
 #include "Enemy.h"
-
+#include "EnemySwordMan.h"
+#include "EnemyGunMan.h"
+#include "EnemyCloakMan.h"
+#include "EnemyEagle.h"
+#include "EnemyPanther.h"
 class EnemyFactory {
 public:
 	Enemy* enemy;

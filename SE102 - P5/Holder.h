@@ -1,19 +1,16 @@
 #pragma once
 #include "Object.h"
-#include "EnemySprite.h"
+#include "Sprite.h"
 
-class Enemy : public Object 
+class Holder : public Object
 {
 protected:
 	Animation* curAnimation;
-	std::unordered_map<State, Animation*> animations;
+	Sprite* item;
 public:
-	bool isActive;
-	bool allowAttack;
+	Holder() {};
+	~Holder() {}; 
 	Type type;
-
-	Enemy() {};
-	~Enemy() {};
 
 	void Render()
 	{
@@ -31,10 +28,5 @@ public:
 	{
 		curAnimation->Update(dt);
 		Object::Update(dt);
-	}
-
-	void ChangeState(Animation* ani)
-	{
-		this->curAnimation = ani;
 	}
 };

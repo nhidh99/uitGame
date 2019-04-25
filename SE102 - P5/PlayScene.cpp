@@ -31,7 +31,7 @@ PlayScene::PlayScene()
 		walls.push_back(BoundingBox(wallx[i], wally[i], 32, 32));
 	}
 
-	this->LoadResources(SWORDMAN);
+	this->LoadResources();
 }
 
 PlayScene::~PlayScene()
@@ -77,52 +77,87 @@ void PlayScene::CameraUpdate()
 	}
 }
 
-void PlayScene::LoadResources(Type tag)
+void PlayScene::LoadResources()
 {
+
 	//Lấy filePath
-	std::string filePath;
-	switch (tag)
+	std::string filePath1;
+	std::string filePath2;
+
+	filePath1 = "Resources\\Enemy.txt";
+	filePath2 = "Resources\\Holder.txt";
+
+	std::ifstream ifileE;
+	ifileE.open(filePath1);
+
+	std::ifstream ifileH;
+	ifileH.open(filePath2);
+
+	while (!ifileE.eof()) 
 	{
-	case SWORDMAN:
-	{
-		filePath = "Resources\\Swordman.txt";
-		break;
-	}
-	default:
-		break;
-	}
+		//Đọc các thông số của Enemy
+		int id, posX, posY;
+		ifileE >> id >> posX >> posY;
 
-	std::ifstream ifile;
-	ifile.open(filePath);
+		Enemy* enemy = enemyFactory->CreateEnemy(id);
 
-	//Đọc số lượng đối tượng
-	int numEnemies;
-	ifile >> numEnemies;
-
-	for (float i = 0; i < numEnemies; ++i)
-	{
-		Enemy* enemy = NULL;
-		switch (tag)
-		{
-		case SWORDMAN:
-		{
-			enemy = new EnemySwordMan();
-			break;
-		}
-		default:
-			break;
-		}
-
-		//Đọc các posX, posY, isReverse
-		float posX, posY, isReverse;
-		ifile >> posX >> posY >> isReverse;
 		enemy->posX = posX;
 		enemy->posY = posY;
-		enemy->vx = 0;
-		enemy->isReverse = isReverse;
+		enemy->isActive = false;
+		enemy->isReverse = true;
 		enemies.push_back(enemy);
 	}
-	ifile.close();
+
+	while(!ifileH.eof())
+	{
+		int id, posX, posY;
+		ifileH >> id >> posX >> posY;
+
+		HolderButterfly* holder = new HolderButterfly();
+
+		holder->posX = posX;
+		holder->posY = posY;
+		holders.push_back(holder);
+	}
+
+	ifileH.close();
+	ifileE.close();
+}
+
+void PlayScene::ActiveEnemy()
+{
+	for (auto e : enemies)
+	{
+		RECT eRect = e->GetBound();
+		RECT camRect = camera->GetBound();
+
+		//Kiểm tra khi enemy vào vùng camera từ bên trái
+		if (eRect.left <= camRect.right)
+		{
+			e->isActive = true;
+			if (e->posX > player->posX)
+				e->vx = 0;
+		}
+
+		//Kiểm tra vị trí của enemy-player để chỉnh hướng đi của enemy
+		if (eRect.left <= player->posX)
+		{
+			e->isReverse = false;
+		}
+		else if (eRect.left > player->posX)
+		{
+			e->isReverse = true;
+		}
+
+		//Chuyển animation cho enemy khi player đi vào vùng tấn công
+		if (e->posX - player->posX < 100)
+		{
+			if (e->type == GUNMAN)
+				e->ChangeState(new Animation(ENEMY, 9, 10, 150));
+			if (e->type == CLOAKMAN)
+				e->ChangeState(new Animation(ENEMY, 13, 14, 150));
+		}
+	}
 }
 
 // Update các thông số các đối tượng trong Scene
@@ -136,22 +171,35 @@ void PlayScene::Update(float dt)
 
 	for (auto e : enemies)
 	{
-		e->Update(dt);
+		if (e->isActive == true)
+		{
+			e->Update(dt);
+		}
 	}
+	for (auto h : holders)
+	{
+		h->Update(dt);
+	}
+	ActiveEnemy();
 }
 
 // Tải Scene lên màn hình bằng cách vẽ object có trong trong Scene
 void PlayScene::Render()
 {
 	map->Render();
-
 	auto transX = (SCREEN_WIDTH >> 1) - camera->posX;
+	player->Render(transX, 0);
 
 	for (auto e : enemies)
 	{
-		e->Render(transX, 0);
+		if (e->isActive)
+			e->Render(transX, 0);
 	}
-	player->Render(transX, 0);
+
+	for (auto h : holders)
+	{
+		h->Render(transX, 0);
+	}
 }
 
 // Xử lí Scene khi nhấn phím

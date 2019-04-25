@@ -12,7 +12,7 @@ void SpriteFactory::LoadResources()
 	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(SITTING, 2, 53, 21, 76));
 	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(JUMPING, 139, 50, 163, 78));
 	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(JUMPING, 165, 50, 189, 78));
-	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(JUMPING, 190, 50,	214, 78));
+	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(JUMPING, 190, 50, 214, 78));
 	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(JUMPING, 216, 50, 240, 78));
 	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(ATTACKING_STAND, 40, 5, 62, 38));
 	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(ATTACKING_STAND, 66, 5, 93, 38));
@@ -31,11 +31,40 @@ void SpriteFactory::LoadResources()
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 206, 37, 224, 47));
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 228, 29, 241, 47));
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 244, 35, 262, 47));
+	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(BULLET, 189, 62, 206, 73));
 
 	// ======================== ENEMY SPRITE ================================
-	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN, 209, 47, 235, 90));
-	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN, 240, 47, 264, 90));
-	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN, 273, 47, 303, 90));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN, 211, 47, 240, 90));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN, 240, 47, 269, 90));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN, 278, 47, 307, 90));
+
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(BAZOKAMAN, 383, 61, 414, 90));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(BAZOKAMAN, 415, 61, 446, 90));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(BAZOKAMAN, 446, 59, 453, 78));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(BAZOKAMAN, 460, 61, 471, 71));
+
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(GUNMAN, 51, 55, 77, 90));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(GUNMAN, 77, 55, 103, 90));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(GUNMAN, 129, 55, 159, 90));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(GUNMAN, 159, 55, 189, 90));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(GUNMAN, 189, 62, 206, 73));
+
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 409, 0, 435, 49));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 445, 0, 471, 49));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 487, 0, 515, 49));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 517, 0, 531, 23));
+
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(PANTHER, 309, 74, 342, 90));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(PANTHER, 342, 74, 377, 90));
+
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(EAGLE, 471, 54, 497, 92));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(EAGLE, 500, 54, 526, 92));
+
+	// =========================== HOLDER SPRITE ========================================
+
+	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(BUTTERFLY, 63, 42, 84, 61));
+	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(BUTTERFLY, 84, 41, 105, 60));
+
 }
 
 // Thêm một Sprite vào danh sách các Sprite, quy định theo Tag của Sprite

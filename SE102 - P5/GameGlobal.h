@@ -44,10 +44,29 @@
 #define ITEM_SHURIKEN_SPEED 0.15f
 #define ITEM_SWINGSWORD_WIDTH 18
 #define ITEM_SWINGSWORD_HEIGHT 18
+#define ITEM_BULLET_WIDTH 18
+#define ITEM_BULLET_HEIGHT 12
+#define ITEM_DAGGER_WIDTH 11
+#define ITEM_DAGGER_HEIGHT 23
 
 // ===== CÁC THÔNG SỐ CHO ENEMIES ====
 #define ENEMY_SWORDMAN_WIDTH 30
 #define ENEMY_SWORDMAN_HEIGHT 48
+#define ENEMY_GUNMAN_HEIGHT 30
+#define ENEMY_GUNMAN_WIDTH 32
+#define ENEMY_BAZOKAMAN_WIDTH 32
+#define ENEMY_BAZOKAMAN_HEIGHT 32
+#define ENEMY_CLOAKMAN_WIDTH 28
+#define ENEMY_CLOAKMAN_HEIGHT 48
+#define ENEMY_PANTHER_WIDTH 38
+#define ENEMY_PANTHER_HEIGHT 22
+#define ENEMY_EAGLE_WIDTH 26
+#define ENEMY_EAGLE_HEIGHT 38
+
+// ===== CÁC THÔNG SỐ CHO HOLDERS ====
+#define HODLER_BUTTERFLY_WIDTH 20
+#define HODLER_BUTTERFLY_HEIGHT 16
+
 
 extern HINSTANCE hInstance;										// hInstance của windows hiện tại
 extern HWND hWnd;												// hWnd hiện tại
@@ -66,6 +85,7 @@ extern enum Tag
 	GROUND,
 	MAP1,
 	ENEMY,
+	HOLDER,
 };
 
 extern enum Type
@@ -73,7 +93,15 @@ extern enum Type
 	SWORD,
 	SHURIKEN,
 	SWINGSWORD,
-	SWORDMAN
+	SWORDMAN,
+	BAZOKAMAN,
+	GUNMAN,
+	PANTHER,
+	CLOAKMAN,
+	EAGLE,
+	BULLET,
+	BUTTERFLY,
+	DAGGER,
 };
 
 extern enum State
@@ -90,6 +118,7 @@ extern enum State
 	THROWING,
 	CLINGING,
 	CLIMBING,
+	FLYING,
 	DEAD,
 	INJURED
 };

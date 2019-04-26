@@ -9,7 +9,7 @@
 
 #define WINDOW_CLASS_NAME "Ninja Gaiden"		// Class Windows
 #define MAIN_WINDOW_TITLE "Ninja Gaiden"		// Tên cửa sổ
-#define SCREEN_WIDTH 320						// Chiều rộng cửa sổ
+#define SCREEN_WIDTH 313						// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176						// Chiều dài cửa sổ
 #define MAX_FRAME_RATE 80						// FPS
 #define BACK_COLOR D3DCOLOR_XRGB(0, 0, 0)		// Màu nền BackBuffer
@@ -44,6 +44,10 @@
 #define ITEM_SHURIKEN_SPEED 0.15f
 #define ITEM_SWINGSWORD_WIDTH 18
 #define ITEM_SWINGSWORD_HEIGHT 18
+#define ITEM_BULLET_WIDTH 18
+#define ITEM_BULLET_HEIGHT 12
+#define ITEM_DAGGER_WIDTH 11
+#define ITEM_DAGGER_HEIGHT 23
 
 // ===== CÁC THÔNG SỐ CHO ENEMIES ====
 #define ENEMY_SWORDMAN_WIDTH 30
@@ -58,6 +62,11 @@
 #define ENEMY_PANTHER_HEIGHT 22
 #define ENEMY_EAGLE_WIDTH 26
 #define ENEMY_EAGLE_HEIGHT 38
+
+// ===== CÁC THÔNG SỐ CHO HOLDERS ====
+#define HODLER_BUTTERFLY_WIDTH 20
+#define HODLER_BUTTERFLY_HEIGHT 16
+
 
 extern HINSTANCE hInstance;										// hInstance của windows hiện tại
 extern HWND hWnd;												// hWnd hiện tại
@@ -76,6 +85,7 @@ extern enum Tag
 	GROUND,
 	MAP1,
 	ENEMY,
+	HOLDER,
 };
 
 extern enum Type
@@ -90,6 +100,8 @@ extern enum Type
 	CLOAKMAN,
 	EAGLE,
 	BULLET,
+	BUTTERFLY,
+	DAGGER,
 };
 
 extern enum State
@@ -109,19 +121,4 @@ extern enum State
 	FLYING,
 	DEAD,
 	INJURED
-};
-
-struct Rect
-{
-	float x, y;
-	int width, height;
-
-	Rect() {}
-	Rect(float x, float y, float w, float h)
-	{
-		this->x = x;
-		this->y = y;
-		this->width = w;
-		this->height = h;
-	}
 };

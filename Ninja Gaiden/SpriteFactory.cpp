@@ -31,8 +31,7 @@ void SpriteFactory::LoadResources()
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 206, 37, 224, 47));
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 228, 29, 241, 47));
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 244, 35, 262, 47));
-
-	//SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(BULLET, 189, 62, 206, 73));
+	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(BULLET, 189, 62, 206, 73));
 
 	// ======================== ENEMY SPRITE ================================
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN, 211, 47, 240, 90));
@@ -60,6 +59,12 @@ void SpriteFactory::LoadResources()
 
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(EAGLE, 471, 54, 497, 92));
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(EAGLE, 500, 54, 526, 92));
+
+	// =========================== HOLDER SPRITE ========================================
+
+	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(BUTTERFLY, 63, 42, 84, 61));
+	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(BUTTERFLY, 84, 41, 105, 60));
+
 }
 
 // Thêm một Sprite vào danh sách các Sprite, quy định theo Tag của Sprite

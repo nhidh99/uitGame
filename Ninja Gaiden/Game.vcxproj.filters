@@ -103,17 +103,17 @@
     <ClCompile Include="EnemyPanther.cpp">
       <Filter>Game Objects\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Grid.cpp">
-      <Filter>Game Components</Filter>
+    <ClCompile Include="HolderButterfly.cpp">
+      <Filter>Game Objects\Holders</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Game Objects\Object</Filter>
+    <ClCompile Include="HolderSprite.cpp">
+      <Filter>Game Objects\Holders</Filter>
     </ClCompile>
-    <ClCompile Include="Cell.cpp">
-      <Filter>Game Components</Filter>
+    <ClCompile Include="ObjectItemBullet.cpp">
+      <Filter>Game Objects\Items</Filter>
     </ClCompile>
-    <ClCompile Include="Loader.cpp">
-      <Filter>Game Components</Filter>
+    <ClCompile Include="ObjectItemDagger.cpp">
+      <Filter>Game Objects\Items</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -216,6 +216,9 @@
     <ClInclude Include="SceneManager.h">
       <Filter>Game Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Game Objects\Object</Filter>
+    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Game Components</Filter>
     </ClInclude>
@@ -237,17 +240,20 @@
     <ClInclude Include="EnemyPanther.h">
       <Filter>Game Objects\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Grid.h">
-      <Filter>Game Components</Filter>
+    <ClInclude Include="Holder.h">
+      <Filter>Game Objects\Holders</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Game Objects\Object</Filter>
+    <ClInclude Include="HolderButterfly.h">
+      <Filter>Game Objects\Holders</Filter>
     </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Game Components</Filter>
+    <ClInclude Include="HolderSprite.h">
+      <Filter>Game Objects\Holders</Filter>
     </ClInclude>
-    <ClInclude Include="Loader.h">
-      <Filter>Game Components</Filter>
+    <ClInclude Include="ObjectItemBullet.h">
+      <Filter>Game Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectItemDagger.h">
+      <Filter>Game Objects\Items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -271,6 +277,9 @@
     </Filter>
     <Filter Include="Game Objects\Object">
       <UniqueIdentifier>{d6e68f4f-36d4-48a2-956b-4e9a33791b8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Holders">
+      <UniqueIdentifier>{5ea9c494-dfa2-48be-bc3b-260cd6efaf0d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

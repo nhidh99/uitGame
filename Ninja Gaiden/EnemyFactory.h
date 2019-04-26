@@ -5,14 +5,14 @@
 #include "EnemyCloakMan.h"
 #include "EnemyEagle.h"
 #include "EnemyPanther.h"
-
 class EnemyFactory {
 public:
+	Enemy* enemy;
+
 	EnemyFactory() {};
 	~EnemyFactory() {};
 
-	Enemy* CreateEnemy(int type) 
-	{
+	Enemy* CreateEnemy(int type) {
 		switch (type) 
 		{
 		case 1:

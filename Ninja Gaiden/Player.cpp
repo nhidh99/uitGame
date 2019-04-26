@@ -1,21 +1,21 @@
 ﻿#include "Player.h"
 
-Player* Player::instance = NULL;
+Player* Player::_instance = NULL;
 
 Player::Player()
 {
 	// Tải các Animation cho Player
-	animations[STANDING] = new Animation(PLAYER, 0);
-	animations[RUNNING] = new Animation(PLAYER, 1, 3, DEFAULT_TPS >> 1);
-	animations[SITTING] = new Animation(PLAYER, 4, 4);
-	animations[JUMPING] = new Animation(PLAYER, 5, 8, DEFAULT_TPS >> 2);
-	animations[FALLING] = new Animation(PLAYER, 5, 8, DEFAULT_TPS >> 2);
-	animations[ATTACKING_STAND] = new Animation(PLAYER, 9, 11, DEFAULT_TPS >> 1);
-	animations[ATTACKING_SIT] = new Animation(PLAYER, 12, 14, DEFAULT_TPS >> 1);
-	animations[CLINGING] = new Animation(PLAYER, 15);
-	animations[CLIMBING] = new Animation(PLAYER, 15, 16);
-	animations[DEAD] = new Animation(PLAYER, 5);
-	animations[INJURED] = new Animation(PLAYER, 5);
+	_animations[STANDING] = new Animation(PLAYER, 0);
+	_animations[RUNNING] = new Animation(PLAYER, 1, 3, DEFAULT_TPS >> 1);
+	_animations[SITTING] = new Animation(PLAYER, 4, 4);
+	_animations[JUMPING] = new Animation(PLAYER, 5, 8, DEFAULT_TPS >> 2);
+	_animations[FALLING] = new Animation(PLAYER, 5, 8, DEFAULT_TPS >> 2);
+	_animations[ATTACKING_STAND] = new Animation(PLAYER, 9, 11, DEFAULT_TPS >> 1);
+	_animations[ATTACKING_SIT] = new Animation(PLAYER, 12, 14, DEFAULT_TPS >> 1);
+	_animations[CLINGING] = new Animation(PLAYER, 15);
+	_animations[CLIMBING] = new Animation(PLAYER, 15, 16);
+	_animations[DEAD] = new Animation(PLAYER, 5);
+	_animations[INJURED] = new Animation(PLAYER, 5);
 
 	// Allow một số state cho trạng thái khởi đầu (Standing)
 	allow[JUMPING] = true;
@@ -38,18 +38,18 @@ Player::~Player()
 	if (sword) delete sword;
 	if (item) delete item;
 
-	for (auto it = animations.begin(); it != animations.end(); ++it)
+	for (auto it = _animations.begin(); it != _animations.end(); ++it)
 	{
 		if (it->second) delete it->second;
-		animations.erase(it);
+		_animations.erase(it);
 	}
 }
 
 Player * Player::GetInstance()
 {
-	if (instance == NULL)
-		instance = new Player();
-	return instance;
+	if (_instance == NULL)
+		_instance = new Player();
+	return _instance;
 }
 
 void Player::Update(float dt, std::vector<Object*> ColliableObjects)
@@ -119,6 +119,13 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 		/*}*/
 }
 
+// Kiểm tra Player còn đang đứng trên vùng đất hiện tại không
+bool Player::IsOnGround(BoundingBox ground)
+{
+	return !(this->posX - (this->width >> 1) > ground.x + ground.width
+		|| this->posX + (this->width >> 1) < ground.x || this->posY - (this->height >> 1) > ground.y);
+}
+
 // Duyệt tìm lại vùng đất va chạm của player khi ra khỏi vùng hiện tại
 // Dùng cách nâng sàn Collision duyệt trước
 bool Player::DetectGround(std::vector<BoundingBox> grounds)
@@ -169,6 +176,7 @@ bool Player::DectectWall(std::vector<BoundingBox> walls)
 // Xử lí va chạm với mặt đất theo các vùng đất hiển thị
 void Player::CheckOnGround(std::vector<BoundingBox> grounds)
 {
+	// Tìm được vùng đất va chạm
 	if (DetectGround(grounds))
 	{
 		if (this->vy > 0 && this->posY > curGroundBound.y - this->height)
@@ -191,15 +199,21 @@ void Player::CheckOnGround(std::vector<BoundingBox> grounds)
 // Kiểm tra va chạm tường
 void Player::CheckOnWall(std::vector<BoundingBox> walls)
 {
+	// Khi đang chạy và tìm được tường -> set lại khi quá giới hạn
 	if (this->vx && this->DectectWall(walls))
 	{
-		if ((this->posX > curWallBound.x - (this->width >> 1) && this->vx > 0)
-			|| (this->posX < curWallBound.x + curWallBound.width + (this->width >> 1) && this->vx < 0))
+		if (this->posX > curWallBound.x - (this->width >> 1) && this->vx > 0)
 		{
-			this->allow[MOVING] = false;
+			this->vx = 0;
+			this->posX = curWallBound.x - (this->width >> 1);
+		}
+
+		else if (this->posX < curWallBound.x + curWallBound.width + (this->width >> 1) && this->vx < 0)
+		{
+			this->vx = 0;
+			this->posX = curWallBound.x + curWallBound.width + (this->width >> 1);
 		}
 	}
-	else this->allow[MOVING] = true;
 }
 
 // Render nhân vật (bản chất là Render Animation và vũ khí)
@@ -227,14 +241,14 @@ void Player::OnKeyDown(int keyCode)
 
 
 		// Phím S: tấn công với item
-	/*case DIK_S:
+	case DIK_S:
 		if (allow[ATTACKING] && !item->isOnScreen)
 		{
 			allow[ATTACKING] = false;
 			ChangeState(new PlayerAttackingState());
 			AttackWith(item->type);
 		}
-		break;*/
+		break;
 
 
 		// Phím Space: nhảy
@@ -267,7 +281,7 @@ void Player::ChangeState(PlayerState * newState)
 	delete state;
 	state = newState;
 	stateName = newState->StateName;
-	curAnimation = animations[stateName];
+	curAnimation = _animations[stateName];
 }
 
 // Tấn công với item

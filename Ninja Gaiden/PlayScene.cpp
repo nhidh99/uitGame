@@ -15,35 +15,13 @@ PlayScene::PlayScene()
 	loader = new Loader();
 	grid = new Grid(map->rect);
 	grid->InitBoundsCell(loader->LoadGroundsBound(), loader->LoadWallsBound());
+	grid->InitHoldersCell(loader->LoadHolders());
 	grid->InitEnemiesCell(loader->LoadEnemies());
 }
 
 PlayScene::~PlayScene()
 {
 }
-
-//void PlayScene::BoundsUpdate()
-//{
-//	// Đưa các vùng đất đang hiển thị trên màn hỉnh vào mảng
-//	visibleGrounds.clear();
-//	for (auto g : grounds)
-//	{
-//		if (!(camera->GetBound().right < g.x || camera->GetBound().left > g.x + g.width))
-//		{
-//			visibleGrounds.push_back(g);
-//		}
-//	}
-//
-//	// ---
-//	visibleWalls.clear();
-//	for (auto w : walls)
-//	{
-//		if (!(camera->GetBound().right < w.x || camera->GetBound().left > w.x + w.width))
-//		{
-//			visibleWalls.push_back(w);
-//		}
-//	}
-//}
 
 // Update các thông số các đối tượng trong Scene
 void PlayScene::Update(float dt)
@@ -63,7 +41,11 @@ void PlayScene::Update(float dt)
 			Enemy* e = (Enemy*)o;
 			e->Update(dt, grid->cells);
 		}
-		else o->Update(dt);
+		else if (o->tag == HOLDER)
+		{
+			Holder* h = (Holder*)o;
+			h->Update(dt);
+		}
 	}
 
 	player->CheckOnGround(grid->GetVisibleGrounds(cameraRect));

@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include "GameGlobal.h"
 #include "TextureFactory.h"
 #include "SpriteFactory.h"
 #include "MapFactory.h"

@@ -11,7 +11,7 @@
 #define MAIN_WINDOW_TITLE "Ninja Gaiden"		// Tên cửa sổ
 #define SCREEN_WIDTH 313						// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176						// Chiều dài cửa sổ
-#define MAX_FRAME_RATE 80						// FPS
+#define MAX_FRAME_RATE 90						// FPS
 #define BACK_COLOR D3DCOLOR_XRGB(0, 0, 0)		// Màu nền BackBuffer
 #define DEFAULT_TPS 150							// Thời gian tồn tại của mỗi Frame (cho Animation)
 #define GRAVITY_SPEED 0.012f					// Tốc độ trọng lực
@@ -121,4 +121,24 @@ extern enum State
 	FLYING,
 	DEAD,
 	INJURED
+};
+
+struct Rect
+{
+	float x, y;
+	float width, height;
+
+	Rect() {}
+	Rect(float x, float y, float width, float height)
+	{
+		this->x = x;
+		this->y = y;
+		this->width = width;
+		this->height = height;
+	}
+
+	bool IsContain(Rect r)
+	{
+		return !(x + width < r.x || x > r.x + r.width || y + height < r.y || y > r.y + r.height);
+	}
 };

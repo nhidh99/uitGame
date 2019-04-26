@@ -1,6 +1,5 @@
 #pragma once
 #include "Object.h"
-#include "Sprite.h"
 
 class Holder : public Object
 {
@@ -8,7 +7,7 @@ protected:
 	Animation* curAnimation;
 	Sprite* item;
 public:
-	Holder() {};
+	Holder() { tag = HOLDER; }
 	~Holder() {}; 
 	Type type;
 

@@ -5,7 +5,9 @@
 #include "EnemyCloakMan.h"
 #include "EnemyEagle.h"
 #include "EnemyPanther.h"
-class EnemyFactory {
+
+class EnemyFactory 
+{
 public:
 	Enemy* enemy;
 

@@ -5,6 +5,32 @@ Loader::Loader()
 	enemyFactory = new EnemyFactory();
 }
 
+std::vector<Holder*> Loader::LoadHolders()
+{
+	//Lấy filePath
+	std::vector<Holder*> holders;
+	std::string filePath = "Resources\\Holder.txt";
+	std::ifstream ifile;
+	ifile.open(filePath);
+
+	while (!ifile.eof()) {
+		//Đọc các thông số của Enemy
+		int id, posX, posY;
+		ifile >> id >> posX >> posY;
+
+		if (id == 1)
+		{
+			Holder* holder = new HolderButterfly();
+			holder->posX = posX;
+			holder->posY = posY;
+			holders.push_back(holder);
+		}
+
+	}
+	ifile.close();
+	return holders;
+}
+
 std::vector<Enemy*> Loader::LoadEnemies()
 {
 	//Lấy filePath
@@ -21,7 +47,7 @@ std::vector<Enemy*> Loader::LoadEnemies()
 		Enemy* enemy = enemyFactory->CreateEnemy(id);
 		enemy->spawnX = enemy->posX = posX;
 		enemy->spawnY = enemy->posY = posY;
-		enemy->vx = 0.01;
+		enemy->vx = 0.01f;
 		enemy->isReverse = true;
 		enemies.push_back(enemy);
 	}

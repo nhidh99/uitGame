@@ -1,7 +1,6 @@
 #pragma once
 #include "ObjectItem.h"
 
-
 class ObjectItemBullet : public ObjectItem
 {
 private:

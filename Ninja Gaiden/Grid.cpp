@@ -90,6 +90,23 @@ std::vector<BoundingBox> Grid::GetVisibleGrounds(Rect CameraRect)
 	return std::vector<BoundingBox>(setGrounds.begin(), setGrounds.end());
 }
 
+void Grid::InitHoldersCell(std::vector<Holder*> holders)
+{
+	for (auto h : holders)
+	{
+		for (auto row : cells)
+		{
+			for (auto cell : row)
+			{
+				if (cell->IsContain(h->GetRect()))
+				{
+					cell->objects.push_back(h);
+				}
+			}
+		}
+	}
+}
+
 void Grid::InitEnemiesCell(std::vector<Enemy*> enemies)
 {
 	for (auto e : enemies)

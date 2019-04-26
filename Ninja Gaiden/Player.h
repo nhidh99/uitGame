@@ -1,11 +1,9 @@
 ﻿#pragma once
 #include "Object.h"
-#include "SceneManager.h"
 #include "PlayerSprite.h"
 #include "PlayerState.h"
 #include "PlayerStandingState.h"
 #include "ObjectItemSword.h"
-#include "ObjectItemSwingSword.h"
 #include <map>
 
 class Player : public Object

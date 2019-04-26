@@ -1,7 +1,9 @@
 #pragma once
 #include "GameGlobal.h"
 #include "Collision.h"
+#include "Holder.h"
 #include <set>
+#include <vector>
 #include "Cell.h"
 #include "Enemy.h"
 
@@ -21,6 +23,7 @@ public:
 	std::vector<BoundingBox> GetVisibleWalls(Rect CameraRect);
 	std::vector<BoundingBox> GetVisibleGrounds(Rect CameraRect);
 
+	void InitHoldersCell(std::vector<Holder*> holders);
 	void InitEnemiesCell(std::vector<Enemy*> enemies);
 	void InitBoundsCell(std::vector<BoundingBox> grounds, std::vector<BoundingBox> walls);
 };

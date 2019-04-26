@@ -1,6 +1,6 @@
 #pragma once
 #pragma once
-#include"Sprite.h"
+#include "Sprite.h"
 
 class HolderSprite : public Sprite
 {

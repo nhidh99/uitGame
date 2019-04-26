@@ -1,11 +1,8 @@
 #pragma once
 #include "GameGlobal.h"
-#include <fstream>
-#include "Sprite.h"
+#include "SpriteFactory.h"
 #include "Camera.h"
-#include "Collision.h"
-#include "Object.h"
-#include "ObjectItemShuriken.h"
+#include <fstream>
 
 class Map
 {

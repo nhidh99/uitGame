@@ -1,9 +1,6 @@
 ﻿#pragma once
 #include "Scene.h"
-#include "GameGlobal.h"
 #include "Player.h"
-#include "ObjectItemSword.h"
-#include "Map.h"
 #include <map>
 #include "Grid.h"
 #include "Loader.h"

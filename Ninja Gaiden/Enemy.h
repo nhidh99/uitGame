@@ -1,8 +1,8 @@
 #pragma once
 #include "Object.h"
 #include "EnemySprite.h"
-#include <algorithm>
 #include "Cell.h"
+#include <algorithm>
 
 class Enemy : public Object
 {

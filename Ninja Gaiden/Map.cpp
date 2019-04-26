@@ -1,5 +1,4 @@
 ﻿#include "Map.h"
-#include "SpriteFactory.h"
 
 auto addCols = (SCREEN_WIDTH >> 4) + 1;
 
@@ -8,8 +7,8 @@ Map::Map(int level)
 	std::ifstream ifile;
 	char fileName[30];
 	sprintf_s(fileName, "Resources\\matrix%d.txt", level + 1);
-	ifile.open(fileName);
 	mapLevel = MAP1;
+	ifile.open(fileName);
 
 	// Lấy thông tin hàng, cột và chiều dài, rộng của Map tương ứng
 	ifile >> numSetTiles;

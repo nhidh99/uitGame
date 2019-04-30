@@ -13,6 +13,8 @@ PlayScene::PlayScene()
 	camera->posY = map->height >> 1;
 
 	loader = new Loader();
+	enemyFactory = EnemyFactory::GetInstance();
+
 	grid = new Grid(map->rect);
 	grid->InitBoundsCell(loader->LoadGroundsBound(), loader->LoadWallsBound());
 	grid->InitHoldersCell(loader->LoadHolders());
@@ -38,19 +40,18 @@ void PlayScene::Update(float dt)
 	{
 		if (o->tag == ENEMY)
 		{
-			Enemy* e = (Enemy*)o;
-			e->Update(dt, grid->cells);
+			enemyFactory->ChangeEnemy(o)->Update(dt, grid->cells);
 		}
 		else if (o->tag == HOLDER)
 		{
-			Holder* h = (Holder*)o;
+			auto h = (Holder*)o;
 			h->Update(dt);
 		}
 	}
 
+	player->Update(dt, std::vector<Object*>());
 	player->CheckOnGround(grid->GetVisibleGrounds(cameraRect));
 	player->CheckOnWall(grid->GetVisibleWalls(cameraRect));
-	player->Update(dt, std::vector<Object*>());
 }
 
 // Tải Scene lên màn hình bằng cách vẽ object có trong trong Scene

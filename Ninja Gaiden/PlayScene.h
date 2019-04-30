@@ -10,6 +10,7 @@ class PlayScene : public Scene
 private:
 	Map* map;
 	Grid* grid;
+	EnemyFactory* enemyFactory;
 	Camera* camera;
 	Loader* loader;
 	std::vector<Object*> visibleObjects;

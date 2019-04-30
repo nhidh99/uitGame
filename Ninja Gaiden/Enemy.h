@@ -28,7 +28,7 @@ public:
 		curAnimation->Render(posX, posY, translateX, translateY);
 	}
 
-	void Update(float dt, std::vector<std::vector<Cell*>>& cells)
+	virtual void Update(float dt, std::vector<std::vector<Cell*>>& cells)
 	{
 		curAnimation->Update(dt);
 		dx = vx * dt;

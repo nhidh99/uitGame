@@ -7,9 +7,6 @@
 
 class Loader
 {
-private:
-	EnemyFactory* enemyFactory;
-
 public:
 	Loader();
 	~Loader();
@@ -17,5 +14,4 @@ public:
 	std::vector<Enemy*> LoadEnemies();
 	std::vector<BoundingBox> LoadWallsBound();
 	std::vector<BoundingBox> LoadGroundsBound();
-	void LoadResources();
 };

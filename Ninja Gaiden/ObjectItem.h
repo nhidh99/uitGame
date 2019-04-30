@@ -6,8 +6,8 @@ class ObjectItem : public Object
 {
 public:
 	ObjectItem() {}
-	bool isOnScreen;
 	Type type;
+	bool isOnScreen;
 
 	virtual void Update(float dt) {};			// Update thông số của Object sau khoảng thời gian delta-time
 	virtual void Update(float dt, int leftScreen, int rightScreen) {};

@@ -137,6 +137,7 @@
     <ClCompile Include="EnemyBazokaMan.cpp" />
     <ClCompile Include="EnemyCloakMan.cpp" />
     <ClCompile Include="EnemyEagle.cpp" />
+    <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="EnemyGunMan.cpp" />
     <ClCompile Include="EnemyPanther.cpp" />
     <ClCompile Include="EnemySprite.cpp" />

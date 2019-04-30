@@ -119,13 +119,6 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 		/*}*/
 }
 
-// Kiểm tra Player còn đang đứng trên vùng đất hiện tại không
-bool Player::IsOnGround(BoundingBox ground)
-{
-	return !(this->posX - (this->width >> 1) > ground.x + ground.width
-		|| this->posX + (this->width >> 1) < ground.x || this->posY - (this->height >> 1) > ground.y);
-}
-
 // Duyệt tìm lại vùng đất va chạm của player khi ra khỏi vùng hiện tại
 // Dùng cách nâng sàn Collision duyệt trước
 bool Player::DetectGround(std::vector<BoundingBox> grounds)

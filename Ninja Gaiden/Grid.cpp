@@ -20,22 +20,42 @@ void Grid::Update(Rect CameraRect)
 {
 	visibleCells.clear();
 	int left = CameraRect.x / Cell::width;
-	int right = left + (int)(SCREEN_WIDTH / Cell::width) + 1;
+	int right = floor(CameraRect.x / Cell::width) + 2;
 	//int top = CameraRect.y / Cell::height;
 	//int bottom = floor(CameraRect.y + CameraRect.height) / Cell::height);
 
 	for (int r = 0; r < 2; ++r)
 	{
-		for (int c = left; c < right; ++c)
+		for (int c = left; c <= right; ++c)
 		{
 			visibleCells.push_back(cells[r][c]);
+		}
+	}
+
+	auto it = respawnEnemies.begin();
+	while (it != respawnEnemies.end())
+	{
+		auto e = *it;
+		auto isRespawnOnScreen = Rect(e->spawnX - (e->width >> 1), e->spawnY - (e->height >> 1), e->width, e->height).IsContain(CameraRect);
+
+		if (isRespawnOnScreen)
+		{
+			e->posX = -100;
+			e->posY = -100;
+			++it;
+		}
+		else
+		{
+			e->posX = e->spawnX;
+			e->posY = e->spawnY;
+			it = respawnEnemies.erase(it);
 		}
 	}
 }
 
 std::vector<Object*> Grid::GetVisibleObjects(Rect CameraRect)
 {
-	std::set<Object*> setObjects;
+	std::unordered_set<Object*> setObjs;
 
 	for (auto c : visibleCells)
 	{
@@ -43,17 +63,26 @@ std::vector<Object*> Grid::GetVisibleObjects(Rect CameraRect)
 		{
 			if (o->IsCollide(CameraRect))
 			{
-				setObjects.insert(o);
+				setObjs.insert(o);
 			}
 			else if (o->tag == ENEMY)
 			{
-				Enemy* e = (Enemy*)o;
-				e->posX = e->spawnX;
-				e->posY = e->spawnY;
+				auto e = (Enemy*)o;
+				auto isRespawnOnScreen = Rect(e->spawnX - (e->width >> 1), e->spawnY - (e->height >> 1), e->width, e->height).IsContain(CameraRect);
+
+				if (isRespawnOnScreen)
+				{
+					respawnEnemies.push_back(e);
+				}
+				else
+				{
+					e->posX = e->spawnX;
+					e->posY = e->spawnY;
+				}
 			}
 		}
 	}
-	return std::vector<Object*>(setObjects.begin(), setObjects.end());
+	return std::vector<Object*>(setObjs.begin(),setObjs.end());
 }
 
 std::vector<BoundingBox> Grid::GetVisibleWalls(Rect CameraRect)

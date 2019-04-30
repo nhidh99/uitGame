@@ -2,7 +2,6 @@
 
 Loader::Loader()
 {
-	enemyFactory = new EnemyFactory();
 }
 
 std::vector<Holder*> Loader::LoadHolders()
@@ -37,6 +36,7 @@ std::vector<Enemy*> Loader::LoadEnemies()
 	std::vector<Enemy*> enemies;
 	std::string filePath = "Resources\\Enemy.txt";
 	std::ifstream ifile;
+	auto enemyFactory = EnemyFactory::GetInstance();
 	ifile.open(filePath);
 
 	while (!ifile.eof()) {

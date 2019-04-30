@@ -26,10 +26,9 @@ void EnemyCloakMan::Render(float translateX, float translateY)
 	}
 }
 
-void EnemyCloakMan::Update(float dt)
+void EnemyCloakMan::Update(float dt, std::vector<std::vector<Cell*>>& cells)
 {
-	curAnimation->Update(dt);
-	Object::Update(dt);
+	Enemy::Update(dt, cells);
 
 	if (curAnimation->isLastFrame == true && dagger->isOnScreen == false)
 	{

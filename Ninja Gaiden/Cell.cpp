@@ -9,8 +9,8 @@ Cell::Cell(int xID, int yID)
 	this->yID = yID;
 	rect.x = xID * (SCREEN_WIDTH >> 1);
 	rect.y = yID * (SCREEN_HEIGHT >> 1);
-	width = rect.width = SCREEN_WIDTH >> 1;
-	height = rect.height = SCREEN_HEIGHT >> 1;
+	rect.width = SCREEN_WIDTH >> 1;
+	rect.height = SCREEN_HEIGHT >> 1;
 }
 
 bool Cell::IsContain(Rect r)

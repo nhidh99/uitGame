@@ -8,6 +8,8 @@ class Object
 {
 public:
 	Object() {}
+	~Object() {}
+
 	Tag tag;									// Tag định loại Object
 	float posX, posY;							// Vị trí (đồng thời là tâm của Object đó)
 	float vx, vy;								// Vận tốc
@@ -17,7 +19,7 @@ public:
 
 	Rect GetRect();
 	BoundingBox GetBoundingBox();
-	
+
 	void Update(float dt);
 	bool IsCollide(Rect r);
 	virtual void Render() {}

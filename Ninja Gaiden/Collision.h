@@ -8,6 +8,8 @@ struct BoundingBox
 	float vx, vy;
 
 	BoundingBox() {}
+	~BoundingBox() {}
+
 	BoundingBox(float x, float y, float w, float h, float vx = 0, float vy = 0)
 	{
 		this->x = x;

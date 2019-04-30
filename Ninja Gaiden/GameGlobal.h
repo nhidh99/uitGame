@@ -3,7 +3,7 @@
 #include <d3d9.h>
 #include <dinput.h>
 #include <WinUser.h>
-#include <map>
+#include <unordered_map>
 
 // Các thông số và biến tổng dùng cho toàn bộ Game
 
@@ -74,7 +74,7 @@ extern LPD3DXSPRITE spriteHandler;								// SpriteHanlder hiện tại
 extern LPDIRECT3DDEVICE9 d3ddev;								// Device directX hiện tại (nhằm đại diện card màn hình)
 extern LPDIRECT3DSURFACE9 backBuffer;							// BackBuffer
 extern bool isGameRunning;										// Kiểm tra trạng thái game đang chạy
-extern std::map<int, bool> keyCode;
+extern std::unordered_map<int, bool> keyCode;
 
 // === ENUM dùng định dạng loại Object và State ====
 
@@ -90,6 +90,7 @@ extern enum Tag
 
 extern enum Type
 {
+	NONE,
 	SWORD,
 	SHURIKEN,
 	SWINGSWORD,

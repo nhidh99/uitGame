@@ -3,6 +3,7 @@
 #include "Collision.h"
 #include "Holder.h"
 #include <set>
+#include <unordered_set>
 #include <vector>
 #include "Cell.h"
 #include "Enemy.h"
@@ -17,6 +18,7 @@ public:
 	Grid(Rect MapRect);
 	std::vector<std::vector<Cell*>> cells;
 	std::vector<Cell*> visibleCells;
+	std::vector<Enemy*> respawnEnemies;
 
 	void Update(Rect CameraRect);
 	std::vector<Object*> GetVisibleObjects(Rect CameraRect);

@@ -6,11 +6,9 @@ HolderButterfly::HolderButterfly()
 	type = BUTTERFLY;
 	width = HODLER_BUTTERFLY_WIDTH;
 	height = HODLER_BUTTERFLY_HEIGHT;
-	vx = 0;
-	vy = 0;
+	vx = vy = 0;
 }
 
 HolderButterfly::~HolderButterfly()
 {
 }
-

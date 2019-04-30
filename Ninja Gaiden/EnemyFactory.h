@@ -6,16 +6,20 @@
 #include "EnemyEagle.h"
 #include "EnemyPanther.h"
 
-class EnemyFactory 
+class EnemyFactory
 {
+private:
+	static EnemyFactory* instance;
+
 public:
 	Enemy* enemy;
 
 	EnemyFactory() {};
 	~EnemyFactory() {};
 
-	Enemy* CreateEnemy(int type) {
-		switch (type) 
+	Enemy* CreateEnemy(int type)
+	{
+		switch (type)
 		{
 		case 1:
 			return new EnemySwordMan();
@@ -30,5 +34,51 @@ public:
 		default:
 			return NULL;
 		}
+	}
+
+	Enemy* ChangeEnemy(Object* o)
+	{
+		Enemy* e = (Enemy*)o;
+
+		switch (e->type)
+		{
+		case SWORDMAN:
+		{
+			e = (EnemySwordMan*)e;
+			break;
+		}
+
+		case GUNMAN:
+		{
+			e = (EnemyGunMan*)e;
+			break;
+		}
+
+		case PANTHER:
+		{
+			e = (EnemyPanther*)e;
+			break;
+		}
+
+		case EAGLE:
+		{
+			e = (EnemyEagle*)e;
+			break;
+		}
+
+		case CLOAKMAN:
+		{
+   			e = (EnemyCloakMan*)e;
+			break;
+		}
+		}
+		return e;
+	}
+
+	static EnemyFactory* GetInstance()
+	{
+		if (instance == NULL)
+			instance = new EnemyFactory();
+		return instance;
 	}
 };

@@ -18,9 +18,9 @@ EnemyGunMan::~EnemyGunMan()
 {
 }
 
-void EnemyGunMan::Update(float dt, std::vector<std::vector<Cell*>>& cells)
+void EnemyGunMan::Update(float dt)
 {
-	Enemy::Update(dt, cells);
+	Enemy::Update(dt);
 
 	//Cho phép đạn xuất hiện khi xong animation bắn
 	if (curAnimation->isLastFrame == true && bullet->isOnScreen == false)

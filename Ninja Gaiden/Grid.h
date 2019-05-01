@@ -21,7 +21,8 @@ public:
 	std::vector<Enemy*> respawnEnemies;
 
 	void Update(Rect CameraRect);
-	std::vector<Object*> GetVisibleObjects(Rect CameraRect);
+	void UpdateObjects(Object* obj, float dx, float dy);
+	std::unordered_set<Object*> GetVisibleObjects(Rect CameraRect);
 	std::vector<BoundingBox> GetVisibleWalls(Rect CameraRect);
 	std::vector<BoundingBox> GetVisibleGrounds(Rect CameraRect);
 

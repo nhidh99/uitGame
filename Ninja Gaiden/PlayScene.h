@@ -13,7 +13,7 @@ private:
 	EnemyFactory* enemyFactory;
 	Camera* camera;
 	Loader* loader;
-	std::vector<Object*> visibleObjects;
+	std::unordered_set<Object*> visibleObjects;
 
 public:
 	PlayScene();

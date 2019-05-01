@@ -33,14 +33,14 @@ void PlayScene::Update(float dt)
 
 	auto cameraRect = camera->GetRect();
 	grid->Update(cameraRect);
-
 	visibleObjects = grid->GetVisibleObjects(cameraRect);
 
 	for (auto o : visibleObjects)
 	{
 		if (o->tag == ENEMY)
 		{
-			enemyFactory->ChangeEnemy(o)->Update(dt, grid->cells);
+			grid->UpdateObjects(o, o->dx, o->dy);
+			enemyFactory->ChangeEnemy(o)->Update(dt);
 		}
 		else if (o->tag == HOLDER)
 		{

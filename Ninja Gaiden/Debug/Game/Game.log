@@ -1,0 +1,41 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(396,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+  Grid.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\Ninja Gaiden\GameGlobal.h(106): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\Ninja Gaiden\GameGlobal.h(125): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Ninja Gaiden\Enemy.h(39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Ninja Gaiden\Grid.cpp(5): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Grid.cpp(6): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Grid.cpp(22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Grid.cpp(23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Grid.cpp(52): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Grid.cpp(53): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Grid.cpp(54): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Grid.cpp(55): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Grid.cpp(60): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Grid.cpp(61): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Grid.cpp(62): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Grid.cpp(63): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  PlayScene.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\Ninja Gaiden\GameGlobal.h(106): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\Ninja Gaiden\GameGlobal.h(125): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Ninja Gaiden\Enemy.h(39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Ninja Gaiden\PlayScene.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Game.vcxproj -> C:\Ninja Gaiden\Debug\Game.exe

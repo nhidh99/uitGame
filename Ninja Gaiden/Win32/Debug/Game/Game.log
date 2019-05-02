@@ -1,0 +1,371 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(396,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+  Map.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\MapFactory.h(7): error C2065: 'Map': undeclared identifier
+D:\UIT - Project\uitGD\Ninja Gaiden\MapFactory.h(7): error C2059: syntax error: '>'
+D:\UIT - Project\uitGD\Ninja Gaiden\MapFactory.h(12): error C2143: syntax error: missing ';' before '*'
+D:\UIT - Project\uitGD\Ninja Gaiden\MapFactory.h(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\UIT - Project\uitGD\Ninja Gaiden\MapFactory.h(12): error C2238: unexpected token(s) preceding ';'
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Map.cpp(22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Map.cpp(23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Map.cpp(28): warning C4554: '<<': check operator precedence for possible error; use parentheses to clarify precedence
+D:\UIT - Project\uitGD\Ninja Gaiden\Map.cpp(46): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Map.cpp(60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  MapFactory.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  ObjectItemSwingSword.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  Player.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C3861: 'GetInstance': identifier not found
+  PlayerAttackingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C3861: 'GetInstance': identifier not found
+  PlayerClimbingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerClimbingState.cpp(19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  PlayerClingingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C3861: 'GetInstance': identifier not found
+  PlayerDeadState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C3861: 'GetInstance': identifier not found
+  PlayerFallingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C3861: 'GetInstance': identifier not found
+  PlayerInjuredState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C3861: 'GetInstance': identifier not found
+  PlayerJumpingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C3861: 'GetInstance': identifier not found
+  PlayerRunningState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C3861: 'GetInstance': identifier not found
+  PlayerSittingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C3861: 'GetInstance': identifier not found
+  PlayerStandingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(49): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(55): error C3861: 'GetInstance': identifier not found
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C2653: 'Player': is not a class or namespace name
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(62): error C3861: 'GetInstance': identifier not found
+  PlayScene.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(8): error C2143: syntax error: missing ';' before '*'
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(8): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(8): error C2238: unexpected token(s) preceding ';'
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(13): error C2061: syntax error: identifier 'Scene'
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(14): error C2143: syntax error: missing ';' before '*'
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(14): error C2238: unexpected token(s) preceding ';'
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Enemy.h(38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Enemy.h(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Enemy.h(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Enemy.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Enemy.h(47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Enemy.h(48): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Enemy.h(50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayScene.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Scene.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(8): error C2143: syntax error: missing ';' before '*'
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(8): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(8): error C2238: unexpected token(s) preceding ';'
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(13): error C2061: syntax error: identifier 'Scene'
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(14): error C2143: syntax error: missing ';' before '*'
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\UIT - Project\uitGD\Ninja Gaiden\SceneManager.h(14): error C2238: unexpected token(s) preceding ';'
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\UIT - Project\uitGD\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  TextureFactory.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(105): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(124): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+D:\UIT - Project\uitGD\Ninja Gaiden\GameGlobal.h(137): warning C4091: 'extern ': ignored on left of 'Rect' when no variable is declared
+  Generating Code...

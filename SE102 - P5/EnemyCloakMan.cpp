@@ -5,7 +5,7 @@ EnemyCloakMan::EnemyCloakMan()
 	animations[RUNNING] = new Animation(ENEMY, 12, 13, 150);
 	animations[ATTACKING] = new Animation(ENEMY, 13, 14, 150);
 	curAnimation = animations[RUNNING];
-	dagger = new ObjectItemDagger();
+	dagger = new EnemyDagger();
 	tag = ENEMY;
 	type = CLOAKMAN;
 	height = ENEMY_CLOAKMAN_HEIGHT;	
@@ -36,10 +36,11 @@ void EnemyCloakMan::Update(float dt)
 		dagger->isOnScreen = true;
 		dagger->posX = this->posX - 5;
 		dagger->posY = this->posY - 10;
+		dagger->maxHigh = dagger->posY - 50;
 	}
 
-	if (dagger->isOnScreen)
+ 	if (dagger->isOnScreen)
 	{
-		dagger->Update(dt,this->posY - 50,0,1500);
+		dagger->Update(dt,0,1500);
 	}
 }

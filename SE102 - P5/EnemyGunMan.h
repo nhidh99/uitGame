@@ -1,10 +1,10 @@
 #pragma once
 #include "Enemy.h"
-#include "ObjectItemBullet.h"
+#include "EnemyBullet.h"
 
 class EnemyGunMan : public Enemy {
 public:
-	ObjectItemBullet* bullet;
+	EnemyBullet* bullet;
 	EnemyGunMan();
 	~EnemyGunMan();
 	void Update(float dt);

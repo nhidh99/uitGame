@@ -1,11 +1,11 @@
 #pragma once
 #include "Enemy.h"
-#include "ObjectItemDagger.h"
+#include "EnemyDagger.h"
 
 
 class EnemyCloakMan : public Enemy {
 public:
-	ObjectItemDagger* dagger;
+	EnemyDagger* dagger;
 	EnemyCloakMan();
 	~EnemyCloakMan();
 

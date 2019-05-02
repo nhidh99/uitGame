@@ -145,8 +145,8 @@
     <ClCompile Include="HolderSprite.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapFactory.cpp" />
-    <ClCompile Include="ObjectItemBullet.cpp" />
-    <ClCompile Include="ObjectItemDagger.cpp" />
+    <ClCompile Include="EnemyBullet.cpp" />
+    <ClCompile Include="EnemyDagger.cpp" />
     <ClCompile Include="ObjectItemShuriken.cpp" />
     <ClCompile Include="ObjectItemSword.cpp" />
     <ClCompile Include="main.cpp" />
@@ -190,8 +190,8 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapFactory.h" />
     <ClInclude Include="ObjectItem.h" />
-    <ClInclude Include="ObjectItemBullet.h" />
-    <ClInclude Include="ObjectItemDagger.h" />
+    <ClInclude Include="EnemyBullet.h" />
+    <ClInclude Include="EnemyDagger.h" />
     <ClInclude Include="ObjectItemShuriken.h" />
     <ClInclude Include="ObjectItemSword.h" />
     <ClInclude Include="Object.h" />

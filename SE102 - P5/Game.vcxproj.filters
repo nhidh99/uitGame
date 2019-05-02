@@ -109,11 +109,11 @@
     <ClCompile Include="HolderSprite.cpp">
       <Filter>Game Objects\Holders</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectItemBullet.cpp">
-      <Filter>Game Objects\Items</Filter>
+    <ClCompile Include="EnemyBullet.cpp">
+      <Filter>Game Objects\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectItemDagger.cpp">
-      <Filter>Game Objects\Items</Filter>
+    <ClCompile Include="EnemyDagger.cpp">
+      <Filter>Game Objects\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -249,11 +249,11 @@
     <ClInclude Include="HolderSprite.h">
       <Filter>Game Objects\Holders</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectItemBullet.h">
-      <Filter>Game Objects\Items</Filter>
+    <ClInclude Include="EnemyBullet.h">
+      <Filter>Game Objects\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectItemDagger.h">
-      <Filter>Game Objects\Items</Filter>
+    <ClInclude Include="EnemyDagger.h">
+      <Filter>Game Objects\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

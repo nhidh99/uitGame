@@ -1,1 +1,212 @@
-﻿  Game.vcxproj -> C:\Users\Admin\Desktop\Source code\x64\Debug\Game.exe
+﻿  Animation.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\animation.cpp(29): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\animation.cpp(43): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Game.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\game.cpp(64): warning C4018: '>=': signed/unsigned mismatch
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\game.cpp(67): warning C4244: 'argument': conversion from 'unsigned long' to 'float', possible loss of data
+  GameGlobal.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  ObjectItem.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  ObjectItemShuriken.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  ObjectItemSword.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  main.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\main.cpp(17): warning C4244: 'argument': conversion from 'WPARAM' to 'int', possible loss of data
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\main.cpp(22): warning C4244: 'argument': conversion from 'WPARAM' to 'int', possible loss of data
+  Object.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  ObjectItemSwingSword.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  Player.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\player.cpp(81): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\player.cpp(83): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  PlayerAttackingState.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerClimbingState.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerclimbingstate.cpp(14): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  PlayerClingingState.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerDeadState.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerFallingState.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerInjuredState.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerJumpingState.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerRunningState.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerSittingState.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayerSprite.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  Generating Code...
+  Compiling...
+  PlayerStandingState.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+  PlayScene.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(14): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(2): note: see declaration of 'Player'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(15): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(36): warning C4150: deletion of pointer to incomplete type 'PlayerState'; no destructor called
+  c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\playerhandler.h(3): note: see declaration of 'PlayerState'
+  Scene.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  SceneManager.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  Sprite.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\sprite.cpp(37): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\sprite.cpp(39): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\sprite.cpp(42): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  SpriteFactory.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  TextureFactory.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  ObjectItemSprite.cpp
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(58): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(65): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+c:\users\pham trung truong\documents\github\uitgame\se102 - p4\ninjagaiden\source code\gameglobal.h(83): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  Generating Code...
+  Game.vcxproj -> C:\Users\Pham Trung Truong\Documents\GitHub\uitGame\SE102 - P4\NinjaGaiden\Source code\x64\Debug\Game.exe

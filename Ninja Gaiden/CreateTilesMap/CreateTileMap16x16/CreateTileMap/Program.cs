@@ -18,11 +18,11 @@ namespace CreateTileMap
             int bytes = bmp1.Width * bmp1.Height * (Image.GetPixelFormatSize(bmp1.PixelFormat) / 8) - 1;
 
             bool result = true;
-            byte[] b1bytes = new byte[bytes];
-            byte[] b2bytes = new byte[bytes];
+            var b1bytes = new byte[bytes];
+            var b2bytes = new byte[bytes];
 
-            BitmapData bitmapData1 = bmp1.LockBits(new Rectangle(0, 0, bmp1.Width, bmp1.Height), ImageLockMode.ReadOnly, bmp1.PixelFormat);
-            BitmapData bitmapData2 = bmp2.LockBits(new Rectangle(0, 0, bmp2.Width, bmp2.Height), ImageLockMode.ReadOnly, bmp2.PixelFormat);
+            var bitmapData1 = bmp1.LockBits(new Rectangle(0, 0, bmp1.Width, bmp1.Height), ImageLockMode.ReadOnly, bmp1.PixelFormat);
+            var bitmapData2 = bmp2.LockBits(new Rectangle(0, 0, bmp2.Width, bmp2.Height), ImageLockMode.ReadOnly, bmp2.PixelFormat);
 
             Marshal.Copy(bitmapData1.Scan0, b1bytes, 0, bytes);
             Marshal.Copy(bitmapData2.Scan0, b2bytes, 0, bytes);

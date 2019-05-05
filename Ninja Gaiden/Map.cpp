@@ -1,11 +1,14 @@
 ﻿#include "Map.h"
 
-auto addCols = (SCREEN_WIDTH >> 4) + 1;
+const auto ADD_COL = (SCREEN_WIDTH >> 4) + 1;
+const auto MOVE_TILE = (TILE_SIZE >> 1);
 
 Map::Map(int level)
 {
 	std::ifstream ifile;
 	char fileName[30];
+	int numSetTiles;
+
 	sprintf_s(fileName, "Resources\\matrix%d.txt", level + 1);
 	mapLevel = MAP1;
 	ifile.open(fileName);
@@ -43,20 +46,18 @@ Map::Map(int level)
 void Map::Update()
 {
 	cBegin = max(0, (camera->posX - (camera->width >> 1)) / 16);
-	cEnd = min(cBegin + addCols, columns);
+	cEnd = min(cBegin + ADD_COL, columns);
+	camera->Update(this->rect);
 }
 
-void Map::Render()
+void Map::Render(int transX, int transY)
 {
-	auto transX = (SCREEN_WIDTH >> 1) - (int)camera->posX;
-	//auto trans = D3DXVECTOR2((SCREENWIDTH >> 1) - camera->posX, 0);
-
-	for (auto r = 0; r < rows; ++r)
+	for (auto r = 0; r != rows; ++r)
 	{
-		for (auto c = cBegin; c < cEnd; ++c)
+		for (auto c = cBegin; c != cEnd; ++c)
 		{
 			auto sprite = SpriteFactory::GetInstance()->GetSprite(mapLevel, mapTiles[r][c]);
-			sprite->Render((c << 4) + (TILE_SIZE >> 1), (r << 4) + (TILE_SIZE >> 1), transX);
+			sprite->Render((c << 4) + MOVE_TILE, (r << 4) + MOVE_TILE, transX, transY);
 		}
 	}
 }

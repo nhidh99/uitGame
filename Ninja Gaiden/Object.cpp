@@ -32,6 +32,5 @@ void Object::Update(float dt)
 
 bool Object::IsCollide(Rect r)
 {
-	auto rect = this->GetRect();
-	return !(rect.x + rect.width < r.x || rect.x > r.x + r.width || rect.y + rect.height < r.y || rect.y > r.y + r.height);
+	return this->GetRect().IsContain(r);
 }

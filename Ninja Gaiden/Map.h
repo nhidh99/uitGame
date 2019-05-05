@@ -11,16 +11,14 @@ private:
 	int cEnd;
 	int columns;
 	int rows;
-	int numSetTiles;
 	int** mapTiles;
 	Tag mapLevel;
 
 public:
 	Map(int level);
 	void Update();
-	void Render();
+	void Render(int transX = 0, int transY = 0);
 
-	Camera* camera;
 	int width;
 	int height;
 	Rect rect;

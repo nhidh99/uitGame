@@ -14,10 +14,9 @@ void Animation::Update(float dt)
 	if (_curFrameTime > _timePerFrame)
 	{
 		_curFrameTime = 0;
-		CurFrameIndex++;
-
+		
 		// Kiểm tra đến Frame cuối -> trở lại Frame đầu
-		if (CurFrameIndex == _totalFrames)
+		if (++CurFrameIndex == _totalFrames)
 		{
 			isLastFrame = true;
 			CurFrameIndex = 0;

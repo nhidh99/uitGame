@@ -1,9 +1,5 @@
 ﻿#include "Loader.h"
 
-Loader::Loader()
-{
-}
-
 std::vector<Holder*> Loader::LoadHolders()
 {
 	//Lấy filePath
@@ -20,8 +16,8 @@ std::vector<Holder*> Loader::LoadHolders()
 		if (id == 1)
 		{
 			Holder* holder = new HolderButterfly();
-			holder->posX = posX;
-			holder->posY = posY;
+			holder->spawnX = holder->posX = posX;
+			holder->spawnY = holder->posY = posY;
 			holders.push_back(holder);
 		}
 
@@ -36,7 +32,7 @@ std::vector<Enemy*> Loader::LoadEnemies()
 	std::vector<Enemy*> enemies;
 	std::string filePath = "Resources\\Enemy.txt";
 	std::ifstream ifile;
-	auto enemyFactory = EnemyFactory::GetInstance();
+	auto enemyFactory = new EnemyFactory();
 	ifile.open(filePath);
 
 	while (!ifile.eof()) {
@@ -55,9 +51,9 @@ std::vector<Enemy*> Loader::LoadEnemies()
 	return enemies;
 }
 
-std::vector<BoundingBox> Loader::LoadWallsBound()
+std::vector<Rect> Loader::LoadWallsBound()
 {
-	std::vector<BoundingBox> walls;
+	std::vector<Rect> walls;
 	std::string filePath = "Resources\\Wall.txt";
 	std::ifstream ifile;
 	ifile.open(filePath);
@@ -66,15 +62,15 @@ std::vector<BoundingBox> Loader::LoadWallsBound()
 		//Đọc các thông số của Enemy
 		int x, y, w, h;
 		ifile >> x >> y >> w >> h;
-		walls.push_back(BoundingBox(x, y, w, h));
+		walls.push_back(Rect(x, y, w, h));
 	}
 	ifile.close();
 	return walls;
 }
 
-std::vector<BoundingBox> Loader::LoadGroundsBound()
+std::vector<Rect> Loader::LoadGroundsBound()
 {
-	std::vector<BoundingBox> grounds;
+	std::vector<Rect> grounds;
 	std::string filePath = "Resources\\Ground.txt";
 	std::ifstream ifile;
 	ifile.open(filePath);
@@ -83,7 +79,7 @@ std::vector<BoundingBox> Loader::LoadGroundsBound()
 		//Đọc các thông số của Enemy
 		int x, y, w, h;
 		ifile >> x >> y >> w >> h;
-		grounds.push_back(BoundingBox(x, y, w, h));
+		grounds.push_back(Rect(x, y, w, h));
 	}
 	ifile.close();
 	return grounds;

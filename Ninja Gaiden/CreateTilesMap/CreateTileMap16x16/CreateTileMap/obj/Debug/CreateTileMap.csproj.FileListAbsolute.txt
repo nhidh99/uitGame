@@ -19,3 +19,10 @@ D:\UIT - Project\uitGD\Ninja Gaiden\CreateTilesMap\CreateTileMap16x16\CreateTile
 D:\UIT - Project\uitGD\Ninja Gaiden\CreateTilesMap\CreateTileMap16x16\CreateTileMap\obj\Debug\CreateTileMap.csproj.CoreCompileInputs.cache
 D:\UIT - Project\uitGD\Ninja Gaiden\CreateTilesMap\CreateTileMap16x16\CreateTileMap\obj\Debug\CreateTileMap.exe
 D:\UIT - Project\uitGD\Ninja Gaiden\CreateTilesMap\CreateTileMap16x16\CreateTileMap\obj\Debug\CreateTileMap.pdb
+C:\Ninja Gaiden\CreateTilesMap\CreateTileMap16x16\CreateTileMap\bin\Debug\CreateTileMap.exe.config
+C:\Ninja Gaiden\CreateTilesMap\CreateTileMap16x16\CreateTileMap\bin\Debug\CreateTileMap.exe
+C:\Ninja Gaiden\CreateTilesMap\CreateTileMap16x16\CreateTileMap\bin\Debug\CreateTileMap.pdb
+C:\Ninja Gaiden\CreateTilesMap\CreateTileMap16x16\CreateTileMap\obj\Debug\CreateTileMap.csprojAssemblyReference.cache
+C:\Ninja Gaiden\CreateTilesMap\CreateTileMap16x16\CreateTileMap\obj\Debug\CreateTileMap.csproj.CoreCompileInputs.cache
+C:\Ninja Gaiden\CreateTilesMap\CreateTileMap16x16\CreateTileMap\obj\Debug\CreateTileMap.exe
+C:\Ninja Gaiden\CreateTilesMap\CreateTileMap16x16\CreateTileMap\obj\Debug\CreateTileMap.pdb

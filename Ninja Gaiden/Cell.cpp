@@ -17,3 +17,11 @@ bool Cell::IsContain(Rect r)
 {
 	return !(rect.x + rect.width < r.x || rect.x > r.x + r.width || rect.y + rect.height < r.y || rect.y > r.y + r.height);
 }
+
+void Cell::RemoveObject(Object* obj)
+{
+	if (objects.find(obj) != objects.end())
+	{
+		objects.erase(obj);
+	}
+}

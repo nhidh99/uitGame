@@ -130,6 +130,9 @@
     <ClCompile Include="EnemyFactory.cpp">
       <Filter>Game Objects\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Game Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">

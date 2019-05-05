@@ -2,6 +2,7 @@
 #include "Object.h"
 #include "EnemySprite.h"
 #include "Cell.h"
+#include "Camera.h"
 #include <algorithm>
 
 class Enemy : public Object
@@ -11,10 +12,15 @@ protected:
 	std::unordered_map<State, Animation*> animations;
 
 public:
-	Enemy() { tag = ENEMY; }
+	Enemy() 
+	{ 
+		tag = ENEMY; 
+		isActive = false;
+	}
+	
 	~Enemy() {};
 	Type type;
-	float spawnX, spawnY;
+	bool isActive;
 
 	void Render()
 	{
@@ -31,12 +37,13 @@ public:
 	virtual void Update(float dt)
 	{
 		curAnimation->Update(dt);
-		Object::Update(dt);
+		dx = vx * dt;
+		dy = vy * dt;
 	}
 
-	bool IsRespawnOnScreen(Rect CameraRect)
+	bool IsRespawnOnScreen()
 	{
-		return Rect(spawnX - (width >> 1), spawnY - (height >> 1), width, height).IsContain(CameraRect);
+		return Rect(spawnX - (width >> 1), spawnY - (height >> 1), width, height).IsContain(camera->GetRect());
 	}
 
 	/*std::unordered_set<Cell*> GetContainedCells()

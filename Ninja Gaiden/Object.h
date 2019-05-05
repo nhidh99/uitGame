@@ -11,6 +11,7 @@ public:
 	~Object() {}
 
 	Tag tag;									// Tag định loại Object
+	float spawnX, spawnY;
 	float posX, posY;							// Vị trí (đồng thời là tâm của Object đó)
 	float vx, vy;								// Vận tốc
 	float dx, dy;

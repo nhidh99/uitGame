@@ -3,18 +3,15 @@
 PlayScene::PlayScene()
 {
 	map = MapFactory::GetInstance()->GetMap(0);
-	map->camera = camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-	player->posX = 50;
-	player->posY = SCREEN_HEIGHT >> 1;
+	player->spawnX = player->posX = 50;
+	player->spawnY = player->posY = SCREEN_HEIGHT >> 1;
 	player->ChangeState(new PlayerStandingState());
 
 	camera->posX = SCREEN_WIDTH >> 1;
-	camera->posY = map->height >> 1;
+	camera->posY = SCREEN_HEIGHT >> 1;
 
 	loader = new Loader();
-	enemyFactory = EnemyFactory::GetInstance();
-
 	grid = new Grid(map->rect);
 	grid->InitBoundsCell(loader->LoadGroundsBound(), loader->LoadWallsBound());
 	grid->InitHoldersCell(loader->LoadHolders());
@@ -28,38 +25,48 @@ PlayScene::~PlayScene()
 // Update các thông số các đối tượng trong Scene
 void PlayScene::Update(float dt)
 {
-	camera->Update(map->rect);
 	map->Update();
+	grid->Update();
+	this->UpdateObjects(dt);
+}
 
-	auto cameraRect = camera->GetRect();
-	grid->Update(cameraRect);
-	visibleObjects = grid->GetVisibleObjects(cameraRect);
+void PlayScene::UpdateObjects(float dt)
+{
+	visibleObjects.clear();
+	visibleObjects = grid->GetVisibleObjects();
 
 	for (auto o : visibleObjects)
 	{
-		if (o->tag == ENEMY)
+		switch (o->tag)
 		{
-			grid->UpdateObjects(o, o->dx, o->dy);
-			enemyFactory->ChangeEnemy(o)->Update(dt);
+		case ENEMY:
+		{
+			EnemyFactory::ConvertToEnemy(o)->Update(dt);
+			grid->MoveObject(o, o->posX + o->dx, o->posY + o->dy);
+			break;
 		}
-		else if (o->tag == HOLDER)
+		case HOLDER:
 		{
 			auto h = (Holder*)o;
 			h->Update(dt);
+			break;
+		}
 		}
 	}
 
-	player->Update(dt, std::vector<Object*>());
-	player->CheckOnGround(grid->GetVisibleGrounds(cameraRect));
-	player->CheckOnWall(grid->GetVisibleWalls(cameraRect));
+	auto p = player;
+	p->Update(dt, std::vector<Object*>());
+	p->CheckOnGround(grid->GetVisibleGrounds());
+	p->CheckOnWall(grid->GetVisibleWalls());
+	grid->MovePlayer(p, p->posX + p->dx, p->posY + p->dy);
 }
 
 // Tải Scene lên màn hình bằng cách vẽ object có trong trong Scene
 void PlayScene::Render()
 {
-	map->Render();
-
 	auto transX = (SCREEN_WIDTH >> 1) - camera->posX;
+
+ 	map->Render(transX);
 
 	for (auto o : visibleObjects)
 	{

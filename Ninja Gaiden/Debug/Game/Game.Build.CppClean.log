@@ -1,42 +1,61 @@
-d:\uit - project\uitgd\se102 - p5\debug\game\vc142.pdb
-d:\uit - project\uitgd\se102 - p5\debug\game\vc142.idb
-d:\uit - project\uitgd\se102 - p5\debug\game\main.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\objectitemsword.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\loader.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\animation.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\objectitemswingsword.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\objectitemshuriken.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\object.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\mapfactory.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\map.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\gameglobal.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\game.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\enemysprite.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\enemypanther.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\enemygunman.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\enemyeagle.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\enemycloakman.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\enemybazokaman.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\collision.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\cell.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\texturefactory.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\enemyswordman.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\spritefactory.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\sprite.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\scenemanager.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\scene.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\playscene.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\playerstandingstate.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\playersittingstate.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\playerrunningstate.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\playerjumpingstate.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\playerinjuredstate.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\playerfallingstate.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\playerdeadstate.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\playerclingingstate.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\playerclimbingstate.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\playerattackingstate.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\player.obj
-d:\uit - project\uitgd\se102 - p5\debug\game\game.tlog\cl.command.1.tlog
-d:\uit - project\uitgd\se102 - p5\debug\game\game.tlog\cl.read.1.tlog
-d:\uit - project\uitgd\se102 - p5\debug\game\game.tlog\cl.write.1.tlog
+c:\ninja gaiden\debug\game\vc142.pdb
+c:\ninja gaiden\debug\game\vc142.idb
+c:\ninja gaiden\debug\game\scenemanager.obj
+c:\ninja gaiden\debug\game\main.obj
+c:\ninja gaiden\debug\game\objectitemsword.obj
+c:\ninja gaiden\debug\game\mapfactory.obj
+c:\ninja gaiden\debug\game\game.obj
+c:\ninja gaiden\debug\game\animation.obj
+c:\ninja gaiden\debug\game\texturefactory.obj
+c:\ninja gaiden\debug\game\objectitemswingsword.obj
+c:\ninja gaiden\debug\game\objectitemshuriken.obj
+c:\ninja gaiden\debug\game\objectitemdagger.obj
+c:\ninja gaiden\debug\game\objectitembullet.obj
+c:\ninja gaiden\debug\game\holdersprite.obj
+c:\ninja gaiden\debug\game\holderbutterfly.obj
+c:\ninja gaiden\debug\game\grid.obj
+c:\ninja gaiden\debug\game\enemypanther.obj
+c:\ninja gaiden\debug\game\enemygunman.obj
+c:\ninja gaiden\debug\game\enemyeagle.obj
+c:\ninja gaiden\debug\game\enemycloakman.obj
+c:\ninja gaiden\debug\game\enemybazokaman.obj
+c:\ninja gaiden\debug\game\cell.obj
+c:\ninja gaiden\debug\game\enemyswordman.obj
+c:\ninja gaiden\debug\game\spritefactory.obj
+c:\ninja gaiden\debug\game\scene.obj
+c:\ninja gaiden\debug\game\playscene.obj
+c:\ninja gaiden\debug\game\playerstandingstate.obj
+c:\ninja gaiden\debug\game\playersittingstate.obj
+c:\ninja gaiden\debug\game\playerrunningstate.obj
+c:\ninja gaiden\debug\game\playerjumpingstate.obj
+c:\ninja gaiden\debug\game\playerinjuredstate.obj
+c:\ninja gaiden\debug\game\playerfallingstate.obj
+c:\ninja gaiden\debug\game\playerdeadstate.obj
+c:\ninja gaiden\debug\game\playerclingingstate.obj
+c:\ninja gaiden\debug\game\playerclimbingstate.obj
+c:\ninja gaiden\debug\game\playerattackingstate.obj
+c:\ninja gaiden\debug\game\player.obj
+c:\ninja gaiden\debug\game\map.obj
+c:\ninja gaiden\debug\game\gameglobal.obj
+c:\ninja gaiden\debug\game\enemysprite.obj
+c:\ninja gaiden\debug\game\collision.obj
+c:\ninja gaiden\debug\game\sprite.obj
+c:\ninja gaiden\debug\game\object.obj
+c:\ninja gaiden\debug\game\loader.obj
+c:\ninja gaiden\debug\game\enemyfactory.obj
+c:\ninja gaiden\debug\game\camera.obj
+c:\ninja gaiden\debug\game.exe
+c:\ninja gaiden\debug\game.ilk
+c:\ninja gaiden\debug\game.pdb
+c:\ninja gaiden\debug\game\enemyfactory.obj.enc
+c:\ninja gaiden\debug\game\game.obj.enc
+c:\ninja gaiden\debug\game\grid.new.obj.enc
+c:\ninja gaiden\debug\game\loader.obj.enc
+c:\ninja gaiden\debug\game\main.obj.enc
+c:\ninja gaiden\debug\game\playscene.new.obj.enc
+c:\ninja gaiden\debug\game\game.tlog\cl.command.1.tlog
+c:\ninja gaiden\debug\game\game.tlog\cl.read.1.tlog
+c:\ninja gaiden\debug\game\game.tlog\cl.write.1.tlog
+c:\ninja gaiden\debug\game\game.tlog\link.command.1.tlog
+c:\ninja gaiden\debug\game\game.tlog\link.read.1.tlog
+c:\ninja gaiden\debug\game\game.tlog\link.write.1.tlog

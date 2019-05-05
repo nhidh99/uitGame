@@ -8,10 +8,10 @@
 class Loader
 {
 public:
-	Loader();
-	~Loader();
+	Loader() {};
+	~Loader() {};
 	std::vector<Holder*> LoadHolders();
 	std::vector<Enemy*> LoadEnemies();
-	std::vector<BoundingBox> LoadWallsBound();
-	std::vector<BoundingBox> LoadGroundsBound();
+	std::vector<Rect> LoadWallsBound();
+	std::vector<Rect> LoadGroundsBound();
 };

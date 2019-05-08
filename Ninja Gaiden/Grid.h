@@ -24,6 +24,7 @@ public:
 
 	void Update();
 	void RespawnEnemies();
+	void RestartGame();
 	void MoveObject(Object* obj, float posX, float posY);
 	void MovePlayer(Player* obj, float posX, float posY);
 	void RemoveObject(Object* obj);
@@ -33,7 +34,7 @@ public:
 	std::set<Rect> GetVisibleWalls();
 	std::set<Rect> GetVisibleGrounds();
 
-	void InitHoldersCell(std::vector<Holder*> holders);
-	void InitEnemiesCell(std::vector<Enemy*> enemies);
-	void InitBoundsCell(std::vector<Rect> grounds, std::vector<Rect> walls);
+	void InitGroundCell(Rect ground);
+	void InitWallCell(Rect wall);
+	void InitObjectCell(Object* obj);
 };

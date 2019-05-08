@@ -30,8 +30,8 @@ public:
 	std::unordered_map<State, bool> allow;
 
 	void Update(float dt, std::vector<Object*> ColliableObjects);
-	void CheckOnGround(std::set<Rect> grounds);
-	void CheckOnWall(std::set<Rect> walls);
+	void CheckGroundCollision(std::set<Rect> grounds);
+	void CheckWallCollision(std::set<Rect> walls);
 	void Render(float translateX = 0, float translateY = 0);
 	void OnKeyDown(int keyCode);							
 	void OnKeyUp(int keyCode);							

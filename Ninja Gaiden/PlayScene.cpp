@@ -13,13 +13,27 @@ PlayScene::PlayScene()
 
 	loader = new Loader();
 	grid = new Grid(map->rect);
-	grid->InitBoundsCell(loader->LoadGroundsBound(), loader->LoadWallsBound());
-	grid->InitHoldersCell(loader->LoadHolders());
-	grid->InitEnemiesCell(loader->LoadEnemies());
+	this->InitCellsInGrid();
 }
 
 PlayScene::~PlayScene()
 {
+}
+
+void PlayScene::InitCellsInGrid()
+{
+	auto grounds = loader->LoadGroundsBound();
+	auto walls = loader->LoadWallsBound();
+	auto holders = loader->LoadHolders();
+	auto enemies = loader->LoadEnemies();
+
+	for (auto g : grounds) grid->InitGroundCell(g);
+
+	for (auto w : walls) grid->InitWallCell(w);
+
+	for (auto h : holders) grid->InitObjectCell(h);
+
+	for (auto e : enemies) grid->InitObjectCell(e);
 }
 
 // Update các thông số các đối tượng trong Scene
@@ -56,8 +70,8 @@ void PlayScene::UpdateObjects(float dt)
 
 	auto p = player;
 	p->Update(dt, std::vector<Object*>());
-	p->CheckOnGround(grid->GetVisibleGrounds());
-	p->CheckOnWall(grid->GetVisibleWalls());
+	p->CheckGroundCollision(grid->GetVisibleGrounds());
+	p->CheckWallCollision(grid->GetVisibleWalls());
 	grid->MovePlayer(p, p->posX + p->dx, p->posY + p->dy);
 }
 
@@ -66,7 +80,7 @@ void PlayScene::Render()
 {
 	auto transX = (SCREEN_WIDTH >> 1) - camera->posX;
 
- 	map->Render(transX);
+	map->Render(transX);
 
 	for (auto o : visibleObjects)
 	{

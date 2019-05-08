@@ -126,38 +126,34 @@ void Grid::MovePlayer(Player* obj, float posX, float posY)
 		{
 			cells[oldTopCell][oldLeftCell]->RemoveObject(obj);
 			cells[oldTopCell][oldRightCell]->RemoveObject(obj);
-
 			obj->posX = obj->spawnX;
 			obj->posY = obj->spawnY;
-			r = obj->GetRect();
+			this->InitObjectCell(obj);
+			this->RestartGame();
+		}
 
-			int LeftCell = r.x / Cell::width;
-			int RightCell = (r.x + r.width) / Cell::width;
-			TopCell = r.y / Cell::height;
-			BottomCell = (r.y + r.height) / Cell::height;
-
-			cells[TopCell][LeftCell]->objects.insert(obj);
-			cells[TopCell][RightCell]->objects.insert(obj);
-
-			if (TopCell != BottomCell)
-			{
-				cells[BottomCell][LeftCell]->objects.insert(obj);
-				cells[BottomCell][RightCell]->objects.insert(obj);
-			}
-
-			for (auto e : respawnEnemies)
-			{
-				this->MoveObject(e, e->spawnX, e->spawnY);
-			}
-			respawnEnemies.clear();
+		else if (BottomCell != rows)
+		{
+			MoveObject(obj, posX, posY);
 		}
 	}
-
-	else if (BottomCell != rows)
-	{
-		MoveObject(obj, posX, posY);
-	}
 }
+
+void Grid::RestartGame()
+{
+	for (auto e : respawnEnemies)
+	{
+		this->MoveObject(e, e->spawnX, e->spawnY);
+	}
+
+	for (auto o : this->GetVisibleObjects())
+	{
+		this->MoveObject(o, o->spawnX, o->spawnY);
+	}
+
+	respawnEnemies.clear();
+}
+
 
 void Grid::RemoveObject(Object* obj)
 {
@@ -270,68 +266,70 @@ std::set<Rect> Grid::GetVisibleGrounds()
 	return setGrounds;
 }
 
-void Grid::InitHoldersCell(std::vector<Holder*> holders)
+void Grid::InitGroundCell(Rect ground)
 {
-	for (auto h : holders)
+	int LeftCell = ground.x / Cell::width;
+	int RightCell = (ground.x + ground.width) / Cell::width;
+	int TopCell = ground.y / Cell::height;
+	int BottomCell = (ground.y + ground.height) / Cell::height;
+
+	cells[TopCell][LeftCell]->grounds.push_back(ground);
+
+	if (LeftCell != RightCell)
 	{
-		for (auto row : cells)
+		cells[TopCell][RightCell]->grounds.push_back(ground);
+	}
+
+	if (TopCell != BottomCell)
+	{
+		cells[BottomCell][LeftCell]->grounds.push_back(ground);
+
+		if (LeftCell != RightCell)
 		{
-			for (auto cell : row)
-			{
-				if (cell->IsContain(h->GetRect()))
-				{
-					cell->objects.insert(h);
-				}
-			}
+			cells[BottomCell][RightCell]->grounds.push_back(ground);
 		}
 	}
 }
 
-void Grid::InitEnemiesCell(std::vector<Enemy*> enemies)
+void Grid::InitWallCell(Rect wall)
 {
-	for (auto e : enemies)
+	int LeftCell = wall.x / Cell::width;
+	int RightCell = (wall.x + wall.width) / Cell::width;
+	int TopCell = wall.y / Cell::height;
+	int BottomCell = (wall.y + wall.height) / Cell::height;
+
+	cells[TopCell][LeftCell]->walls.push_back(wall);
+
+	if (LeftCell != RightCell)
 	{
-		for (auto row : cells)
+		cells[TopCell][RightCell]->walls.push_back(wall);
+	}
+
+	if (TopCell != BottomCell)
+	{
+		cells[BottomCell][LeftCell]->walls.push_back(wall);
+
+		if (LeftCell != RightCell)
 		{
-			for (auto cell : row)
-			{
-				if (cell->IsContain(e->GetRect()))
-				{
-					cell->objects.insert(e);
-				}
-			}
+			cells[BottomCell][RightCell]->walls.push_back(wall);
 		}
 	}
 }
 
-void Grid::InitBoundsCell(std::vector<Rect> grounds, std::vector<Rect> walls)
+void Grid::InitObjectCell(Object * obj)
 {
-	for (auto g : grounds)
-	{
-		for (auto row : cells)
-		{
-			for (auto cell : row)
-			{
-				if (cell->IsContain(g))
-				{
-					cell->grounds.push_back(g);
-				}
-			}
-		}
-	}
+	auto r = obj->GetRect();
+	int LeftCell = r.x / Cell::width;
+	int RightCell = (r.x + r.width) / Cell::width;
+	int TopCell = r.y / Cell::height;
+	int BottomCell = (r.y + r.height) / Cell::height;
 
-	for (auto w : walls)
+	cells[TopCell][LeftCell]->objects.insert(obj);
+	cells[TopCell][RightCell]->objects.insert(obj);
+
+	if (TopCell != BottomCell)
 	{
-		Rect r = w;
-		for (auto row : cells)
-		{
-			for (auto cell : row)
-			{
-				if (cell->IsContain(w))
-				{
-					cell->walls.push_back(w);
-				}
-			}
-		}
+		cells[BottomCell][LeftCell]->objects.insert(obj);
+		cells[BottomCell][RightCell]->objects.insert(obj);
 	}
 }

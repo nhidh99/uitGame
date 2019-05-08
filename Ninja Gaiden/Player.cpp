@@ -120,7 +120,6 @@ bool Player::DetectGround(std::set<Rect> grounds)
 {
 	auto tg = curGroundBound;
 	auto r = this->GetRect();
-
 	tg.y -= this->height;
 
 	if (r.IsContain(tg))
@@ -131,7 +130,7 @@ bool Player::DetectGround(std::set<Rect> grounds)
 		tg = g;
 		tg.y -= this->height;
 
-		if (r.IsContain(tg) && !r.IsContain(g))
+		if (r.IsContain(tg))
 		{
 			curGroundBound = g;
 			return true;
@@ -166,14 +165,14 @@ bool Player::DectectWall(std::set<Rect> walls)
 }
 
 // Xử lí va chạm với mặt đất theo các vùng đất hiển thị
-void Player::CheckOnGround(std::set<Rect> grounds)
+void Player::CheckGroundCollision(std::set<Rect> grounds)
 {
 	// Tìm được vùng đất va chạm
 	if (DetectGround(grounds))
 	{
 		if (this->vy > 0 && this->posY > curGroundBound.y - this->height)
 		{
-			this->posY -= dy;
+			this->posY = curGroundBound.y - this->height;
 			this->vy = this->dy = 0;
 
 			if (stateName == ATTACKING_STAND)
@@ -189,15 +188,16 @@ void Player::CheckOnGround(std::set<Rect> grounds)
 }
 
 // Kiểm tra va chạm tường
-void Player::CheckOnWall(std::set<Rect> walls)
+void Player::CheckWallCollision(std::set<Rect> walls)
 {
-	// Khi đang chạy và tìm được tường -> set lại khi quá giới hạn
 	if (this->vx && this->DectectWall(walls))
 	{
-		if ((this->posX > curWallBound.x - (this->width >> 1) && this->vx > 0)
-		|| (this->posX < curWallBound.x + curWallBound.width + (this->width >> 1) && this->vx < 0))
+		auto r = this->GetRect();
+		r.x = dx > 0 ? r.x : r.x + dx;
+		r.width = dx > 0 ? dx + r.width : r.width - dx;
+
+		if (r.IsContain(curWallBound))
 		{
-			this->posX -= dx;
 			this->vx = this->dx = 0;
 		}
 	}

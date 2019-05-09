@@ -3,17 +3,15 @@
 PlayScene::PlayScene()
 {
 	map = MapFactory::GetInstance()->GetMap(0);
+	grid = new Grid(map->rect);
+	grid->LoadObjects();
 
 	player->spawnX = player->posX = 50;
-	player->spawnY = player->posY = SCREEN_HEIGHT >> 1;
+	player->spawnY = player->posY = 50;
 	player->ChangeState(new PlayerStandingState());
 
-	camera->posX = SCREEN_WIDTH >> 1;
-	camera->posY = SCREEN_HEIGHT >> 1;
-
-	loader = new Loader();
-	grid = new Grid(map->rect);
-	this->InitCellsInGrid();
+	camera->x = 0;
+	camera->y = SCREEN_HEIGHT;
 }
 
 PlayScene::~PlayScene()
@@ -22,26 +20,21 @@ PlayScene::~PlayScene()
 
 void PlayScene::InitCellsInGrid()
 {
-	auto grounds = loader->LoadGroundsBound();
-	auto walls = loader->LoadWallsBound();
-	auto holders = loader->LoadHolders();
-	auto enemies = loader->LoadEnemies();
-
-	for (auto g : grounds) grid->InitGroundCell(g);
-
-	for (auto w : walls) grid->InitWallCell(w);
-
-	for (auto h : holders) grid->InitObjectCell(h);
-
-	for (auto e : enemies) grid->InitObjectCell(e);
 }
 
 // Update các thông số các đối tượng trong Scene
 void PlayScene::Update(float dt)
 {
+	this->UpdateScene();
+	this->UpdateObjects(dt);
+	this->UpdatePlayer(dt);
+}
+
+void PlayScene::UpdateScene()
+{
+	camera->x = player->posX - (camera->width >> 1);
 	map->Update();
 	grid->Update();
-	this->UpdateObjects(dt);
 }
 
 void PlayScene::UpdateObjects(float dt)
@@ -67,27 +60,37 @@ void PlayScene::UpdateObjects(float dt)
 		}
 		}
 	}
+}
 
+void PlayScene::UpdatePlayer(float dt)
+{
 	auto p = player;
 	p->Update(dt, std::vector<Object*>());
 	p->CheckGroundCollision(grid->GetVisibleGrounds());
 	p->CheckWallCollision(grid->GetVisibleWalls());
-	grid->MovePlayer(p, p->posX + p->dx, p->posY + p->dy);
+
+	p->posX += p->dx;
+	p->posY += p->dy;
+
+	if (p->posY + (p->width >> 1) < 0)
+	{
+		grid->RestartGame();
+		p->posX = p->spawnX;
+		p->posY = p->spawnY;
+	}
 }
 
 // Tải Scene lên màn hình bằng cách vẽ object có trong trong Scene
 void PlayScene::Render()
 {
-	auto transX = (SCREEN_WIDTH >> 1) - camera->posX;
-
-	map->Render(transX);
+	map->Render();
 
 	for (auto o : visibleObjects)
 	{
-		o->Render(transX);
+		o->Render();
 	}
 
-	player->Render(transX);
+	player->Render();
 }
 
 // Xử lí Scene khi nhấn phím

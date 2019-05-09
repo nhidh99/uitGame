@@ -7,6 +7,7 @@
 #include <vector>
 #include "Camera.h"
 #include "Cell.h"
+#include "Loader.h"
 #include "Enemy.h"
 
 class Grid
@@ -23,18 +24,21 @@ public:
 	std::vector<Enemy*> respawnEnemies;
 
 	void Update();
+	void LoadObjects();
+
 	void RespawnEnemies();
 	void RestartGame();
+
 	void MoveObject(Object* obj, float posX, float posY);
-	void MovePlayer(Player* obj, float posX, float posY);
 	void RemoveObject(Object* obj);
+
 	void UpdateVisibleCells();
 
 	std::unordered_set<Object*> GetVisibleObjects();
-	std::set<Rect> GetVisibleWalls();
-	std::set<Rect> GetVisibleGrounds();
+	std::unordered_set<Rect*> GetVisibleWalls();
+	std::unordered_set<Rect*> GetVisibleGrounds();
 
-	void InitGroundCell(Rect ground);
-	void InitWallCell(Rect wall);
+	void InitGroundCell(Rect* ground);
+	void InitWallCell(Rect* wall);
 	void InitObjectCell(Object* obj);
 };

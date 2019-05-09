@@ -4,6 +4,7 @@
 #include "PlayerState.h"
 #include "PlayerStandingState.h"
 #include "ObjectItemSword.h"
+#include <unordered_set>
 #include <map>
 #include <set>
 
@@ -14,8 +15,8 @@ private:
 	static Player* _instance;
 	
 	Rect curGroundBound, curWallBound;
-	bool DetectGround(std::set<Rect> grounds);
-	bool DectectWall(std::set<Rect> walls);
+	bool DetectGround(std::unordered_set<Rect*> grounds);
+	bool DectectWall(std::unordered_set<Rect*> walls);
 	
 public:
 	Player();
@@ -30,8 +31,8 @@ public:
 	std::unordered_map<State, bool> allow;
 
 	void Update(float dt, std::vector<Object*> ColliableObjects);
-	void CheckGroundCollision(std::set<Rect> grounds);
-	void CheckWallCollision(std::set<Rect> walls);
+	void CheckGroundCollision(std::unordered_set<Rect*> grounds);
+	void CheckWallCollision(std::unordered_set<Rect*> walls);
 	void Render(float translateX = 0, float translateY = 0);
 	void OnKeyDown(int keyCode);							
 	void OnKeyUp(int keyCode);							

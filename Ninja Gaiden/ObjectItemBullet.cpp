@@ -28,6 +28,9 @@ void ObjectItemBullet::Render(float translateX, float translateY)
 {
 	if (isOnScreen)
 	{
+		auto posX = this->posX + translateX;
+		auto posY = this->posY + translateY;
+		camera->ConvertPositionToViewPort(posX, posY);
 		sprite->isReverse = this->isReverse;
 		sprite->Render(posX, posY, translateX, translateY);
 	}

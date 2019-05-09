@@ -6,7 +6,7 @@ PlayerFallingState::PlayerFallingState()
 	_reverse = player->isReverse;
 	player->allow[ATTACKING] = true;
 	player->allow[CLINGING] = true;
-	player->vy = PLAYER_FALLING_SPEED;
+	player->vy = -PLAYER_FALLING_SPEED;
 
 	StateName = FALLING;
 }
@@ -20,15 +20,15 @@ void PlayerFallingState::Update(float dt)
 		return;
 	}
 
-	if (player->allow[CLINGING] && player->posY < SCREEN_HEIGHT - 20)
-	{
-		if (player->posX == player->width >> 1)
-		{
-			player->isReverse = true;
-			player->ChangeState(new PlayerClingingState());
-			return;
-		}
-	}
+	//if (player->allow[CLINGING] && player->posY < SCREEN_HEIGHT - 20)
+	//{
+	//	if (player->posX == player->width >> 1)
+	//	{
+	//		player->isReverse = true;
+	//		player->ChangeState(new PlayerClingingState());
+	//		return;
+	//	}
+	//}
 	this->HandleKeyboard();
 }
 

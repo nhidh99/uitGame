@@ -3,6 +3,7 @@
 #include "SpriteFactory.h"
 #include "Animation.h"
 #include "Collision.h"
+#include "Camera.h"
 
 class Object
 {
@@ -23,6 +24,5 @@ public:
 
 	void Update(float dt);
 	bool IsCollide(Rect r);
-	virtual void Render() {}
 	virtual void Render(float translateX = 0, float translateY = 0) {}
 };

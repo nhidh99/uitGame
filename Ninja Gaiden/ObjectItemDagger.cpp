@@ -6,7 +6,7 @@ ObjectItemDagger::ObjectItemDagger()
 	tag = ITEM;
 	type = DAGGER;
 	vx = -0.03;
-	vy = -0.06;
+	vy = 0.06;
 	this->height = ITEM_DAGGER_HEIGHT;
 	this->width = ITEM_DAGGER_WIDTH;
 	this->isOnScreen = false;
@@ -25,7 +25,7 @@ void ObjectItemDagger::Update(float dt, int maxHigh, int leftScreen, int rightSc
 
 		if (posY < maxHigh)
 		{
-			vy = 0.06;
+			vy = -0.06;
 		}
 
 		posX += dx;
@@ -40,6 +40,9 @@ void ObjectItemDagger::Render(float translateX, float translateY)
 {
 	if (isOnScreen)
 	{
+		auto posX = this->posX + translateX;
+		auto posY = this->posY + translateY;
+		camera->ConvertPositionToViewPort(posX, posY);
 		sprite->isReverse = this->isReverse;
 		sprite->Render(posX, posY, translateX, translateY);
 	}

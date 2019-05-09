@@ -12,6 +12,6 @@ public:
 	~Loader() {};
 	std::vector<Holder*> LoadHolders();
 	std::vector<Enemy*> LoadEnemies();
-	std::vector<Rect> LoadWallsBound();
-	std::vector<Rect> LoadGroundsBound();
+	std::vector<Rect*> LoadWallsBound();
+	std::vector<Rect*> LoadGroundsBound();
 };

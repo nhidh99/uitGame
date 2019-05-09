@@ -51,9 +51,9 @@ std::vector<Enemy*> Loader::LoadEnemies()
 	return enemies;
 }
 
-std::vector<Rect> Loader::LoadWallsBound()
+std::vector<Rect*> Loader::LoadWallsBound()
 {
-	std::vector<Rect> walls;
+	std::vector<Rect*> walls;
 	std::string filePath = "Resources\\Wall.txt";
 	std::ifstream ifile;
 	ifile.open(filePath);
@@ -62,15 +62,15 @@ std::vector<Rect> Loader::LoadWallsBound()
 		//Đọc các thông số của Enemy
 		int x, y, w, h;
 		ifile >> x >> y >> w >> h;
-		walls.push_back(Rect(x, y, w, h));
+		walls.push_back(new Rect(x, y, w, h));
 	}
 	ifile.close();
 	return walls;
 }
 
-std::vector<Rect> Loader::LoadGroundsBound()
+std::vector<Rect*> Loader::LoadGroundsBound()
 {
-	std::vector<Rect> grounds;
+	std::vector<Rect*> grounds;
 	std::string filePath = "Resources\\Ground.txt";
 	std::ifstream ifile;
 	ifile.open(filePath);
@@ -79,7 +79,7 @@ std::vector<Rect> Loader::LoadGroundsBound()
 		//Đọc các thông số của Enemy
 		int x, y, w, h;
 		ifile >> x >> y >> w >> h;
-		grounds.push_back(Rect(x, y, w, h));
+		grounds.push_back(new Rect(x, y, w, h));
 	}
 	ifile.close();
 	return grounds;

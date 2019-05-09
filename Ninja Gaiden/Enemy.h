@@ -2,7 +2,6 @@
 #include "Object.h"
 #include "EnemySprite.h"
 #include "Cell.h"
-#include "Camera.h"
 #include <algorithm>
 
 class Enemy : public Object
@@ -30,8 +29,12 @@ public:
 
 	void Render(float translateX = 0, float translateY = 0)
 	{
+		auto posX = this->posX + translateX;
+		auto posY = this->posY + translateY;
+
+		camera->ConvertPositionToViewPort(posX, posY);
 		curAnimation->isReverse = this->isReverse;
-		curAnimation->Render(posX, posY, translateX, translateY);
+		curAnimation->Render(posX, posY);
 	}
 
 	virtual void Update(float dt)

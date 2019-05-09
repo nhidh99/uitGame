@@ -309,9 +309,4 @@
       <UniqueIdentifier>{5ea9c494-dfa2-48be-bc3b-260cd6efaf0d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Player.cd">
-      <Filter>Game Objects\Player</Filter>
-    </None>
-  </ItemGroup>
 </Project>

@@ -116,23 +116,23 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 
 // Duyệt tìm lại vùng đất va chạm của player khi ra khỏi vùng hiện tại
 // Dùng cách nâng sàn Collision duyệt trước
-bool Player::DetectGround(std::set<Rect> grounds)
+bool Player::DetectGround(std::unordered_set<Rect*> grounds)
 {
 	auto tg = curGroundBound;
 	auto r = this->GetRect();
-	tg.y -= this->height;
+	tg.y += this->height;
 
 	if (r.IsContain(tg))
 		return true;
 
 	for (auto g : grounds)
 	{
-		tg = g;
-		tg.y -= this->height;
+		tg = *g;
+		tg.y += this->height;
 
 		if (r.IsContain(tg))
 		{
-			curGroundBound = g;
+			curGroundBound = *g;
 			return true;
 		}
 	}
@@ -141,7 +141,7 @@ bool Player::DetectGround(std::set<Rect> grounds)
 
 // Duyệt tìm tường va chạm
 // Bằng cách dịch tường và duyệt trước
-bool Player::DectectWall(std::set<Rect> walls)
+bool Player::DectectWall(std::unordered_set<Rect*> walls)
 {
 	auto tw = curWallBound;
 	auto r = GetRect();
@@ -152,12 +152,12 @@ bool Player::DectectWall(std::set<Rect> walls)
 
 	for (auto w : walls)
 	{
-		tw = w;
+		tw = *w;
 		this->vx > 0 ? tw.x -= this->width : tw.x += this->width;
 
 		if (r.IsContain(tw))
 		{
-			curWallBound = w;
+			curWallBound = *w;
 			return true;
 		}
 	}
@@ -165,18 +165,23 @@ bool Player::DectectWall(std::set<Rect> walls)
 }
 
 // Xử lí va chạm với mặt đất theo các vùng đất hiển thị
-void Player::CheckGroundCollision(std::set<Rect> grounds)
+void Player::CheckGroundCollision(std::unordered_set<Rect*> grounds)
 {
 	// Tìm được vùng đất va chạm
 	if (DetectGround(grounds))
 	{
-		if (this->vy > 0 && this->posY > curGroundBound.y - this->height)
+		if (this->vy < 0)
 		{
-			this->posY = curGroundBound.y - this->height;
-			this->vy = this->dy = 0;
+			auto r = this->GetRect();
+			r.y = r.y + dy;
+			r.height = r.height - dy;
 
-			if (stateName == ATTACKING_STAND)
-				this->allow[MOVING] = false;
+			if (r.IsContain(curGroundBound))
+			{
+				this->vy = this->dy = 0;
+				if (stateName == ATTACKING_STAND)
+					this->allow[MOVING] = false;
+			}
 		}
 	}
 
@@ -188,7 +193,7 @@ void Player::CheckGroundCollision(std::set<Rect> grounds)
 }
 
 // Kiểm tra va chạm tường
-void Player::CheckWallCollision(std::set<Rect> walls)
+void Player::CheckWallCollision(std::unordered_set<Rect*> walls)
 {
 	if (this->vx && this->DectectWall(walls))
 	{
@@ -206,9 +211,13 @@ void Player::CheckWallCollision(std::set<Rect> walls)
 // Render nhân vật (bản chất là Render Animation và vũ khí)
 void Player::Render(float translateX, float translateY)
 {
+	auto posX = this->posX + translateX;
+	auto posY = this->posY + translateY;
+
+	camera->ConvertPositionToViewPort(posX, posY);
 	curAnimation->isReverse = this->isReverse;
-	curAnimation->Render(posX, posY, translateX, translateY);
-	sword->Render(posX, posY, curAnimation->CurFrameIndex, translateX, translateY);
+	curAnimation->Render(posX, posY);
+	sword->Render(posX, posY, curAnimation->CurFrameIndex);
 }
 
 // Xử lí nhấn phím (chung cho các State)

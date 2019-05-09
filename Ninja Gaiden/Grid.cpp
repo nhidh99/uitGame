@@ -23,6 +23,19 @@ void Grid::Update()
 	this->RespawnEnemies();
 }
 
+void Grid::LoadObjects()
+{
+	Loader* loader = new Loader();
+	auto grounds = loader->LoadGroundsBound();
+	auto walls = loader->LoadWallsBound();
+	auto holders = loader->LoadHolders();
+	auto enemies = loader->LoadEnemies();
+	for (auto g : grounds)	this->InitGroundCell(g);
+	for (auto w : walls)	this->InitWallCell(w);
+	for (auto h : holders)	this->InitObjectCell(h);
+	for (auto e : enemies)	this->InitObjectCell(e);
+}
+
 void Grid::RespawnEnemies()
 {
 	auto it = respawnEnemies.begin();
@@ -44,7 +57,7 @@ void Grid::MoveObject(Object* obj, float posX, float posY)
 	int oldLeftCell = r.x / Cell::width;
 	int oldRightCell = (r.x + r.width) / Cell::width;
 	int oldTopCell = r.y / Cell::height;
-	int oldBottomCell = (r.y + r.height) / Cell::height;
+	int oldBottomCell = (r.y - r.height) / Cell::height;
 
 	obj->posX = posX;
 	obj->posY = posY;
@@ -53,7 +66,7 @@ void Grid::MoveObject(Object* obj, float posX, float posY)
 	int LeftCell = r.x / Cell::width;
 	int RightCell = (r.x + r.width) / Cell::width;
 	int TopCell = r.y / Cell::height;
-	int BottomCell = (r.y + r.height) / Cell::height;
+	int BottomCell = (r.y - r.height) / Cell::height;
 
 	if (LeftCell != oldLeftCell)
 	{
@@ -105,44 +118,11 @@ void Grid::MoveObject(Object* obj, float posX, float posY)
 	}
 }
 
-void Grid::MovePlayer(Player* obj, float posX, float posY)
-{
-	auto r = obj->GetRect();
-	int oldLeftCell = r.x / Cell::width;
-	int oldRightCell = (r.x + r.width) / Cell::width;
-	int oldTopCell = r.y / Cell::height;
-	int oldBottomCell = (r.y + r.height) / Cell::height;
-
-	obj->posX = posX;
-	obj->posY = posY;
-	r = obj->GetRect();
-
-	int TopCell = r.y / Cell::height;
-	int BottomCell = (r.y + r.height) / Cell::height;
-
-	if (oldBottomCell == rows)
-	{
-		if (TopCell == rows)
-		{
-			cells[oldTopCell][oldLeftCell]->RemoveObject(obj);
-			cells[oldTopCell][oldRightCell]->RemoveObject(obj);
-			obj->posX = obj->spawnX;
-			obj->posY = obj->spawnY;
-			this->InitObjectCell(obj);
-			this->RestartGame();
-		}
-
-		else if (BottomCell != rows)
-		{
-			MoveObject(obj, posX, posY);
-		}
-	}
-}
-
 void Grid::RestartGame()
 {
 	for (auto e : respawnEnemies)
 	{
+		e->isActive = false;
 		this->MoveObject(e, e->spawnX, e->spawnY);
 	}
 
@@ -161,7 +141,7 @@ void Grid::RemoveObject(Object* obj)
 	int LeftCell = r.x / Cell::width;
 	int RightCell = (r.x + r.width) / Cell::width;
 	int TopCell = r.y / Cell::height;
-	int BottomCell = (r.y + r.height) / Cell::height;
+	int BottomCell = (r.y - r.height) / Cell::height;
 
 	cells[TopCell][LeftCell]->RemoveObject(obj);
 	cells[BottomCell][LeftCell]->RemoveObject(obj);
@@ -174,8 +154,8 @@ void Grid::UpdateVisibleCells()
 	visibleCells.clear();
 	int left = viewPort.x / Cell::width;
 	int right = ceil(viewPort.x / Cell::width) + 2;
-	//int top = viewPort.y / Cell::height;
-	//int bottom = floor(viewPort.y + viewPort.height) / Cell::height);
+	//int bottom = viewPort.y / Cell::height;
+	//int top = floor(viewPort.y + viewPort.height) / Cell::height);
 
 	for (int r = 0; r < 2; ++r)
 	{
@@ -232,15 +212,15 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 	return setObjects;
 }
 
-std::set<Rect> Grid::GetVisibleWalls()
+std::unordered_set<Rect*> Grid::GetVisibleWalls()
 {
-	std::set<Rect> setWalls;
+	std::unordered_set<Rect*> setWalls;
 
 	for (auto c : visibleCells)
 	{
 		for (auto w : c->walls)
 		{
-			if (w.IsContain(viewPort))
+			if (w->IsContain(viewPort))
 			{
 				setWalls.insert(w);
 			}
@@ -249,15 +229,15 @@ std::set<Rect> Grid::GetVisibleWalls()
 	return setWalls;
 }
 
-std::set<Rect> Grid::GetVisibleGrounds()
+std::unordered_set<Rect*> Grid::GetVisibleGrounds()
 {
-	std::set<Rect> setGrounds;
+	std::unordered_set<Rect*> setGrounds;
 
 	for (auto c : visibleCells)
 	{
 		for (auto g : c->grounds)
 		{
-			if (g.IsContain(viewPort))
+			if (g->IsContain(viewPort))
 			{
 				setGrounds.insert(g);
 			}
@@ -266,12 +246,12 @@ std::set<Rect> Grid::GetVisibleGrounds()
 	return setGrounds;
 }
 
-void Grid::InitGroundCell(Rect ground)
+void Grid::InitGroundCell(Rect* ground)
 {
-	int LeftCell = ground.x / Cell::width;
-	int RightCell = (ground.x + ground.width) / Cell::width;
-	int TopCell = ground.y / Cell::height;
-	int BottomCell = (ground.y + ground.height) / Cell::height;
+	int LeftCell = ground->x / Cell::width;
+	int RightCell = (ground->x + ground->width) / Cell::width;
+	int TopCell = ground->y / Cell::height;
+	int BottomCell = (ground->y - ground->height) / Cell::height;
 
 	cells[TopCell][LeftCell]->grounds.push_back(ground);
 
@@ -291,12 +271,12 @@ void Grid::InitGroundCell(Rect ground)
 	}
 }
 
-void Grid::InitWallCell(Rect wall)
+void Grid::InitWallCell(Rect* wall)
 {
-	int LeftCell = wall.x / Cell::width;
-	int RightCell = (wall.x + wall.width) / Cell::width;
-	int TopCell = wall.y / Cell::height;
-	int BottomCell = (wall.y + wall.height) / Cell::height;
+	int LeftCell = wall->x / Cell::width;
+	int RightCell = (wall->x + wall->width) / Cell::width;
+	int TopCell = wall->y / Cell::height;
+	int BottomCell = (wall->y - wall->height) / Cell::height;
 
 	cells[TopCell][LeftCell]->walls.push_back(wall);
 
@@ -322,7 +302,7 @@ void Grid::InitObjectCell(Object * obj)
 	int LeftCell = r.x / Cell::width;
 	int RightCell = (r.x + r.width) / Cell::width;
 	int TopCell = r.y / Cell::height;
-	int BottomCell = (r.y + r.height) / Cell::height;
+	int BottomCell = (r.y - r.height) / Cell::height;
 
 	cells[TopCell][LeftCell]->objects.insert(obj);
 	cells[TopCell][RightCell]->objects.insert(obj);

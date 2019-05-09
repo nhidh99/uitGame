@@ -17,7 +17,7 @@ private:
 public:
 	Map(int level);
 	void Update();
-	void Render(int transX = 0, int transY = 0);
+	void Render();
 
 	int width;
 	int height;

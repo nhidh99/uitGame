@@ -12,8 +12,8 @@ public:
 	Rect rect;
 	static int width, height;
 	std::unordered_set<Object*> objects;
-	std::vector<Rect> walls;
-	std::vector<Rect> grounds;
+	std::vector<Rect*> walls;
+	std::vector<Rect*> grounds;
 
 	Cell(int xID, int yID);
 	bool IsContain(Rect r);

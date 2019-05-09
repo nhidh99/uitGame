@@ -54,7 +54,7 @@ void PlayerAttackingState::Update(float dt)
 		case JUMPING:
 		{
 			// Nếu đã nhảy đến độ cao nhất định -> _curState về trạng thái FALLING
-			player->vy += GRAVITY_SPEED;
+			player->vy -= GRAVITY_SPEED;
 
 			if ((player->vx == SCREEN_WIDTH - player->width
 				|| player->vx == player->width >> 1) && player->allow[CLINGING])
@@ -63,10 +63,10 @@ void PlayerAttackingState::Update(float dt)
 				return;
 			}
 
-			else if (player->vy >= 0)
+			else if (player->vy <= 0)
 			{
 				_curState = FALLING;
-				player->vy = PLAYER_FALLING_SPEED;
+				player->vy = -PLAYER_FALLING_SPEED;
 			}
 			break;
 		}

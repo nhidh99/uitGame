@@ -26,7 +26,7 @@
 #define PLAYER_FALLING_SPEED 0.25f
 #define PLAYER_CLIMBING_SPEED 0.1f
 #define PLAYER_WIDTH 24
-#define PLAYER_STANDING_HEIGHT 33
+#define PLAYER_STANDING_HEIGHT 32
 #define PLAYER_SITTING_HEIGHT 24
 #define PLAYER_ATTACK_SPRITE_WIDTH 34
 #define PLAYER_ATTACKING_FORWARD 15
@@ -142,11 +142,6 @@ struct Rect
 
 	bool IsContain(Rect r)
 	{
-		return !((x + width < r.x) || (x > r.x + r.width) || (y + height < r.y) || (y > r.y + r.height));
+		return !((x + width < r.x) || (x > r.x + r.width) || (y < r.y - r.height) || (y - height > r.y));
 	}
 };
-
-inline bool operator<(Rect b1, Rect b2)
-{
-	return b1.x < b2.x;
-}

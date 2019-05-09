@@ -17,29 +17,35 @@ Camera::Camera()
 
 Rect Camera::GetRect()
 {
-	Rect bound;
-	bound.x = posX - (width >> 1);
-	bound.y = posY - (height >> 1);
-	bound.width = this->width;
-	bound.height = this->height;
-	return bound;
+	return Rect(x, y, width, height);
 }
 
-void Camera::Update(Rect MapRect)
+void Camera::Update(Rect mapRect)
 {
-	this->posX = player->posX;
-
 	// Camera về phần trái của map
-	if (this->posX <= this->width >> 1)
+	if (this->x <= 0)
 	{
-		this->posX = this->width >> 1;
-		player->posX = max(player->width >> 1, player->posX);
+		this->x = 0;
 	}
 
 	// Camera về phần phải của map
-	else if (this->posX >= MapRect.width - (this->width >> 1))
+	else if (this->x >= mapRect.width - this->width)
 	{
-		this->posX = MapRect.width - (this->width >> 1);
-		player->posX = min(MapRect.width - player->width, player->posX);
+		this->x = mapRect.width - this->width;
 	}
+}
+
+void Camera::ConvertPositionToViewPort(float& x, float& y)
+{
+	D3DXMATRIX matrix;
+	D3DXMatrixIdentity(&matrix);
+	matrix._22 = -1;
+	matrix._41 = -this->x;
+	matrix._42 = this->y;
+
+	D3DXVECTOR4 MatrixResult;
+	D3DXVec2Transform(&MatrixResult, &D3DXVECTOR2(x, y), &matrix);
+
+	x = MatrixResult.x;
+	y = MatrixResult.y;
 }

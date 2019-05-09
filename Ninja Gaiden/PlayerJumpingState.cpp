@@ -11,7 +11,7 @@ PlayerJumpingState::PlayerJumpingState()
 	State prevState = player->state->StateName;
 
 	if (prevState == RUNNING || prevState == STANDING || prevState == CLINGING)
-		player->vy = -PLAYER_JUMPING_SPEED;
+		player->vy = PLAYER_JUMPING_SPEED;
 
 	StateName = JUMPING;
 }
@@ -19,28 +19,28 @@ PlayerJumpingState::PlayerJumpingState()
 void PlayerJumpingState::Update(float dt)
 {
 	// Cập nhật tốc độ vy đến khi vy >= 0 -> FALLING
-	player->vy += GRAVITY_SPEED;
+	player->vy -= GRAVITY_SPEED;
 
-	if (player->vy >= 0)
+	if (player->vy <= 0)
 	{
 		player->ChangeState(new PlayerFallingState());
 		return;
 	}
 
-	if (player->allow[CLINGING] && player->posY < (SCREEN_HEIGHT >> 1) - 20)
-	{
-		//if (player->posX == SCREEN_WIDTH - player->width)
-		//{
-		//	player->ChangeState(new PlayerClingingState());
-		//	return;
-		//}
+	//if (player->allow[CLINGING] && player->posY < (SCREEN_HEIGHT >> 1) - 20)
+	//{
+	//	//if (player->posX == SCREEN_WIDTH - player->width)
+	//	//{
+	//	//	player->ChangeState(new PlayerClingingState());
+	//	//	return;
+	//	//}
 
-		if (player->posX == player->width >> 1)
-		{
-			player->ChangeState(new PlayerClingingState());
-			return;
-		}
-	}
+	//	if (player->posX == player->width >> 1)
+	//	{
+	//		player->ChangeState(new PlayerClingingState());
+	//		return;
+	//	}
+	//}
 
 	this->HandleKeyboard();
 }

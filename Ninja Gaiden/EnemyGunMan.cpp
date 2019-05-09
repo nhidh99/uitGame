@@ -39,6 +39,7 @@ void EnemyGunMan::Update(float dt)
 void EnemyGunMan::Render(float translateX, float translateY)
 {
 	Enemy::Render(translateX, translateY);
+
 	if (bullet->isOnScreen == true)
 	{
 		bullet->Render(translateX, translateY);

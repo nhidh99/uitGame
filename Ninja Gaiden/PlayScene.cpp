@@ -39,6 +39,7 @@ void PlayScene::UpdateScene()
 
 void PlayScene::UpdateObjects(float dt)
 {
+
 	visibleObjects.clear();
 	visibleObjects = grid->GetVisibleObjects();
 
@@ -48,16 +49,13 @@ void PlayScene::UpdateObjects(float dt)
 		{
 		case ENEMY:
 		{
-			grid->UpdateObjects(o, o->dx, o->dy);
-			enemyFactory->ChangeEnemy(o)->Update(dt);
+			EnemyFactory::ConvertToEnemy(o)->Update(dt);
+			grid->MoveObject(o, o->posX + o->dx, o->posY + o->dy);
+			break;
 		}
 		case HOLDER:
 		{
 			auto h = (Holder*)o;
-			if (h->posX == player->posX)
-			{
-				h->isDropped = true;
-			}
 			h->Update(dt);
 			break;
 		}

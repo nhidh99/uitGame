@@ -14,6 +14,7 @@ public:
 	Enemy() { tag = ENEMY; }
 	~Enemy() {};
 	Type type;
+	bool isActive;
 	float spawnX, spawnY;
 	float moveSpaceHead, moveSpaceTail;
 

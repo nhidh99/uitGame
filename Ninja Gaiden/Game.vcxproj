@@ -41,7 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -135,7 +135,9 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="EnemyBazokaMan.cpp" />
+    <ClCompile Include="EnemyBullet.cpp" />
     <ClCompile Include="EnemyCloakMan.cpp" />
+    <ClCompile Include="EnemyDagger.cpp" />
     <ClCompile Include="EnemyEagle.cpp" />
     <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="EnemyGunMan.cpp" />
@@ -145,13 +147,12 @@
     <ClCompile Include="GameGlobal.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="HolderButterfly.cpp" />
+    <ClCompile Include="HolderItemFactory.cpp" />
     <ClCompile Include="HolderSprite.cpp" />
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapFactory.cpp" />
     <ClCompile Include="Object.cpp" />
-    <ClCompile Include="ObjectItemBullet.cpp" />
-    <ClCompile Include="ObjectItemDagger.cpp" />
     <ClCompile Include="ObjectItemShuriken.cpp" />
     <ClCompile Include="ObjectItemSword.cpp" />
     <ClCompile Include="main.cpp" />
@@ -182,7 +183,9 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBazokaMan.h" />
+    <ClInclude Include="EnemyBullet.h" />
     <ClInclude Include="EnemyCloakMan.h" />
+    <ClInclude Include="EnemyDagger.h" />
     <ClInclude Include="EnemyEagle.h" />
     <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="EnemyGunMan.h" />
@@ -193,13 +196,17 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Holder.h" />
     <ClInclude Include="HolderButterfly.h" />
+    <ClInclude Include="HolderItem.h" />
+    <ClInclude Include="HolderItemBlueShuriken.h" />
+    <ClInclude Include="HolderItemFactory.h" />
+    <ClInclude Include="HolderItemOrangeBottle.h" />
+    <ClInclude Include="HolderItemOrangeShuriken.h" />
+    <ClInclude Include="HolderItemSandWatch.h" />
     <ClInclude Include="HolderSprite.h" />
     <ClInclude Include="Loader.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapFactory.h" />
     <ClInclude Include="ObjectItem.h" />
-    <ClInclude Include="ObjectItemBullet.h" />
-    <ClInclude Include="ObjectItemDagger.h" />
     <ClInclude Include="ObjectItemShuriken.h" />
     <ClInclude Include="ObjectItemSword.h" />
     <ClInclude Include="Object.h" />

@@ -14,14 +14,15 @@ std::vector<Holder*> Loader::LoadHolders()
 
 	while (!ifile.eof()) {
 		//Đọc các thông số của Enemy
-		int id, posX, posY;
-		ifile >> id >> posX >> posY;
+		int id, posX, posY, itemID;
+		ifile >> id >> posX >> posY >> itemID;
 
 		if (id == 1)
 		{
 			Holder* holder = new HolderButterfly();
 			holder->posX = posX;
 			holder->posY = posY;
+			holder->item = HolderItemFactory::GetInstance()->CreateHolderItem(itemID);
 			holders.push_back(holder);
 		}
 
@@ -41,13 +42,15 @@ std::vector<Enemy*> Loader::LoadEnemies()
 
 	while (!ifile.eof()) {
 		//Đọc các thông số của Enemy
-		int id, posX, posY;
-		ifile >> id >> posX >> posY;
+		int id, posX, posY, headSpace, tailSpace;
+		ifile >> id >> posX >> posY >> headSpace >> tailSpace ;
 
 		Enemy* enemy = enemyFactory->CreateEnemy(id);
 		enemy->spawnX = enemy->posX = posX;
 		enemy->spawnY = enemy->posY = posY;
-		enemy->vx = 0.01f;
+		//enemy->vx = 0.01f;
+		enemy->moveSpaceHead = headSpace;
+		enemy->moveSpaceTail = tailSpace;
 		enemy->isReverse = true;
 		enemies.push_back(enemy);
 	}

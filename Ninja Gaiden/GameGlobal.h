@@ -3,6 +3,7 @@
 #include <d3d9.h>
 #include <dinput.h>
 #include <WinUser.h>
+#include <map>
 #include <unordered_map>
 
 // Các thông số và biến tổng dùng cho toàn bộ Game
@@ -62,10 +63,22 @@
 #define ENEMY_PANTHER_HEIGHT 22
 #define ENEMY_EAGLE_WIDTH 26
 #define ENEMY_EAGLE_HEIGHT 38
+#define ENEMY_EAGLE_REVERSE_SPEED 0.012f
+
+// ===== CÁC THÔNG SỐ VỀ TỐC ĐỘ ENEMY ====
+
 
 // ===== CÁC THÔNG SỐ CHO HOLDERS ====
-#define HODLER_BUTTERFLY_WIDTH 20
-#define HODLER_BUTTERFLY_HEIGHT 16
+#define HOLDER_BUTTERFLY_WIDTH 20
+#define HOLDER_BUTTERFLY_HEIGHT 16
+#define HOLDER_ITEM_SANDWATCH_WIDTH 10
+#define HOLDER_ITEM_SANDWATCH_HEIGHT 17
+#define HOLDER_ITEM_BLUESHURIKEN_WIDTH 17
+#define HOLDER_ITEM_BLUESHURIKEN_HEIGHT 20
+#define HOLDER_ITEM_ORANGESHURIKEN_WIDTH 16
+#define HOLDER_ITEM_ORANGESHURIKEN_HEIGHT 16
+#define HOLDER_ITEM_ORANGEBOTTLE_WIDTH 21
+#define HOLDER_ITEM_ORANGEBOTTLE_HEIGHT 18
 
 
 extern HINSTANCE hInstance;										// hInstance của windows hiện tại
@@ -90,7 +103,6 @@ extern enum Tag
 
 extern enum Type
 {
-	NONE,
 	SWORD,
 	SHURIKEN,
 	SWINGSWORD,
@@ -103,6 +115,10 @@ extern enum Type
 	BULLET,
 	BUTTERFLY,
 	DAGGER,
+	SANDWATCH,
+	BLUESHURIKEN,
+	ORANGESHURIKEN,
+	ORANGEBOTTLE,
 };
 
 extern enum State

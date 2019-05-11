@@ -5,4 +5,6 @@ class EnemyPanther :public Enemy {
 public:
 	EnemyPanther();
 	~EnemyPanther();
+
+	void Update(float dt, Rect camRect);
 };

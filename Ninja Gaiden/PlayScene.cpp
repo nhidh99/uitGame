@@ -40,11 +40,15 @@ void PlayScene::Update(float dt)
 		if (o->tag == ENEMY)
 		{
 			grid->UpdateObjects(o, o->dx, o->dy);
-			enemyFactory->ChangeEnemy(o)->Update(dt);
+			enemyFactory->ChangeEnemy(o)->Update(dt, cameraRect);
 		}
 		else if (o->tag == HOLDER)
 		{
 			auto h = (Holder*)o;
+			if (h->posX == player->posX)
+			{
+				h->isDropped = true;
+			}
 			h->Update(dt);
 		}
 	}

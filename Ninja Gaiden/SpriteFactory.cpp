@@ -61,10 +61,12 @@ void SpriteFactory::LoadResources()
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(EAGLE, 500, 54, 526, 92));
 
 	// =========================== HOLDER SPRITE ========================================
-
 	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(BUTTERFLY, 63, 42, 84, 61));
 	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(BUTTERFLY, 84, 41, 105, 60));
-
+	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(SANDWATCH, 100, 0, 110, 17));
+	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(BLUESHURIKEN, 0, 23, 17, 43));
+	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(ORANGEBOTTLE, 57, 0, 78, 18));
+	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(ORANGESHURIKEN, 0, 88, 16, 104));
 }
 
 // Thêm một Sprite vào danh sách các Sprite, quy định theo Tag của Sprite

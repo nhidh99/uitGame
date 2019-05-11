@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Object.h"
 #include "EnemySprite.h"
 #include "Cell.h"
@@ -15,6 +15,7 @@ public:
 	~Enemy() {};
 	Type type;
 	float spawnX, spawnY;
+	float moveSpaceHead, moveSpaceTail;
 
 	void Render()
 	{
@@ -28,10 +29,17 @@ public:
 		curAnimation->Render(posX, posY, translateX, translateY);
 	}
 
-	virtual void Update(float dt)
+	virtual void Update(float dt, Rect camRect)
 	{
 		curAnimation->Update(dt);
 		Object::Update(dt);
+
+		//Khi enemy di chuyển ra khỏi vùng cho phép sẽ quay đầu
+		if (this->posX <= moveSpaceHead || this->posX >= moveSpaceTail)
+		{
+			this->isReverse = !isReverse;
+			this->vx = -this->vx;
+		}
 	}
 
 	bool IsRespawnOnScreen(Rect CameraRect)

@@ -1,41 +1,374 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(396,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+  Animation.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Animation.cpp(29): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+  Camera.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\Camera.cpp(20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Cell.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Cell.cpp(10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Cell.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Collision.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  EnemyBazokaMan.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  EnemyCloakMan.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\EnemyCloakMan.cpp(42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  EnemyEagle.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\EnemyEagle.cpp(11): warning C4305: '=': truncation from 'double' to 'float'
+  EnemyFactory.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  EnemyGunMan.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\EnemyGunMan.cpp(8): warning C4305: '=': truncation from 'double' to 'float'
+C:\uitGD\Ninja Gaiden\EnemyGunMan.cpp(14): warning C4305: '=': truncation from 'double' to 'float'
+  EnemyPanther.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  EnemySprite.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\EnemySprite.cpp(13): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  EnemySwordMan.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Game.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Game.cpp(117): warning C4018: '>=': signed/unsigned mismatch
+C:\uitGD\Ninja Gaiden\Game.cpp(120): warning C4244: 'argument': conversion from 'unsigned long' to 'float', possible loss of data
+  GameGlobal.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
   Grid.cpp
   C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-C:\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
-C:\Ninja Gaiden\GameGlobal.h(106): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
-C:\Ninja Gaiden\GameGlobal.h(125): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
-C:\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\Ninja Gaiden\Enemy.h(39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Ninja Gaiden\Grid.cpp(5): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Grid.cpp(6): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Grid.cpp(22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Grid.cpp(23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Grid.cpp(52): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Grid.cpp(53): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Grid.cpp(54): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Grid.cpp(55): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Grid.cpp(60): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Grid.cpp(61): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Grid.cpp(62): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Grid.cpp(63): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(5): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(6): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(57): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(58): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(59): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(60): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(66): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(67): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(68): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(69): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(141): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(142): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(143): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(144): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(155): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(156): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(251): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(252): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(253): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(254): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(276): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(277): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(278): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(279): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(302): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(303): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(304): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Grid.cpp(305): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  HolderButterfly.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  HolderSprite.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\HolderSprite.cpp(13): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  Loader.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Loader.cpp(19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Loader.cpp(20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Loader.cpp(44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Loader.cpp(45): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Loader.cpp(65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Loader.cpp(82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Map.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Map.cpp(23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Map.cpp(24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Map.cpp(31): warning C4554: '<<': check operator precedence for possible error; use parentheses to clarify precedence
+C:\uitGD\Ninja Gaiden\Map.cpp(50): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\uitGD\Ninja Gaiden\Map.cpp(61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  MapFactory.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  Generating Code...
+  Compiling...
+  Object.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Object.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Object.cpp(9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Object.cpp(16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\Object.cpp(17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  ObjectItemBullet.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  ObjectItemDagger.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemDagger.cpp(8): warning C4305: '=': truncation from 'double' to 'float'
+C:\uitGD\Ninja Gaiden\ObjectItemDagger.cpp(9): warning C4305: '=': truncation from 'double' to 'float'
+C:\uitGD\Ninja Gaiden\ObjectItemDagger.cpp(28): warning C4305: '=': truncation from 'double' to 'float'
+  ObjectItemShuriken.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  ObjectItemSwingSword.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  ObjectItemSword.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
   PlayScene.cpp
   C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-C:\Ninja Gaiden\GameGlobal.h(89): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
-C:\Ninja Gaiden\GameGlobal.h(106): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
-C:\Ninja Gaiden\GameGlobal.h(125): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
-C:\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\Ninja Gaiden\Camera.h(12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Camera.h(13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Ninja Gaiden\Camera.h(19): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-C:\Ninja Gaiden\Camera.h(21): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-C:\Ninja Gaiden\Camera.h(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Ninja Gaiden\Camera.h(32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Ninja Gaiden\Camera.h(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Ninja Gaiden\Camera.h(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Ninja Gaiden\Camera.h(54): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Ninja Gaiden\Enemy.h(39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Ninja Gaiden\PlayScene.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Player.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  PlayerAttackingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  PlayerClimbingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\PlayerClimbingState.cpp(19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  PlayerClingingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  PlayerDeadState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  PlayerFallingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  PlayerInjuredState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  PlayerJumpingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  PlayerRunningState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  PlayerSittingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  PlayerStandingState.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  Scene.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  SceneManager.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
   Generating Code...
-  Game.vcxproj -> C:\Ninja Gaiden\Debug\Game.exe
+  Compiling...
+  Sprite.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\Sprite.cpp(12): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Sprite.cpp(25): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  SpriteFactory.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  TextureFactory.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+  main.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(108): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(127): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Game.vcxproj -> C:\uitGD\Ninja Gaiden\Debug\Game.exe

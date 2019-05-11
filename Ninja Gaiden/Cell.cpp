@@ -15,5 +15,13 @@ Cell::Cell(int xID, int yID)
 
 bool Cell::IsContain(Rect r)
 {
-	return !(rect.x + rect.width < r.x || rect.x > r.x + r.width || rect.y + rect.height < r.y || rect.y > r.y + r.height);
+	return rect.IsContain(r);
+}
+
+void Cell::RemoveObject(Object* obj)
+{
+	if (objects.find(obj) != objects.end())
+	{
+		objects.erase(obj);
+	}
 }

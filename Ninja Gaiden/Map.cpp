@@ -1,11 +1,14 @@
 ﻿#include "Map.h"
 
-auto addCols = (SCREEN_WIDTH >> 4) + 1;
+const auto ADD_COL = (SCREEN_WIDTH >> 4) + 1;
+const auto MOVE_TILE = (TILE_SIZE >> 1);
 
 Map::Map(int level)
 {
 	std::ifstream ifile;
 	char fileName[30];
+	int numSetTiles;
+
 	sprintf_s(fileName, "Resources\\matrix%d.txt", level + 1);
 	mapLevel = MAP1;
 	ifile.open(fileName);
@@ -16,10 +19,11 @@ Map::Map(int level)
 	ifile >> rows;
 	width = columns << 4;
 	height = rows << 4;
-	
-	rect.x = rect.y = 0;
+
 	rect.width = width;
 	rect.height = height;
+	rect.x = 0;
+	rect.y = rect.height;
 
 	// Tải các Sprite tương ứng của map vào Factry
 	for (int i = 0; i < numSetTiles; ++i)
@@ -28,7 +32,7 @@ Map::Map(int level)
 	}
 
 	// Tạo ma trận tương ứng của Map đang xét
-	mapTiles = new int*[rows];
+	mapTiles = new int* [rows];
 	for (int r = 0; r < rows; ++r)
 	{
 		mapTiles[r] = new int[columns];
@@ -42,21 +46,19 @@ Map::Map(int level)
 
 void Map::Update()
 {
-	cBegin = max(0, (camera->posX - (camera->width >> 1)) / 16);
-	cEnd = min(cBegin + addCols, columns);
+	camera->Update(this->rect);
+	cBegin = max(0, camera->x / 16);
+	cEnd = min(cBegin + ADD_COL, columns);
 }
 
 void Map::Render()
 {
-	auto transX = (SCREEN_WIDTH >> 1) - (int)camera->posX;
-	//auto trans = D3DXVECTOR2((SCREENWIDTH >> 1) - camera->posX, 0);
-
-	for (auto r = 0; r < rows; ++r)
+	for (auto r = 0; r != rows; ++r)
 	{
-		for (auto c = cBegin; c < cEnd; ++c)
+		for (auto c = cBegin; c != cEnd; ++c)
 		{
 			auto sprite = SpriteFactory::GetInstance()->GetSprite(mapLevel, mapTiles[r][c]);
-			sprite->Render((c << 4) + (TILE_SIZE >> 1), (r << 4) + (TILE_SIZE >> 1), transX);
+			sprite->Render((c << 4) + MOVE_TILE - (int)camera->x, (r << 4) + MOVE_TILE);
 		}
 	}
 }

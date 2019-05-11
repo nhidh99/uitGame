@@ -5,7 +5,9 @@
 #include <set>
 #include <unordered_set>
 #include <vector>
+#include "Camera.h"
 #include "Cell.h"
+#include "Loader.h"
 #include "Enemy.h"
 
 class Grid
@@ -13,6 +15,7 @@ class Grid
 private:
 	int rows;
 	int columns;
+	Rect viewPort;
 
 public:
 	Grid(Rect MapRect);
@@ -20,13 +23,22 @@ public:
 	std::vector<Cell*> visibleCells;
 	std::vector<Enemy*> respawnEnemies;
 
-	void Update(Rect CameraRect);
-	void UpdateObjects(Object* obj, float dx, float dy);
-	std::unordered_set<Object*> GetVisibleObjects(Rect CameraRect);
-	std::vector<BoundingBox> GetVisibleWalls(Rect CameraRect);
-	std::vector<BoundingBox> GetVisibleGrounds(Rect CameraRect);
+	void Update();
+	void LoadObjects();
 
-	void InitHoldersCell(std::vector<Holder*> holders);
-	void InitEnemiesCell(std::vector<Enemy*> enemies);
-	void InitBoundsCell(std::vector<BoundingBox> grounds, std::vector<BoundingBox> walls);
+	void RespawnEnemies();
+	void RestartGame();
+
+	void MoveObject(Object* obj, float posX, float posY);
+	void RemoveObject(Object* obj);
+
+	void UpdateVisibleCells();
+
+	std::unordered_set<Object*> GetVisibleObjects();
+	std::unordered_set<Rect*> GetVisibleWalls();
+	std::unordered_set<Rect*> GetVisibleGrounds();
+
+	void InitGroundCell(Rect* ground);
+	void InitWallCell(Rect* wall);
+	void InitObjectCell(Object* obj);
 };

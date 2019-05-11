@@ -45,7 +45,7 @@ Player::~Player()
 	}
 }
 
-Player * Player::GetInstance()
+Player* Player::GetInstance()
 {
 	if (_instance == NULL)
 		_instance = new Player();
@@ -58,13 +58,8 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 
 	state->Update(dt);
 
-	if (allow[MOVING])
-	{
-		dx = vx * dt;
-		posX += dx;
-	}
+	dx = (allow[MOVING] ? vx * dt : 0);
 	dy = vy * dt;
-	posY += dy;
 
 	/*std::vector<CollisionResult> ResultCollisions;
 	ResultCollisions.clear();
@@ -121,21 +116,23 @@ void Player::Update(float dt, std::vector<Object*> ColliableObjects)
 
 // Duyệt tìm lại vùng đất va chạm của player khi ra khỏi vùng hiện tại
 // Dùng cách nâng sàn Collision duyệt trước
-bool Player::DetectGround(std::vector<BoundingBox> grounds)
+bool Player::DetectGround(std::unordered_set<Rect*> grounds)
 {
 	auto tg = curGroundBound;
-	tg.y -= this->height;
+	auto r = this->GetRect();
+	tg.y += this->height;
 
-	if (Collision::GetInstance()->IsCollision(this->GetBoundingBox(), tg))
+	if (r.IsContain(tg))
 		return true;
 
 	for (auto g : grounds)
 	{
-		tg = g;
-		tg.y -= this->height;
-		if (Collision::GetInstance()->IsCollision(this->GetBoundingBox(), tg))
+		tg = *g;
+		tg.y += this->height;
+
+		if (r.IsContain(tg))
 		{
-			curGroundBound = g;
+			curGroundBound = *g;
 			return true;
 		}
 	}
@@ -144,22 +141,23 @@ bool Player::DetectGround(std::vector<BoundingBox> grounds)
 
 // Duyệt tìm tường va chạm
 // Bằng cách dịch tường và duyệt trước
-bool Player::DectectWall(std::vector<BoundingBox> walls)
+bool Player::DectectWall(std::unordered_set<Rect*> walls)
 {
 	auto tw = curWallBound;
-	this->vx > 0 ? tw.x -= this->width : tw.x += this->width;
+	auto r = GetRect();
 
-	if (Collision::GetInstance()->IsCollision(this->GetBoundingBox(), tw))
+	this->vx > 0 ? tw.x -= this->width : tw.x += this->width;
+	if (r.IsContain(tw))
 		return true;
 
 	for (auto w : walls)
 	{
-		tw = w;
+		tw = *w;
 		this->vx > 0 ? tw.x -= this->width : tw.x += this->width;
 
-		if (Collision::GetInstance()->IsCollision(this->GetBoundingBox(), tw))
+		if (r.IsContain(tw))
 		{
-			curWallBound = w;
+			curWallBound = *w;
 			return true;
 		}
 	}
@@ -167,18 +165,23 @@ bool Player::DectectWall(std::vector<BoundingBox> walls)
 }
 
 // Xử lí va chạm với mặt đất theo các vùng đất hiển thị
-void Player::CheckOnGround(std::vector<BoundingBox> grounds)
+void Player::CheckGroundCollision(std::unordered_set<Rect*> grounds)
 {
 	// Tìm được vùng đất va chạm
 	if (DetectGround(grounds))
 	{
-		if (this->vy > 0 && this->posY > curGroundBound.y - this->height)
+		if (this->vy < 0)
 		{
-			this->posY = curGroundBound.y - this->height;
-			this->vy = 0;
+			auto r = this->GetRect();
+			r.y = r.y + dy;
+			r.height = r.height - dy;
 
-			if (stateName == ATTACKING_STAND)
-				this->allow[MOVING] = false;
+			if (r.IsContain(curGroundBound))
+			{
+				this->vy = this->dy = 0;
+				if (stateName == ATTACKING_STAND)
+					this->allow[MOVING] = false;
+			}
 		}
 	}
 
@@ -190,21 +193,17 @@ void Player::CheckOnGround(std::vector<BoundingBox> grounds)
 }
 
 // Kiểm tra va chạm tường
-void Player::CheckOnWall(std::vector<BoundingBox> walls)
+void Player::CheckWallCollision(std::unordered_set<Rect*> walls)
 {
-	// Khi đang chạy và tìm được tường -> set lại khi quá giới hạn
 	if (this->vx && this->DectectWall(walls))
 	{
-		if (this->posX > curWallBound.x - (this->width >> 1) && this->vx > 0)
-		{
-			this->vx = 0;
-			this->posX = curWallBound.x - (this->width >> 1);
-		}
+		auto r = this->GetRect();
+		r.x = dx > 0 ? r.x : r.x + dx;
+		r.width = dx > 0 ? dx + r.width : r.width - dx;
 
-		else if (this->posX < curWallBound.x + curWallBound.width + (this->width >> 1) && this->vx < 0)
+		if (r.IsContain(curWallBound))
 		{
-			this->vx = 0;
-			this->posX = curWallBound.x + curWallBound.width + (this->width >> 1);
+			this->vx = this->dx = 0;
 		}
 	}
 }
@@ -212,9 +211,13 @@ void Player::CheckOnWall(std::vector<BoundingBox> walls)
 // Render nhân vật (bản chất là Render Animation và vũ khí)
 void Player::Render(float translateX, float translateY)
 {
+	auto posX = this->posX + translateX;
+	auto posY = this->posY + translateY;
+
+	camera->ConvertPositionToViewPort(posX, posY);
 	curAnimation->isReverse = this->isReverse;
-	curAnimation->Render(posX, posY, translateX, translateY);
-	sword->Render(posX, posY, curAnimation->CurFrameIndex, translateX, translateY);
+	curAnimation->Render(posX, posY);
+	sword->Render(posX, posY, curAnimation->CurFrameIndex);
 }
 
 // Xử lí nhấn phím (chung cho các State)
@@ -231,7 +234,6 @@ void Player::OnKeyDown(int keyCode)
 			AttackWith(SWORD);
 		}
 		break;
-
 
 		// Phím S: tấn công với item
 	case DIK_S:

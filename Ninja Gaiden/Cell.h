@@ -12,9 +12,10 @@ public:
 	Rect rect;
 	static int width, height;
 	std::unordered_set<Object*> objects;
-	std::vector<BoundingBox> walls;
-	std::vector<BoundingBox> grounds;
+	std::vector<Rect*> walls;
+	std::vector<Rect*> grounds;
 
 	Cell(int xID, int yID);
 	bool IsContain(Rect r);
+	void RemoveObject(Object* obj);
 };

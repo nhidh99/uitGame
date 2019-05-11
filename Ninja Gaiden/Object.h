@@ -3,6 +3,7 @@
 #include "SpriteFactory.h"
 #include "Animation.h"
 #include "Collision.h"
+#include "Camera.h"
 
 class Object
 {
@@ -11,6 +12,7 @@ public:
 	~Object() {}
 
 	Tag tag;									// Tag định loại Object
+	float spawnX, spawnY;
 	float posX, posY;							// Vị trí (đồng thời là tâm của Object đó)
 	float vx, vy;								// Vận tốc
 	float dx, dy;
@@ -22,6 +24,5 @@ public:
 
 	void Update(float dt);
 	bool IsCollide(Rect r);
-	virtual void Render() {}
 	virtual void Render(float translateX = 0, float translateY = 0) {}
 };

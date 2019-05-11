@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="EnemyBazokaMan.cpp" />
@@ -232,9 +233,6 @@
     <ClInclude Include="EnemySwordMan.h" />
     <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="ObjectItemSprite.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Player.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

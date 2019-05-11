@@ -8,9 +8,6 @@
 
 class EnemyFactory
 {
-private:
-	static EnemyFactory* instance;
-
 public:
 	Enemy* enemy;
 
@@ -36,7 +33,7 @@ public:
 		}
 	}
 
-	Enemy* ChangeEnemy(Object* o)
+	static Enemy* ConvertToEnemy(Object* o)
 	{
 		Enemy* e = (Enemy*)o;
 
@@ -73,12 +70,5 @@ public:
 		}
 		}
 		return e;
-	}
-
-	static EnemyFactory* GetInstance()
-	{
-		if (instance == NULL)
-			instance = new EnemyFactory();
-		return instance;
 	}
 };

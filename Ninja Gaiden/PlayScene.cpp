@@ -3,46 +3,55 @@
 PlayScene::PlayScene()
 {
 	map = MapFactory::GetInstance()->GetMap(0);
-	map->camera = camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT);
+	grid = new Grid(map->rect);
+	grid->LoadObjects();
 
-	player->posX = 50;
-	player->posY = SCREEN_HEIGHT >> 1;
+	player->spawnX = player->posX = 50;
+	player->spawnY = player->posY = 50;
 	player->ChangeState(new PlayerStandingState());
 
-	camera->posX = SCREEN_WIDTH >> 1;
-	camera->posY = map->height >> 1;
-
-	loader = new Loader();
-	enemyFactory = EnemyFactory::GetInstance();
-
-	grid = new Grid(map->rect);
-	grid->InitBoundsCell(loader->LoadGroundsBound(), loader->LoadWallsBound());
-	grid->InitHoldersCell(loader->LoadHolders());
-	grid->InitEnemiesCell(loader->LoadEnemies());
+	camera->x = 0;
+	camera->y = SCREEN_HEIGHT;
 }
 
 PlayScene::~PlayScene()
 {
 }
 
+void PlayScene::InitCellsInGrid()
+{
+}
+
 // Update các thông số các đối tượng trong Scene
 void PlayScene::Update(float dt)
 {
-	camera->Update(map->rect);
-	map->Update();
+	this->UpdateScene();
+	this->UpdateObjects(dt);
+	this->UpdatePlayer(dt);
+}
 
-	auto cameraRect = camera->GetRect();
-	grid->Update(cameraRect);
-	visibleObjects = grid->GetVisibleObjects(cameraRect);
+void PlayScene::UpdateScene()
+{
+	camera->x = player->posX - (camera->width >> 1);
+	map->Update();
+	grid->Update();
+}
+
+void PlayScene::UpdateObjects(float dt)
+{
+	visibleObjects.clear();
+	visibleObjects = grid->GetVisibleObjects();
 
 	for (auto o : visibleObjects)
 	{
-		if (o->tag == ENEMY)
+		switch (o->tag)
+		{
+		case ENEMY:
 		{
 			grid->UpdateObjects(o, o->dx, o->dy);
-			enemyFactory->ChangeEnemy(o)->Update(dt, cameraRect);
+			enemyFactory->ChangeEnemy(o)->Update(dt);
 		}
-		else if (o->tag == HOLDER)
+		case HOLDER:
 		{
 			auto h = (Holder*)o;
 			if (h->posX == player->posX)
@@ -50,12 +59,28 @@ void PlayScene::Update(float dt)
 				h->isDropped = true;
 			}
 			h->Update(dt);
+			break;
+		}
 		}
 	}
+}
 
-	player->Update(dt, std::vector<Object*>());
-	player->CheckOnGround(grid->GetVisibleGrounds(cameraRect));
-	player->CheckOnWall(grid->GetVisibleWalls(cameraRect));
+void PlayScene::UpdatePlayer(float dt)
+{
+	auto p = player;
+	p->Update(dt, std::vector<Object*>());
+	p->CheckGroundCollision(grid->GetVisibleGrounds());
+	p->CheckWallCollision(grid->GetVisibleWalls());
+
+	p->posX += p->dx;
+	p->posY += p->dy;
+
+	if (p->posY + (p->width >> 1) < 0)
+	{
+		grid->RestartGame();
+		p->posX = p->spawnX;
+		p->posY = p->spawnY;
+	}
 }
 
 // Tải Scene lên màn hình bằng cách vẽ object có trong trong Scene
@@ -63,14 +88,12 @@ void PlayScene::Render()
 {
 	map->Render();
 
-	auto transX = (SCREEN_WIDTH >> 1) - camera->posX;
-
 	for (auto o : visibleObjects)
 	{
-		o->Render(transX);
+		o->Render();
 	}
 
-	player->Render(transX);
+	player->Render();
 }
 
 // Xử lí Scene khi nhấn phím

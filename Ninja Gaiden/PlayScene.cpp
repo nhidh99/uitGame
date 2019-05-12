@@ -7,7 +7,7 @@ PlayScene::PlayScene()
 	grid->LoadObjects();
 
 	player->spawnX = player->posX = 50;
-	player->spawnY = player->posY = 50;
+	player->spawnY = player->posY = 100;
 	player->ChangeState(new PlayerStandingState());
 
 	camera->x = 0;
@@ -15,10 +15,6 @@ PlayScene::PlayScene()
 }
 
 PlayScene::~PlayScene()
-{
-}
-
-void PlayScene::InitCellsInGrid()
 {
 }
 
@@ -65,14 +61,16 @@ void PlayScene::UpdateObjects(float dt)
 void PlayScene::UpdatePlayer(float dt)
 {
 	auto p = player;
-	p->Update(dt, std::vector<Object*>());
+	p->rect = p->GetRect();
+	
+	p->Update(dt, grid->GetColliableObjects());
 	p->CheckGroundCollision(grid->GetVisibleGrounds());
 	p->CheckWallCollision(grid->GetVisibleWalls());
 
 	p->posX += p->dx;
 	p->posY += p->dy;
 
-	if (p->posY + (p->width >> 1) < 0)
+	if (p->rect.y < 0)
 	{
 		grid->RestartGame();
 		p->posX = p->spawnX;

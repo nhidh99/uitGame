@@ -2,9 +2,8 @@
 
 EnemyCloakMan::EnemyCloakMan()
 {
-	animations[RUNNING] = new Animation(ENEMY, 12, 13, 150);
-	animations[ATTACKING] = new Animation(ENEMY, 13, 14, 150);
-	curAnimation = animations[ATTACKING];
+	animations[STANDING] = new Animation(ENEMY, 12, 12);
+	animations[ATTACKING] = new Animation(ENEMY, 12, 14);
 	dagger = new ObjectItemDagger();
 	tag = ENEMY;
 	type = CLOAKMAN;

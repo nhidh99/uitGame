@@ -2,11 +2,11 @@
 
 EnemyGunMan::EnemyGunMan()
 {
-	animations[RUNNING] = new Animation(ENEMY, 7, 8, 150);
-	animations[ATTACKING] = new Animation(ENEMY, 9, 10, 150);
+	animations[STANDING] = new Animation(ENEMY, 7, 7);
+	animations[RUNNING] = new Animation(ENEMY, 7, 8);
+	animations[ATTACKING] = new Animation(ENEMY, 9, 10);
 	bullet = new ObjectItemBullet();
 	bullet->vx = -0.02;
-	curAnimation = animations[RUNNING];
 	tag = ENEMY;
 	type = GUNMAN;
 	height = ENEMY_GUNMAN_HEIGHT;

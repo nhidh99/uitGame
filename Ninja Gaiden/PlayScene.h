@@ -15,7 +15,6 @@ private:
 public:
 	PlayScene();
 	~PlayScene();
-	void InitCellsInGrid();
 
 	void Update(float dt);
 	void UpdateScene();						// Update các thông số các đối tượng trong Scene

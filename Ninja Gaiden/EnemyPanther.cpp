@@ -2,8 +2,8 @@
 
 EnemyPanther::EnemyPanther()
 {
-	animations[RUNNING] = new Animation(ENEMY, 16, 17, 150);
-	curAnimation = animations[RUNNING];
+	animations[STANDING] = new Animation(ENEMY, 16, 16);
+	animations[ATTACKING] = new Animation(ENEMY, 16, 17);
 	tag = ENEMY;
 	type = PANTHER;
 	height = ENEMY_PANTHER_HEIGHT;

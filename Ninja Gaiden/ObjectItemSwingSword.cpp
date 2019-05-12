@@ -2,7 +2,7 @@
 
 ObjectItemSwingSword::ObjectItemSwingSword()
 {
-	_animation = new Animation(ITEM, 3, 6);
+	_animation = new Animation(ITEM, 4, 7);
 	isOnScreen = false;
 	width = ITEM_SWINGSWORD_WIDTH;
 	height = ITEM_SWINGSWORD_HEIGHT;

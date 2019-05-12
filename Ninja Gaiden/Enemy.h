@@ -1,3 +1,4 @@
+
 #pragma once
 #include "Object.h"
 #include "EnemySprite.h"
@@ -7,31 +8,25 @@
 class Enemy : public Object
 {
 protected:
+	float deadX, deadY;
 	Animation* curAnimation;
 	std::unordered_map<State, Animation*> animations;
 
 public:
-	Enemy() 
-	{ 
-		tag = ENEMY; 
-		isActive = false;
+	Enemy()
+	{
+		tag = ENEMY;
 	}
-	
+
 	~Enemy() {};
 	Type type;
 	bool isActive;
-
-	void Render()
-	{
-		curAnimation->isReverse = this->isReverse;
-		curAnimation->Render(posX, posY);
-	}
+	bool isDead;
 
 	void Render(float translateX = 0, float translateY = 0)
 	{
 		auto posX = this->posX + translateX;
 		auto posY = this->posY + translateY;
-
 		camera->ConvertPositionToViewPort(posX, posY);
 		curAnimation->isReverse = this->isReverse;
 		curAnimation->Render(posX, posY);
@@ -39,9 +34,12 @@ public:
 
 	virtual void Update(float dt)
 	{
-		curAnimation->Update(dt);
-		dx = vx * dt;
-		dy = vy * dt;
+		if (this->isActive)
+		{
+			curAnimation->Update(dt);
+			dx = vx * dt;
+			dy = vy * dt;
+		}
 	}
 
 	bool IsRespawnOnScreen()
@@ -49,14 +47,23 @@ public:
 		return Rect(spawnX - (width >> 1), spawnY - (height >> 1), width, height).IsContain(camera->GetRect());
 	}
 
-	/*std::unordered_set<Cell*> GetContainedCells()
+	void ChangeState(State StateName)
 	{
-		std::unordered_set<Cell*> cells;
-		auto r = GetRect();
-		int left = r.x / Cell::width;
-		int right = (r.x + r.width) / Cell::width;
-		int top = r.y / Cell::height;
-		int bottom = (r.y + r.height) / Cell::height;
-		cells.insert()
-	}*/
+		switch (StateName)
+		{
+		case DEAD:
+		{
+			this->isDead = true;
+			this->isActive = false;
+			break;
+		}
+		default:
+		{
+			this->isActive = true;
+			this->isDead = false;
+			this->curAnimation = animations[StateName];
+			break;
+		}
+		}
+	}
 };

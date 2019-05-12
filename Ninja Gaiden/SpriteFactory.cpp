@@ -24,6 +24,7 @@ void SpriteFactory::LoadResources()
 	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(CLIMBING, 286, 5, 310, 38));
 
 	// ======================== ObjectItem SPRITE ==========================
+	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(EXPLODED, 317, 0, 351, 42));
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWORD, 150, 28, 172, 43));
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWORD, 170, 35, 187, 41));
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SHURIKEN, 265, 13, 273, 20));
@@ -34,6 +35,7 @@ void SpriteFactory::LoadResources()
 	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(BULLET, 189, 62, 206, 73));
 
 	// ======================== ENEMY SPRITE ================================
+
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN, 211, 47, 240, 90));
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN, 240, 47, 269, 90));
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(SWORDMAN, 278, 47, 307, 90));

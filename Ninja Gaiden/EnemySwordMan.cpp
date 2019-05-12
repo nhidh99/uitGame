@@ -2,8 +2,8 @@
 
 EnemySwordMan::EnemySwordMan()
 {
-	animations[RUNNING] = new Animation(ENEMY, 0, 2, 125);
-	curAnimation = animations[RUNNING];
+	animations[STANDING] = new Animation(ENEMY, 0, 0);
+	animations[ATTACKING] = new Animation(ENEMY, 0, 2);
 	tag = ENEMY;
 	type = SWORDMAN;
 	width = ENEMY_SWORDMAN_WIDTH;

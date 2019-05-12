@@ -2,7 +2,7 @@
 
 ObjectItemShuriken::ObjectItemShuriken()
 {
-	_sprite = SpriteFactory::GetInstance()->GetSprite(ITEM, 2);
+	_sprite = SpriteFactory::GetInstance()->GetSprite(ITEM, 3);
 	isOnScreen = false;
 	width = ITEM_SHURIKEN_WIDTH;
 	height = ITEM_SHURIKEN_HEIGHT;

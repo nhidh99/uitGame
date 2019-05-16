@@ -1,21 +1,20 @@
-﻿#include "ObjectItemSword.h"
+﻿#include "WeaponSword.h"
 
-ObjectItemSword::ObjectItemSword()
+WeaponSword::WeaponSword()
 {
-	_animation = new Animation(ITEM, 1, 2, DEFAULT_TPS >> 1);
+	_animation = new Animation(WEAPON, 3, 4, DEFAULT_TPS >> 1);
 	isOnScreen = false;
-	width = ITEM_SWORD_WIDTH;
-	height = ITEM_SWORD_HEIGHT;
-	tag = ITEM;
+	width = WEAPON_SWORD_WIDTH;
+	height = WEAPON_SWORD_HEIGHT;
 	type = SWORD;
 }
 
-void ObjectItemSword::Update(float dt)
+void WeaponSword::Update(float dt)
 {
 
 }
 
-void ObjectItemSword::Render(float x, float y, int frameIndex, float translateX, float translateY)
+void WeaponSword::Render(float x, float y, int frameIndex, float translateX, float translateY)
 {
 	if (!isOnScreen || frameIndex == 0)
 		return;

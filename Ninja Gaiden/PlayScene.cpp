@@ -50,8 +50,13 @@ void PlayScene::UpdateObjects(float dt)
 		}
 		case HOLDER:
 		{
-			auto h = (Holder*)o;
-			h->Update(dt);
+			HolderFactory::ConvertToHolder(o)->Update(dt);
+			break;
+		}
+		case ITEM:
+		{
+			ItemFactory::ConvertToItem(o)->Update(dt);
+			grid->MoveObject(o, o->posX, o->posY + o->dy);
 			break;
 		}
 		}

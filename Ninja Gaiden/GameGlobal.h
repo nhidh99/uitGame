@@ -13,7 +13,7 @@
 #define SCREEN_HEIGHT 176						// Chiều dài cửa sổ
 #define MAX_FRAME_RATE 90						// FPS
 #define BACK_COLOR D3DCOLOR_XRGB(0, 0, 0)		// Màu nền BackBuffer
-#define DEFAULT_TPS 150							// Thời gian tồn tại của mỗi Frame (cho Animation)
+#define DEFAULT_TPS 180							// Thời gian tồn tại của mỗi Frame (cho Animation)
 #define GRAVITY_SPEED 0.014f					// Tốc độ trọng lực
 #define KEYBOARD_BUFFER_SIZE 1024
 #define NUMBER_MAP_LEVEL 1
@@ -34,20 +34,18 @@
 #define PLAYER_THROW_SPRITE_WIDTH 27
 #define PLAYER_THROWING_FORWARD 5
 
-// ===== Các thông số cho ITEM SWORD ====
-#define ITEM_SWORD_WIDTH 30
-#define ITEM_SWORD_HEIGHT 24
-
-// ===== Các thông số cho ITEM SHURIKEN ====
-#define ITEM_SHURIKEN_WIDTH 18
-#define ITEM_SHURIKEN_HEIGHT 18
-#define ITEM_SHURIKEN_SPEED 0.15f
-#define ITEM_SWINGSWORD_WIDTH 18
-#define ITEM_SWINGSWORD_HEIGHT 18
-#define ITEM_BULLET_WIDTH 18
-#define ITEM_BULLET_HEIGHT 12
-#define ITEM_DAGGER_WIDTH 11
-#define ITEM_DAGGER_HEIGHT 23
+// ===== Các thông số cho WEAPON SWORD ====
+#define WEAPON_SWORD_WIDTH 30
+#define WEAPON_SWORD_HEIGHT 24
+#define WEAPON_SHURIKEN_WIDTH 18
+#define WEAPON_SHURIKEN_HEIGHT 18
+#define WEAPON_SHURIKEN_SPEED 0.15f
+#define WEAPON_SWINGSWORD_WIDTH 18
+#define WEAPON_SWINGSWORD_HEIGHT 18
+#define WEAPON_BULLET_WIDTH 18
+#define WEAPON_BULLET_HEIGHT 12
+#define WEAPON_DAGGER_WIDTH 11
+#define WEAPON_DAGGER_HEIGHT 23
 
 // ===== CÁC THÔNG SỐ CHO ENEMIES ====
 #define ENEMY_SWORDMAN_WIDTH 24
@@ -63,9 +61,13 @@
 #define ENEMY_EAGLE_WIDTH 26
 #define ENEMY_EAGLE_HEIGHT 32
 
-// ===== CÁC THÔNG SỐ CHO HOLDERS ====
-#define HODLER_BUTTERFLY_WIDTH 20
-#define HODLER_BUTTERFLY_HEIGHT 16
+// ===== CÁC THÔNG SỐ CHO HOLDERS & ITEM ====
+#define HOLDER_WIDTH 20
+#define HOLDER_HEIGHT 16
+#define ITEM_EXISTS_TIME 2000
+#define ITEM_WIDTH 20
+#define ITEM_HEIGHT 20
+#define ITEM_SPEED 0.14f
 
 // ===== CAMERA =====
 #define camera Camera::GetInstance()
@@ -84,6 +86,7 @@ extern enum Tag
 {
 	PLAYER,
 	ITEM,
+	WEAPON,
 	GROUND,
 	MAP1,
 	ENEMY,
@@ -92,7 +95,6 @@ extern enum Tag
 
 extern enum Type
 {
-	NONE,
 	SWORD,
 	SHURIKEN,
 	SWINGSWORD,
@@ -105,7 +107,15 @@ extern enum Type
 	BULLET,
 	BUTTERFLY,
 	DAGGER,
-	EXPLODED
+	EXPLODED,
+	BLUESPIRIT,
+	REDSPIRIT,
+	GLASSHOUR,
+	BLUESHURIKEN,
+	REDBAG,
+	BLUEBAG,
+	FIREWHEEL,
+	REDPOTION
 };
 
 extern enum State

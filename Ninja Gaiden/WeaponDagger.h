@@ -1,15 +1,15 @@
 #pragma once
 #pragma once
-#include "ObjectItem.h"
+#include "Weapon.h"
 
 
-class ObjectItemDagger : public ObjectItem
+class WeaponDagger : public Weapon
 {
 private:
 	Sprite* sprite;
 public:
-	ObjectItemDagger();
-	~ObjectItemDagger();
+	WeaponDagger();
+	~WeaponDagger();
 	void Update(float dt,int maxHight, int leftScreen, int rightScreen);
 	void Render(float translateX = 0, float translateY = 0);
 };

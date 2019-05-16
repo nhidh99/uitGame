@@ -4,7 +4,7 @@
 #include "PlayerState.h"
 #include "PlayerStandingState.h"
 #include "PlayerInjuredState.h"
-#include "ObjectItemSword.h"
+#include "WeaponSword.h"
 #include "Enemy.h"
 #include <unordered_set>
 #include <map>
@@ -30,8 +30,8 @@ public:
 	State stateName;
 	Rect rect;
 	Animation* curAnimation;								// Animation hiện tại
-	ObjectItemSword* sword;
-	ObjectItem* item;							
+	WeaponSword* sword;
+	Weapon* item;							
 	std::unordered_map<State, bool> allow;
 
 	void Update(float dt, std::unordered_set<Object*> ColliableObjects);

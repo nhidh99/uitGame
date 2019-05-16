@@ -7,7 +7,6 @@
 #include "Camera.h"
 #include "Cell.h"
 #include "Loader.h"
-#include "Enemy.h"
 #include "Player.h"
 
 class Grid
@@ -21,7 +20,7 @@ public:
 	Grid(Rect MapRect);
 	std::vector<std::vector<Cell*>> cells;
 	std::vector<Cell*> visibleCells;
-	std::vector<Enemy*> respawnEnemies;
+	std::vector<Object*> respawnObjects;
 
 	void Update();
 	void LoadObjects();

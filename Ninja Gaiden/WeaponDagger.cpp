@@ -1,22 +1,21 @@
-#include "ObjectItemDagger.h"
+#include "WeaponDagger.h"
 
-ObjectItemDagger::ObjectItemDagger()
+WeaponDagger::WeaponDagger()
 {
 	sprite = SpriteFactory::GetInstance()->GetSprite(ENEMY, 15);
-	tag = ITEM;
 	type = DAGGER;
 	vx = -0.03;
 	vy = 0.06;
-	this->height = ITEM_DAGGER_HEIGHT;
-	this->width = ITEM_DAGGER_WIDTH;
+	this->height = WEAPON_DAGGER_HEIGHT;
+	this->width = WEAPON_DAGGER_WIDTH;
 	this->isOnScreen = false;
 }
 
-ObjectItemDagger::~ObjectItemDagger()
+WeaponDagger::~WeaponDagger()
 {
 }
 
-void ObjectItemDagger::Update(float dt, int maxHigh, int leftScreen, int rightScreen)
+void WeaponDagger::Update(float dt, int maxHigh, int leftScreen, int rightScreen)
 {
 	if (isOnScreen)
 	{
@@ -36,7 +35,7 @@ void ObjectItemDagger::Update(float dt, int maxHigh, int leftScreen, int rightSc
 	}
 }
 
-void ObjectItemDagger::Render(float translateX, float translateY)
+void WeaponDagger::Render(float translateX, float translateY)
 {
 	if (isOnScreen)
 	{

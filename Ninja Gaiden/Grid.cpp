@@ -38,17 +38,23 @@ void Grid::LoadObjects()
 
 void Grid::RespawnEnemies()
 {
-	auto it = respawnEnemies.begin();
-	while (it != respawnEnemies.end())
+	auto it = respawnObjects.begin();
+	while (it != respawnObjects.end())
 	{
-		auto e = *it;
-		if (!e->IsRespawnOnScreen())
+		auto o = *it;
+		if (o->tag == ENEMY)
 		{
-			e->ChangeState(STANDING);
-			it = respawnEnemies.erase(it);
-			this->MoveObject(e, e->spawnX, e->spawnY);
+			auto e = (Enemy*)o;
+			if (!e->IsRespawnOnScreen())
+			{
+				e->isDead = false;
+				e->ChangeState(STANDING);
+				it = respawnObjects.erase(it);
+				this->MoveObject(e, e->spawnX, e->spawnY);
+				continue;
+			}
 		}
-		else ++it;
+		++it;
 	}
 }
 
@@ -129,20 +135,33 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 
 void Grid::RestartGame()
 {
-	for (auto e : respawnEnemies)
+	for (auto o : respawnObjects)
 	{
-		e->ChangeState(STANDING);
-		this->MoveObject(e, e->spawnX, e->spawnY);
+		switch (o->tag)
+		{
+		case ENEMY:
+		{
+			auto e = (Enemy*)o;
+			e->isDead = false;
+			e->ChangeState(STANDING);
+			break;
+		}
+		case HOLDER:
+		{
+			auto h = (Holder*)o;
+			h->isDead = false;
+			break;
+		}
+		}
+		this->MoveObject(o, o->spawnX, o->spawnY);
 	}
 
 	for (auto o : this->GetVisibleObjects())
 	{
 		this->MoveObject(o, o->spawnX, o->spawnY);
 	}
-
-	respawnEnemies.clear();
+	respawnObjects.clear();
 }
-
 
 void Grid::RemoveObject(Object * obj)
 {
@@ -199,44 +218,99 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 			auto o = *it;
 			if (o->IsCollide(viewPort))
 			{
-				if (o->tag == ENEMY)
+				switch (o->tag)
+				{
+				case ENEMY:
 				{
 					auto e = (Enemy*)o;
 					if (e->isDead)
 					{
 						it = c->objects.erase(it);
 						this->RemoveObject(e);
-						respawnEnemies.push_back(e);
+						respawnObjects.push_back(e);
 						continue;
 					}
-					else
+					else if (!e->isActive)
 					{
 						e->ChangeState(ATTACKING);
 					}
+					break;
+				}
+
+				case HOLDER:
+				{
+					auto h = (Holder*)o;
+					if (h->isDead)
+					{
+						it = c->objects.erase(it);
+
+						auto i = ItemFactory::CreateItem(h->itemID);
+						i->posX = h->posX;
+						i->posY = h->posY;
+						i->DectectGround(this->GetVisibleGrounds());
+						this->InitObjectCell(i);
+						setObjects.insert(i);
+
+						this->RemoveObject(h);
+						this->respawnObjects.push_back(h);
+						continue;
+					}
+					break;
+				}
+
+				case ITEM:
+				{
+					auto i = (Item*)o;
+					if (i->isDead)
+					{
+						it = c->objects.erase(it);
+						this->RemoveObject(i);
+						delete i;
+						continue;
+					}
+					break;
+				}
 				}
 				setObjects.insert(o);
 			}
 
-			else if (o->tag == ENEMY)
+			else //Object is out of camera
 			{
-				auto e = (Enemy*)o;
-				if (e->isActive)
+				switch (o->tag)
 				{
-					e->isActive = false;
-					it = c->objects.erase(it);
+				case ENEMY:
+				{
+					auto e = (Enemy*)o;
+					if (e->isActive)
+					{
+						e->isActive = false;
+						it = c->objects.erase(it);
 
-					if (e->IsRespawnOnScreen())
-					{
-						this->RemoveObject(e);
-						respawnEnemies.push_back(e);
+						if (e->IsRespawnOnScreen())
+						{
+							this->RemoveObject(e);
+							respawnObjects.push_back(e);
+						}
+						else
+						{
+							this->MoveObject(e, e->spawnX, e->spawnY);
+						}
+						continue;
 					}
-					else
-					{
-						this->MoveObject(e, e->spawnX, e->spawnY);
-					}
+					break;
+				}
+
+				case ITEM:
+				{
+					it = c->objects.erase(it);
+					this->RemoveObject(o);
+					delete o;
 					continue;
+					break;
+				}
 				}
 			}
+
 			++it;
 		}
 	}
@@ -293,7 +367,7 @@ std::unordered_set<Object*> Grid::GetColliableObjects()
 		{
 			objs.insert(o);
 		}
-
+		
 		if (LeftCell != RightCell)
 		{
 			for (auto o : cells[TopCell][RightCell]->objects)

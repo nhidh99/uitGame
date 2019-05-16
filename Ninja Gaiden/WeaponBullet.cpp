@@ -1,20 +1,19 @@
-#include "ObjectItemBullet.h"
+#include "WeaponBullet.h"
 
-ObjectItemBullet::ObjectItemBullet()
+WeaponBullet::WeaponBullet()
 {
 	sprite = SpriteFactory::GetInstance()->GetSprite(ENEMY, 11);
-	tag = ITEM;
 	type = BULLET;
-	this->height = ITEM_BULLET_HEIGHT;
-	this->width = ITEM_BULLET_WIDTH;
+	this->height = WEAPON_BULLET_HEIGHT;
+	this->width = WEAPON_BULLET_WIDTH;
 	this->isOnScreen = false;
 }
 
-ObjectItemBullet::~ObjectItemBullet()
+WeaponBullet::~WeaponBullet()
 {
 }
 
-void ObjectItemBullet::Update(float dt, int leftScreen, int rightScreen)
+void WeaponBullet::Update(float dt, int leftScreen, int rightScreen)
 {
 	if (isOnScreen)
 	{
@@ -24,7 +23,7 @@ void ObjectItemBullet::Update(float dt, int leftScreen, int rightScreen)
 	}
 }
 
-void ObjectItemBullet::Render(float translateX, float translateY)
+void WeaponBullet::Render(float translateX, float translateY)
 {
 	if (isOnScreen)
 	{

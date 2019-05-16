@@ -1,13 +1,13 @@
 #pragma once
-#include "ObjectItem.h"
+#include "Weapon.h"
 
-class ObjectItemSwingSword : public ObjectItem
+class WeaponSwingSword : public Weapon
 {
 private:
 	Animation *_animation;
 
 public:
-	ObjectItemSwingSword();
+	WeaponSwingSword();
 	void Update(float dt);
 	void Render(float x, float y, int frameIndex, float translateX, float translateY);
 };

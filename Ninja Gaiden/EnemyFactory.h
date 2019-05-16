@@ -9,14 +9,12 @@
 class EnemyFactory
 {
 public:
-	Enemy* enemy;
-
 	EnemyFactory() {};
 	~EnemyFactory() {};
 
-	Enemy* CreateEnemy(int type)
+	static Enemy* CreateEnemy(int enemyID)
 	{
-		switch (type)
+		switch (enemyID)
 		{
 		case 1:
 			return new EnemySwordMan();

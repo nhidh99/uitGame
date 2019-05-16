@@ -1,10 +1,11 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(396,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
-  PlayerInjuredState.cpp
+  Player.cpp
   C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-C:\uitGD\Ninja Gaiden\GameGlobal.h(91): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
-C:\uitGD\Ninja Gaiden\GameGlobal.h(109): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
-C:\uitGD\Ninja Gaiden\GameGlobal.h(128): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(94): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(119): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGD\Ninja Gaiden\GameGlobal.h(138): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
 C:\uitGD\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\uitGD\Ninja Gaiden\ObjectItemSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\uitGD\Ninja Gaiden\Enemy.h(47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGD\Ninja Gaiden\WeaponSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\ItemSprite.h(19): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGD\Ninja Gaiden\Enemy.h(61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Game.vcxproj -> C:\uitGD\Ninja Gaiden\Debug\Game.exe

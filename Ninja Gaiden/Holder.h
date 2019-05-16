@@ -1,16 +1,23 @@
 #pragma once
-#include "Object.h"
+#include "Item.h"
 #include "Camera.h"
 
 class Holder : public Object
 {
 protected:
 	Animation* curAnimation;
-	Sprite* item;
-	Type type;
 
 public:
-	Holder() { tag = HOLDER; }
+	bool isDead;
+	int itemID;
+	Type type;
+
+	Holder() 
+	{
+		this->tag = HOLDER; 
+		this->width = HOLDER_WIDTH;
+		this->height = HOLDER_HEIGHT;
+	}
 	~Holder() {};
 
 	void Render(float translateX = 0, float translateY = 0)

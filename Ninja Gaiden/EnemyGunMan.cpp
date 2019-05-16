@@ -5,7 +5,7 @@ EnemyGunMan::EnemyGunMan()
 	animations[STANDING] = new Animation(ENEMY, 7, 7);
 	animations[RUNNING] = new Animation(ENEMY, 7, 8);
 	animations[ATTACKING] = new Animation(ENEMY, 9, 10);
-	bullet = new ObjectItemBullet();
+	bullet = new WeaponBullet();
 	bullet->vx = -0.02;
 	tag = ENEMY;
 	type = GUNMAN;

@@ -52,15 +52,6 @@
     <ClCompile Include="PlayerStandingState.cpp">
       <Filter>Game Objects\Player</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectItemShuriken.cpp">
-      <Filter>Game Objects\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectItemSwingSword.cpp">
-      <Filter>Game Objects\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectItemSword.cpp">
-      <Filter>Game Objects\Items</Filter>
-    </ClCompile>
     <ClCompile Include="EnemySprite.cpp">
       <Filter>Game Objects\Enemies</Filter>
     </ClCompile>
@@ -94,12 +85,6 @@
     <ClCompile Include="HolderSprite.cpp">
       <Filter>Game Objects\Holders</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectItemBullet.cpp">
-      <Filter>Game Objects\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectItemDagger.cpp">
-      <Filter>Game Objects\Items</Filter>
-    </ClCompile>
     <ClCompile Include="Cell.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
@@ -127,11 +112,23 @@
     <ClCompile Include="Loader.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyFactory.cpp">
-      <Filter>Game Objects\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponBullet.cpp">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponDagger.cpp">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponShuriken.cpp">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponSwingSword.cpp">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponSword.cpp">
+      <Filter>Game Objects\Weapon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -192,21 +189,6 @@
     <ClInclude Include="PlayerState.h">
       <Filter>Game Objects\Player</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectItem.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectItemShuriken.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectItemSprite.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectItemSwingSword.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectItemSword.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Game Objects\Enemies</Filter>
     </ClInclude>
@@ -249,12 +231,6 @@
     <ClInclude Include="HolderSprite.h">
       <Filter>Game Objects\Holders</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectItemBullet.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectItemDagger.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
     <ClInclude Include="Cell.h">
       <Filter>Game Components</Filter>
     </ClInclude>
@@ -282,6 +258,63 @@
     <ClInclude Include="Loader.h">
       <Filter>Game Components</Filter>
     </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponBullet.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponDagger.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponShuriken.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponSprite.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponSwingSword.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponSword.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Game Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemSprite.h">
+      <Filter>Game Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="HolderFactory.h">
+      <Filter>Game Objects\Holders</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemFactory.h">
+      <Filter>Game Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBlueSpirit.h">
+      <Filter>Game Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemRedSpirit.h">
+      <Filter>Game Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemGlassHour.h">
+      <Filter>Game Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemRedBag.h">
+      <Filter>Game Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBlueShuriken.h">
+      <Filter>Game Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBlueBag.h">
+      <Filter>Game Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemFireWheel.h">
+      <Filter>Game Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemRedPotion.h">
+      <Filter>Game Objects\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game Components">
@@ -292,9 +325,6 @@
     </Filter>
     <Filter Include="Game Objects\Player">
       <UniqueIdentifier>{926c6d78-9f98-4b75-bc52-1798ff89c8f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Objects\Items">
-      <UniqueIdentifier>{9c15a219-2622-45d4-aa02-5bcbe4d98392}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game Objects\Enemies">
       <UniqueIdentifier>{49202c04-ee6f-4a67-86f3-fdcd21b66279}</UniqueIdentifier>
@@ -307,6 +337,12 @@
     </Filter>
     <Filter Include="Game Objects\Holders">
       <UniqueIdentifier>{5ea9c494-dfa2-48be-bc3b-260cd6efaf0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Weapon">
+      <UniqueIdentifier>{9c15a219-2622-45d4-aa02-5bcbe4d98392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Item">
+      <UniqueIdentifier>{86a75fb8-0621-4c07-aec8-2fc0380b1eac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

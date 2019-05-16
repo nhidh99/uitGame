@@ -1,9 +1,10 @@
 ﻿#pragma once
 #include "Sprite.h"
 #include "PlayerSprite.h"
-#include "ObjectItemSprite.h"
+#include "WeaponSprite.h"
 #include "EnemySprite.h"
 #include "HolderSprite.h"
+#include "ItemSprite.h"
 
 // Chứa tất cả các Sprite cần dùng cho Game, khởi tạo trước khi vào vòng lặp Game (Run)
 // Dùng Singleton Pattern

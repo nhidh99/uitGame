@@ -1,20 +1,19 @@
-#include "ObjectItemSwingSword.h"
+#include "WeaponSwingSword.h"
 
-ObjectItemSwingSword::ObjectItemSwingSword()
+WeaponSwingSword::WeaponSwingSword()
 {
-	_animation = new Animation(ITEM, 4, 7);
+	_animation = new Animation(WEAPON, 5, 8);
 	isOnScreen = false;
-	width = ITEM_SWINGSWORD_WIDTH;
-	height = ITEM_SWINGSWORD_HEIGHT;
-	tag = ITEM;
+	width = WEAPON_SWINGSWORD_WIDTH;
+	height = WEAPON_SWINGSWORD_HEIGHT;
 	type = SWINGSWORD;
 }
 
-void ObjectItemSwingSword::Update(float dt)
+void WeaponSwingSword::Update(float dt)
 {
 }
 
-void ObjectItemSwingSword::Render(float x, float y, int frameIndex, float translateX, float translateY)
+void WeaponSwingSword::Render(float x, float y, int frameIndex, float translateX, float translateY)
 {
 	if (!isOnScreen) return;
 

@@ -9,7 +9,6 @@ void TextureFactory::LoadResources()
 	TextureFactory::GetInstance()->AddTexture(ITEM, "Resources\\item.png");
 	TextureFactory::GetInstance()->AddTexture(MAP1, "Resources\\tiles1.png");
 	TextureFactory::GetInstance()->AddTexture(ENEMY, "Resources\\Enemy.png");
-	TextureFactory::GetInstance()->AddTexture(HOLDER, "Resources\\Holder&Item.png");
 }
 
 // Thêm một Texture vào danh sách, quy định theo Tag
@@ -27,5 +26,11 @@ TextureFactory* TextureFactory::GetInstance()
 
 LPDIRECT3DTEXTURE9 TextureFactory::GetTexture(Tag tag)
 {
-	return _textures[tag];
+	switch (tag)
+	{
+	case HOLDER: case ITEM: case WEAPON:
+		return _textures[ITEM];
+	default:
+		return _textures[tag];
+	}
 }

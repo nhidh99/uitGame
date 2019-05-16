@@ -21,8 +21,8 @@ void PlayerSittingState::HandleKeyboard()
 {
 	if (!keyCode[DIK_DOWN])
 	{
-		player->posY += 5;
 		player->height = PLAYER_STANDING_HEIGHT;
+		player->posY += 5;
 
 		if (keyCode[DIK_LEFT] || keyCode[DIK_RIGHT])
 		{

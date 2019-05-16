@@ -23,16 +23,17 @@ void SpriteFactory::LoadResources()
 	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(CLINGING, 264, 5, 288, 38));
 	SpriteFactory::GetInstance()->AddSprite(new PlayerSprite(CLIMBING, 286, 5, 310, 38));
 
-	// ======================== ObjectItem SPRITE ==========================
-	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(EXPLODED, 317, 0, 351, 42));
-	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWORD, 150, 28, 172, 43));
-	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWORD, 170, 35, 187, 41));
-	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SHURIKEN, 265, 13, 273, 20));
-	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 188, 29, 198, 47));
-	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 206, 37, 224, 47));
-	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 228, 29, 241, 47));
-	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(SWINGSWORD, 244, 35, 262, 47));
-	SpriteFactory::GetInstance()->AddSprite(new ObjectItemSprite(BULLET, 189, 62, 206, 73));
+	// ======================== Weapon SPRITE ==========================
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(EXPLODED, 357, 10, 374, 30));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(EXPLODED, 365, 40, 397, 78));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(EXPLODED, 318, 0, 350, 40));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(SWORD, 150, 28, 172, 43));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(SWORD, 170, 35, 187, 41));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(SHURIKEN, 265, 13, 273, 20));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(SWINGSWORD, 188, 29, 198, 47));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(SWINGSWORD, 206, 37, 224, 47));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(SWINGSWORD, 228, 29, 241, 47));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(SWINGSWORD, 244, 35, 262, 47));
 
 	// ======================== ENEMY SPRITE ================================
 
@@ -63,10 +64,18 @@ void SpriteFactory::LoadResources()
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(EAGLE, 500, 54, 526, 92));
 
 	// =========================== HOLDER SPRITE ========================================
+	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(BUTTERFLY, 83, 55, 96, 70));
+	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(BUTTERFLY, 96, 53, 114, 70));
 
-	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(BUTTERFLY, 63, 42, 84, 61));
-	SpriteFactory::GetInstance()->AddSprite(new HolderSprite(BUTTERFLY, 84, 41, 105, 60));
-
+	// =========================== ITEM SPRITE ===========================================
+	SpriteFactory::GetInstance()->AddSprite(new ItemSprite(BLUESPIRIT, 0, 7, 20, 24));
+	SpriteFactory::GetInstance()->AddSprite(new ItemSprite(REDSPIRIT, 20, 7, 40, 24));
+	SpriteFactory::GetInstance()->AddSprite(new ItemSprite(GLASSHOUR, 400, 50, 416, 70));
+	SpriteFactory::GetInstance()->AddSprite(new ItemSprite(BLUESHURIKEN, 50, 6, 68, 26));
+	SpriteFactory::GetInstance()->AddSprite(new ItemSprite(REDBAG, 192, 6, 210, 26));
+	SpriteFactory::GetInstance()->AddSprite(new ItemSprite(FIREWHEEL, 110, 6, 128, 26));
+	SpriteFactory::GetInstance()->AddSprite(new ItemSprite(BLUEBAG, 172, 6, 190, 26));
+	SpriteFactory::GetInstance()->AddSprite(new ItemSprite(REDPOTION, 227, 6, 245, 26));
 }
 
 // Thêm một Sprite vào danh sách các Sprite, quy định theo Tag của Sprite

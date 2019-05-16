@@ -4,7 +4,7 @@ EnemyCloakMan::EnemyCloakMan()
 {
 	animations[STANDING] = new Animation(ENEMY, 12, 12);
 	animations[ATTACKING] = new Animation(ENEMY, 12, 14);
-	dagger = new ObjectItemDagger();
+	dagger = new WeaponDagger();
 	tag = ENEMY;
 	type = CLOAKMAN;
 	height = ENEMY_CLOAKMAN_HEIGHT;	

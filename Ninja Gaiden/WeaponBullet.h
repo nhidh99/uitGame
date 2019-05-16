@@ -1,13 +1,13 @@
 #pragma once
-#include "ObjectItem.h"
+#include "Weapon.h"
 
-class ObjectItemShuriken : public ObjectItem
+class WeaponBullet : public Weapon
 {
 private:
-	Sprite *_sprite;
-
+	Sprite* sprite;
 public:
-	ObjectItemShuriken();
+	WeaponBullet();
+	~WeaponBullet();
 	void Update(float dt, int leftScreen, int rightScreen);
 	void Render(float translateX = 0, float translateY = 0);
 };

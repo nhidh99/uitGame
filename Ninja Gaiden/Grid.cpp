@@ -42,7 +42,7 @@ void Grid::RespawnEnemies()
 	while (it != respawnEnemies.end())
 	{
 		auto e = *it;
-		if (!e->IsRespawnOnScreen())
+		if (!e->IsRespawnOnScreen(camera->GetRect()))
 		{
 			it = respawnEnemies.erase(it);
 			this->MoveObject(e, e->spawnX, e->spawnY);
@@ -51,7 +51,7 @@ void Grid::RespawnEnemies()
 	}
 }
 
-void Grid::MoveObject(Object* obj, float posX, float posY)
+void Grid::MoveObject(Object * obj, float posX, float posY)
 {
 	auto r = obj->GetRect();
 	int oldLeftCell = r.x / Cell::width;
@@ -109,12 +109,20 @@ void Grid::MoveObject(Object* obj, float posX, float posY)
 	}
 
 	cells[TopCell][LeftCell]->objects.insert(obj);
-	cells[TopCell][RightCell]->objects.insert(obj);
+
+	if (LeftCell != RightCell)
+	{
+		cells[TopCell][RightCell]->objects.insert(obj);
+	}
 
 	if (TopCell != BottomCell)
 	{
 		cells[BottomCell][LeftCell]->objects.insert(obj);
-		cells[BottomCell][RightCell]->objects.insert(obj);
+
+		if (LeftCell != RightCell)
+		{
+			cells[BottomCell][RightCell]->objects.insert(obj);
+		}
 	}
 }
 
@@ -135,7 +143,7 @@ void Grid::RestartGame()
 }
 
 
-void Grid::RemoveObject(Object* obj)
+void Grid::RemoveObject(Object * obj)
 {
 	auto r = obj->GetRect();
 	int LeftCell = r.x / Cell::width;
@@ -144,9 +152,21 @@ void Grid::RemoveObject(Object* obj)
 	int BottomCell = (r.y - r.height) / Cell::height;
 
 	cells[TopCell][LeftCell]->RemoveObject(obj);
-	cells[BottomCell][LeftCell]->RemoveObject(obj);
-	cells[TopCell][RightCell]->RemoveObject(obj);
-	cells[BottomCell][RightCell]->RemoveObject(obj);
+
+	if (LeftCell != RightCell)
+	{
+		cells[TopCell][RightCell]->RemoveObject(obj);
+	}
+
+	if (TopCell != BottomCell)
+	{
+		cells[BottomCell][LeftCell]->RemoveObject(obj);
+
+		if (LeftCell != RightCell)
+		{
+			cells[BottomCell][RightCell]->RemoveObject(obj);
+		}
+	}
 }
 
 void Grid::UpdateVisibleCells()
@@ -194,7 +214,7 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 					e->isActive = false;
 					it = c->objects.erase(it);
 
-					if (e->IsRespawnOnScreen())
+					if (e->IsRespawnOnScreen(camera->GetRect()))
 					{
 						this->RemoveObject(e);
 						respawnEnemies.push_back(e);
@@ -246,7 +266,51 @@ std::unordered_set<Rect*> Grid::GetVisibleGrounds()
 	return setGrounds;
 }
 
-void Grid::InitGroundCell(Rect* ground)
+//std::unordered_set<Object*> Grid::GetColliableObjects()
+//{
+//	std::unordered_set<Object*> objs;
+//
+//	auto r = player->rect;
+//	int LeftCell = r.x / Cell::width;
+//	int RightCell = (r.x + r.width) / Cell::width;
+//	int TopCell = r.y / Cell::height;
+//	int BottomCell = (r.y - r.height) / Cell::height;
+//
+//	if (TopCell < rows)
+//	{
+//		for (auto o : cells[TopCell][LeftCell]->objects)
+//		{
+//			objs.insert(o);
+//		}
+//
+//		if (LeftCell != RightCell)
+//		{
+//			for (auto o : cells[TopCell][RightCell]->objects)
+//			{
+//				objs.insert(o);
+//			}
+//		}
+//	}
+//
+//	if (TopCell != BottomCell)
+//	{
+//		for (auto o : cells[BottomCell][RightCell]->objects)
+//		{
+//			objs.insert(o);
+//		}
+//
+//		if (LeftCell != RightCell)
+//		{
+//			for (auto o : cells[BottomCell][RightCell]->objects)
+//			{
+//				objs.insert(o);
+//			}
+//		}
+//	}
+//	return objs;
+//}
+
+void Grid::InitGroundCell(Rect * ground)
 {
 	int LeftCell = ground->x / Cell::width;
 	int RightCell = (ground->x + ground->width) / Cell::width;
@@ -271,7 +335,7 @@ void Grid::InitGroundCell(Rect* ground)
 	}
 }
 
-void Grid::InitWallCell(Rect* wall)
+void Grid::InitWallCell(Rect * wall)
 {
 	int LeftCell = wall->x / Cell::width;
 	int RightCell = (wall->x + wall->width) / Cell::width;
@@ -305,11 +369,19 @@ void Grid::InitObjectCell(Object * obj)
 	int BottomCell = (r.y - r.height) / Cell::height;
 
 	cells[TopCell][LeftCell]->objects.insert(obj);
-	cells[TopCell][RightCell]->objects.insert(obj);
+
+	if (LeftCell != RightCell)
+	{
+		cells[TopCell][RightCell]->objects.insert(obj);
+	}
 
 	if (TopCell != BottomCell)
 	{
 		cells[BottomCell][LeftCell]->objects.insert(obj);
-		cells[BottomCell][RightCell]->objects.insert(obj);
+
+		if (LeftCell != RightCell)
+		{
+			cells[BottomCell][RightCell]->objects.insert(obj);
+		}
 	}
 }

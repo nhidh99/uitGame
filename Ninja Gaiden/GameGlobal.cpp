@@ -1,6 +1,6 @@
-﻿#pragma once
+﻿
+#pragma once
 #include "GameGlobal.h"
-
 
 HINSTANCE hInstance = NULL;						// hInstance của windows hiện tại
 HWND hWnd = NULL;								// hWnd hiện tại

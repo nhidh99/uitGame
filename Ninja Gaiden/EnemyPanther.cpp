@@ -2,30 +2,43 @@
 
 EnemyPanther::EnemyPanther()
 {
-	animations[RUNNING] = new Animation(ENEMY, 16, 17, 100);
+	animations[RUNNING] = new Animation(ENEMY, 16, 17, 150);
+	animations[SCOLDED] = new Animation(ENEMY, 17, 17, 200);
 	curAnimation = animations[RUNNING];
+	this->vy = 0.05;
 	tag = ENEMY;
 	type = PANTHER;
 	height = ENEMY_PANTHER_HEIGHT;
 	width = ENEMY_PANTHER_WIDTH;
-	this->vx = -0.06;
-	this->vy = -0.02;
+	vx = ENEMY_PANTHER_VX;
+	vy = ENEMY_PANTHER_VY;
 }
 
 EnemyPanther::~EnemyPanther()
 {
 }
 
-void EnemyPanther::Update(float dt, Rect camRect)
+void EnemyPanther::Update(float dt)
 {
-	if (this->posY < 119)
-	{
-		this->vy = 0.02;
-	}
-	if (this->posY > 136)
-	{
-		this->vy = -0.02;
-	}
+	Enemy::Update(dt);
 
-	Enemy::Update(dt, camRect);
+	if (this->posY > 55)
+	{
+		if (this->vy > 0)
+		{
+			this->vy = -this->vy;
+		}
+	}
+	
+	if(this->posY < 46)
+	{
+		if (this->vy < 0)
+		{
+			this->vy = -this->vy;
+		}
+	}
 }
+
+
+
+

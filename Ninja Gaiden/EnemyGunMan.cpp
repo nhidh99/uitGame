@@ -11,49 +11,44 @@ EnemyGunMan::EnemyGunMan()
 	type = GUNMAN;
 	height = ENEMY_GUNMAN_HEIGHT;
 	width = ENEMY_GUNMAN_WIDTH;
-	vx = 0.02;
-
-	for (int i = 0; i < 3; i++)
-	{
-		EnemyBullet* bul = new EnemyBullet();
-		bul->vx = -0.02;
-		bul->isOnScreen = false;
-		bullets.push_back(bul);
-	}
+	vx = ENEMY_GUNMAN_VX;
 }
 
 EnemyGunMan::~EnemyGunMan()
 {
 }
 
-void EnemyGunMan::Update(float dt, Rect camRect)
+void EnemyGunMan::Update(float dt)
 {
-	Enemy::Update(dt, camRect);
+ 	Enemy::Update(dt);
 
-	//Cho phép đạn xuất hiện khi xong animation bắn
-	for (int i = 0; i < bullets.size(); i++) {
-		if (curAnimation->isLastFrame == true && bullets[i]->isOnScreen == false)
-		{
-			bullets[i]->isOnScreen = true;
-			bullets[i]->posX = this->posX - (7 * i);
-			bullets[i]->posY = this->posY;
-		}
 
-		if (bullets[i]->isOnScreen)
-		{
-			bullets[i]->Update(dt, camRect);
-		}
+	if (abs(this->posX - player->posX) <= 100)
+	{
+		this->curAnimation = animations[ATTACKING];
+		this->vx = 0;
+	}
+	else
+	{
+		this->curAnimation = animations[RUNNING];
+		//this->vx = 0.01f;
 	}
 
+	//if (bullet->isOnScreen == false)
+	//{
+	//	bullet->isOnScreen = true;
+	//	bullet->posX = this->posX - 12;
+	//	bullet->posY = this->posY + 7;
+	//}
+
+	//if (bullet->isOnScreen) 
+	//{
+	//	bullet->Update(dt, camera->GetRect());
+	//}
 }
 
 void EnemyGunMan::Render(float translateX, float translateY)
-{
-	Enemy::Render(translateX, translateY);
-	for (auto bul : bullets) {
-		if (bul->isOnScreen == true)
-		{
-			bul->Render(translateX, translateY);
-		}
-	}
+{	
+	Enemy::Render(translateX, translateY);	
+	bullet->Render(0, 0);
 }

@@ -49,7 +49,8 @@ void PlayScene::UpdateObjects(float dt)
 		{
 		case ENEMY:
 		{
-			EnemyFactory::ConvertToEnemy(o)->Update(dt);
+			Enemy* e = EnemyFactory::ConvertToEnemy(o);
+			e->Update(dt);
 			grid->MoveObject(o, o->posX + o->dx, o->posY + o->dy);
 			break;
 		}
@@ -88,7 +89,20 @@ void PlayScene::Render()
 
 	for (auto o : visibleObjects)
 	{
-		o->Render();
+		switch (o->tag)
+		{
+		case ENEMY:
+		{
+			EnemyFactory::ConvertToEnemy(o)->Render(0, 0);
+			break;
+		}
+		case HOLDER:
+		{
+			auto h = (Holder*)o;
+			h->Render(0, 0);
+			break;
+		}
+		}
 	}
 
 	player->Render();

@@ -3,7 +3,6 @@
 #include <d3d9.h>
 #include <dinput.h>
 #include <WinUser.h>
-#include <map>
 #include <unordered_map>
 
 // Các thông số và biến tổng dùng cho toàn bộ Game
@@ -63,10 +62,15 @@
 #define ENEMY_PANTHER_HEIGHT 14
 #define ENEMY_EAGLE_WIDTH 26
 #define ENEMY_EAGLE_HEIGHT 38
-#define ENEMY_EAGLE_REVERSE_SPEED 0.012f
 
-// ===== CÁC THÔNG SỐ VỀ TỐC ĐỘ ENEMY ====
-
+// ===== CÁC THÔNG SỐ VẬN TỐC CHO ENEMIES ====
+#define ENEMY_SWORDMAN_VX -0.01f
+#define ENEMY_CLOAKMAN_VX -0.01f
+#define ENEMY_EAGLE_VX -0.04f
+#define ENEMY_EAGLE_VY -0.04f
+#define ENEMY_GUNMAN_VX -0.01f
+#define ENEMY_PANTHER_VX -0.05f
+#define ENEMY_PANTHER_VY 0.05f
 
 // ===== CÁC THÔNG SỐ CHO HOLDERS ====
 #define HOLDER_BUTTERFLY_WIDTH 20
@@ -105,6 +109,7 @@ extern enum Tag
 
 extern enum Type
 {
+	NONE,
 	SWORD,
 	SHURIKEN,
 	SWINGSWORD,
@@ -139,7 +144,8 @@ extern enum State
 	CLIMBING,
 	FLYING,
 	DEAD,
-	INJURED
+	INJURED,
+	SCOLDED
 };
 
 struct Rect

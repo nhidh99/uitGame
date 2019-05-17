@@ -19,12 +19,6 @@ void EnemyBullet::Update(float dt, Rect camRect)
 	if (isOnScreen)
 	{
 		posX += vx * dt;
-
-		//Xét trường hợp viên đạn bay ra khỏi camera
-		if (isOutCam(camRect))
-		{
-			this->isOnScreen = false;
-		}
 	}
 }
 
@@ -32,6 +26,7 @@ void EnemyBullet::Render(float translateX, float translateY)
 {
 	if (isOnScreen)
 	{
+		camera->ConvertPositionToViewPort(posX, posY);
 		sprite->isReverse = this->isReverse;
 		sprite->Render(posX, posY, translateX, translateY);
 	}
@@ -39,10 +34,11 @@ void EnemyBullet::Render(float translateX, float translateY)
 
 bool EnemyBullet::isOutCam(Rect camRect)
 {
-	if (this->posX <= camRect.x || this->posX >= camRect.y || this->posY <= camRect.y + camRect.height || this->posX >= camRect.x + camRect.width)
+	/*if (this->posX <= camRect.x || this->posX >= camRect.y || this->posY <= camRect.y + camRect.height || this->posX >= camRect.x + camRect.width)
 	{
 		return true;
 	}
+	return false;*/
 	return false;
 }
 

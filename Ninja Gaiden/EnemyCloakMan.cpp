@@ -4,7 +4,8 @@ EnemyCloakMan::EnemyCloakMan()
 {
 	animations[RUNNING] = new Animation(ENEMY, 12, 13, 150);
 	animations[ATTACKING] = new Animation(ENEMY, 13, 14, 150);
-	curAnimation = animations[ATTACKING];
+	curAnimation = animations[RUNNING];
+	this->vx = ENEMY_CLOAKMAN_VX;
 	dagger = new EnemyDagger();
 	tag = ENEMY;
 	type = CLOAKMAN;
@@ -26,11 +27,23 @@ void EnemyCloakMan::Render(float translateX, float translateY)
 	}
 }
 
-void EnemyCloakMan::Update(float dt, Rect camRect)
+void EnemyCloakMan::Update(float dt)
 {
-	Enemy::Update(dt, camRect);
+	Enemy::Update(dt);
 
-	if (curAnimation->isLastFrame != true && dagger->isOnScreen == false)
+	if (abs(this->posX - player->posX) <= 50 )
+	{
+		this->curAnimation = animations[ATTACKING];
+		this->vx = 0;
+	}
+	else
+	{
+		this->curAnimation = animations[RUNNING];
+		//this->vx = 0.01f;
+	}
+
+
+	/*if (curAnimation->isLastFrame != true && dagger->isOnScreen == false)
 	{
 		dagger->isOnScreen = true;
 		dagger->posX = this->posX - 5;
@@ -40,12 +53,6 @@ void EnemyCloakMan::Update(float dt, Rect camRect)
 
  	if (dagger->isOnScreen)
 	{
-		dagger->Update(dt, camRect);
-	}
-	if (dagger->isOutCam(camRect))
-	{
-		dagger->posX = this->posX - 5;
-		dagger->posY = this->posY - 10;
-		dagger->vy = -0.06;
-	}
+		dagger->Update(dt);
+	}*/
 }

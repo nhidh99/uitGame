@@ -6,5 +6,5 @@ public:
 	EnemyPanther();
 	~EnemyPanther();
 
-	void Update(float dt, Rect camRect);
+	void Update(float dt);
 };

@@ -94,12 +94,6 @@
     <ClCompile Include="HolderSprite.cpp">
       <Filter>Game Objects\Holders</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectItemBullet.cpp">
-      <Filter>Game Objects\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectItemDagger.cpp">
-      <Filter>Game Objects\Items</Filter>
-    </ClCompile>
     <ClCompile Include="Cell.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
@@ -132,6 +126,15 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBullet.cpp">
+      <Filter>Game Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyDagger.cpp">
+      <Filter>Game Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="HolderItemFactory.cpp">
+      <Filter>Game Objects\Holders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -249,12 +252,6 @@
     <ClInclude Include="HolderSprite.h">
       <Filter>Game Objects\Holders</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectItemBullet.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectItemDagger.h">
-      <Filter>Game Objects\Items</Filter>
-    </ClInclude>
     <ClInclude Include="Cell.h">
       <Filter>Game Components</Filter>
     </ClInclude>
@@ -281,6 +278,30 @@
     </ClInclude>
     <ClInclude Include="Loader.h">
       <Filter>Game Components</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBullet.h">
+      <Filter>Game Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyDagger.h">
+      <Filter>Game Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="HolderItem.h">
+      <Filter>Game Objects\Holders</Filter>
+    </ClInclude>
+    <ClInclude Include="HolderItemBlueShuriken.h">
+      <Filter>Game Objects\Holders</Filter>
+    </ClInclude>
+    <ClInclude Include="HolderItemFactory.h">
+      <Filter>Game Objects\Holders</Filter>
+    </ClInclude>
+    <ClInclude Include="HolderItemOrangeBottle.h">
+      <Filter>Game Objects\Holders</Filter>
+    </ClInclude>
+    <ClInclude Include="HolderItemOrangeShuriken.h">
+      <Filter>Game Objects\Holders</Filter>
+    </ClInclude>
+    <ClInclude Include="HolderItemSandWatch.h">
+      <Filter>Game Objects\Holders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

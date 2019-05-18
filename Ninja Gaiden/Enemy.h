@@ -1,95 +1,82 @@
-﻿#pragma once
+
+#pragma once
 #include "Object.h"
 #include "EnemySprite.h"
 #include "Cell.h"
-#include "Math.h"
 #include <algorithm>
-#include "GameGlobal.h"
-#include "Player.h"
 
 class Enemy : public Object
 {
-//protected:
-//	Animation* curAnimation;
-//	std::unordered_map<State, Animation*> animations;
-//
-public:
-	Enemy() { tag = ENEMY; }
-	~Enemy() {};
-
-	Type type;
-	bool isActive;
-	float spawnX, spawnY;
-	float moveSpaceHead, moveSpaceTail;
+protected:
 	Animation* curAnimation;
 	std::unordered_map<State, Animation*> animations;
 
-	void Render()
+public:
+	Enemy()
 	{
-		curAnimation->isReverse = this->isReverse;
-		curAnimation->Render(posX, posY);
+		tag = ENEMY;
+		animations[DEAD] = new Animation(WEAPON, 0, 2, 85);
 	}
+
+	~Enemy() {};
+	State StateName;
+	Type type;
+	bool isActive;
+	bool isDead;
 
 	void Render(float translateX = 0, float translateY = 0)
 	{
-		auto posX = this->posX + translateX;
-		auto posY = this->posY + translateY;
-
-		camera->ConvertPositionToViewPort(posX, posY);
-		curAnimation->isReverse = this->isReverse;
-		curAnimation->Render(posX, posY);
+		if (this->isActive)
+		{
+			auto posX = this->posX + translateX;
+			auto posY = this->posY + translateY;
+			camera->ConvertPositionToViewPort(posX, posY);
+			curAnimation->isReverse = this->isReverse;
+			curAnimation->Render(posX, posY);
+		}
 	}
 
 	virtual void Update(float dt)
 	{
-		curAnimation->Update(dt);
-		dx = vx * dt;
-		dy = vy * dt;
-
-		////Xét phạm vi hoạt động của enemy
-		//if (this->posX > moveSpaceTail)
-		//{
-		//	this->vx = -vx;
-		//	this->isReverse = !this->isReverse;
-		//}
-
-		//Xét hướng đi của enemy đối với player
-		if (this->posX > player->posX && this->posX < moveSpaceTail)
+		if (this->isActive)
 		{
-			if (this->vx > 0)
-			{
-				this->vx = -vx;
-			}
+			curAnimation->Update(dt);
+			dx = vx * dt;
+			dy = vy * dt;
+		}
 
-			if (!this->isReverse)
+		if (this->StateName == DEAD)
+		{
+			this->dx = this->dy = 0;
+			if (curAnimation->isLastFrame)
 			{
-				this->isReverse = true;
+				this->isDead = true;
+				this->isActive = false;
 			}
 		}
-		if (this->posX < player->posX && this->posX < moveSpaceTail)
+	}
+
+	bool IsRespawnOnScreen()
+	{
+		return Rect(spawnX - (width >> 1), spawnY - (height >> 1), width, height).IsContain(camera->GetRect());
+	}
+
+	void ChangeState(State StateName)
+	{
+		switch (StateName)
 		{
-			if (this->vx < 0)
-			{
-				this->vx = -vx;
-			}
-			this->isReverse = false;
+		case DEAD:
+		{
+			break;
 		}
-			
+		default:
+		{
+			this->isActive = true;
+			this->isDead = false;
+			break;
+		}
+		}
+		this->StateName = StateName;
+		this->curAnimation = animations[StateName];
 	}
-
-	bool IsRespawnOnScreen(Rect CameraRect)
-	{
-		return Rect(spawnX - (width >> 1), spawnY - (height >> 1), width, height).IsContain(CameraRect);
-	}
-
-	/*std::unordered_set<Cell*> GetContainedCells()
-	{
-		std::unordered_set<Cell*> cells;
-		auto r = GetRect();
-		int left = r.x / Cell::width;
-		int right = (r.x + r.width) / Cell::width;
-		int top = r.y / Cell::height;
-		int bottom = (r.y + r.height) / Cell::height;
-		cells.insert()
-	}*/
 };

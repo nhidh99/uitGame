@@ -4,9 +4,6 @@
 
 class PlayerInjuredState : public PlayerState
 {
-private:
-	bool _isReverse;
-
 public:
 	PlayerInjuredState();
 	void Update(float dt);

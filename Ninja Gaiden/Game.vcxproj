@@ -41,7 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -136,11 +136,8 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="EnemyBazokaMan.cpp" />
-    <ClCompile Include="EnemyBullet.cpp" />
     <ClCompile Include="EnemyCloakMan.cpp" />
-    <ClCompile Include="EnemyDagger.cpp" />
     <ClCompile Include="EnemyEagle.cpp" />
-    <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="EnemyGunMan.cpp" />
     <ClCompile Include="EnemyPanther.cpp" />
     <ClCompile Include="EnemySprite.cpp" />
@@ -148,16 +145,17 @@
     <ClCompile Include="GameGlobal.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="HolderButterfly.cpp" />
-    <ClCompile Include="HolderItemFactory.cpp" />
     <ClCompile Include="HolderSprite.cpp" />
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapFactory.cpp" />
     <ClCompile Include="Object.cpp" />
-    <ClCompile Include="ObjectItemShuriken.cpp" />
-    <ClCompile Include="ObjectItemSword.cpp" />
+    <ClCompile Include="WeaponBullet.cpp" />
+    <ClCompile Include="WeaponDagger.cpp" />
+    <ClCompile Include="WeaponShuriken.cpp" />
+    <ClCompile Include="WeaponSword.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ObjectItemSwingSword.cpp" />
+    <ClCompile Include="WeaponSwingSword.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerAttackingState.cpp" />
     <ClCompile Include="PlayerClimbingState.cpp" />
@@ -184,9 +182,7 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBazokaMan.h" />
-    <ClInclude Include="EnemyBullet.h" />
     <ClInclude Include="EnemyCloakMan.h" />
-    <ClInclude Include="EnemyDagger.h" />
     <ClInclude Include="EnemyEagle.h" />
     <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="EnemyGunMan.h" />
@@ -195,23 +191,31 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameGlobal.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="ItemBlueBag.h" />
+    <ClInclude Include="ItemBlueShuriken.h" />
+    <ClInclude Include="ItemFireWheel.h" />
+    <ClInclude Include="ItemGlassHour.h" />
+    <ClInclude Include="HolderFactory.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Holder.h" />
     <ClInclude Include="HolderButterfly.h" />
-    <ClInclude Include="HolderItem.h" />
-    <ClInclude Include="HolderItemBlueShuriken.h" />
-    <ClInclude Include="HolderItemFactory.h" />
-    <ClInclude Include="HolderItemOrangeBottle.h" />
-    <ClInclude Include="HolderItemOrangeShuriken.h" />
-    <ClInclude Include="HolderItemSandWatch.h" />
     <ClInclude Include="HolderSprite.h" />
+    <ClInclude Include="ItemBlueSpirit.h" />
+    <ClInclude Include="ItemFactory.h" />
+    <ClInclude Include="ItemRedBag.h" />
+    <ClInclude Include="ItemRedPotion.h" />
+    <ClInclude Include="ItemRedSpirit.h" />
+    <ClInclude Include="ItemSprite.h" />
     <ClInclude Include="Loader.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapFactory.h" />
-    <ClInclude Include="ObjectItem.h" />
-    <ClInclude Include="ObjectItemShuriken.h" />
-    <ClInclude Include="ObjectItemSword.h" />
+    <ClInclude Include="Weapon.h" />
+    <ClInclude Include="WeaponBullet.h" />
+    <ClInclude Include="WeaponDagger.h" />
+    <ClInclude Include="WeaponShuriken.h" />
+    <ClInclude Include="WeaponSword.h" />
     <ClInclude Include="Object.h" />
-    <ClInclude Include="ObjectItemSwingSword.h" />
+    <ClInclude Include="WeaponSwingSword.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAttackingState.h" />
     <ClInclude Include="PlayerClimbingState.h" />
@@ -232,7 +236,7 @@
     <ClInclude Include="SpriteFactory.h" />
     <ClInclude Include="EnemySwordMan.h" />
     <ClInclude Include="TextureFactory.h" />
-    <ClInclude Include="ObjectItemSprite.h" />
+    <ClInclude Include="WeaponSprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

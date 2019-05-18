@@ -8,20 +8,15 @@ std::vector<Holder*> Loader::LoadHolders()
 	std::ifstream ifile;
 	ifile.open(filePath);
 
-	while (!ifile.eof()) {
-		//Đọc các thông số của Enemy
-		int id, posX, posY, itemID;
-		ifile >> id >> posX >> posY >> itemID;
-
-		if (id == 1)
-		{
-			Holder* holder = new HolderButterfly();
-			holder->spawnX = holder->posX = posX;
-			holder->spawnY = holder->posY = posY;
-			
-			holders.push_back(holder);
-		}
-
+	while (!ifile.eof()) 
+	{
+		int holderID, posX, posY, itemID;
+		ifile >> holderID >> posX >> posY >> itemID;
+		
+		Holder* holder = HolderFactory::CreateHolder(holderID, itemID);
+		holder->spawnX = holder->posX = posX;
+		holder->spawnY = holder->posY = posY;
+		holders.push_back(holder);
 	}
 	ifile.close();
 	return holders;
@@ -33,21 +28,18 @@ std::vector<Enemy*> Loader::LoadEnemies()
 	std::vector<Enemy*> enemies;
 	std::string filePath = "Resources\\Enemy.txt";
 	std::ifstream ifile;
-	auto enemyFactory = new EnemyFactory();
 	ifile.open(filePath);
 
 	while (!ifile.eof()) {
 		//Đọc các thông số của Enemy
-		int id, posX, posY, moveSpaceH, moveSpaceT;
-		ifile >> id >> posX >> posY >> moveSpaceH >> moveSpaceT;
+		int id, posX, posY;
+		ifile >> id >> posX >> posY;
 
-		Enemy* enemy = enemyFactory->CreateEnemy(id);
-		
+		Enemy* enemy = EnemyFactory::CreateEnemy(id);
 		enemy->spawnX = enemy->posX = posX;
 		enemy->spawnY = enemy->posY = posY;
+		enemy->vx = 0.01f;
 		enemy->isReverse = true;
-		enemy->moveSpaceHead = moveSpaceH;
-		enemy->moveSpaceTail = moveSpaceT;
 		enemies.push_back(enemy);
 	}
 	ifile.close();

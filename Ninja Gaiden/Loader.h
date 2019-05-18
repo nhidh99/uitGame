@@ -1,7 +1,6 @@
 #pragma once
 #include "EnemyFactory.h"
-#include "HolderButterfly.h"
-#include "HolderItemFactory.h"
+#include "HolderFactory.h"
 #include <string>
 #include <fstream>
 #include <vector>

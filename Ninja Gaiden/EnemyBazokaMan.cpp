@@ -2,8 +2,8 @@
 
 EnemyBazokaMan::EnemyBazokaMan()
 {
-	animations[SITTING] = new Animation(ENEMY, 0, 2, 150);
-	curAnimation = animations[SITTING];
+	animations[STANDING] = new Animation(ENEMY, 0, 0);
+	animations[ATTACKING] = new Animation(ENEMY, 0, 2);
 	type = BAZOKAMAN;
 	tag = ENEMY;
 	height = ENEMY_BAZOKAMAN_HEIGHT;

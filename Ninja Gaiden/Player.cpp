@@ -21,6 +21,7 @@ Player::Player()
 	allow[JUMPING] = true;
 	allow[ATTACKING] = true;
 	allow[MOVING] = true;
+	isOnGround = false;
 
 	// Các thông số Object
 	tag = PLAYER;
@@ -28,7 +29,7 @@ Player::Player()
 	height = PLAYER_STANDING_HEIGHT;
 
 	// Trang bị (kiếm)
-	sword = new ObjectItemSword();
+	sword = new WeaponSword();
 }
 
 // Destructor
@@ -52,85 +53,88 @@ Player* Player::GetInstance()
 	return _instance;
 }
 
-void Player::Update(float dt, std::vector<Object*> ColliableObjects)
+void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 {
 	curAnimation->Update(dt);
 
 	state->Update(dt);
 
-	dx = (allow[MOVING] ? vx * dt : 0);
-	dy = vy * dt;
-
-	/*std::vector<CollisionResult> ResultCollisions;
-	ResultCollisions.clear();
+	std::vector<CollisionResult> ResultCollisions;
 
 	for (auto obj : ColliableObjects)
 	{
-		auto result = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
-		if (result.isCollide)
+		switch (obj->tag)
 		{
-			ResultCollisions.push_back(result);
+		case ENEMY:
+		{
+			auto e = (Enemy*)obj;
+			if (e->StateName == DEAD) continue;
+
+			auto result = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
+			if (result.isCollide)
+			{
+				ResultCollisions.push_back(result);
+			}
+			break;
+		}
+
+		case ITEM:
+		{
+			auto i = (Item*)obj;
+			if (this->rect.IsContain(i->GetRect()))
+			{
+				i->isDead = true;
+			}
+		}
 		}
 	}
 
-	if (!ResultCollisions.size())
+	if (!ResultCollisions.size() || stateName == INJURED)
 	{
-		Object::Update(dt);
+		sword->Update(dt, ColliableObjects);
+		dx = (allow[MOVING] ? vx * dt : 0);
+		dy = vy * dt;
+		return;
 	}
-	else
+
+	float minEntryTimeX = 1.0f;
+	//float minEntryTimeY = 1.0f;
+	int nx = 0;
+	//int ny = 0;
+
+	for (auto result : ResultCollisions)
 	{
-		float minEntryTimeX = 1.0f;
-		float minEntryTimeY = 1.0f;
-		int nx = 0, ny = 0;
-
-		for (auto result : ResultCollisions)
+		if (result.entryTime < minEntryTimeX)
 		{
-			if (result.entryTime < minEntryTimeX)
-			{
-				minEntryTimeX = result.entryTime;
-				nx = result.nx;
-			}
+			minEntryTimeX = result.entryTime;
+			nx = result.nx;
+		}
 
-			if (result.entryTime < minEntryTimeY)
-			{
-				minEntryTimeY = result.entryTime;
-				ny = result.ny;
-			}
-		}*/
-
-		/*posX += (minEntryTimeX * dx + nx * 2.0f);
-		posY += (minEntryTimeY * dy);*/
-
-		//if (nx != 0)
-		//{
-		//	vx = (vx > 0) ? -0.05 : 0.05;
-		//	this->allow[CLINGING] = true;
-		//}
-
-		/*if (ny != 0)
+		/*if (result.entryTime < minEntryTimeY)
 		{
-			this->vy = 0;
+			minEntryTimeY = result.entryTime;
+			ny = result.ny;
 		}*/
-		/*}*/
+	}
+
+	this->isReverse = (nx == 1);
+	this->ChangeState(new PlayerInjuredState());
 }
 
 // Duyệt tìm lại vùng đất va chạm của player khi ra khỏi vùng hiện tại
 // Dùng cách nâng sàn Collision duyệt trước
 bool Player::DetectGround(std::unordered_set<Rect*> grounds)
 {
-	auto tg = curGroundBound;
-	auto r = this->GetRect();
-	tg.y += this->height;
+	auto r = this->rect;
+	r.y = r.y + dy;
+	r.height = r.height - dy;
 
-	if (r.IsContain(tg))
+	if (r.IsContain(curGroundBound))
 		return true;
 
 	for (auto g : grounds)
 	{
-		tg = *g;
-		tg.y += this->height;
-
-		if (r.IsContain(tg))
+		if (r.IsContain(*g) && (r.y >= g->y + g->height))
 		{
 			curGroundBound = *g;
 			return true;
@@ -143,50 +147,55 @@ bool Player::DetectGround(std::unordered_set<Rect*> grounds)
 // Bằng cách dịch tường và duyệt trước
 bool Player::DectectWall(std::unordered_set<Rect*> walls)
 {
-	auto tw = curWallBound;
-	auto r = GetRect();
+	bool flag = false;
+	auto r = this->rect;
+	r.x = dx > 0 ? r.x : r.x + dx;
+	r.width = dx > 0 ? dx + r.width : r.width - dx;
 
-	this->vx > 0 ? tw.x -= this->width : tw.x += this->width;
-	if (r.IsContain(tw))
-		return true;
-
-	for (auto w : walls)
+	if (r.IsContain(curWallBound))
 	{
-		tw = *w;
-		this->vx > 0 ? tw.x -= this->width : tw.x += this->width;
-
-		if (r.IsContain(tw))
+		flag = true;
+	}
+	else
+	{
+		for (auto w : walls)
 		{
-			curWallBound = *w;
-			return true;
+			if (r.IsContain(*w))
+			{
+				curWallBound = *w;
+				flag = true;
+				break;
+			}
 		}
 	}
-	return false;
+	return flag;
 }
 
 // Xử lí va chạm với mặt đất theo các vùng đất hiển thị
 void Player::CheckGroundCollision(std::unordered_set<Rect*> grounds)
 {
+	// Trên không
+	if (this->vy)
+	{
+		this->isOnGround = false;
+	}
+
 	// Tìm được vùng đất va chạm
 	if (DetectGround(grounds))
 	{
-		if (this->vy < 0)
+		if (this->vy < 0 && this->rect.IsContain(curGroundBound))
 		{
-			auto r = this->GetRect();
-			r.y = r.y + dy;
-			r.height = r.height - dy;
-
-			if (r.IsContain(curGroundBound))
-			{
-				this->vy = this->dy = 0;
-				if (stateName == ATTACKING_STAND)
-					this->allow[MOVING] = false;
-			}
+			this->isOnGround = true;
+			this->vy = this->dy = 0;
+			this->posY = curGroundBound.y + (this->height >> 1);
+			
+			if (stateName == ATTACKING_STAND)
+				this->allow[MOVING] = false;
 		}
 	}
 
 	// Nếu không thì đang chạy -> rơi
-	else if (this->vy == 0)
+	else if (!this->vy)
 	{
 		this->ChangeState(new PlayerFallingState());
 	}
@@ -197,14 +206,9 @@ void Player::CheckWallCollision(std::unordered_set<Rect*> walls)
 {
 	if (this->vx && this->DectectWall(walls))
 	{
-		auto r = this->GetRect();
-		r.x = dx > 0 ? r.x : r.x + dx;
-		r.width = dx > 0 ? dx + r.width : r.width - dx;
-
-		if (r.IsContain(curWallBound))
-		{
-			this->vx = this->dx = 0;
-		}
+		this->vx = 0;
+		this->dx = dx > 0 ? curWallBound.x - (this->posX + (this->width >> 1)) - 1 
+			: curWallBound.x + curWallBound.width - (this->posX - (this->width >> 1)) + 1;
 	}
 }
 
@@ -287,6 +291,8 @@ void Player::AttackWith(Type item)
 	case SWORD:
 		if (sword != NULL)
 		{
+			sword->posX = this->posX + (isReverse ? -22 : 22);
+			sword->posY = this->posY + 10;
 			sword->isReverse = isReverse;
 			sword->isOnScreen = true;
 		}
@@ -298,7 +304,7 @@ void Player::AttackWith(Type item)
 			this->item->isReverse = isReverse;
 			this->item->posX = isReverse ? this->posX - 3 : this->posX + 3;
 			this->item->posY = this->posY - 8;
-			this->item->vx = isReverse ? -ITEM_SHURIKEN_SPEED : ITEM_SHURIKEN_SPEED;
+			this->item->vx = isReverse ? -WEAPON_SHURIKEN_SPEED : WEAPON_SHURIKEN_SPEED;
 			this->item->isOnScreen = true;
 		}
 		break;

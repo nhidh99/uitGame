@@ -3,7 +3,9 @@
 #include "PlayerSprite.h"
 #include "PlayerState.h"
 #include "PlayerStandingState.h"
-#include "ObjectItemSword.h"
+#include "PlayerInjuredState.h"
+#include "WeaponSword.h"
+#include "Enemy.h"
 #include <unordered_set>
 #include <map>
 #include <set>
@@ -23,14 +25,16 @@ public:
 	~Player();
 	static Player* GetInstance();
 
+	bool isOnGround;
 	PlayerState* state;
-	State stateName; 
+	State stateName;
+	Rect rect;
 	Animation* curAnimation;								// Animation hiện tại
-	ObjectItemSword* sword;
-	ObjectItem* item;							
+	WeaponSword* sword;
+	Weapon* item;							
 	std::unordered_map<State, bool> allow;
 
-	void Update(float dt, std::vector<Object*> ColliableObjects);
+	void Update(float dt, std::unordered_set<Object*> ColliableObjects);
 	void CheckGroundCollision(std::unordered_set<Rect*> grounds);
 	void CheckWallCollision(std::unordered_set<Rect*> walls);
 	void Render(float translateX = 0, float translateY = 0);

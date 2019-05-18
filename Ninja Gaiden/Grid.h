@@ -2,13 +2,12 @@
 #include "GameGlobal.h"
 #include "Collision.h"
 #include "Holder.h"
-#include <set>
 #include <unordered_set>
 #include <vector>
 #include "Camera.h"
 #include "Cell.h"
 #include "Loader.h"
-#include "Enemy.h"
+#include "Player.h"
 
 class Grid
 {
@@ -21,7 +20,7 @@ public:
 	Grid(Rect MapRect);
 	std::vector<std::vector<Cell*>> cells;
 	std::vector<Cell*> visibleCells;
-	std::vector<Enemy*> respawnEnemies;
+	std::vector<Object*> respawnObjects;
 
 	void Update();
 	void LoadObjects();
@@ -31,12 +30,12 @@ public:
 
 	void MoveObject(Object* obj, float posX, float posY);
 	void RemoveObject(Object* obj);
-
 	void UpdateVisibleCells();
 
 	std::unordered_set<Object*> GetVisibleObjects();
 	std::unordered_set<Rect*> GetVisibleWalls();
 	std::unordered_set<Rect*> GetVisibleGrounds();
+	std::unordered_set<Object*> GetColliableObjects();
 
 	void InitGroundCell(Rect* ground);
 	void InitWallCell(Rect* wall);

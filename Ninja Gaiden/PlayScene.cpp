@@ -24,6 +24,16 @@ void PlayScene::Update(float dt)
 	this->UpdateScene();
 	this->UpdateObjects(dt);
 	this->UpdatePlayer(dt);
+
+	if (isFrozenEnemies)
+	{
+		frozenEnemiesTime -= dt;
+		if (frozenEnemiesTime <= 0)
+		{
+			isFrozenEnemies = false;
+			frozenEnemiesTime = ENEMY_FROZEN_TIME;
+		}
+	}
 }
 
 void PlayScene::UpdateScene()
@@ -55,8 +65,15 @@ void PlayScene::UpdateObjects(float dt)
 		}
 		case ITEM:
 		{
-			ItemFactory::ConvertToItem(o)->Update(dt);
-			grid->MoveObject(o, o->posX, o->posY + o->dy);
+			Item* i = (Item*)o;
+			i->Update(dt);
+			grid->MoveObject(i, i->posX, i->posY + i->dy);
+			break;
+		}
+		case WEAPON:
+		{
+			WeaponFactory::ConvertToWeapon(o)->Update(dt, grid->GetColliableObjects(o));
+			grid->MoveObject(o, o->posX + o->dx, o->posY + o->dy);
 			break;
 		}
 		}
@@ -67,8 +84,8 @@ void PlayScene::UpdatePlayer(float dt)
 {
 	auto p = player;
 	p->rect = p->GetRect();
-	
-	p->Update(dt, grid->GetColliableObjects());
+
+	p->Update(dt, grid->GetColliableObjects(p));
 	p->CheckGroundCollision(grid->GetVisibleGrounds());
 	p->CheckWallCollision(grid->GetVisibleWalls());
 
@@ -80,6 +97,16 @@ void PlayScene::UpdatePlayer(float dt)
 		grid->RestartGame();
 		p->posX = p->spawnX;
 		p->posY = p->spawnY;
+	}
+
+	if (p->isThrowing)
+	{
+		Weapon* weapon = WeaponFactory::CreateWeapon(p->weaponID);
+		weapon->posX = p->posX + (p->isReverse ? -5 : 5);
+		weapon->posY = p->posY + 5;
+		if (p->isReverse) weapon->vx = -weapon->vx;
+		grid->InitObjectCell(weapon);
+		p->isThrowing = false;
 	}
 }
 

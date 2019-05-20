@@ -11,9 +11,9 @@
 #define MAIN_WINDOW_TITLE "Ninja Gaiden"		// Tên cửa sổ
 #define SCREEN_WIDTH 312						// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176						// Chiều dài cửa sổ
-#define MAX_FRAME_RATE 90						// FPS
+#define MAX_FRAME_RATE 80						// FPS
 #define BACK_COLOR D3DCOLOR_XRGB(0, 0, 0)		// Màu nền BackBuffer
-#define DEFAULT_TPS 180							// Thời gian tồn tại của mỗi Frame (cho Animation)
+#define DEFAULT_TPS 200							// Thời gian tồn tại của mỗi Frame (cho Animation)
 #define GRAVITY_SPEED 0.014f					// Tốc độ trọng lực
 #define KEYBOARD_BUFFER_SIZE 1024
 #define NUMBER_MAP_LEVEL 1
@@ -37,9 +37,9 @@
 // ===== Các thông số cho WEAPON SWORD ====
 #define WEAPON_SWORD_WIDTH 30
 #define WEAPON_SWORD_HEIGHT 24
-#define WEAPON_SHURIKEN_WIDTH 18
-#define WEAPON_SHURIKEN_HEIGHT 18
-#define WEAPON_SHURIKEN_SPEED 0.15f
+#define WEAPON_BLUESHURIKEN_WIDTH 10
+#define WEAPON_BLUESHURIKEN_HEIGHT 10
+#define WEAPON_BLUESHURIKEN_SPEED 0.25f
 #define WEAPON_SWINGSWORD_WIDTH 18
 #define WEAPON_SWINGSWORD_HEIGHT 18
 #define WEAPON_BULLET_WIDTH 18
@@ -48,6 +48,7 @@
 #define WEAPON_DAGGER_HEIGHT 23
 
 // ===== CÁC THÔNG SỐ CHO ENEMIES ====
+#define ENEMY_FROZEN_TIME 3000
 #define ENEMY_SWORDMAN_WIDTH 24
 #define ENEMY_SWORDMAN_HEIGHT 32
 #define ENEMY_GUNMAN_WIDTH 30
@@ -78,6 +79,8 @@ extern LPD3DXSPRITE spriteHandler;								// SpriteHanlder hiện tại
 extern LPDIRECT3DDEVICE9 d3ddev;								// Device directX hiện tại (nhằm đại diện card màn hình)
 extern LPDIRECT3DSURFACE9 backBuffer;							// BackBuffer
 extern bool isGameRunning;										// Kiểm tra trạng thái game đang chạy
+extern bool isFrozenEnemies;
+extern int frozenEnemiesTime;
 extern std::unordered_map<int, bool> keyCode;
 
 // === ENUM dùng định dạng loại Object và State ====
@@ -96,7 +99,6 @@ extern enum Tag
 extern enum Type
 {
 	SWORD,
-	SHURIKEN,
 	SWINGSWORD,
 	SWORDMAN,
 	BAZOKAMAN,

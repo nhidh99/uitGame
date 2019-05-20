@@ -2,10 +2,11 @@
 
 WeaponSword::WeaponSword()
 {
-	_animation = new Animation(WEAPON, 3, 4, DEFAULT_TPS >> 1);
+	animation = new Animation(WEAPON, 3, 4, DEFAULT_TPS >> 1);
 	isOnScreen = false;
 	width = WEAPON_SWORD_WIDTH;
 	height = WEAPON_SWORD_HEIGHT;
+	vx = vy = 0;
 	type = SWORD;
 }
 
@@ -19,7 +20,7 @@ void WeaponSword::Render(float x, float y, int frameIndex, float translateX, flo
 	if (!isOnScreen || frameIndex == 0)
 		return;
 
-	Sprite* sprite = _animation->GetSprite(--frameIndex);
+	Sprite* sprite = animation->GetSprite(--frameIndex);
 	sprite->isReverse = this->isReverse;
 
 	switch (frameIndex)

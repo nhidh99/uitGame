@@ -7,6 +7,7 @@ class WeaponDagger : public Weapon
 {
 private:
 	Sprite* sprite;
+
 public:
 	WeaponDagger();
 	~WeaponDagger();

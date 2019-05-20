@@ -5,6 +5,7 @@
 #include "PlayerStandingState.h"
 #include "PlayerInjuredState.h"
 #include "WeaponSword.h"
+#include "ItemFactory.h"
 #include "Enemy.h"
 #include <unordered_set>
 #include <map>
@@ -25,13 +26,13 @@ public:
 	~Player();
 	static Player* GetInstance();
 
-	bool isOnGround;
+	bool isOnGround, isThrowing;
 	PlayerState* state;
 	State stateName;
 	Rect rect;
 	Animation* curAnimation;								// Animation hiện tại
 	WeaponSword* sword;
-	Weapon* item;							
+	int weaponID;
 	std::unordered_map<State, bool> allow;
 
 	void Update(float dt, std::unordered_set<Object*> ColliableObjects);
@@ -40,6 +41,6 @@ public:
 	void Render(float translateX = 0, float translateY = 0);
 	void OnKeyDown(int keyCode);							
 	void OnKeyUp(int keyCode);							
-	void ChangeState(PlayerState* newState);				
+	void ChangeState(PlayerState* newState);
 	void AttackWith(Type item);
 };

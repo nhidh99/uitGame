@@ -5,7 +5,7 @@
 class Holder : public Object
 {
 protected:
-	Animation* curAnimation;
+	Animation* animation;
 
 public:
 	bool isDead;
@@ -18,7 +18,7 @@ public:
 		this->width = HOLDER_WIDTH;
 		this->height = HOLDER_HEIGHT;
 	}
-	~Holder() {};
+	~Holder() { if (animation) delete animation; }
 
 	void Render(float translateX = 0, float translateY = 0)
 	{
@@ -26,11 +26,11 @@ public:
 		auto posY = this->posY + translateY;
 
 		camera->ConvertPositionToViewPort(posX, posY);
-		curAnimation->Render(posX, posY);
+		animation->Render(posX, posY);
 	}
 
 	void Update(float dt)
 	{
-		curAnimation->Update(dt);
+		animation->Update(dt);
 	}
 };

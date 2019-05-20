@@ -9,4 +9,9 @@ public:
 		this->type = GLASSHOUR;
 		this->sprite = SpriteFactory::GetInstance()->GetSprite(ITEM, 2);
 	}
+
+	void Update(float dt)
+	{
+		Item::Update(dt);
+	}
 };

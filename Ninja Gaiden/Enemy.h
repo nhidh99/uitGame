@@ -8,8 +8,8 @@
 class Enemy : public Object
 {
 protected:
-	Animation* curAnimation;
 	std::unordered_map<State, Animation*> animations;
+	Animation* curAnimation;
 
 public:
 	Enemy()
@@ -36,18 +36,36 @@ public:
 		}
 	}
 
+	virtual void UpdateDistance(float dt)
+	{
+		this->dx = vx * dt;
+		this->dy = vy * dt;
+	}
+
 	virtual void Update(float dt)
 	{
 		if (this->isActive)
 		{
-			curAnimation->Update(dt);
-			dx = vx * dt;
-			dy = vy * dt;
+			if (isFrozenEnemies)
+			{
+				this->dx = this->dy = 0;
+			}
+			else 
+			{
+				curAnimation->Update(dt);
+				this->UpdateDistance(dt);
+			}
 		}
 
 		if (this->StateName == DEAD)
 		{
 			this->dx = this->dy = 0;
+
+			if (isFrozenEnemies)
+			{
+				curAnimation->Update(dt);
+			}
+
 			if (curAnimation->isLastFrame)
 			{
 				this->isDead = true;

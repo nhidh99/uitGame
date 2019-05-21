@@ -30,8 +30,7 @@ public:
 
 	virtual void Update(float dt, std::unordered_set<Object*> ColliableObjects)
 	{
-		this->dx = vx * dt;
-		this->dy = vy * dt;
+		Object::Update(dt);
 		animation->Update(dt);
 
 		for (auto obj : ColliableObjects)
@@ -42,14 +41,12 @@ public:
 				{
 					auto e = (Enemy*)obj;
 					e->ChangeState(DEAD);
-					this->isDead = true;
 				}
 
 				else if (obj->tag == HOLDER)
 				{
 					auto h = (Holder*)obj;
 					h->isDead = true;
-					this->isDead = true;
 				}
 			}
 		}

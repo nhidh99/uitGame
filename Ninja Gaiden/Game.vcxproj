@@ -214,6 +214,7 @@
     <ClInclude Include="WeaponDagger.h" />
     <ClInclude Include="WeaponFactory.h" />
     <ClInclude Include="WeaponBlueShuriken.h" />
+    <ClInclude Include="WeaponFireWheel.h" />
     <ClInclude Include="WeaponSword.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="WeaponSwingSword.h" />

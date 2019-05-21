@@ -77,6 +77,16 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 	int TopCell = r.y / Cell::height;
 	int BottomCell = (r.y - r.height) / Cell::height;
 
+	if (BottomCell >= rows)
+	{
+		this->RemoveObject(obj);
+		return;
+	}
+	else if (TopCell >= rows)
+	{
+		return;
+	}
+
 	if (LeftCell != oldLeftCell)
 	{
 		cells[oldTopCell][oldLeftCell]->RemoveObject(obj);
@@ -117,20 +127,26 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 		}
 	}
 
-	cells[TopCell][LeftCell]->objects.insert(obj);
-
-	if (LeftCell != RightCell)
+	if (TopCell < rows)
 	{
-		cells[TopCell][RightCell]->objects.insert(obj);
-	}
-
-	if (TopCell != BottomCell)
-	{
-		cells[BottomCell][LeftCell]->objects.insert(obj);
+		cells[TopCell][LeftCell]->objects.insert(obj);
 
 		if (LeftCell != RightCell)
 		{
-			cells[BottomCell][RightCell]->objects.insert(obj);
+			cells[TopCell][RightCell]->objects.insert(obj);
+		}
+	}
+
+	if (BottomCell < rows)
+	{
+		if (TopCell != BottomCell)
+		{
+			cells[BottomCell][LeftCell]->objects.insert(obj);
+
+			if (LeftCell != RightCell)
+			{
+				cells[BottomCell][RightCell]->objects.insert(obj);
+			}
 		}
 	}
 }
@@ -178,15 +194,11 @@ void Grid::RemoveObject(Object * obj)
 
 	for (int y = BottomCell; y <= TopCell; ++y)
 	{
+		if (y == rows) break;
 		for (int x = LeftCell; x <= RightCell; ++x)
 		{
 			cells[y][x]->RemoveObject(obj);
 		}
-	}
-
-	if (obj->tag == WEAPON)
-	{
-		player->allow[THROWING] = true;
 	}
 }
 
@@ -366,7 +378,7 @@ std::unordered_set<Rect*> Grid::GetVisibleGrounds()
 	return setGrounds;
 }
 
-std::unordered_set<Object*> Grid::GetColliableObjects(Object* obj)
+std::unordered_set<Object*> Grid::GetColliableObjects(Object * obj)
 {
 	std::unordered_set<Object*> objs;
 
@@ -378,16 +390,13 @@ std::unordered_set<Object*> Grid::GetColliableObjects(Object* obj)
 
 	for (int y = BottomCell; y <= TopCell; ++y)
 	{
-		if (y == rows) break;
+		if (y >= rows) break;
 
 		for (int x = LeftCell; x <= RightCell; ++x)
 		{
 			for (auto o : cells[y][x]->objects)
 			{
-				if (o->tag != WEAPON)
-				{
-					objs.insert(o);
-				}
+				objs.insert(o);
 			}
 		}
 	}
@@ -436,7 +445,6 @@ void Grid::InitObjectCell(Object * obj)
 
 	for (int y = BottomCell; y <= TopCell; ++y)
 	{
-		if (y == rows) return;
 		for (int x = LeftCell; x <= RightCell; ++x)
 		{
 			cells[y][x]->objects.insert(obj);

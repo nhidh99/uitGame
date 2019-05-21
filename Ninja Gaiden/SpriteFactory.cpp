@@ -29,8 +29,12 @@ void SpriteFactory::LoadResources()
 	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(EXPLODED, 318, 0, 350, 40));
 	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(SWORD, 150, 28, 172, 43));
 	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(SWORD, 170, 35, 187, 41));
-	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(BLUESHURIKEN, 265, 13, 273, 20));
-	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(BLUESHURIKEN, 264, 22, 276, 34));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(BLUESHURIKEN, 175,95, 185, 105));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(BLUESHURIKEN, 188, 95, 198, 105));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(FIREWHEEL, 5, 80, 40, 115));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(FIREWHEEL, 45, 80, 80, 115));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(FIREWHEEL, 90, 80, 125, 115));
+	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(FIREWHEEL, 130, 80, 165, 115));
 	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(SWINGSWORD, 188, 29, 198, 47));
 	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(SWINGSWORD, 206, 37, 224, 47));
 	SpriteFactory::GetInstance()->AddSprite(new WeaponSprite(SWINGSWORD, 228, 29, 241, 47));

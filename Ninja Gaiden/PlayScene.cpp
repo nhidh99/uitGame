@@ -43,13 +43,32 @@ void PlayScene::UpdateScene()
 	grid->Update();
 }
 
+void PlayScene::UpdateVisibleObjects()
+{
+	auto it = visibleObjects.begin();
+	while (it != visibleObjects.end())
+	{
+		if ((*it)->tag != WEAPON)
+		{
+			it = visibleObjects.erase(it);
+		}
+		else ++it;
+	}
+
+	for (auto o : grid->GetVisibleObjects())
+	{
+		visibleObjects.insert(o);
+	}
+}
+
 void PlayScene::UpdateObjects(float dt)
 {
-	visibleObjects.clear();
-	visibleObjects = grid->GetVisibleObjects();
+	this->UpdateVisibleObjects();
 
-	for (auto o : visibleObjects)
+	auto it = visibleObjects.begin();
+	while (it != visibleObjects.end())
 	{
+		auto o = *it;
 		switch (o->tag)
 		{
 		case ENEMY:
@@ -72,11 +91,20 @@ void PlayScene::UpdateObjects(float dt)
 		}
 		case WEAPON:
 		{
-			WeaponFactory::ConvertToWeapon(o)->Update(dt, grid->GetColliableObjects(o));
-			grid->MoveObject(o, o->posX + o->dx, o->posY + o->dy);
+			auto w = WeaponFactory::ConvertToWeapon(o);
+			w->Update(dt, grid->GetColliableObjects(w));
+
+			if (w->isDead || !w->IsCollide(camera->GetRect()))
+			{
+				w->isDead = true;
+				it = visibleObjects.erase(it);
+				player->allow[THROWING] = true;
+				continue;
+			}
 			break;
 		}
 		}
+		++it;
 	}
 }
 
@@ -105,7 +133,7 @@ void PlayScene::UpdatePlayer(float dt)
 		weapon->posX = p->posX + (p->isReverse ? -5 : 5);
 		weapon->posY = p->posY + 5;
 		if (p->isReverse) weapon->vx = -weapon->vx;
-		grid->InitObjectCell(weapon);
+		visibleObjects.insert(weapon);
 		p->isThrowing = false;
 	}
 }

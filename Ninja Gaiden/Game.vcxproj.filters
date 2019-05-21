@@ -318,6 +318,9 @@
     <ClInclude Include="WeaponBlueShuriken.h">
       <Filter>Game Objects\Weapon</Filter>
     </ClInclude>
+    <ClInclude Include="WeaponFireWheel.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game Components">

@@ -17,8 +17,7 @@ WeaponBlueShuriken::~WeaponBlueShuriken()
 
 void WeaponBlueShuriken::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 {
-	dx = vx * dt;
-	dy = vy * dt;
+	Object::Update(dt);
 	animation->Update(dt);
 
 	for (auto obj : ColliableObjects)

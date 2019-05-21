@@ -18,13 +18,13 @@ Player::Player()
 	_animations[INJURED] = new Animation(PLAYER, 5);
 
 	// Allow một số state cho trạng thái khởi đầu (Standing)
-	allow[JUMPING] = true;
+	/*allow[JUMPING] = true;
 	allow[ATTACKING] = true;
 	allow[MOVING] = true;
-	allow[THROWING] = true;
+	allow[THROWING] = true;*/
 
 	// Các thông số Object
-	weaponID = 0;
+	weaponID = 1;
 	isOnGround = false;
 	tag = PLAYER;
 	width = PLAYER_WIDTH;
@@ -255,7 +255,7 @@ void Player::OnKeyDown(int keyCode)
 
 		// Phím S: tấn công với item
 	case DIK_S:
-		if (allow[THROWING] && weaponID)
+		if (allow[THROWING] && weaponID && stateName != ATTACKING_STAND && stateName != ATTACKING_SIT)
 		{
 			allow[THROWING] = false;
 			ChangeState(new PlayerAttackingState());

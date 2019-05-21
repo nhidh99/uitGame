@@ -4,7 +4,6 @@
 
 class EnemyGunMan : public Enemy {
 public:
-	WeaponBullet* bullet;
 	EnemyGunMan();
 	~EnemyGunMan();
 	void Update(float dt);

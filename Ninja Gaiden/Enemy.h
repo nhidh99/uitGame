@@ -1,9 +1,10 @@
-
+﻿
 #pragma once
 #include "Object.h"
 #include "EnemySprite.h"
 #include "Cell.h"
 #include <algorithm>
+
 
 class Enemy : public Object
 {
@@ -23,6 +24,7 @@ public:
 	Type type;
 	bool isActive;
 	bool isDead;
+	float moveSpaceHead, moveSpaceTail;
 
 	void Render(float translateX = 0, float translateY = 0)
 	{
@@ -53,6 +55,28 @@ public:
 				this->isDead = true;
 				this->isActive = false;
 			}
+		}
+
+		//Xét hướng đi của enemy đối với player
+		if (this->posX > player->posX && this->posX < moveSpaceTail)
+		{
+			if (this->vx > 0)
+			{
+				this->vx = -vx;
+			}
+
+			if (!this->isReverse)
+			{
+				this->isReverse = true;
+			}
+		}
+		if (this->posX < player->posX && this->posX < moveSpaceTail)
+		{
+			if (this->vx < 0)
+			{
+				this->vx = -vx;
+			}
+			this->isReverse = false;
 		}
 	}
 

@@ -4,6 +4,7 @@ EnemySwordMan::EnemySwordMan()
 {
 	animations[STANDING] = new Animation(ENEMY, 0, 0);
 	animations[ATTACKING] = new Animation(ENEMY, 0, 2);
+	curAnimation = animations[ATTACKING];
 	tag = ENEMY;
 	type = SWORDMAN;
 	width = ENEMY_SWORDMAN_WIDTH;
@@ -18,15 +19,4 @@ EnemySwordMan::~EnemySwordMan()
 void EnemySwordMan::Update(float dt)
 {
 	Enemy::Update(dt);
-
-	//if (abs(this->posX - player->posX) <= 100)
-	//{
-	//	this->curAnimation = animations[ATTACKING];
-	//	this->vx = 0;
-	//}
-	//else
-	//{
-	//	this->curAnimation = animations[RUNNING];
-	//	//this->vx = 0.01f;
-	//}
 }

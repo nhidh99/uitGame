@@ -1,5 +1,7 @@
 #pragma once
 #include "Enemy.h"
+#include "Math.h"
+
 
 class EnemyEagle :public Enemy {
 public:

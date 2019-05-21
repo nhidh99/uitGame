@@ -61,6 +61,15 @@
 #define ENEMY_EAGLE_WIDTH 26
 #define ENEMY_EAGLE_HEIGHT 32
 
+// ===== CÁC THÔNG SỐ VẬN TỐC CHO ENEMIES ====
+#define ENEMY_SWORDMAN_VX -0.01f
+#define ENEMY_CLOAKMAN_VX -0.01f
+#define ENEMY_EAGLE_VX -0.04f
+#define ENEMY_EAGLE_VY -0.04f
+#define ENEMY_GUNMAN_VX -0.01f
+#define ENEMY_PANTHER_VX -0.05f
+#define ENEMY_PANTHER_VY 0.05f
+
 // ===== CÁC THÔNG SỐ CHO HOLDERS & ITEM ====
 #define HOLDER_WIDTH 20
 #define HOLDER_HEIGHT 16
@@ -90,7 +99,7 @@ extern enum Tag
 	GROUND,
 	MAP1,
 	ENEMY,
-	HOLDER,
+	HOLDER
 };
 
 extern enum Type

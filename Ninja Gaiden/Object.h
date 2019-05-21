@@ -4,6 +4,7 @@
 #include "Animation.h"
 #include "Collision.h"
 #include "Camera.h"
+#include "Player.h"
 
 class Object
 {

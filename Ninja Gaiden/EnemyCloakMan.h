@@ -5,7 +5,6 @@
 
 class EnemyCloakMan : public Enemy {
 public:
-	WeaponDagger* dagger;
 	EnemyCloakMan();
 	~EnemyCloakMan();
 

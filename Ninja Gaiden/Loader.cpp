@@ -32,13 +32,14 @@ std::vector<Enemy*> Loader::LoadEnemies()
 
 	while (!ifile.eof()) {
 		//Đọc các thông số của Enemy
-		int id, posX, posY;
-		ifile >> id >> posX >> posY;
+		int id, posX, posY, moveSpaceHead, moveSpaceTail;
+		ifile >> id >> posX >> posY >> moveSpaceHead >> moveSpaceTail;
 
 		Enemy* enemy = EnemyFactory::CreateEnemy(id);
 		enemy->spawnX = enemy->posX = posX;
 		enemy->spawnY = enemy->posY = posY;
-		enemy->vx = 0.01f;
+		enemy->moveSpaceHead = moveSpaceHead;
+		enemy->moveSpaceTail = moveSpaceTail;
 		enemy->isReverse = true;
 		enemies.push_back(enemy);
 	}

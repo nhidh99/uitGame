@@ -92,15 +92,18 @@ void PlayScene::UpdateObjects(float dt)
 		case WEAPON:
 		{
 			auto w = WeaponFactory::ConvertToWeapon(o);
-			w->Update(dt, grid->GetColliableObjects(w));
 
-			if (w->isDead || !w->IsCollide(camera->GetRect()))
+			if (w->isDead || !w->IsCollide(camera->GetRect())
+				|| (w->type == SWORD && player->stateName != ATTACKING_STAND 
+					&& player->stateName != ATTACKING_SIT))
 			{
-				w->isDead = true;
-				it = visibleObjects.erase(it);
 				player->allow[THROWING] = true;
+				it = visibleObjects.erase(it);
+				delete w;
 				continue;
 			}
+
+			w->Update(dt, grid->GetColliableObjects(w));
 			break;
 		}
 		}
@@ -111,7 +114,6 @@ void PlayScene::UpdateObjects(float dt)
 void PlayScene::UpdatePlayer(float dt)
 {
 	auto p = player;
-	p->rect = p->GetRect();
 
 	p->Update(dt, grid->GetColliableObjects(p));
 	p->CheckGroundCollision(grid->GetVisibleGrounds());
@@ -120,18 +122,29 @@ void PlayScene::UpdatePlayer(float dt)
 	p->posX += p->dx;
 	p->posY += p->dy;
 
-	if (p->rect.y < 0)
+	if (p->GetRect().y < 0)
 	{
 		grid->RestartGame();
 		p->posX = p->spawnX;
 		p->posY = p->spawnY;
 	}
 
-	if (p->isThrowing)
+	if (p->isAttacking && p->curAnimation->CurFrameIndex == 1)
 	{
-		Weapon* weapon = WeaponFactory::CreateWeapon(p->weaponID);
+		Weapon* weapon = WeaponFactory::CreateWeapon(SWORD);
+		weapon->isReverse = p->isReverse;
+		weapon->posX = p->posX + (p->isReverse ? -22 : 22);
+		weapon->posY = p->posY + 8;
+		visibleObjects.insert(weapon);
+		p->isAttacking = false;
+	}
+
+	else if (p->isThrowing)
+	{
+		Weapon* weapon = WeaponFactory::CreateWeapon(p->weaponType);
 		weapon->posX = p->posX + (p->isReverse ? -5 : 5);
 		weapon->posY = p->posY + 5;
+		weapon->isReverse = p->isReverse;
 		if (p->isReverse) weapon->vx = -weapon->vx;
 		visibleObjects.insert(weapon);
 		p->isThrowing = false;

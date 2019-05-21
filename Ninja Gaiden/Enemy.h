@@ -1,6 +1,5 @@
-
 #pragma once
-#include "Object.h"
+#include "Player.h"
 #include "EnemySprite.h"
 #include "Cell.h"
 #include <algorithm>

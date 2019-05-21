@@ -118,9 +118,6 @@
     <ClCompile Include="WeaponSwingSword.cpp">
       <Filter>Game Objects\Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponSword.cpp">
-      <Filter>Game Objects\Weapon</Filter>
-    </ClCompile>
     <ClCompile Include="WeaponBullet.cpp">
       <Filter>Game Objects\Weapon</Filter>
     </ClCompile>

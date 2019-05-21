@@ -1,20 +1,16 @@
 ﻿#pragma once
-#include "Object.h"
 #include "PlayerSprite.h"
 #include "PlayerState.h"
 #include "PlayerStandingState.h"
 #include "PlayerInjuredState.h"
-#include "WeaponSword.h"
 #include "ItemFactory.h"
 #include "Enemy.h"
 #include <unordered_set>
-#include <map>
-#include <set>
 
 class Player : public Object
 {
 private:
-	std::unordered_map<State, Animation*> _animations;		// Danh sách các Animation tương ứng với từng State
+	std::unordered_map<State, Animation*> animations;		// Danh sách các Animation tương ứng với từng State
 	static Player* _instance;
 	
 	Rect curGroundBound, curWallBound;
@@ -26,13 +22,11 @@ public:
 	~Player();
 	static Player* GetInstance();
 
-	bool isOnGround, isThrowing;
+	bool isOnGround, isThrowing, isAttacking;
 	PlayerState* state;
 	State stateName;
-	Rect rect;
 	Animation* curAnimation;								// Animation hiện tại
-	WeaponSword* sword;
-	int weaponID;
+	Type weaponType;
 	std::unordered_map<State, bool> allow;
 
 	void Update(float dt, std::unordered_set<Object*> ColliableObjects);
@@ -42,5 +36,4 @@ public:
 	void OnKeyDown(int keyCode);							
 	void OnKeyUp(int keyCode);							
 	void ChangeState(PlayerState* newState);
-	void AttackWith(Type item);
 };

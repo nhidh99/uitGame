@@ -5,17 +5,17 @@ Player* Player::_instance = NULL;
 Player::Player()
 {
 	// Tải các Animation cho Player
-	_animations[STANDING] = new Animation(PLAYER, 0);
-	_animations[RUNNING] = new Animation(PLAYER, 1, 3, DEFAULT_TPS >> 1);
-	_animations[SITTING] = new Animation(PLAYER, 4, 4);
-	_animations[JUMPING] = new Animation(PLAYER, 5, 8, DEFAULT_TPS >> 2);
-	_animations[FALLING] = new Animation(PLAYER, 5, 8, DEFAULT_TPS >> 2);
-	_animations[ATTACKING_STAND] = new Animation(PLAYER, 9, 11, DEFAULT_TPS >> 1);
-	_animations[ATTACKING_SIT] = new Animation(PLAYER, 12, 14, DEFAULT_TPS >> 1);
-	_animations[CLINGING] = new Animation(PLAYER, 15);
-	_animations[CLIMBING] = new Animation(PLAYER, 15, 16);
-	_animations[DEAD] = new Animation(PLAYER, 5);
-	_animations[INJURED] = new Animation(PLAYER, 5);
+	animations[STANDING] = new Animation(PLAYER, 0);
+	animations[RUNNING] = new Animation(PLAYER, 1, 3, DEFAULT_TPS >> 1);
+	animations[SITTING] = new Animation(PLAYER, 4, 4);
+	animations[JUMPING] = new Animation(PLAYER, 5, 8, DEFAULT_TPS >> 2);
+	animations[FALLING] = new Animation(PLAYER, 5, 8, DEFAULT_TPS >> 2);
+	animations[ATTACKING_STAND] = new Animation(PLAYER, 9, 11, DEFAULT_TPS >> 1);
+	animations[ATTACKING_SIT] = new Animation(PLAYER, 12, 14, DEFAULT_TPS >> 1);
+	animations[CLINGING] = new Animation(PLAYER, 15);
+	animations[CLIMBING] = new Animation(PLAYER, 15, 16);
+	animations[DEAD] = new Animation(PLAYER, 5);
+	animations[INJURED] = new Animation(PLAYER, 5);
 
 	// Allow một số state cho trạng thái khởi đầu (Standing)
 	/*allow[JUMPING] = true;
@@ -24,26 +24,22 @@ Player::Player()
 	allow[THROWING] = true;*/
 
 	// Các thông số Object
-	weaponID = 1;
+	weaponType = FIREWHEEL;
 	isOnGround = false;
 	tag = PLAYER;
 	width = PLAYER_WIDTH;
 	height = PLAYER_STANDING_HEIGHT;
-
-	// Trang bị (kiếm)
-	sword = new WeaponSword();
 }
 
 // Destructor
 Player::~Player()
 {
 	if (curAnimation) delete curAnimation;
-	if (sword) delete sword;
 
-	for (auto it = _animations.begin(); it != _animations.end(); ++it)
+	for (auto it = animations.begin(); it != animations.end(); ++it)
 	{
 		if (it->second) delete it->second;
-		_animations.erase(it);
+		animations.erase(it);
 	}
 }
 
@@ -83,7 +79,7 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 		{
 			auto i = (Item*)obj;
 
-			if (this->rect.IsContain(i->GetRect()))
+			if (this->GetRect().IsContain(i->GetRect()))
 			{
 				i->isDead = true;
 
@@ -95,7 +91,8 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 					break;
 
 				case BLUESHURIKEN:
-					this->weaponID = 1;
+				case FIREWHEEL:
+					this->weaponType = i->type;
 					break;
 				}
 			}
@@ -105,7 +102,6 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 
 	if (!ResultCollisions.size() || stateName == INJURED)
 	{
-		sword->Update(dt, ColliableObjects);
 		dx = (allow[MOVING] ? vx * dt : 0);
 		dy = vy * dt;
 		return;
@@ -139,7 +135,7 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 // Dùng cách nâng sàn Collision duyệt trước
 bool Player::DetectGround(std::unordered_set<Rect*> grounds)
 {
-	auto r = this->rect;
+	auto r = this->GetRect();
 	r.y = r.y + dy;
 	r.height = r.height - dy;
 
@@ -162,7 +158,7 @@ bool Player::DetectGround(std::unordered_set<Rect*> grounds)
 bool Player::DectectWall(std::unordered_set<Rect*> walls)
 {
 	bool flag = false;
-	auto r = this->rect;
+	auto r = this->GetRect();
 	r.x = dx > 0 ? r.x : r.x + dx;
 	r.width = dx > 0 ? dx + r.width : r.width - dx;
 
@@ -197,7 +193,7 @@ void Player::CheckGroundCollision(std::unordered_set<Rect*> grounds)
 	// Tìm được vùng đất va chạm
 	if (DetectGround(grounds))
 	{
-		if (this->vy < 0 && this->rect.IsContain(curGroundBound))
+		if (this->vy < 0 && this->GetRect().IsContain(curGroundBound))
 		{
 			this->isOnGround = true;
 			this->vy = this->dy = 0;
@@ -235,7 +231,6 @@ void Player::Render(float translateX, float translateY)
 	camera->ConvertPositionToViewPort(posX, posY);
 	curAnimation->isReverse = this->isReverse;
 	curAnimation->Render(posX, posY);
-	sword->Render(posX, posY, curAnimation->CurFrameIndex);
 }
 
 // Xử lí nhấn phím (chung cho các State)
@@ -249,13 +244,14 @@ void Player::OnKeyDown(int keyCode)
 		{
 			allow[ATTACKING] = false;
 			ChangeState(new PlayerAttackingState());
-			AttackWith(SWORD);
+			this->isAttacking = true;
 		}
 		break;
 
 		// Phím S: tấn công với item
 	case DIK_S:
-		if (allow[THROWING] && weaponID && stateName != ATTACKING_STAND && stateName != ATTACKING_SIT)
+		if (allow[THROWING] && weaponType != NONE 
+			&& stateName != ATTACKING_STAND && stateName != ATTACKING_SIT)
 		{
 			allow[THROWING] = false;
 			ChangeState(new PlayerAttackingState());
@@ -294,22 +290,5 @@ void Player::ChangeState(PlayerState * newState)
 	delete state;
 	state = newState;
 	stateName = newState->StateName;
-	curAnimation = _animations[stateName];
-}
-
-// Tấn công với item
-void Player::AttackWith(Type item)
-{
-	switch (item)
-	{
-	case SWORD:
-		if (sword != NULL)
-		{
-			sword->posX = this->posX + (isReverse ? -22 : 22);
-			sword->posY = this->posY + 10;
-			sword->isReverse = isReverse;
-			sword->isOnScreen = true;
-		}
-		break;
-	}
+	curAnimation = animations[stateName];
 }

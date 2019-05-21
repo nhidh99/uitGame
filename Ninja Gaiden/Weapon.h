@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Object.h"
+#include "Player.h"
 #include "Enemy.h"
 #include "Holder.h"
 #include <unordered_set>
@@ -11,7 +11,7 @@ protected:
 	Animation* animation;
 
 public:
-	Weapon() { tag = WEAPON; }
+	Weapon() { tag = WEAPON;	}
 	~Weapon() { if (animation) delete animation; }
 
 	Type type;
@@ -28,9 +28,19 @@ public:
 		animation->Render(posX, posY);
 	}
 
+	virtual void UpdateDistance(float dt)
+	{
+		this->dx = vx * dt;
+		this->dy = vy * dt;
+	}
+
 	virtual void Update(float dt, std::unordered_set<Object*> ColliableObjects)
 	{
-		Object::Update(dt);
+		this->UpdateDistance(dt);
+		this->posX += dx;
+		this->posY += dy;
+
+		animation->isReverse = this->isReverse;
 		animation->Update(dt);
 
 		for (auto obj : ColliableObjects)

@@ -21,8 +21,6 @@ void Grid::Update()
 	this->viewPort = camera->GetRect();
 	this->UpdateVisibleCells();
 	this->RespawnEnemies();
-
-	// Nếu player attack -> Tạo weapon -> init weapon trong grid
 }
 
 void Grid::LoadObjects()
@@ -77,13 +75,14 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 	int TopCell = r.y / Cell::height;
 	int BottomCell = (r.y - r.height) / Cell::height;
 
-	if (BottomCell >= rows)
+	if (TopCell >= rows || BottomCell < 0 || LeftCell <= 0 || RightCell > columns)
 	{
-		this->RemoveObject(obj);
 		return;
 	}
-	else if (TopCell >= rows)
+
+	else if (BottomCell >= rows || TopCell < 0 || RightCell <= 0 || LeftCell > columns)
 	{
+		this->RemoveObject(obj);
 		return;
 	}
 
@@ -154,7 +153,7 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 void Grid::RestartGame()
 {
 	isFrozenEnemies = false;
-	player->weaponID = 0;
+	player->weaponType = NONE;
 
 	for (auto o : respawnObjects)
 	{
@@ -194,10 +193,11 @@ void Grid::RemoveObject(Object * obj)
 
 	for (int y = BottomCell; y <= TopCell; ++y)
 	{
-		if (y == rows) break;
+		if (y < 0 || y >= rows) continue;
 		for (int x = LeftCell; x <= RightCell; ++x)
 		{
-			cells[y][x]->RemoveObject(obj);
+			if (x < 0 || x >= columns) continue;
+			else cells[y][x]->RemoveObject(obj);
 		}
 	}
 }
@@ -390,10 +390,10 @@ std::unordered_set<Object*> Grid::GetColliableObjects(Object * obj)
 
 	for (int y = BottomCell; y <= TopCell; ++y)
 	{
-		if (y >= rows) break;
-
+		if (y < 0 || y >= rows) continue;
 		for (int x = LeftCell; x <= RightCell; ++x)
 		{
+			if (x < 0 || x >= columns) continue;
 			for (auto o : cells[y][x]->objects)
 			{
 				objs.insert(o);

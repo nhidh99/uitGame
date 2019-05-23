@@ -109,9 +109,6 @@
     <ClCompile Include="Object.cpp">
       <Filter>Game Objects\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Loader.cpp">
-      <Filter>Game Components</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
@@ -251,9 +248,6 @@
     </ClInclude>
     <ClInclude Include="PlayerAttackingState.h">
       <Filter>Game Objects\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Loader.h">
-      <Filter>Game Components</Filter>
     </ClInclude>
     <ClInclude Include="WeaponSprite.h">
       <Filter>Game Objects\Weapon</Filter>

@@ -1,13 +1,15 @@
 #pragma once
 #include "GameGlobal.h"
 #include "Collision.h"
-#include "Holder.h"
 #include <unordered_set>
 #include <vector>
 #include "Camera.h"
 #include "Cell.h"
-#include "Loader.h"
+#include "WeaponFactory.h"
+#include "HolderFactory.h"
+#include "EnemyFactory.h"
 #include "Player.h"
+#include <fstream>
 
 class Grid
 {
@@ -16,15 +18,21 @@ private:
 	int columns;
 	Rect viewPort;
 
+	struct GameObject
+	{
+		int topCell, bottomCell, leftCell, rightCell;
+		char type;
+		std::vector<int> value;
+	};
+
 public:
-	Grid(Rect MapRect);
+	void CreateGridFile(int level);
+	Grid(int level);
 	std::vector<std::vector<Cell*>> cells;
 	std::vector<Cell*> visibleCells;
 	std::vector<Object*> respawnObjects;
 
 	void Update();
-	void LoadObjects();
-
 	void RespawnEnemies();
 	void RestartGame();
 
@@ -33,11 +41,11 @@ public:
 	void UpdateVisibleCells();
 
 	std::unordered_set<Object*> GetVisibleObjects();
-	std::unordered_set<Rect*> GetVisibleWalls();
+	std::unordered_set<Wall*> GetVisibleWalls();
 	std::unordered_set<Rect*> GetVisibleGrounds();
 	std::unordered_set<Object*> GetColliableObjects(Object* obj);
 
 	void InitGroundCell(Rect* ground);
-	void InitWallCell(Rect* wall);
+	void InitWallCell(Wall* wall);
 	void InitObjectCell(Object* obj);
 };

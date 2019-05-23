@@ -15,7 +15,7 @@ private:
 	
 	Rect curGroundBound, curWallBound;
 	bool DetectGround(std::unordered_set<Rect*> grounds);
-	bool DectectWall(std::unordered_set<Rect*> walls);
+	bool DectectWall(std::unordered_set<Wall*> walls);
 	
 public:
 	Player();
@@ -31,7 +31,7 @@ public:
 
 	void Update(float dt, std::unordered_set<Object*> ColliableObjects);
 	void CheckGroundCollision(std::unordered_set<Rect*> grounds);
-	void CheckWallCollision(std::unordered_set<Rect*> walls);
+	void CheckWallCollision(std::unordered_set<Wall*> walls);
 	void Render(float translateX = 0, float translateY = 0);
 	void OnKeyDown(int keyCode);							
 	void OnKeyUp(int keyCode);							

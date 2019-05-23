@@ -7,7 +7,6 @@ public:
 	~EnemyEagle();
 };
 
-
 // dx = vx * dt;
 // deltaX = eagle->x  - player->x
 // deltaY = ...

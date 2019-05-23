@@ -3,7 +3,6 @@
 #include "Player.h"
 #include <map>
 #include "Grid.h"
-#include "Loader.h"
 #include "WeaponFactory.h"
 
 class PlayScene : public Scene

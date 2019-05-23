@@ -146,7 +146,6 @@
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="HolderButterfly.cpp" />
     <ClCompile Include="HolderSprite.cpp" />
-    <ClCompile Include="Loader.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapFactory.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -205,7 +204,6 @@
     <ClInclude Include="ItemRedPotion.h" />
     <ClInclude Include="ItemRedSpirit.h" />
     <ClInclude Include="ItemSprite.h" />
-    <ClInclude Include="Loader.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapFactory.h" />
     <ClInclude Include="Weapon.h" />

@@ -3,8 +3,8 @@
 PlayScene::PlayScene()
 {
 	map = MapFactory::GetInstance()->GetMap(0);
-	grid = new Grid(map->rect);
-	grid->LoadObjects();
+	grid = new Grid(1);
+	//grid->LoadObjects();
 
 	player->spawnX = player->posX = 50;
 	player->spawnY = player->posY = 100;

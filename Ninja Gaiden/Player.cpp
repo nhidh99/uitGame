@@ -155,7 +155,7 @@ bool Player::DetectGround(std::unordered_set<Rect*> grounds)
 
 // Duyệt tìm tường va chạm
 // Bằng cách dịch tường và duyệt trước
-bool Player::DectectWall(std::unordered_set<Rect*> walls)
+bool Player::DectectWall(std::unordered_set<Wall*> walls)
 {
 	bool flag = false;
 	auto r = this->GetRect();
@@ -170,9 +170,9 @@ bool Player::DectectWall(std::unordered_set<Rect*> walls)
 	{
 		for (auto w : walls)
 		{
-			if (r.IsContain(*w))
+			if (w->rect.IsContain(r))
 			{
-				curWallBound = *w;
+				curWallBound = w->rect;
 				flag = true;
 				break;
 			}
@@ -212,7 +212,7 @@ void Player::CheckGroundCollision(std::unordered_set<Rect*> grounds)
 }
 
 // Kiểm tra va chạm tường
-void Player::CheckWallCollision(std::unordered_set<Rect*> walls)
+void Player::CheckWallCollision(std::unordered_set<Wall*> walls)
 {
 	if (this->vx && this->DectectWall(walls))
 	{

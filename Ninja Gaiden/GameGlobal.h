@@ -162,3 +162,19 @@ struct Rect
 		return !((x + width < r.x) || (x > r.x + r.width) || (y < r.y - r.height) || (y - height > r.y));
 	}
 };
+
+struct Wall
+{
+	Rect rect;
+	bool climbable;
+	
+	Wall() {}
+	Wall(float x, float y, float width, float height, bool climbable)
+	{
+		this->rect.x = x;
+		this->rect.y = y;
+		this->rect.width = width;
+		this->rect.height = height;
+		this->climbable = climbable;
+	}
+};

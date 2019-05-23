@@ -1,9 +1,138 @@
 ﻿#include "Grid.h"
 
-Grid::Grid(Rect MapRect)
+void Grid::CreateGridFile(int level)
 {
-	columns = ceil((float)MapRect.width / (SCREEN_WIDTH >> 1));
-	rows = ceil((float)MapRect.height / (SCREEN_HEIGHT >> 1));
+	std::ifstream ifile;
+	char gridFileName[30];
+	sprintf_s(gridFileName, "Resources\\grid%d.txt", level);
+
+	// Nếu không tìm thấy file grid -> Tạo file từ map objects trong level đó
+	ifile.open(gridFileName);
+	if (ifile.fail())
+	{
+		ifile.close();
+
+		// Đọc file matrix để lấy size map -> xác định số cell trong grid
+		char fileMapName[30];
+		sprintf_s(fileMapName, "Resources\\matrix%d.txt", level);
+		ifile.open(fileMapName);
+
+		int numTiles, rowTiles, colTiles;
+		ifile >> numTiles >> colTiles >> rowTiles;
+		ifile.close();
+
+		int colCell = ceil((float)(colTiles * TILE_SIZE) / (SCREEN_WIDTH >> 1));
+		int rowCell = ceil((float)(rowTiles * TILE_SIZE) / (SCREEN_HEIGHT >> 1));
+
+		// Đọc từng loại object và đẩy vào grid (mỗi loại có thông số cách tính Rect khác nhau)
+		char objectsFileName[30];
+		sprintf_s(objectsFileName, "Resources\\objects%d.txt", level);
+		ifile.open(objectsFileName);
+
+		auto objs = std::vector<GameObject*>();
+
+		while (!ifile.eof())
+		{
+			auto obj = new GameObject();
+			Rect* rect = NULL;
+			char type;
+			int value;
+
+			ifile >> type;
+			obj->type = type;
+
+			switch (type)
+			{
+			case 'g': //ground: x, y, width, height
+			case 'w': //wall: x, y, width, height, climbable
+			{
+				int n = (type == 'g' ? 4 : 5);
+				for (int i = 0; i < n; ++i)
+				{
+					ifile >> value;
+					obj->value.push_back(value);
+				}
+
+				rect = new Rect(obj->value[0], obj->value[1], obj->value[2], obj->value[3]);
+				break;
+			}
+
+			case 'h': //holder: holderID, posX, posY, itemID
+			{
+				for (int i = 0; i < 4; ++i)
+				{
+					ifile >> value;
+					obj->value.push_back(value);
+				}
+
+				auto h = HolderFactory::CreateHolder(obj->value[0], obj->value[3]);
+				h->posX = obj->value[1];
+				h->posY = obj->value[2];
+				rect = new Rect(h->GetRect());
+				delete h;
+				break;
+			}
+
+			case 'e': //enemy: enemyID, posX, posY
+			{
+				for (int i = 0; i < 3; ++i)
+				{
+					ifile >> value;
+					obj->value.push_back(value);
+				}
+
+				auto e = EnemyFactory::CreateEnemy(obj->value[0]);
+				e->posX = obj->value[1];
+				e->posY = obj->value[2];
+				rect = new Rect(e->GetRect());
+				delete e;
+				break;
+			}
+			}
+
+			// Xác định cell object đó và đẩy vào
+			obj->leftCell = rect->x / Cell::width;
+			obj->rightCell = (rect->x + rect->width) / Cell::width;
+			obj->topCell = rect->y / Cell::height;
+			obj->bottomCell = (rect->y - rect->height) / Cell::height;
+			delete rect;
+
+			objs.push_back(obj);
+		}
+
+		// Viết ra file grid
+		std::ofstream ofile;
+		ofile.open(gridFileName);
+		ofile << colCell << " " << rowCell << " " << objs.size();
+
+		for (auto o : objs)
+		{
+			ofile << "\n" << o->type;
+			for (auto v : o->value)
+			{
+				ofile << " " << v;
+			}
+			ofile << "\n" << o->leftCell << " " << o->topCell << " " << o->rightCell << " " << o->bottomCell;
+		}
+
+		//Sau khi có các thông số, xoá GridObject
+		ifile.close();
+		ofile.close();
+	}
+	else ifile.close();
+}
+
+Grid::Grid(int level)
+{
+	this->CreateGridFile(level);
+
+	std::ifstream ifile;
+	char gridFileName[30];
+	sprintf_s(gridFileName, "Resources\\grid%d.txt", level);
+
+	int numObjects;
+	ifile.open(gridFileName);
+	ifile >> columns >> rows >> numObjects;
 
 	for (int y = 0; y < rows; ++y)
 	{
@@ -14,6 +143,104 @@ Grid::Grid(Rect MapRect)
 		}
 		cells.push_back(row);
 	}
+
+	int value;
+	char type;
+	int top, left, right, bottom;
+	std::vector<int> values;
+
+	for (int i = 0; i < numObjects; ++i)
+	{
+		ifile >> type;
+		switch (type)
+		{
+		case 'g': // ground: x,y,width,height
+		{
+			for (int i = 0; i < 4; ++i)
+			{
+				ifile >> value;
+				values.push_back(value);
+			}
+			auto ground = new Rect(values[0], values[1], values[2], values[3]);
+
+			ifile >> left >> top >> right >> bottom;
+			for (int r = bottom; r <= top; ++r)
+			{
+				for (int c = left; c <= right; ++c)
+				{
+					cells[r][c]->grounds.push_back(ground);
+				}
+			}
+			break;
+		}
+
+		case 'w': // wall: x,y,width,height,climable
+		{
+			for (int i = 0; i < 5; ++i)
+			{
+				ifile >> value;
+				values.push_back(value);
+			}
+			auto wall = new Wall(values[0], values[1], values[2], values[3], values[4]);
+
+			ifile >> left >> top >> right >> bottom;
+			for (int r = bottom; r <= top; ++r)
+			{
+				for (int c = left; c <= right; ++c)
+				{
+					cells[r][c]->walls.push_back(wall);
+				}
+			}
+			break;
+		}
+		
+		case 'h': // holder: typeID, posX, posY, itemID
+		{
+			for (int i = 0; i < 4; ++i)
+			{
+				ifile >> value;
+				values.push_back(value);
+			}
+			auto holder = HolderFactory::CreateHolder(values[0], values[3]);
+			holder->spawnX = holder->posX = values[1];
+			holder->spawnY = holder->posY = values[2];
+
+			ifile >> left >> top >> right >> bottom;
+			for (int r = bottom; r <= top; ++r)
+			{
+				for (int c = left; c <= right; ++c)
+				{
+					cells[r][c]->objects.insert(holder);
+				}
+			}
+			break;
+		}
+
+		case 'e': // enemy: typeID, posX, posY
+		{
+			for (int i = 0; i < 3; ++i)
+			{
+				ifile >> value;
+				values.push_back(value);
+			}
+			auto enemy = EnemyFactory::CreateEnemy(values[0]);
+			enemy->spawnX = enemy->posX = values[1];
+			enemy->spawnY = enemy->posY = values[2];
+
+			ifile >> left >> top >> right >> bottom;
+			for (int r = bottom; r <= top; ++r)
+			{
+				for (int c = left; c <= right; ++c)
+				{
+					cells[r][c]->objects.insert(enemy);
+				}
+			}
+			break;
+		}
+		}
+		values.clear();
+	}
+	ifile.close();
 }
 
 void Grid::Update()
@@ -21,19 +248,6 @@ void Grid::Update()
 	this->viewPort = camera->GetRect();
 	this->UpdateVisibleCells();
 	this->RespawnEnemies();
-}
-
-void Grid::LoadObjects()
-{
-	Loader* loader = new Loader();
-	auto grounds = loader->LoadGroundsBound();
-	auto walls = loader->LoadWallsBound();
-	auto holders = loader->LoadHolders();
-	auto enemies = loader->LoadEnemies();
-	for (auto g : grounds)	this->InitGroundCell(g);
-	for (auto w : walls)	this->InitWallCell(w);
-	for (auto h : holders)	this->InitObjectCell(h);
-	for (auto e : enemies)	this->InitObjectCell(e);
 }
 
 void Grid::RespawnEnemies()
@@ -344,15 +558,15 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 	return setObjects;
 }
 
-std::unordered_set<Rect*> Grid::GetVisibleWalls()
+std::unordered_set<Wall*> Grid::GetVisibleWalls()
 {
-	std::unordered_set<Rect*> setWalls;
+	std::unordered_set<Wall*> setWalls;
 
 	for (auto c : visibleCells)
 	{
 		for (auto w : c->walls)
 		{
-			if (w->IsContain(viewPort))
+			if (w->rect.IsContain(viewPort))
 			{
 				setWalls.insert(w);
 			}
@@ -419,12 +633,13 @@ void Grid::InitGroundCell(Rect * ground)
 	}
 }
 
-void Grid::InitWallCell(Rect * wall)
+void Grid::InitWallCell(Wall * wall)
 {
-	int LeftCell = wall->x / Cell::width;
-	int RightCell = (wall->x + wall->width) / Cell::width;
-	int TopCell = wall->y / Cell::height;
-	int BottomCell = (wall->y - wall->height) / Cell::height;
+	auto r = wall->rect;
+	int LeftCell = r.x / Cell::width;
+	int RightCell = (r.x + r.width) / Cell::width;
+	int TopCell = r.y / Cell::height;
+	int BottomCell = (r.y - r.height) / Cell::height;
 
 	for (int y = BottomCell; y <= TopCell; ++y)
 	{

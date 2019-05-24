@@ -57,10 +57,9 @@ void SpriteFactory::LoadResources()
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(GUNMAN, 159, 55, 189, 90));
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(GUNMAN, 189, 62, 206, 73));
 
-	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 409, 0, 435, 49));
-	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 445, 0, 471, 49));
-	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 487, 0, 515, 49));
-	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 517, 0, 531, 23));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 404, 0, 437, 43));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 440, 0, 474, 43));
+	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(CLOAKMAN, 486, 0, 520, 43));
 
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(PANTHER, 309, 74, 342, 90));
 	SpriteFactory::GetInstance()->AddSprite(new EnemySprite(PANTHER, 342, 74, 377, 90));

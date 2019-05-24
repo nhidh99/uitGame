@@ -97,7 +97,6 @@ void PlayScene::UpdateObjects(float dt)
 				|| (w->type == SWORD && player->stateName != ATTACKING_STAND 
 					&& player->stateName != ATTACKING_SIT))
 			{
-				player->allow[THROWING] = true;
 				it = visibleObjects.erase(it);
 				delete w;
 				continue;
@@ -129,7 +128,7 @@ void PlayScene::UpdatePlayer(float dt)
 		p->posY = p->spawnY;
 	}
 
-	if (p->isAttacking && p->curAnimation->CurFrameIndex == 1)
+	if (p->isAttacking)
 	{
 		Weapon* weapon = WeaponFactory::CreateWeapon(SWORD);
 		weapon->isReverse = p->isReverse;
@@ -148,6 +147,7 @@ void PlayScene::UpdatePlayer(float dt)
 		if (p->isReverse) weapon->vx = -weapon->vx;
 		visibleObjects.insert(weapon);
 		p->isThrowing = false;
+		p->allow[THROWING] = false;
 	}
 }
 

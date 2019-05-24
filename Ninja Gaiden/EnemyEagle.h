@@ -1,14 +1,16 @@
 #pragma once
+#define _USE_MATH_DEFINES
 #include "Enemy.h"
+#include <ctime>
+#include <stdlib.h>
 
-class EnemyEagle :public Enemy {
+class EnemyEagle : public Enemy 
+{
+private:
+	float delayTime;
+
 public:
 	EnemyEagle();
 	~EnemyEagle();
+	void UpdateDistance(float dt);
 };
-
-// dx = vx * dt;
-// deltaX = eagle->x  - player->x
-// deltaY = ...
-// if (deltaX * deltaY > 0) ...
-// else ...

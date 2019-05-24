@@ -4,40 +4,55 @@ EnemyCloakMan::EnemyCloakMan()
 {
 	animations[STANDING] = new Animation(ENEMY, 12, 12);
 	animations[ATTACKING] = new Animation(ENEMY, 12, 14);
-	dagger = new WeaponDagger();
 	tag = ENEMY;
 	type = CLOAKMAN;
-	height = ENEMY_CLOAKMAN_HEIGHT;	
+	height = ENEMY_CLOAKMAN_HEIGHT;
 	width = ENEMY_CLOAKMAN_WIDTH;
+
+	srand(time(NULL));
+	int x = rand();
+	if (x & 1)
+	{
+		vx = ENEMY_SWORDMAN_SPEED;
+		distance = rand() % 50 + 50;
+	}
+	else
+	{
+		vx = -ENEMY_SWORDMAN_SPEED;
+		distance = -(rand() % 50 + 50);
+	}
 }
 
 EnemyCloakMan::~EnemyCloakMan()
 {
 }
 
-void EnemyCloakMan::Render(float translateX, float translateY)
+void EnemyCloakMan::UpdateDistance(float dt)
 {
-	Enemy::Render(translateX, translateY);
+	this->dx = vx * dt;
+	this->distance -= dx;
+	this->isReverse = (player->posX < this->posX);
 
-	if (dagger->isOnScreen)
+	if (vx > 0)
 	{
-		dagger->Render(translateX, translateY);
+		if (distance <= 0 || this->posX + (this->width >> 1) >= groundBound.x + groundBound.width)
+		{
+			distance = -(rand() % 50 + 50);
+			this->vx = -vx;
+		}
 	}
+	else
+	{
+		if (distance >= 0 || this->posX - (this->width >> 1) <= groundBound.x)
+		{
+			distance = (rand() % 50 + 50);
+			this->vx = -vx;
+		}
+	}
+
 }
 
 void EnemyCloakMan::Update(float dt)
 {
 	Enemy::Update(dt);
-
-	if (curAnimation->isLastFrame == true && dagger->isOnScreen == false)
-	{
-		dagger->isOnScreen = true;
-		dagger->posX = this->posX - 5;
-		dagger->posY = this->posY - 10;
-	}
-
-	if (dagger->isOnScreen)
-	{
-		dagger->Update(dt, this->posY - 50, 0, 1500);
-	}
 }

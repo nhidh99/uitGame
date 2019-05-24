@@ -3,25 +3,44 @@
 #include "EnemySprite.h"
 #include "Cell.h"
 #include <algorithm>
+#include <ctime>
+#include <cstdlib>
 
 class Enemy : public Object
 {
 protected:
 	std::unordered_map<State, Animation*> animations;
 	Animation* curAnimation;
+	Rect groundBound;
 
 public:
+	State StateName;
+	Type type;
+	bool isActive;
+	bool isDead;
+
 	Enemy()
 	{
 		tag = ENEMY;
 		animations[DEAD] = new Animation(WEAPON, 0, 2, 85);
 	}
 
-	~Enemy() {};
-	State StateName;
-	Type type;
-	bool isActive;
-	bool isDead;
+	void DectectGround(std::unordered_set<Rect*> grounds)
+	{
+		for (auto g : grounds)
+		{
+			if (g->x < this->posX && this->posX < g->x + g->width && g->y >= groundBound.y)
+			{
+				groundBound = *g;
+			}
+		}
+		this->posY = groundBound.y + groundBound.height + (this->width>>1);
+	}
+
+	~Enemy() 
+	{
+		if (curAnimation) delete curAnimation;
+	};
 
 	void Render(float translateX = 0, float translateY = 0)
 	{

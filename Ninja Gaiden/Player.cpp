@@ -18,10 +18,10 @@ Player::Player()
 	animations[INJURED] = new Animation(PLAYER, 5);
 
 	// Allow một số state cho trạng thái khởi đầu (Standing)
-	/*allow[JUMPING] = true;
+	allow[JUMPING] = true;
 	allow[ATTACKING] = true;
 	allow[MOVING] = true;
-	allow[THROWING] = true;*/
+	allow[THROWING] = true;
 
 	// Các thông số Object
 	weaponType = FIREWHEEL;

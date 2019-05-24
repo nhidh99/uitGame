@@ -43,9 +43,11 @@ public:
 		animation->isReverse = this->isReverse;
 		animation->Update(dt);
 
+		auto rect = this->GetRect();
+
 		for (auto obj : ColliableObjects)
 		{
-			if (this->GetRect().IsContain(obj->GetRect()))
+			if (rect.IsContain(obj->GetRect()))
 			{
 				if (obj->tag == ENEMY)
 				{

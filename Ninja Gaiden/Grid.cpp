@@ -100,22 +100,22 @@ void Grid::CreateGridFile(int level)
 			objs.push_back(obj);
 		}
 
-		// Viết ra file grid
+		// Viết ra file grid và xoá các object sau khi có thông số
 		std::ofstream ofile;
 		ofile.open(gridFileName);
 		ofile << colCell << " " << rowCell << " " << objs.size();
 
 		for (auto o : objs)
 		{
-			ofile << "\n" << o->type;
+			ofile << "\n" << o->type << "\n";
 			for (auto v : o->value)
 			{
-				ofile << " " << v;
+				ofile << v << " ";
 			}
 			ofile << "\n" << o->leftCell << " " << o->topCell << " " << o->rightCell << " " << o->bottomCell;
+			delete o;
 		}
 
-		//Sau khi có các thông số, xoá GridObject
 		ifile.close();
 		ofile.close();
 	}
@@ -193,7 +193,7 @@ Grid::Grid(int level)
 			}
 			break;
 		}
-		
+
 		case 'h': // holder: typeID, posX, posY, itemID
 		{
 			for (int i = 0; i < 4; ++i)
@@ -289,62 +289,69 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 	int TopCell = r.y / Cell::height;
 	int BottomCell = (r.y - r.height) / Cell::height;
 
-	if (TopCell >= rows || BottomCell < 0 || LeftCell <= 0 || RightCell > columns)
+	if (!(oldLeftCell < 0 || oldRightCell >= columns || oldTopCell >= rows || oldBottomCell < 0))
 	{
-		return;
-	}
-
-	else if (BottomCell >= rows || TopCell < 0 || RightCell <= 0 || LeftCell > columns)
-	{
-		this->RemoveObject(obj);
-		return;
-	}
-
-	if (LeftCell != oldLeftCell)
-	{
-		cells[oldTopCell][oldLeftCell]->RemoveObject(obj);
-
-		if (oldTopCell != oldBottomCell)
+		if (LeftCell < oldLeftCell)
 		{
-			cells[oldBottomCell][oldLeftCell]->RemoveObject(obj);
+			if (oldTopCell < rows)
+			{
+				cells[oldTopCell][oldLeftCell]->RemoveObject(obj);
+			}
+
+			if (oldTopCell != oldBottomCell && oldBottomCell >= 0)
+			{
+				cells[oldBottomCell][oldLeftCell]->RemoveObject(obj);
+			}
 		}
-	}
 
-	if (RightCell != oldRightCell)
-	{
-		cells[oldTopCell][oldRightCell]->RemoveObject(obj);
-
-		if (oldTopCell != oldBottomCell)
+		if (RightCell > oldRightCell)
 		{
-			cells[oldBottomCell][oldRightCell]->RemoveObject(obj);
+			if (oldTopCell < rows)
+			{
+				cells[oldTopCell][oldRightCell]->RemoveObject(obj);
+			}
+
+			if (oldTopCell != oldBottomCell && oldBottomCell >= 0)
+			{
+				cells[oldBottomCell][oldRightCell]->RemoveObject(obj);
+			}
 		}
-	}
 
-	if (TopCell != oldTopCell)
-	{
-		cells[oldTopCell][oldLeftCell]->RemoveObject(obj);
-
-		if (oldLeftCell != oldRightCell)
+		if (TopCell < oldTopCell)
 		{
-			cells[oldTopCell][oldRightCell]->RemoveObject(obj);
+			if (oldLeftCell >= 0)
+			{
+				cells[oldTopCell][oldLeftCell]->RemoveObject(obj);
+			}
+
+			if (oldLeftCell != oldRightCell && oldRightCell < columns)
+			{
+				cells[oldTopCell][oldRightCell]->RemoveObject(obj);
+			}
 		}
-	}
 
-	if (BottomCell != oldBottomCell)
-	{
-		cells[oldBottomCell][oldLeftCell]->RemoveObject(obj);
-
-		if (oldLeftCell != oldRightCell)
+		if (BottomCell > oldBottomCell)
 		{
-			cells[oldBottomCell][oldRightCell]->RemoveObject(obj);
+			if (oldLeftCell >= 0)
+			{
+				cells[oldBottomCell][oldLeftCell]->RemoveObject(obj);
+			}
+
+			if (oldLeftCell != oldRightCell && oldRightCell < columns)
+			{
+				cells[oldBottomCell][oldRightCell]->RemoveObject(obj);
+			}
 		}
 	}
 
 	if (TopCell < rows)
 	{
-		cells[TopCell][LeftCell]->objects.insert(obj);
+		if (LeftCell >= 0)
+		{
+			cells[TopCell][LeftCell]->objects.insert(obj);
+		}
 
-		if (LeftCell != RightCell)
+		if (LeftCell != RightCell && RightCell < columns)
 		{
 			cells[TopCell][RightCell]->objects.insert(obj);
 		}
@@ -352,14 +359,14 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 
 	if (BottomCell < rows)
 	{
-		if (TopCell != BottomCell)
+		if (LeftCell >= 0)
 		{
 			cells[BottomCell][LeftCell]->objects.insert(obj);
+		}
 
-			if (LeftCell != RightCell)
-			{
-				cells[BottomCell][RightCell]->objects.insert(obj);
-			}
+		if (LeftCell != RightCell && RightCell < columns)
+		{
+			cells[BottomCell][RightCell]->objects.insert(obj);
 		}
 	}
 }
@@ -459,6 +466,8 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 					}
 					else if (!e->isActive)
 					{
+						if (e->type == SWORDMAN || e->type == CLOAKMAN)
+							e->DectectGround(this->GetVisibleGrounds());
 						e->ChangeState(ATTACKING);
 					}
 					break;
@@ -541,7 +550,6 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 				}
 
 				case ITEM:
-				case WEAPON:
 				{
 					it = c->objects.erase(it);
 					this->RemoveObject(o);

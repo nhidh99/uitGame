@@ -2,13 +2,14 @@
 #include "Enemy.h"
 #include "WeaponDagger.h"
 
+class EnemyCloakMan : public Enemy 
+{
+private:
+	float distance;
 
-class EnemyCloakMan : public Enemy {
 public:
-	WeaponDagger* dagger;
 	EnemyCloakMan();
 	~EnemyCloakMan();
-
-	void Render(float translateX = 0, float translateY = 0);
+	void UpdateDistance(float dt);
 	void Update(float dt);
 };

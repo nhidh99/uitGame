@@ -38,6 +38,8 @@ public:
 	void Render(float translateX = 0, float translateY = 0)
 	{
 		auto frameIndex = player->curAnimation->CurFrameIndex - 1;
+		if (frameIndex != 0 && frameIndex != 1) return;
+
 		auto sprite = animation->GetSprite(frameIndex);
 		auto x = player->posX;
 		auto y = player->posY + 10;

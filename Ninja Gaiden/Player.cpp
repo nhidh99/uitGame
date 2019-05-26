@@ -24,7 +24,7 @@ Player::Player()
 	allow[THROWING] = true;
 
 	// Các thông số Object
-	weaponType = FIREWHEEL;
+	weaponType = BLUESHURIKEN;
 	isOnGround = false;
 	tag = PLAYER;
 	width = PLAYER_WIDTH;
@@ -65,12 +65,21 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 		case ENEMY:
 		{
 			auto e = (Enemy*)obj;
-			if (e->StateName == DEAD) continue;
-
-			auto result = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
-			if (result.isCollide)
+			if (e->StateName != DEAD)
 			{
-				ResultCollisions.push_back(result);
+				auto result = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
+				if (result.isCollide) ResultCollisions.push_back(result);
+			}
+			break;
+		}
+
+		case BULLET:
+		{
+			auto b = (Bullet*)obj;
+			if (b->StateName != DEAD)
+			{
+				auto result = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
+				if (result.isCollide) ResultCollisions.push_back(result);
 			}
 			break;
 		}
@@ -86,14 +95,18 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 				switch (i->type)
 				{
 				case GLASSHOUR:
+				{
 					isFrozenEnemies = true;
 					frozenEnemiesTime = ENEMY_FROZEN_TIME;
 					break;
+				}
 
 				case BLUESHURIKEN:
 				case FIREWHEEL:
+				{
 					this->weaponType = i->type;
 					break;
+				}
 				}
 			}
 		}
@@ -198,7 +211,7 @@ void Player::CheckGroundCollision(std::unordered_set<Rect*> grounds)
 			this->isOnGround = true;
 			this->vy = this->dy = 0;
 			this->posY = curGroundBound.y + (this->height >> 1);
-			
+
 			if (stateName == ATTACKING_STAND)
 				this->allow[MOVING] = false;
 		}
@@ -217,7 +230,7 @@ void Player::CheckWallCollision(std::unordered_set<Wall*> walls)
 	if (this->vx && this->DectectWall(walls))
 	{
 		this->vx = 0;
-		this->dx = dx > 0 ? curWallBound.x - (this->posX + (this->width >> 1)) - 1 
+		this->dx = dx > 0 ? curWallBound.x - (this->posX + (this->width >> 1)) - 1
 			: curWallBound.x + curWallBound.width - (this->posX - (this->width >> 1)) + 1;
 	}
 }
@@ -250,7 +263,7 @@ void Player::OnKeyDown(int keyCode)
 
 		// Phím S: tấn công với item
 	case DIK_S:
-		if (allow[THROWING] && weaponType != NONE 
+		if (allow[THROWING] && weaponType != NONE
 			&& stateName != ATTACKING_STAND && stateName != ATTACKING_SIT)
 		{
 			allow[THROWING] = false;
@@ -268,6 +281,13 @@ void Player::OnKeyDown(int keyCode)
 			ChangeState(new PlayerJumpingState());
 		}
 		break;
+
+	case DIK_Z:
+	{
+		isFrozenEnemies = true;
+		frozenEnemiesTime = ENEMY_FROZEN_TIME;
+		break;
+	}
 	}
 }
 

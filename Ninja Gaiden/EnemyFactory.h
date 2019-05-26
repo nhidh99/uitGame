@@ -16,18 +16,12 @@ public:
 	{
 		switch (enemyID)
 		{
-		case 1:
-			return new EnemySwordMan();
-		case 2:
-			return new EnemyGunMan();
-		case 3:
-			return new EnemyPanther();
-		case 4:
-			return new EnemyEagle();
-		case 5:
-			return new EnemyCloakMan();
-		default:
-			return NULL;
+		case 1: return new EnemySwordMan();
+		case 2: return new EnemyGunMan();
+		case 3: return new EnemyPanther();
+		case 4: return new EnemyEagle();
+		case 5: return new EnemyCloakMan();
+		default: return NULL;
 		}
 	}
 
@@ -35,35 +29,35 @@ public:
 	{
 		Enemy* e = (Enemy*)o;
 
-		switch (e->type)
+		switch (o->type)
 		{
 		case SWORDMAN:
 		{
-			e = (EnemySwordMan*)e;
+			e = (EnemySwordMan*)o;
 			break;
 		}
 
 		case GUNMAN:
 		{
-			e = (EnemyGunMan*)e;
+			e = (EnemyGunMan*)o;
 			break;
 		}
 
 		case PANTHER:
 		{
-			e = (EnemyPanther*)e;
+			e = (EnemyPanther*)o;
 			break;
 		}
 
 		case EAGLE:
 		{
-			e = (EnemyEagle*)e;
+			e = (EnemyEagle*)o;
 			break;
 		}
 
 		case CLOAKMAN:
 		{
-   			e = (EnemyCloakMan*)e;
+			e = (EnemyCloakMan*)o;
 			break;
 		}
 		}

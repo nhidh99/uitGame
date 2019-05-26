@@ -5,7 +5,7 @@
 class EnemyCloakMan : public Enemy 
 {
 private:
-	float distance;
+	float delayTime;
 
 public:
 	EnemyCloakMan();

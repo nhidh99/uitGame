@@ -3,8 +3,9 @@
 #include "PlayerState.h"
 #include "PlayerStandingState.h"
 #include "PlayerInjuredState.h"
-#include "ItemFactory.h"
+#include "Item.h"
 #include "Enemy.h"
+#include "Bullet.h"
 #include <unordered_set>
 
 class Player : public Object

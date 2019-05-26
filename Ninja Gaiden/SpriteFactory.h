@@ -5,6 +5,7 @@
 #include "EnemySprite.h"
 #include "HolderSprite.h"
 #include "ItemSprite.h"
+#include "BulletSprite.h"
 
 // Chứa tất cả các Sprite cần dùng cho Game, khởi tạo trước khi vào vòng lặp Game (Run)
 // Dùng Singleton Pattern

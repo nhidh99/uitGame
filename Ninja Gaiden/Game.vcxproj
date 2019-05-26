@@ -135,7 +135,6 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Collision.cpp" />
-    <ClCompile Include="EnemyBazokaMan.cpp" />
     <ClCompile Include="EnemyCloakMan.cpp" />
     <ClCompile Include="EnemyEagle.cpp" />
     <ClCompile Include="EnemyGunMan.cpp" />
@@ -149,8 +148,6 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapFactory.cpp" />
     <ClCompile Include="Object.cpp" />
-    <ClCompile Include="WeaponBullet.cpp" />
-    <ClCompile Include="WeaponDagger.cpp" />
     <ClCompile Include="WeaponBlueShuriken.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="WeaponSwingSword.cpp" />
@@ -175,11 +172,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletFactory.h" />
+    <ClInclude Include="BulletGunMan.h" />
+    <ClInclude Include="BulletSprite.h" />
+    <ClInclude Include="BulletCloakMan.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EnemyBazokaMan.h" />
     <ClInclude Include="EnemyCloakMan.h" />
     <ClInclude Include="EnemyEagle.h" />
     <ClInclude Include="EnemyFactory.h" />
@@ -207,8 +208,6 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapFactory.h" />
     <ClInclude Include="Weapon.h" />
-    <ClInclude Include="WeaponBullet.h" />
-    <ClInclude Include="WeaponDagger.h" />
     <ClInclude Include="WeaponFactory.h" />
     <ClInclude Include="WeaponBlueShuriken.h" />
     <ClInclude Include="WeaponFireWheel.h" />

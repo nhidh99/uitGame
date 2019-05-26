@@ -10,9 +10,6 @@ protected:
 	Sprite* sprite;
 
 public:
-	bool isDead;
-	Type type;
-
 	Item()
 	{
 		this->tag = ITEM;

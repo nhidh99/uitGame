@@ -4,6 +4,7 @@
 #include <map>
 #include "Grid.h"
 #include "WeaponFactory.h"
+#include "BulletFactory.h"
 
 class PlayScene : public Scene
 {
@@ -22,6 +23,7 @@ public:
 	void UpdateObjects(float dt);
 	void UpdatePlayer(float dt);
 
+	void RestartScene();
 	void Render();									// Tải Scene lên màn hình
 	void OnKeyDown(int key);						// Xử lí Scene khi nhấn phím
 	void OnKeyUp(int key);							// Xử lí Scene khi thả phím

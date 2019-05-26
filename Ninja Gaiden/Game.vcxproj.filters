@@ -64,9 +64,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyBazokaMan.cpp">
-      <Filter>Game Objects\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyCloakMan.cpp">
       <Filter>Game Objects\Enemies</Filter>
     </ClCompile>
@@ -113,12 +110,6 @@
       <Filter>Game Components</Filter>
     </ClCompile>
     <ClCompile Include="WeaponSwingSword.cpp">
-      <Filter>Game Objects\Weapon</Filter>
-    </ClCompile>
-    <ClCompile Include="WeaponBullet.cpp">
-      <Filter>Game Objects\Weapon</Filter>
-    </ClCompile>
-    <ClCompile Include="WeaponDagger.cpp">
       <Filter>Game Objects\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="WeaponBlueShuriken.cpp">
@@ -197,9 +188,6 @@
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Game Components</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyBazokaMan.h">
-      <Filter>Game Objects\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="EnemyCloakMan.h">
       <Filter>Game Objects\Enemies</Filter>
@@ -297,12 +285,6 @@
     <ClInclude Include="WeaponFactory.h">
       <Filter>Game Objects\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="WeaponBullet.h">
-      <Filter>Game Objects\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="WeaponDagger.h">
-      <Filter>Game Objects\Weapon</Filter>
-    </ClInclude>
     <ClInclude Include="Weapon.h">
       <Filter>Game Objects\Weapon</Filter>
     </ClInclude>
@@ -311,6 +293,21 @@
     </ClInclude>
     <ClInclude Include="WeaponFireWheel.h">
       <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletSprite.h">
+      <Filter>Game Objects\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Game Objects\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletFactory.h">
+      <Filter>Game Objects\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletCloakMan.h">
+      <Filter>Game Objects\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletGunMan.h">
+      <Filter>Game Objects\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -340,6 +337,9 @@
     </Filter>
     <Filter Include="Game Objects\Item">
       <UniqueIdentifier>{86a75fb8-0621-4c07-aec8-2fc0380b1eac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Bullet">
+      <UniqueIdentifier>{770b8ccd-4dc6-4499-9882-fb8a051e2f06}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

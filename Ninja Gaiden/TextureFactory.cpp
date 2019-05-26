@@ -30,6 +30,8 @@ LPDIRECT3DTEXTURE9 TextureFactory::GetTexture(Tag tag)
 	{
 	case HOLDER: case ITEM: case WEAPON:
 		return _textures[ITEM];
+	case ENEMY: case BULLET:
+		return _textures[ENEMY];
 	default:
 		return _textures[tag];
 	}

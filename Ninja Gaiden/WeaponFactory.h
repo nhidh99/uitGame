@@ -24,11 +24,11 @@ public:
 		}
 	}
 
-	static Weapon* ConvertToWeapon(Object* obj)
+	static Weapon* ConvertToWeapon(Object* o)
 	{
-		Weapon* w = (Weapon*)obj;
+		Weapon* w = (Weapon*)o;
 
-		switch (w->type)
+		switch (o->type)
 		{
 		case SWORD:
 			w = (WeaponSword*)w;
@@ -42,7 +42,6 @@ public:
 			w = (WeaponFireWheel*)w;
 			break;
 		}
-
 		return w;
 	}
 };

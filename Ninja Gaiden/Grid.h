@@ -8,6 +8,7 @@
 #include "WeaponFactory.h"
 #include "HolderFactory.h"
 #include "EnemyFactory.h"
+#include "BulletFactory.h"
 #include "Player.h"
 #include <fstream>
 
@@ -34,18 +35,14 @@ public:
 
 	void Update();
 	void RespawnEnemies();
-	void RestartGame();
 
 	void MoveObject(Object* obj, float posX, float posY);
 	void RemoveObject(Object* obj);
+	void AddObject(Object* obj);
 	void UpdateVisibleCells();
 
 	std::unordered_set<Object*> GetVisibleObjects();
 	std::unordered_set<Wall*> GetVisibleWalls();
 	std::unordered_set<Rect*> GetVisibleGrounds();
 	std::unordered_set<Object*> GetColliableObjects(Object* obj);
-
-	void InitGroundCell(Rect* ground);
-	void InitWallCell(Wall* wall);
-	void InitObjectCell(Object* obj);
 };

@@ -7,7 +7,6 @@ public:
 	WeaponSword()
 	{
 		animation = new Animation(WEAPON, 3, 4, DEFAULT_TPS >> 1);
-		isOnScreen = false;
 		width = WEAPON_SWORD_WIDTH;
 		height = WEAPON_SWORD_HEIGHT;
 		vx = vy = 0;
@@ -20,16 +19,28 @@ public:
 		{
 			if (this->GetRect().IsContain(obj->GetRect()))
 			{
-				if (obj->tag == ENEMY)
+				switch (obj->tag)
+				{
+				case BULLET:
+				{
+					auto b = (Bullet*)obj;
+					b->ChangeState(DEAD);
+					break;
+				}
+
+				case ENEMY:
 				{
 					auto e = (Enemy*)obj;
 					e->ChangeState(DEAD);
+					break;
 				}
 
-				else if (obj->tag == HOLDER)
+				case HOLDER:
 				{
 					auto h = (Holder*)obj;
 					h->isDead = true;
+					break;
+				}
 				}
 			}
 		}

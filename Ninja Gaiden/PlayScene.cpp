@@ -31,7 +31,6 @@ void PlayScene::Update(float dt)
 		if (frozenEnemiesTime <= 0)
 		{
 			isFrozenEnemies = false;
-			frozenEnemiesTime = ENEMY_FROZEN_TIME;
 		}
 	}
 }
@@ -63,8 +62,6 @@ void PlayScene::UpdateVisibleObjects()
 
 void PlayScene::UpdateObjects(float dt)
 {
-	this->UpdateVisibleObjects();
-
 	auto it = visibleObjects.begin();
 	while (it != visibleObjects.end())
 	{
@@ -73,8 +70,35 @@ void PlayScene::UpdateObjects(float dt)
 		{
 		case ENEMY:
 		{
-			EnemyFactory::ConvertToEnemy(o)->Update(dt);
-			grid->MoveObject(o, o->posX + o->dx, o->posY + o->dy);
+			auto e = EnemyFactory::ConvertToEnemy(o);
+			e->Update(dt);
+			grid->MoveObject(e, e->posX + e->dx, e->posY + e->dy);
+
+			switch (e->type)
+			{
+			case CLOAKMAN:
+			case GUNMAN:
+			{
+				if (e->IsFinishAttack())
+				{
+					auto b = BulletFactory::CreateBullet(e->type);
+					b->isReverse = e->isReverse;
+					if (b->isReverse) b->vx = -b->vx;
+					b->posX = e->posX + (e->isReverse ? -5 : 5);
+					b->posY = e->posY + 3;
+					b->ChangeState(ACTIVE);
+					grid->AddObject(b);
+					e->bulletCount--;
+
+					if (e->bulletCount == 0)
+					{
+						e->bulletCount = e->bullets;
+						e->ChangeState(RUNNING);
+					}
+				}
+				break;
+			}
+			}
 			break;
 		}
 		case HOLDER:
@@ -89,12 +113,19 @@ void PlayScene::UpdateObjects(float dt)
 			grid->MoveObject(i, i->posX, i->posY + i->dy);
 			break;
 		}
+		case BULLET:
+		{
+			BulletFactory::ConvertToBullet(o)->Update(dt);
+			grid->MoveObject(o, o->posX + o->dx, o->posY + o->dy);
+			break;
+		}
+
 		case WEAPON:
 		{
 			auto w = WeaponFactory::ConvertToWeapon(o);
 
 			if (w->isDead || !w->IsCollide(camera->GetRect())
-				|| (w->type == SWORD && player->stateName != ATTACKING_STAND 
+				|| (w->type == SWORD && player->stateName != ATTACKING_STAND
 					&& player->stateName != ATTACKING_SIT))
 			{
 				it = visibleObjects.erase(it);
@@ -108,6 +139,7 @@ void PlayScene::UpdateObjects(float dt)
 		}
 		++it;
 	}
+	this->UpdateVisibleObjects();
 }
 
 void PlayScene::UpdatePlayer(float dt)
@@ -123,9 +155,7 @@ void PlayScene::UpdatePlayer(float dt)
 
 	if (p->GetRect().y < 0)
 	{
-		grid->RestartGame();
-		p->posX = p->spawnX;
-		p->posY = p->spawnY;
+		this->RestartScene();
 	}
 
 	if (p->isAttacking)
@@ -149,6 +179,46 @@ void PlayScene::UpdatePlayer(float dt)
 		p->isThrowing = false;
 		p->allow[THROWING] = false;
 	}
+}
+
+void PlayScene::RestartScene()
+{
+	isFrozenEnemies = false;
+	player->weaponType = NONE;
+
+	for (auto o : grid->respawnObjects)
+	{
+		switch (o->tag)
+		{
+		case ENEMY:
+		{
+			auto e = (Enemy*)o;
+			e->ChangeState(STANDING);
+			break;
+		}
+		case HOLDER:
+		{
+			auto h = (Holder*)o;
+			h->isDead = false;
+			break;
+		}
+		}
+		grid->MoveObject(o, o->spawnX, o->spawnY);
+	}
+
+	for (auto o : visibleObjects)
+	{
+		if (o->tag == ENEMY)
+		{
+			grid->MoveObject(o, o->spawnX, o->spawnY);
+		}
+	}
+
+	player->posX = player->spawnX;
+	player->posY = player->spawnY;
+
+	this->visibleObjects.clear();
+	grid->respawnObjects.clear();
 }
 
 // Tải Scene lên màn hình bằng cách vẽ object có trong trong Scene

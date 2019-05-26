@@ -11,12 +11,8 @@ protected:
 	Animation* animation;
 
 public:
-	Weapon() { tag = WEAPON;	}
+	Weapon() { tag = WEAPON; }
 	~Weapon() { if (animation) delete animation; }
-
-	Type type;
-	bool isOnScreen;
-	bool isDead;
 
 	virtual void Update(float dt) {};			// Update thông số của Object sau khoảng thời gian delta-time
 
@@ -49,16 +45,28 @@ public:
 		{
 			if (rect.IsContain(obj->GetRect()))
 			{
-				if (obj->tag == ENEMY)
+				switch (obj->tag)
+				{
+				case BULLET:
+				{
+					auto b = (Bullet*)obj;
+					b->ChangeState(DEAD);
+					break;
+				}
+
+				case ENEMY:
 				{
 					auto e = (Enemy*)obj;
 					e->ChangeState(DEAD);
+					break;
 				}
 
-				else if (obj->tag == HOLDER)
+				case HOLDER:
 				{
 					auto h = (Holder*)obj;
 					h->isDead = true;
+					break;
+				}
 				}
 			}
 		}

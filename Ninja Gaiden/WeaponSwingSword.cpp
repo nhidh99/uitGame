@@ -3,7 +3,6 @@
 WeaponSwingSword::WeaponSwingSword()
 {
 	animation = new Animation(WEAPON, 5, 8);
-	isOnScreen = false;
 	width = WEAPON_SWINGSWORD_WIDTH;
 	height = WEAPON_SWINGSWORD_HEIGHT;
 	type = SWINGSWORD;
@@ -15,8 +14,6 @@ void WeaponSwingSword::Update(float dt)
 
 void WeaponSwingSword::Render(float x, float y, int frameIndex, float translateX, float translateY)
 {
-	if (!isOnScreen) return;
-
 	Sprite* sprite = animation->GetSprite(frameIndex);
 	sprite->isReverse = this->isReverse;
 

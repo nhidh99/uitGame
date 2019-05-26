@@ -371,39 +371,6 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 	}
 }
 
-void Grid::RestartGame()
-{
-	isFrozenEnemies = false;
-	player->weaponType = NONE;
-
-	for (auto o : respawnObjects)
-	{
-		switch (o->tag)
-		{
-		case ENEMY:
-		{
-			auto e = (Enemy*)o;
-			e->isDead = false;
-			e->ChangeState(STANDING);
-			break;
-		}
-		case HOLDER:
-		{
-			auto h = (Holder*)o;
-			h->isDead = false;
-			break;
-		}
-		}
-		this->MoveObject(o, o->spawnX, o->spawnY);
-	}
-
-	for (auto o : this->GetVisibleObjects())
-	{
-		this->MoveObject(o, o->spawnX, o->spawnY);
-	}
-	respawnObjects.clear();
-}
-
 void Grid::RemoveObject(Object * obj)
 {
 	auto r = obj->GetRect();
@@ -464,11 +431,22 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 						respawnObjects.push_back(e);
 						continue;
 					}
+
 					else if (!e->isActive)
 					{
-						if (e->type == SWORDMAN || e->type == CLOAKMAN)
+						e->isReverse = (player->posX < e->posX);
+						e->vx = (e->isReverse ? -e->speed : e->speed);
+
+						switch (e->type)
+						{
+						case SWORDMAN:
+						case CLOAKMAN:
+						case GUNMAN:
+						case PANTHER:
 							e->DectectGround(this->GetVisibleGrounds());
-						e->ChangeState(ATTACKING);
+							break;
+						}
+						e->ChangeState(RUNNING);
 					}
 					break;
 				}
@@ -479,12 +457,11 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 					if (h->isDead)
 					{
 						it = c->objects.erase(it);
-
 						auto i = ItemFactory::CreateItem(h->itemID);
 						i->posX = h->posX;
 						i->posY = h->posY;
 						i->DectectGround(this->GetVisibleGrounds());
-						this->InitObjectCell(i);
+						this->AddObject(i);
 						setObjects.insert(i);
 
 						this->RemoveObject(h);
@@ -494,27 +471,13 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 					break;
 				}
 
-				case ITEM:
+				case WEAPON: case ITEM: case BULLET:
 				{
-					auto i = (Item*)o;
-					if (i->isDead)
+					if (o->isDead)
 					{
 						it = c->objects.erase(it);
-						this->RemoveObject(i);
-						delete i;
-						continue;
-					}
-					break;
-				}
-
-				case WEAPON:
-				{
-					auto w = (Weapon*)o;
-					if (w->isDead)
-					{
-						it = c->objects.erase(it);
-						this->RemoveObject(w);
-						delete w;
+						this->RemoveObject(o);
+						delete o;
 						continue;
 					}
 					break;
@@ -534,7 +497,6 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 					{
 						e->isActive = false;
 						it = c->objects.erase(it);
-
 						if (e->IsRespawnOnScreen())
 						{
 							this->RemoveObject(e);
@@ -549,7 +511,7 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 					break;
 				}
 
-				case ITEM:
+				case WEAPON: case ITEM: case BULLET:
 				{
 					it = c->objects.erase(it);
 					this->RemoveObject(o);
@@ -559,7 +521,6 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 				}
 				}
 			}
-
 			++it;
 		}
 	}
@@ -618,48 +579,25 @@ std::unordered_set<Object*> Grid::GetColliableObjects(Object * obj)
 			if (x < 0 || x >= columns) continue;
 			for (auto o : cells[y][x]->objects)
 			{
-				objs.insert(o);
+				if (o->tag == ENEMY)
+				{
+					auto e = (Enemy*)o;
+					if (e->isActive)
+					{
+						objs.insert(e);
+					}
+				}
+				else objs.insert(o);
 			}
 		}
 	}
 	return objs;
 }
 
-void Grid::InitGroundCell(Rect * ground)
+void Grid::AddObject(Object * obj)
 {
-	int LeftCell = ground->x / Cell::width;
-	int RightCell = (ground->x + ground->width) / Cell::width;
-	int TopCell = ground->y / Cell::height;
-	int BottomCell = (ground->y - ground->height) / Cell::height;
+	if (obj == NULL) return;
 
-	for (int y = BottomCell; y <= TopCell; ++y)
-	{
-		for (int x = LeftCell; x <= RightCell; ++x)
-		{
-			cells[y][x]->grounds.push_back(ground);
-		}
-	}
-}
-
-void Grid::InitWallCell(Wall * wall)
-{
-	auto r = wall->rect;
-	int LeftCell = r.x / Cell::width;
-	int RightCell = (r.x + r.width) / Cell::width;
-	int TopCell = r.y / Cell::height;
-	int BottomCell = (r.y - r.height) / Cell::height;
-
-	for (int y = BottomCell; y <= TopCell; ++y)
-	{
-		for (int x = LeftCell; x <= RightCell; ++x)
-		{
-			cells[y][x]->walls.push_back(wall);
-		}
-	}
-}
-
-void Grid::InitObjectCell(Object * obj)
-{
 	auto r = obj->GetRect();
 	int LeftCell = r.x / Cell::width;
 	int RightCell = (r.x + r.width) / Cell::width;

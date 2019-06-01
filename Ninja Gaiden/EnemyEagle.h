@@ -11,7 +11,6 @@ private:
 
 public:
 	EnemyEagle();
-	~EnemyEagle();
 	void UpdateDistance(float dt);
 	void Update(float dt);
 };

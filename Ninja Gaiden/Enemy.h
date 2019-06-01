@@ -30,13 +30,9 @@ public:
 
 	~Enemy()
 	{
-		for (auto ani : animations)
-		{
-			delete ani.second;
-		}
 	}
 
-	void DectectGround(std::unordered_set<Rect*> grounds)
+	void DetectGround(std::unordered_set<Rect*> grounds)
 	{
 		for (auto g : grounds)
 		{
@@ -46,7 +42,7 @@ public:
 				groundBound = *g;
 			}
 		}
-		this->posY = groundBound.y + (this->height >> 1);
+		this->spawnY = this->posY = groundBound.y + (this->height >> 1);
 	}
 	void Render(float translateX = 0, float translateY = 0)
 	{

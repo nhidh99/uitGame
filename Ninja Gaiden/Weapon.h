@@ -11,8 +11,19 @@ protected:
 	Animation* animation;
 
 public:
-	Weapon() { tag = WEAPON; }
-	~Weapon() { if (animation) delete animation; }
+	Weapon() 
+	{ 
+		tag = WEAPON; 
+		if (type != SWORD)
+		{
+			player->allow[THROWING] = false;
+		}
+	}
+
+	~Weapon()
+	{
+		player->allow[THROWING] = true;
+	}
 
 	virtual void Update(float dt) {};			// Update thông số của Object sau khoảng thời gian delta-time
 

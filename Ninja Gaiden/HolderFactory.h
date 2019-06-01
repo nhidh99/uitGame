@@ -1,5 +1,5 @@
 #pragma once
-#include "ItemFactory.h"
+#include "HolderBird.h"
 #include "HolderButterfly.h"
 
 class HolderFactory
@@ -19,26 +19,16 @@ public:
 			h = new HolderButterfly();
 			break;
 		}
+		case 2:
+		{
+			h = new HolderBird();
+			break;
+		}
 		default:
 			return NULL;
 		}
 		
 		h->itemID = itemID;
-		return h;
-	}
-
-	static Holder* ConvertToHolder(Object* o)
-	{
-		Holder* h = (Holder*)o;
-
-		switch (h->type)
-		{
-		case BUTTERFLY:
-		{
-			h = (HolderButterfly*)o;
-			break;
-		}
-		}
 		return h;
 	}
 };

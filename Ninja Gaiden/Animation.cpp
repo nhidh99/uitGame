@@ -3,8 +3,11 @@
 // Render Animation tại vị trí (x,y) lên màn hình
 void Animation::Render(float x, float y, float translateX, float translateY)
 {
-	_sprites[CurFrameIndex]->isReverse = this->isReverse;
-	_sprites[CurFrameIndex]->Render(x, y, translateX, translateY);
+	if (_sprites[CurFrameIndex] != NULL)
+	{
+		_sprites[CurFrameIndex]->isReverse = this->isReverse;
+		_sprites[CurFrameIndex]->Render(x, y, translateX, translateY);
+	}
 }
 
 // Update Animation sau thời gian delta-time
@@ -28,6 +31,15 @@ void Animation::Update(float dt)
 		isLastFrame = false;
 		_curFrameTime += dt;
 	}
+}
+
+Animation::~Animation()
+{
+	for (auto s : _sprites)
+	{
+		s = nullptr;
+	}
+	_sprites.clear();
 }
 
 Animation::Animation(Tag tag, int index)

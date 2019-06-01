@@ -17,7 +17,10 @@ public:
 		this->width = HOLDER_WIDTH;
 		this->height = HOLDER_HEIGHT;
 	}
-	~Holder() { if (animation) delete animation; }
+
+	~Holder()
+	{
+	}
 
 	void Render(float translateX = 0, float translateY = 0)
 	{

@@ -10,10 +10,6 @@ EnemyEagle::EnemyEagle()
 	delayTime = ENEMY_EAGLE_DELAY_TIME >> 1;
 }
 
-EnemyEagle::~EnemyEagle()
-{
-}
-
 void EnemyEagle::UpdateDistance(float dt)
 {
 	this->isReverse = (player->posX < this->posX);
@@ -70,8 +66,8 @@ void EnemyEagle::Update(float dt)
 {
 	Enemy::Update(dt);
 
-		if (this->isDead)
-		{
-			delayTime = ENEMY_EAGLE_DELAY_TIME >> 1; 
-		}
+	if (this->isDead)
+	{
+		delayTime = ENEMY_EAGLE_DELAY_TIME >> 1;
+	}
 }

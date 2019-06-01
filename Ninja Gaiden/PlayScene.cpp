@@ -1,21 +1,50 @@
 ﻿#include "PlayScene.h"
 
-PlayScene::PlayScene()
+PlayScene::PlayScene(int level)
 {
-	map = MapFactory::GetInstance()->GetMap(0);
-	grid = new Grid(1);
-	//grid->LoadObjects();
+	map = MapFactory::GetInstance()->GetMap(level);
+	grid = new Grid(level);
+	this->level = level;
+	p = player;
 
-	player->spawnX = player->posX = 50;
-	player->spawnY = player->posY = 100;
-	player->ChangeState(new PlayerStandingState());
+	p->spawnX = p->posX = 50;
+	p->spawnY = p->posY = 50;
+	p->DetectSpawnY(grid->GetColliableGrounds(p));
+	p->ChangeState(new PlayerStandingState());
 
 	camera->x = 0;
 	camera->y = SCREEN_HEIGHT;
+
+	switch (level)
+	{
+	case 1:
+		endPoint = 1950;
+		break;
+
+	case 2:
+		endPoint = 3050;
+		break;
+	}
 }
 
 PlayScene::~PlayScene()
 {
+	if (grid) delete grid;
+}
+
+bool PlayScene::PlayerIsOnAirGround()
+{
+	if (level == 2)
+	{
+		float airGroundX[5] = { 1153,1282,1376,1473,1565 };
+		for (int i = 0; i < 5; ++i)
+		{
+			if (p->groundBound.x == airGroundX[i])
+				return true;
+		}
+		return false;
+	}
+	return false;
 }
 
 // Update các thông số các đối tượng trong Scene
@@ -33,11 +62,16 @@ void PlayScene::Update(float dt)
 			isFrozenEnemies = false;
 		}
 	}
+
+	if (p->posX >= endPoint)
+	{
+		SceneManager::GetInstance()->ReplaceScene(new PlayScene(level + 1));
+	}
 }
 
 void PlayScene::UpdateScene()
 {
-	camera->x = player->posX - (camera->width >> 1);
+	camera->x = p->posX - (camera->width >> 1);
 	map->Update();
 	grid->Update();
 }
@@ -70,7 +104,7 @@ void PlayScene::UpdateObjects(float dt)
 		{
 		case ENEMY:
 		{
-			auto e = EnemyFactory::ConvertToEnemy(o);
+			auto e = (Enemy*)o;
 			e->Update(dt);
 			grid->MoveObject(e, e->posX + e->dx, e->posY + e->dy);
 
@@ -78,6 +112,7 @@ void PlayScene::UpdateObjects(float dt)
 			{
 			case CLOAKMAN:
 			case GUNMAN:
+			case BAZOKAMAN:
 			{
 				if (e->IsFinishAttack())
 				{
@@ -103,7 +138,8 @@ void PlayScene::UpdateObjects(float dt)
 		}
 		case HOLDER:
 		{
-			HolderFactory::ConvertToHolder(o)->Update(dt);
+			auto h = (Holder*)o;
+			h->Update(dt);
 			break;
 		}
 		case ITEM:
@@ -115,8 +151,9 @@ void PlayScene::UpdateObjects(float dt)
 		}
 		case BULLET:
 		{
-			BulletFactory::ConvertToBullet(o)->Update(dt);
-			grid->MoveObject(o, o->posX + o->dx, o->posY + o->dy);
+			Bullet* b = (Bullet*)o;
+			b->Update(dt);
+			grid->MoveObject(b, b->posX + b->dx, b->posY + b->dy);
 			break;
 		}
 
@@ -125,8 +162,8 @@ void PlayScene::UpdateObjects(float dt)
 			auto w = WeaponFactory::ConvertToWeapon(o);
 
 			if (w->isDead || !w->IsCollide(camera->GetRect())
-				|| (w->type == SWORD && player->stateName != ATTACKING_STAND
-					&& player->stateName != ATTACKING_SIT))
+				|| (w->type == SWORD && p->stateName != ATTACKING_STAND
+					&& p->stateName != ATTACKING_SIT))
 			{
 				it = visibleObjects.erase(it);
 				delete w;
@@ -144,11 +181,13 @@ void PlayScene::UpdateObjects(float dt)
 
 void PlayScene::UpdatePlayer(float dt)
 {
-	auto p = player;
-
 	p->Update(dt, grid->GetColliableObjects(p));
-	p->CheckGroundCollision(grid->GetVisibleGrounds());
-	p->CheckWallCollision(grid->GetVisibleWalls());
+	p->CheckGroundCollision(grid->GetColliableGrounds(p));
+
+	if (!this->PlayerIsOnAirGround())
+	{
+		p->CheckWallCollision(grid->GetColliableWalls(p));
+	}
 
 	p->posX += p->dx;
 	p->posY += p->dy;
@@ -156,6 +195,7 @@ void PlayScene::UpdatePlayer(float dt)
 	if (p->GetRect().y < 0)
 	{
 		this->RestartScene();
+		return;
 	}
 
 	if (p->isAttacking)
@@ -183,8 +223,10 @@ void PlayScene::UpdatePlayer(float dt)
 
 void PlayScene::RestartScene()
 {
+	p->weaponType = NONE;
 	isFrozenEnemies = false;
-	player->weaponType = NONE;
+	p->isAttacking = false;
+	p->isThrowing = false;
 
 	for (auto o : grid->respawnObjects)
 	{
@@ -214,8 +256,8 @@ void PlayScene::RestartScene()
 		}
 	}
 
-	player->posX = player->spawnX;
-	player->posY = player->spawnY;
+	p->posX = p->spawnX;
+	p->posY = p->spawnY;
 
 	this->visibleObjects.clear();
 	grid->respawnObjects.clear();
@@ -231,19 +273,19 @@ void PlayScene::Render()
 		o->Render();
 	}
 
-	player->Render();
+	p->Render();
 }
 
 // Xử lí Scene khi nhấn phím
 void PlayScene::OnKeyDown(int key)
 {
 	keyCode[key] = true;
-	player->OnKeyDown(key);
+	p->OnKeyDown(key);
 }
 
 // Xử lí Scene khi thả phím
 void PlayScene::OnKeyUp(int key)
 {
 	keyCode[key] = false;
-	player->OnKeyUp(key);
+	p->OnKeyUp(key);
 }

@@ -7,7 +7,6 @@ PlayerFallingState::PlayerFallingState()
 	player->allow[ATTACKING] = true;
 	player->allow[CLINGING] = true;
 	player->vy = -PLAYER_FALLING_SPEED;
-
 	StateName = FALLING;
 }
 

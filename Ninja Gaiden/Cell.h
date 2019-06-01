@@ -16,6 +16,7 @@ public:
 	std::vector<Rect*> grounds;
 
 	Cell(int xID, int yID);
+	~Cell();
 	bool IsContain(Rect r);
 	void RemoveObject(Object* obj);
 };

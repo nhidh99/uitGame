@@ -1,6 +1,7 @@
 #pragma once
 #include "BulletCloakMan.h"
 #include "BulletGunMan.h"
+#include "BulletBazokaMan.h"
 
 class BulletFactory
 {
@@ -11,23 +12,7 @@ public:
 		{
 		case CLOAKMAN: return new BulletCloakMan();
 		case GUNMAN: return new BulletGunMan();
+		case BAZOKAMAN: return new BulletBazokaMan();
 		}
-	}
-
-	static Bullet* ConvertToBullet(Object* o)
-	{
-		Bullet* b = (Bullet*)o;
-
-		switch (o->type)
-		{
-		case CLOAKMAN:
-			b = (BulletCloakMan*)b;
-			break;
-		
-		case GUNMAN:
-			b = (BulletGunMan*)b;
-			break;
-		}
-		return b;
 	}
 };

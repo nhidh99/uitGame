@@ -2,6 +2,7 @@
 #include "WeaponBlueShuriken.h"
 #include "WeaponFireWheel.h"
 #include "WeaponSword.h"
+#include "WeaponRedShuriken.h"
 
 class WeaponFactory
 {
@@ -18,6 +19,9 @@ public:
 
 		case FIREWHEEL:
 			return new WeaponFireWheel();
+
+		case REDSHURIKEN:
+			return new WeaponRedShuriken();
 
 		default:
 			return NULL;
@@ -40,6 +44,10 @@ public:
 
 		case FIREWHEEL:
 			w = (WeaponFireWheel*)w;
+			break;
+
+		case REDSHURIKEN:
+			w = (WeaponRedShuriken*)w;
 			break;
 		}
 		return w;

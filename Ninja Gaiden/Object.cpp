@@ -13,10 +13,10 @@ Rect Object::GetRect()
 BoundingBox Object::GetBoundingBox()
 {
 	BoundingBox bound;
-	bound.height = height;
-	bound.width = width;
-	bound.x = posX - (width >> 1);
-	bound.y = posY + (height >> 1);
+	bound.left = posX - (width >> 1);
+	bound.top = posY + (height >> 1);
+	bound.right = bound.left + width;
+	bound.bottom = bound.top - height;
 	bound.vx = dx;
 	bound.vy = dy;
 	return bound;

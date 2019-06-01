@@ -26,7 +26,8 @@ void PlayerAttackingState::Update(float dt)
 			return;
 
 		case SITTING:
-			player->posY += 5;
+			player->posY += 4;
+			player->height += 8;
 			player->ChangeState(new PlayerSittingState());
 			return;
 

@@ -3,12 +3,16 @@
 // Constructor khởi tạo Game
 Game::Game(HWND hWnd)
 {
-	// Khởi tạo các Components cần thiết
 	this->Init(hWnd);
+	this->LoadResources();
+}
 
-	// Tạo CurScene
-	SceneManager::GetInstance()->ReplaceScene(new PlayScene());
-	CurScene = SceneManager::GetInstance()->GetCurScene();
+void Game::LoadResources()
+{
+	TextureFactory::GetInstance()->LoadResources();
+	SpriteFactory::GetInstance()->LoadResources();
+	MapFactory::GetInstance()->LoadResources();
+	SceneManager::GetInstance()->ReplaceScene(new PlayScene(1));
 }
 
 // Khởi tạo Game từ Windows với các Device-Components cần thiết
@@ -85,6 +89,7 @@ void Game::ProcessKeyboard()
 	{
 		int KeyCode = keyEvents[i].dwOfs;
 		int KeyState = keyEvents[i].dwData;
+		auto CurScene = SceneManager::GetInstance()->CurScene;
 		if ((KeyState & 0x80) > 0)
 			CurScene->OnKeyDown(KeyCode);
 		else CurScene->OnKeyUp(KeyCode);
@@ -130,18 +135,17 @@ void Game::Run()
 
 void Game::Update(float dt)
 {
-	CurScene->Update(dt);
+	SceneManager::GetInstance()->CurScene->Update(dt);
 }
 
 // Render lại Frame hình sau khi đã Update các thông số
 void Game::Render()
 {
-	d3ddev->ColorFill(backBuffer, NULL, BACK_COLOR);
-
 	if (d3ddev->BeginScene())
 	{
+		d3ddev->ColorFill(backBuffer, NULL, BACK_COLOR);
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-		CurScene->Render();
+		SceneManager::GetInstance()->CurScene->Render();
 		spriteHandler->End();
 		d3ddev->EndScene();
 	}

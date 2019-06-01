@@ -18,7 +18,7 @@ public:
 	void UpdateDistance(float dt)
 	{
 		this->vy -= GRAVITY_SPEED;
-		if (vy <= 0) vy = -BULLET_CLOAKMAN_FALLING_SPEED;
+		//if (vy <= 0) vy = -BULLET_CLOAKMAN_FALLING_SPEED;
 		this->dx = vx * dt;
 		this->dy = vy * dt;
 	}

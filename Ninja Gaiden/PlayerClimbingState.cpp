@@ -7,30 +7,20 @@ PlayerClimbingState::PlayerClimbingState()
 
 void PlayerClimbingState::Update(float dt)
 {
-	if (player->posY > (SCREEN_HEIGHT >> 1) - 20)
-	{
-		player->posY++;
-		player->ChangeState(new PlayerFallingState());
-		return;
-	}
-
-	if (player->posY < player->height >> 1)
-	{
-		player->posY = player->height >> 1;
-	}
-
 	this->HandleKeyboard();
 }
 
 void PlayerClimbingState::HandleKeyboard()
 {
-	if (keyCode[DIK_UP])
-	{
-		player->vy = -PLAYER_CLIMBING_SPEED;
-	}
-	else if (keyCode[DIK_DOWN])
+	if (keyCode[DIK_UP]
+		&& player->posY + (player->height >> 1) <= player->wallBound.rect.y)
 	{
 		player->vy = PLAYER_CLIMBING_SPEED;
+	}
+	else if (keyCode[DIK_DOWN]
+		&& player->posY - (player->height >> 1) >= player->wallBound.rect.y - player->wallBound.rect.height)
+	{
+		player->vy = -PLAYER_CLIMBING_SPEED;
 	}
 	else
 	{

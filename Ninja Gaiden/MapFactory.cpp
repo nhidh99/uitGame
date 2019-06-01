@@ -4,7 +4,7 @@ MapFactory* MapFactory::_instance = NULL;
 
 void MapFactory::LoadResources()
 {
-	for (int i = 0; i < NUMBER_MAP_LEVEL; ++i)
+	for (int i = 1; i <= NUMBER_MAP_LEVEL; ++i)
 	{
 		_maps.push_back(new Map(i));
 	}
@@ -12,7 +12,7 @@ void MapFactory::LoadResources()
 
 Map * MapFactory::GetMap(int level)
 {
-	return _maps[level];
+	return _maps[level - 1];
 }
 
 MapFactory * MapFactory::GetInstance()

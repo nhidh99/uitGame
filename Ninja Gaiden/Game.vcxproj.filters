@@ -76,12 +76,6 @@
     <ClCompile Include="EnemyPanther.cpp">
       <Filter>Game Objects\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="HolderButterfly.cpp">
-      <Filter>Game Objects\Holders</Filter>
-    </ClCompile>
-    <ClCompile Include="HolderSprite.cpp">
-      <Filter>Game Objects\Holders</Filter>
-    </ClCompile>
     <ClCompile Include="Cell.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
@@ -97,9 +91,6 @@
     <ClCompile Include="PlayScene.cpp">
       <Filter>Game Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Game Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>Game Scenes</Filter>
     </ClCompile>
@@ -109,10 +100,16 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponSwingSword.cpp">
+    <ClCompile Include="WeaponBlueShuriken.cpp">
       <Filter>Game Objects\Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponBlueShuriken.cpp">
+    <ClCompile Include="EnemyBazokaMan.cpp">
+      <Filter>Game Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyRunMan.cpp">
+      <Filter>Game Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponRedShuriken.cpp">
       <Filter>Game Objects\Weapon</Filter>
     </ClCompile>
   </ItemGroup>
@@ -240,9 +237,6 @@
     <ClInclude Include="WeaponSprite.h">
       <Filter>Game Objects\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="WeaponSwingSword.h">
-      <Filter>Game Objects\Weapon</Filter>
-    </ClInclude>
     <ClInclude Include="WeaponSword.h">
       <Filter>Game Objects\Weapon</Filter>
     </ClInclude>
@@ -308,6 +302,24 @@
     </ClInclude>
     <ClInclude Include="BulletGunMan.h">
       <Filter>Game Objects\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="HolderBird.h">
+      <Filter>Game Objects\Holders</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBazokaMan.h">
+      <Filter>Game Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletBazokaMan.h">
+      <Filter>Game Objects\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyRunMan.h">
+      <Filter>Game Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemRedShuriken.h">
+      <Filter>Game Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponRedShuriken.h">
+      <Filter>Game Objects\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

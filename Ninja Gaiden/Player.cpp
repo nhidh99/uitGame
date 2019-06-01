@@ -13,7 +13,7 @@ Player::Player()
 	animations[ATTACKING_STAND] = new Animation(PLAYER, 9, 11, DEFAULT_TPS >> 1);
 	animations[ATTACKING_SIT] = new Animation(PLAYER, 12, 14, DEFAULT_TPS >> 1);
 	animations[CLINGING] = new Animation(PLAYER, 15);
-	animations[CLIMBING] = new Animation(PLAYER, 15, 16);
+	animations[CLIMBING] = new Animation(PLAYER, 15, 16, DEFAULT_TPS >> 1);
 	animations[DEAD] = new Animation(PLAYER, 5);
 	animations[INJURED] = new Animation(PLAYER, 5);
 
@@ -24,7 +24,7 @@ Player::Player()
 	allow[THROWING] = true;
 
 	// Các thông số Object
-	weaponType = BLUESHURIKEN;
+	weaponType = REDSHURIKEN;
 	isOnGround = false;
 	tag = PLAYER;
 	width = PLAYER_WIDTH;
@@ -50,13 +50,29 @@ Player* Player::GetInstance()
 	return _instance;
 }
 
+void Player::DetectSpawnY(std::unordered_set<Rect*> grounds)
+{
+	for (auto g : grounds)
+	{
+		if (g->x < this->posX && this->posX < g->x + g->width
+			&& g->y >= groundBound.y && this->posY > g->y)
+		{
+			groundBound = *g;
+		}
+	}
+	this->spawnY = this->posY = groundBound.y + (this->height >> 1);
+}
+
 void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 {
 	curAnimation->Update(dt);
 
 	state->Update(dt);
 
-	std::vector<CollisionResult> ResultCollisions;
+	CollisionResult result;
+	result.isCollide = false;
+	result.nx = result.ny = 0;
+	result.entryTime = 1.0f;
 
 	for (auto obj : ColliableObjects)
 	{
@@ -67,8 +83,12 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 			auto e = (Enemy*)obj;
 			if (e->StateName != DEAD)
 			{
-				auto result = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
-				if (result.isCollide) ResultCollisions.push_back(result);
+				auto r = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
+				if (r.isCollide)
+				{
+					result = r;
+					break;
+				}
 			}
 			break;
 		}
@@ -78,8 +98,12 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 			auto b = (Bullet*)obj;
 			if (b->StateName != DEAD)
 			{
-				auto result = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
-				if (result.isCollide) ResultCollisions.push_back(result);
+				auto r = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
+				if (r.isCollide)
+				{
+					result = r;
+					break;
+				}
 			}
 			break;
 		}
@@ -103,6 +127,7 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 
 				case BLUESHURIKEN:
 				case FIREWHEEL:
+				case REDSHURIKEN:
 				{
 					this->weaponType = i->type;
 					break;
@@ -113,53 +138,35 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 		}
 	}
 
-	if (!ResultCollisions.size() || stateName == INJURED)
+	if (!result.isCollide || stateName == INJURED)
 	{
 		dx = (allow[MOVING] ? vx * dt : 0);
 		dy = vy * dt;
-		return;
 	}
-
-	float minEntryTimeX = 1.0f;
-	//float minEntryTimeY = 1.0f;
-	int nx = 0;
-	//int ny = 0;
-
-	for (auto result : ResultCollisions)
+	else
 	{
-		if (result.entryTime < minEntryTimeX)
-		{
-			minEntryTimeX = result.entryTime;
-			nx = result.nx;
-		}
-
-		/*if (result.entryTime < minEntryTimeY)
-		{
-			minEntryTimeY = result.entryTime;
-			ny = result.ny;
-		}*/
+		this->isReverse = (result.nx == 1);
+		this->ChangeState(new PlayerInjuredState());
 	}
-
-	this->isReverse = (nx == 1);
-	this->ChangeState(new PlayerInjuredState());
 }
 
 // Duyệt tìm lại vùng đất va chạm của player khi ra khỏi vùng hiện tại
 // Dùng cách nâng sàn Collision duyệt trước
 bool Player::DetectGround(std::unordered_set<Rect*> grounds)
 {
-	auto r = this->GetRect();
-	r.y = r.y + dy;
-	r.height = r.height - dy;
+	auto rbp = this->GetRect();					//rect broading-phase
+	auto bottom = rbp.y - rbp.height;
+	rbp.y = rbp.y + dy;
+	rbp.height = rbp.height - dy;
 
-	if (r.IsContain(curGroundBound))
+	if (rbp.IsContain(groundBound) && (bottom >= groundBound.y))
 		return true;
 
 	for (auto g : grounds)
 	{
-		if (r.IsContain(*g) && (r.y >= g->y + g->height))
+		if (rbp.IsContain(*g) && (bottom >= g->y))
 		{
-			curGroundBound = *g;
+			groundBound = *g;
 			return true;
 		}
 	}
@@ -168,14 +175,14 @@ bool Player::DetectGround(std::unordered_set<Rect*> grounds)
 
 // Duyệt tìm tường va chạm
 // Bằng cách dịch tường và duyệt trước
-bool Player::DectectWall(std::unordered_set<Wall*> walls)
+bool Player::DetectWall(std::unordered_set<Wall*> walls)
 {
 	bool flag = false;
 	auto r = this->GetRect();
 	r.x = dx > 0 ? r.x : r.x + dx;
 	r.width = dx > 0 ? dx + r.width : r.width - dx;
 
-	if (r.IsContain(curWallBound))
+	if (r.IsContain(wallBound.rect))
 	{
 		flag = true;
 	}
@@ -185,7 +192,7 @@ bool Player::DectectWall(std::unordered_set<Wall*> walls)
 		{
 			if (w->rect.IsContain(r))
 			{
-				curWallBound = w->rect;
+				wallBound = *w;
 				flag = true;
 				break;
 			}
@@ -197,6 +204,8 @@ bool Player::DectectWall(std::unordered_set<Wall*> walls)
 // Xử lí va chạm với mặt đất theo các vùng đất hiển thị
 void Player::CheckGroundCollision(std::unordered_set<Rect*> grounds)
 {
+	if (this->isOnWall) return;
+
 	// Trên không
 	if (this->vy)
 	{
@@ -206,11 +215,11 @@ void Player::CheckGroundCollision(std::unordered_set<Rect*> grounds)
 	// Tìm được vùng đất va chạm
 	if (DetectGround(grounds))
 	{
-		if (this->vy < 0 && this->GetRect().IsContain(curGroundBound))
+		if (this->vy < 0)
 		{
 			this->isOnGround = true;
 			this->vy = this->dy = 0;
-			this->posY = curGroundBound.y + (this->height >> 1);
+			this->posY = groundBound.y + (this->height >> 1);
 
 			if (stateName == ATTACKING_STAND)
 				this->allow[MOVING] = false;
@@ -227,11 +236,41 @@ void Player::CheckGroundCollision(std::unordered_set<Rect*> grounds)
 // Kiểm tra va chạm tường
 void Player::CheckWallCollision(std::unordered_set<Wall*> walls)
 {
-	if (this->vx && this->DectectWall(walls))
+	if (this->isOnWall) return;
+
+	if (this->vx && this->DetectWall(walls))
 	{
-		this->vx = 0;
-		this->dx = dx > 0 ? curWallBound.x - (this->posX + (this->width >> 1)) - 1
-			: curWallBound.x + curWallBound.width - (this->posX - (this->width >> 1)) + 1;
+		float wallLeft = wallBound.rect.x;
+		float wallRight = wallLeft + wallBound.rect.width;
+		float playerLeft = this->posX - (this->width >> 1);
+		float playerRight = this->posX + (this->width >> 1);
+
+		if (this->vx > 0 && playerRight > wallLeft && playerRight < wallRight)
+		{
+			this->vx = this->dx = 0;
+			this->posX = wallLeft - (this->width >> 1);
+
+			if (wallBound.climbable && this->vy
+				&& this->posY + (this->height >> 1) <= wallBound.rect.y
+				&& this->posY - (this->height >> 1) >= wallBound.rect.y - wallBound.rect.height)
+			{
+				this->isReverse = false;
+				this->ChangeState(new PlayerClingingState());
+			}
+		}
+		else if (this->vx < 0 && playerLeft < wallRight && playerLeft > wallLeft)
+		{
+			this->vx = this->dx = 0;
+			this->posX = wallRight + (this->width >> 1);
+
+			if (wallBound.climbable && this->vy
+				&& this->posY + (this->height >> 1) <= wallBound.rect.y
+				&& this->posY - (this->height >> 1) >= wallBound.rect.y - wallBound.rect.height)
+			{
+				this->isReverse = true;
+				this->ChangeState(new PlayerClingingState());
+			}
+		}
 	}
 }
 
@@ -240,7 +279,6 @@ void Player::Render(float translateX, float translateY)
 {
 	auto posX = this->posX + translateX;
 	auto posY = this->posY + translateY;
-
 	camera->ConvertPositionToViewPort(posX, posY);
 	curAnimation->isReverse = this->isReverse;
 	curAnimation->Render(posX, posY);
@@ -249,6 +287,8 @@ void Player::Render(float translateX, float translateY)
 // Xử lí nhấn phím (chung cho các State)
 void Player::OnKeyDown(int keyCode)
 {
+	if (this->stateName == INJURED) return;
+
 	switch (keyCode)
 	{
 		// Phím A: tấn công với vũ khí
@@ -263,10 +303,9 @@ void Player::OnKeyDown(int keyCode)
 
 		// Phím S: tấn công với item
 	case DIK_S:
-		if (allow[THROWING] && weaponType != NONE
-			&& stateName != ATTACKING_STAND && stateName != ATTACKING_SIT)
+		if (allow[THROWING] && weaponType != NONE && !this->isOnWall
+			&& this->stateName != ATTACKING_SIT && this->stateName != ATTACKING_STAND)
 		{
-			allow[THROWING] = false;
 			ChangeState(new PlayerAttackingState());
 			this->isThrowing = true;
 		}
@@ -294,6 +333,8 @@ void Player::OnKeyDown(int keyCode)
 // Xử lí sự kiện thả phím (dùng chung cho các State)
 void Player::OnKeyUp(int keyCode)
 {
+	if (this->stateName == INJURED) return;
+
 	switch (keyCode)
 	{
 		// Khi thả phím DOWN: state hiện tại chuyển thành đứng

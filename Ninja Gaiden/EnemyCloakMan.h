@@ -9,7 +9,6 @@ private:
 
 public:
 	EnemyCloakMan();
-	~EnemyCloakMan();
 	void UpdateDistance(float dt);
 	void Update(float dt);
 };

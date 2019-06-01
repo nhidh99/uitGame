@@ -4,10 +4,10 @@
 PlayerSittingState::PlayerSittingState()
 {
 	player->allow[JUMPING] = false;
-	player->posY -= 5;
 	player->vx = 0;
 	player->vy = 0;
-	player->height = PLAYER_SITTING_HEIGHT;
+	player->posY -= 4;
+	player->height -= 8;
 	StateName = SITTING;
 }
 
@@ -21,8 +21,8 @@ void PlayerSittingState::HandleKeyboard()
 {
 	if (!keyCode[DIK_DOWN])
 	{
-		player->height = PLAYER_STANDING_HEIGHT;
-		player->posY += 5;
+		player->height += 8;
+		player->posY += 4;
 
 		if (keyCode[DIK_LEFT] || keyCode[DIK_RIGHT])
 		{

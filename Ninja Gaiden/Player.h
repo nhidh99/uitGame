@@ -13,23 +13,25 @@ class Player : public Object
 private:
 	std::unordered_map<State, Animation*> animations;		// Danh sách các Animation tương ứng với từng State
 	static Player* _instance;
-	
-	Rect curGroundBound, curWallBound;
 	bool DetectGround(std::unordered_set<Rect*> grounds);
-	bool DectectWall(std::unordered_set<Wall*> walls);
+	bool DetectWall(std::unordered_set<Wall*> walls);
 	
 public:
 	Player();
 	~Player();
 	static Player* GetInstance();
 
-	bool isOnGround, isThrowing, isAttacking;
+	bool isOnGround, isOnWall;
+	bool isThrowing, isAttacking;
+	Rect groundBound;
+	Wall wallBound;
 	PlayerState* state;
 	State stateName;
 	Animation* curAnimation;								// Animation hiện tại
 	Type weaponType;
 	std::unordered_map<State, bool> allow;
 
+	void DetectSpawnY(std::unordered_set<Rect*> grounds);
 	void Update(float dt, std::unordered_set<Object*> ColliableObjects);
 	void CheckGroundCollision(std::unordered_set<Rect*> grounds);
 	void CheckWallCollision(std::unordered_set<Wall*> walls);

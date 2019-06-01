@@ -8,7 +8,6 @@ PlayerStandingState::PlayerStandingState()
 	player->allow[MOVING] = true;
 	player->allow[JUMPING] = true;
 	player->allow[ATTACKING] = true;
-	player->allow[THROWING] = true;
 	StateName = STANDING;
 }
 

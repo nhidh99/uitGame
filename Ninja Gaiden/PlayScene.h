@@ -5,17 +5,24 @@
 #include "Grid.h"
 #include "WeaponFactory.h"
 #include "BulletFactory.h"
+#include "MapFactory.h"
+#include "SceneManager.h"
 
 class PlayScene : public Scene
 {
 private:
+	Player* p;
 	Map* map;
 	Grid* grid;
+	int level;
+	float endPoint;
 	std::unordered_set<Object*> visibleObjects;
 
 public:
-	PlayScene();
+	PlayScene(int level);
 	~PlayScene();
+
+	bool PlayerIsOnAirGround();
 
 	void Update(float dt);
 	void UpdateScene();						// Update các thông số các đối tượng trong Scene

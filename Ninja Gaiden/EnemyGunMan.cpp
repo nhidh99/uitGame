@@ -49,3 +49,12 @@ void EnemyGunMan::UpdateDistance(float dt)
 	}
 	}
 }
+
+void EnemyGunMan::Update(float dt)
+{
+	Enemy::Update(dt);
+	if (this->isDead)
+	{
+		delayTime = ENEMY_CLOAKMAN_DELAY_TIME >> 1;
+	}
+}

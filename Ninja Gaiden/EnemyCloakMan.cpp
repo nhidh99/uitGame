@@ -13,10 +13,6 @@ EnemyCloakMan::EnemyCloakMan()
 	bullets = bulletCount = BULLET_CLOAKMAN_COUNT;
 }
 
-EnemyCloakMan::~EnemyCloakMan()
-{
-}
-
 void EnemyCloakMan::UpdateDistance(float dt)
 {
 	this->isReverse = (player->posX < this->posX);
@@ -55,6 +51,6 @@ void EnemyCloakMan::Update(float dt)
 	Enemy::Update(dt);
 	if (this->isDead)
 	{
-		delayTime = ENEMY_EAGLE_DELAY_TIME;
+		delayTime = ENEMY_CLOAKMAN_DELAY_TIME;
 	}
 }

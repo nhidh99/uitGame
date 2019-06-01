@@ -7,7 +7,7 @@ EnemyPanther::EnemyPanther()
 	type = PANTHER;
 	height = ENEMY_PANTHER_HEIGHT;
 	width = ENEMY_PANTHER_WIDTH;
-	speed = 0.14f;
+	speed = ENEMY_PANTHER_SPEED;
 }
 
 EnemyPanther::~EnemyPanther()

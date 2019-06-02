@@ -3,9 +3,6 @@
 
 class WeaponSword : public Weapon
 {
-private:
-	Animation *_animation;
-
 public:
 	WeaponSword();
 	void Update(float dt);

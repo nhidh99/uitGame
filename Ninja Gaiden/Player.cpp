@@ -18,12 +18,14 @@ Player::Player()
 	_animations[INJURED] = new Animation(PLAYER, 5);
 
 	// Allow một số state cho trạng thái khởi đầu (Standing)
-	allow[JUMPING] = true;
+	/*allow[JUMPING] = true;
 	allow[ATTACKING] = true;
 	allow[MOVING] = true;
-	isOnGround = false;
+	allow[THROWING] = true;*/
 
 	// Các thông số Object
+	weaponID = 1;
+	isOnGround = false;
 	tag = PLAYER;
 	width = PLAYER_WIDTH;
 	height = PLAYER_STANDING_HEIGHT;
@@ -37,7 +39,6 @@ Player::~Player()
 {
 	if (curAnimation) delete curAnimation;
 	if (sword) delete sword;
-	if (item) delete item;
 
 	for (auto it = _animations.begin(); it != _animations.end(); ++it)
 	{
@@ -81,9 +82,22 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 		case ITEM:
 		{
 			auto i = (Item*)obj;
+
 			if (this->rect.IsContain(i->GetRect()))
 			{
 				i->isDead = true;
+
+				switch (i->type)
+				{
+				case GLASSHOUR:
+					isFrozenEnemies = true;
+					frozenEnemiesTime = ENEMY_FROZEN_TIME;
+					break;
+
+				case BLUESHURIKEN:
+					this->weaponID = 1;
+					break;
+				}
 			}
 		}
 		}
@@ -241,11 +255,11 @@ void Player::OnKeyDown(int keyCode)
 
 		// Phím S: tấn công với item
 	case DIK_S:
-		if (allow[ATTACKING] && !item->isOnScreen)
+		if (allow[THROWING] && weaponID && stateName != ATTACKING_STAND && stateName != ATTACKING_SIT)
 		{
-			allow[ATTACKING] = false;
+			allow[THROWING] = false;
 			ChangeState(new PlayerAttackingState());
-			AttackWith(item->type);
+			this->isThrowing = true;
 		}
 		break;
 
@@ -295,17 +309,6 @@ void Player::AttackWith(Type item)
 			sword->posY = this->posY + 10;
 			sword->isReverse = isReverse;
 			sword->isOnScreen = true;
-		}
-		break;
-
-	case SHURIKEN:
-		if (item != NULL)
-		{
-			this->item->isReverse = isReverse;
-			this->item->posX = isReverse ? this->posX - 3 : this->posX + 3;
-			this->item->posY = this->posY - 8;
-			this->item->vx = isReverse ? -WEAPON_SHURIKEN_SPEED : WEAPON_SHURIKEN_SPEED;
-			this->item->isOnScreen = true;
 		}
 		break;
 	}

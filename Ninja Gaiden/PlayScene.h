@@ -4,6 +4,7 @@
 #include <map>
 #include "Grid.h"
 #include "Loader.h"
+#include "WeaponFactory.h"
 
 class PlayScene : public Scene
 {
@@ -18,6 +19,7 @@ public:
 
 	void Update(float dt);
 	void UpdateScene();						// Update các thông số các đối tượng trong Scene
+	void UpdateVisibleObjects();
 	void UpdateObjects(float dt);
 	void UpdatePlayer(float dt);
 

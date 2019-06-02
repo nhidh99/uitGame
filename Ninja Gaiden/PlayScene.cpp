@@ -24,6 +24,16 @@ void PlayScene::Update(float dt)
 	this->UpdateScene();
 	this->UpdateObjects(dt);
 	this->UpdatePlayer(dt);
+
+	if (isFrozenEnemies)
+	{
+		frozenEnemiesTime -= dt;
+		if (frozenEnemiesTime <= 0)
+		{
+			isFrozenEnemies = false;
+			frozenEnemiesTime = ENEMY_FROZEN_TIME;
+		}
+	}
 }
 
 void PlayScene::UpdateScene()
@@ -33,20 +43,37 @@ void PlayScene::UpdateScene()
 	grid->Update();
 }
 
+void PlayScene::UpdateVisibleObjects()
+{
+	auto it = visibleObjects.begin();
+	while (it != visibleObjects.end())
+	{
+		if ((*it)->tag != WEAPON)
+		{
+			it = visibleObjects.erase(it);
+		}
+		else ++it;
+	}
+
+	for (auto o : grid->GetVisibleObjects())
+	{
+		visibleObjects.insert(o);
+	}
+}
+
 void PlayScene::UpdateObjects(float dt)
 {
+	this->UpdateVisibleObjects();
 
-	visibleObjects.clear();
-	visibleObjects = grid->GetVisibleObjects();
-
-	for (auto o : visibleObjects)
+	auto it = visibleObjects.begin();
+	while (it != visibleObjects.end())
 	{
+		auto o = *it;
 		switch (o->tag)
 		{
 		case ENEMY:
 		{
-			Enemy* e = EnemyFactory::ConvertToEnemy(o);
-			e->Update(dt);
+			EnemyFactory::ConvertToEnemy(o)->Update(dt);
 			grid->MoveObject(o, o->posX + o->dx, o->posY + o->dy);
 			break;
 		}
@@ -57,11 +84,27 @@ void PlayScene::UpdateObjects(float dt)
 		}
 		case ITEM:
 		{
-			ItemFactory::ConvertToItem(o)->Update(dt);
-			grid->MoveObject(o, o->posX, o->posY + o->dy);
+			Item* i = (Item*)o;
+			i->Update(dt);
+			grid->MoveObject(i, i->posX, i->posY + i->dy);
+			break;
+		}
+		case WEAPON:
+		{
+			auto w = WeaponFactory::ConvertToWeapon(o);
+			w->Update(dt, grid->GetColliableObjects(w));
+
+			if (w->isDead || !w->IsCollide(camera->GetRect()))
+			{
+				w->isDead = true;
+				it = visibleObjects.erase(it);
+				player->allow[THROWING] = true;
+				continue;
+			}
 			break;
 		}
 		}
+		++it;
 	}
 }
 
@@ -69,8 +112,8 @@ void PlayScene::UpdatePlayer(float dt)
 {
 	auto p = player;
 	p->rect = p->GetRect();
-	
-	p->Update(dt, grid->GetColliableObjects());
+
+	p->Update(dt, grid->GetColliableObjects(p));
 	p->CheckGroundCollision(grid->GetVisibleGrounds());
 	p->CheckWallCollision(grid->GetVisibleWalls());
 
@@ -83,6 +126,16 @@ void PlayScene::UpdatePlayer(float dt)
 		p->posX = p->spawnX;
 		p->posY = p->spawnY;
 	}
+
+	if (p->isThrowing)
+	{
+		Weapon* weapon = WeaponFactory::CreateWeapon(p->weaponID);
+		weapon->posX = p->posX + (p->isReverse ? -5 : 5);
+		weapon->posY = p->posY + 5;
+		if (p->isReverse) weapon->vx = -weapon->vx;
+		visibleObjects.insert(weapon);
+		p->isThrowing = false;
+	}
 }
 
 // Tải Scene lên màn hình bằng cách vẽ object có trong trong Scene
@@ -92,20 +145,7 @@ void PlayScene::Render()
 
 	for (auto o : visibleObjects)
 	{
-		switch (o->tag)
-		{
-		case ENEMY:
-		{
-			EnemyFactory::ConvertToEnemy(o)->Render(0, 0);
-			break;
-		}
-		case HOLDER:
-		{
-			auto h = (Holder*)o;
-			h->Render(0, 0);
-			break;
-		}
-		}
+		o->Render();
 	}
 
 	player->Render();

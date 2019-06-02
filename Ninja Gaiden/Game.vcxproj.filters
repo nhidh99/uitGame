@@ -115,19 +115,19 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
+    <ClCompile Include="WeaponSwingSword.cpp">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponSword.cpp">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClCompile>
     <ClCompile Include="WeaponBullet.cpp">
       <Filter>Game Objects\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="WeaponDagger.cpp">
       <Filter>Game Objects\Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponShuriken.cpp">
-      <Filter>Game Objects\Weapon</Filter>
-    </ClCompile>
-    <ClCompile Include="WeaponSwingSword.cpp">
-      <Filter>Game Objects\Weapon</Filter>
-    </ClCompile>
-    <ClCompile Include="WeaponSword.cpp">
+    <ClCompile Include="WeaponBlueShuriken.cpp">
       <Filter>Game Objects\Weapon</Filter>
     </ClCompile>
   </ItemGroup>
@@ -258,18 +258,6 @@
     <ClInclude Include="Loader.h">
       <Filter>Game Components</Filter>
     </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>Game Objects\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="WeaponBullet.h">
-      <Filter>Game Objects\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="WeaponDagger.h">
-      <Filter>Game Objects\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="WeaponShuriken.h">
-      <Filter>Game Objects\Weapon</Filter>
-    </ClInclude>
     <ClInclude Include="WeaponSprite.h">
       <Filter>Game Objects\Weapon</Filter>
     </ClInclude>
@@ -314,6 +302,24 @@
     </ClInclude>
     <ClInclude Include="ItemRedPotion.h">
       <Filter>Game Objects\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponFactory.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponBullet.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponDagger.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponBlueShuriken.h">
+      <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponFireWheel.h">
+      <Filter>Game Objects\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

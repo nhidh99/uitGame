@@ -35,7 +35,7 @@ public:
 	std::unordered_set<Object*> GetVisibleObjects();
 	std::unordered_set<Rect*> GetVisibleWalls();
 	std::unordered_set<Rect*> GetVisibleGrounds();
-	std::unordered_set<Object*> GetColliableObjects();
+	std::unordered_set<Object*> GetColliableObjects(Object* obj);
 
 	void InitGroundCell(Rect* ground);
 	void InitWallCell(Rect* wall);

@@ -7,12 +7,11 @@ class Item : public Object
 protected:
 	float existsTime;
 	Rect groundBound;
+	Sprite* sprite;
 
 public:
 	bool isDead;
-	float groundY;
 	Type type;
-	Sprite* sprite;
 
 	Item()
 	{
@@ -36,14 +35,15 @@ public:
 
 	void Update(float dt)
 	{
-		dy = vy * dt;
-
 		if (this->IsCollide(groundBound))
 		{
-			vy = 0;
-		}
+			this->vy = 0;
+			this->dy = 0;
+		} 
+		else this->dy = vy * dt;
 
 		existsTime -= dt;
+
 		if (existsTime <= 0)
 		{
 			this->isDead = true;

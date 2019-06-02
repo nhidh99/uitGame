@@ -1,4 +1,4 @@
-#include "Grid.h"
+﻿#include "Grid.h"
 
 Grid::Grid(Rect MapRect)
 {
@@ -21,6 +21,8 @@ void Grid::Update()
 	this->viewPort = camera->GetRect();
 	this->UpdateVisibleCells();
 	this->RespawnEnemies();
+
+	// Nếu player attack -> Tạo weapon -> init weapon trong grid
 }
 
 void Grid::LoadObjects()
@@ -75,6 +77,16 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 	int TopCell = r.y / Cell::height;
 	int BottomCell = (r.y - r.height) / Cell::height;
 
+	if (BottomCell >= rows)
+	{
+		this->RemoveObject(obj);
+		return;
+	}
+	else if (TopCell >= rows)
+	{
+		return;
+	}
+
 	if (LeftCell != oldLeftCell)
 	{
 		cells[oldTopCell][oldLeftCell]->RemoveObject(obj);
@@ -115,26 +127,35 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 		}
 	}
 
-	cells[TopCell][LeftCell]->objects.insert(obj);
-
-	if (LeftCell != RightCell)
+	if (TopCell < rows)
 	{
-		cells[TopCell][RightCell]->objects.insert(obj);
-	}
-
-	if (TopCell != BottomCell)
-	{
-		cells[BottomCell][LeftCell]->objects.insert(obj);
+		cells[TopCell][LeftCell]->objects.insert(obj);
 
 		if (LeftCell != RightCell)
 		{
-			cells[BottomCell][RightCell]->objects.insert(obj);
+			cells[TopCell][RightCell]->objects.insert(obj);
+		}
+	}
+
+	if (BottomCell < rows)
+	{
+		if (TopCell != BottomCell)
+		{
+			cells[BottomCell][LeftCell]->objects.insert(obj);
+
+			if (LeftCell != RightCell)
+			{
+				cells[BottomCell][RightCell]->objects.insert(obj);
+			}
 		}
 	}
 }
 
 void Grid::RestartGame()
 {
+	isFrozenEnemies = false;
+	player->weaponID = 0;
+
 	for (auto o : respawnObjects)
 	{
 		switch (o->tag)
@@ -160,10 +181,8 @@ void Grid::RestartGame()
 	{
 		this->MoveObject(o, o->spawnX, o->spawnY);
 	}
-
 	respawnObjects.clear();
 }
-
 
 void Grid::RemoveObject(Object * obj)
 {
@@ -173,20 +192,12 @@ void Grid::RemoveObject(Object * obj)
 	int TopCell = r.y / Cell::height;
 	int BottomCell = (r.y - r.height) / Cell::height;
 
-	cells[TopCell][LeftCell]->RemoveObject(obj);
-
-	if (LeftCell != RightCell)
+	for (int y = BottomCell; y <= TopCell; ++y)
 	{
-		cells[TopCell][RightCell]->RemoveObject(obj);
-	}
-
-	if (TopCell != BottomCell)
-	{
-		cells[BottomCell][LeftCell]->RemoveObject(obj);
-
-		if (LeftCell != RightCell)
+		if (y == rows) break;
+		for (int x = LeftCell; x <= RightCell; ++x)
 		{
-			cells[BottomCell][RightCell]->RemoveObject(obj);
+			cells[y][x]->RemoveObject(obj);
 		}
 	}
 }
@@ -220,34 +231,113 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 			auto o = *it;
 			if (o->IsCollide(viewPort))
 			{
-				setObjects.insert(o);
-				if (o->tag == ENEMY)
+				switch (o->tag)
+				{
+				case ENEMY:
 				{
 					auto e = (Enemy*)o;
-					e->isActive = true;
-				}
-			}
-
-			else if (o->tag == ENEMY)
-			{
-				auto e = (Enemy*)o;
-				if (e->isActive)
-				{
-					e->isActive = false;
-					it = c->objects.erase(it);
-
-					if (e->IsRespawnOnScreen())
+					if (e->isDead)
 					{
+						it = c->objects.erase(it);
 						this->RemoveObject(e);
 						respawnObjects.push_back(e);
+						continue;
 					}
-					else
+					else if (!e->isActive)
 					{
-						this->MoveObject(e, e->spawnX, e->spawnY);
+						e->ChangeState(ATTACKING);
 					}
+					break;
+				}
+
+				case HOLDER:
+				{
+					auto h = (Holder*)o;
+					if (h->isDead)
+					{
+						it = c->objects.erase(it);
+
+						auto i = ItemFactory::CreateItem(h->itemID);
+						i->posX = h->posX;
+						i->posY = h->posY;
+						i->DectectGround(this->GetVisibleGrounds());
+						this->InitObjectCell(i);
+						setObjects.insert(i);
+
+						this->RemoveObject(h);
+						this->respawnObjects.push_back(h);
+						continue;
+					}
+					break;
+				}
+
+				case ITEM:
+				{
+					auto i = (Item*)o;
+					if (i->isDead)
+					{
+						it = c->objects.erase(it);
+						this->RemoveObject(i);
+						delete i;
+						continue;
+					}
+					break;
+				}
+
+				case WEAPON:
+				{
+					auto w = (Weapon*)o;
+					if (w->isDead)
+					{
+						it = c->objects.erase(it);
+						this->RemoveObject(w);
+						delete w;
+						continue;
+					}
+					break;
+				}
+				}
+				setObjects.insert(o);
+			}
+
+			else //Object is out of camera
+			{
+				switch (o->tag)
+				{
+				case ENEMY:
+				{
+					auto e = (Enemy*)o;
+					if (e->isActive)
+					{
+						e->isActive = false;
+						it = c->objects.erase(it);
+
+						if (e->IsRespawnOnScreen())
+						{
+							this->RemoveObject(e);
+							respawnObjects.push_back(e);
+						}
+						else
+						{
+							this->MoveObject(e, e->spawnX, e->spawnY);
+						}
+						continue;
+					}
+					break;
+				}
+
+				case ITEM:
+				case WEAPON:
+				{
+					it = c->objects.erase(it);
+					this->RemoveObject(o);
+					delete o;
 					continue;
+					break;
+				}
 				}
 			}
+
 			++it;
 		}
 	}
@@ -288,42 +378,23 @@ std::unordered_set<Rect*> Grid::GetVisibleGrounds()
 	return setGrounds;
 }
 
-std::unordered_set<Object*> Grid::GetColliableObjects()
+std::unordered_set<Object*> Grid::GetColliableObjects(Object * obj)
 {
 	std::unordered_set<Object*> objs;
 
-	auto r = player->rect;
+	auto r = obj->GetRect();
 	int LeftCell = r.x / Cell::width;
 	int RightCell = (r.x + r.width) / Cell::width;
 	int TopCell = r.y / Cell::height;
 	int BottomCell = (r.y - r.height) / Cell::height;
 
-	if (TopCell < rows)
+	for (int y = BottomCell; y <= TopCell; ++y)
 	{
-		for (auto o : cells[TopCell][LeftCell]->objects)
-		{
-			objs.insert(o);
-		}
+		if (y >= rows) break;
 
-		if (LeftCell != RightCell)
+		for (int x = LeftCell; x <= RightCell; ++x)
 		{
-			for (auto o : cells[TopCell][RightCell]->objects)
-			{
-				objs.insert(o);
-			}
-		}
-	}
-
-	if (TopCell != BottomCell)
-	{
-		for (auto o : cells[BottomCell][RightCell]->objects)
-		{
-			objs.insert(o);
-		}
-
-		if (LeftCell != RightCell)
-		{
-			for (auto o : cells[BottomCell][RightCell]->objects)
+			for (auto o : cells[y][x]->objects)
 			{
 				objs.insert(o);
 			}
@@ -339,20 +410,11 @@ void Grid::InitGroundCell(Rect * ground)
 	int TopCell = ground->y / Cell::height;
 	int BottomCell = (ground->y - ground->height) / Cell::height;
 
-	cells[TopCell][LeftCell]->grounds.push_back(ground);
-
-	if (LeftCell != RightCell)
+	for (int y = BottomCell; y <= TopCell; ++y)
 	{
-		cells[TopCell][RightCell]->grounds.push_back(ground);
-	}
-
-	if (TopCell != BottomCell)
-	{
-		cells[BottomCell][LeftCell]->grounds.push_back(ground);
-
-		if (LeftCell != RightCell)
+		for (int x = LeftCell; x <= RightCell; ++x)
 		{
-			cells[BottomCell][RightCell]->grounds.push_back(ground);
+			cells[y][x]->grounds.push_back(ground);
 		}
 	}
 }
@@ -364,20 +426,11 @@ void Grid::InitWallCell(Rect * wall)
 	int TopCell = wall->y / Cell::height;
 	int BottomCell = (wall->y - wall->height) / Cell::height;
 
-	cells[TopCell][LeftCell]->walls.push_back(wall);
-
-	if (LeftCell != RightCell)
+	for (int y = BottomCell; y <= TopCell; ++y)
 	{
-		cells[TopCell][RightCell]->walls.push_back(wall);
-	}
-
-	if (TopCell != BottomCell)
-	{
-		cells[BottomCell][LeftCell]->walls.push_back(wall);
-
-		if (LeftCell != RightCell)
+		for (int x = LeftCell; x <= RightCell; ++x)
 		{
-			cells[BottomCell][RightCell]->walls.push_back(wall);
+			cells[y][x]->walls.push_back(wall);
 		}
 	}
 }
@@ -390,20 +443,11 @@ void Grid::InitObjectCell(Object * obj)
 	int TopCell = r.y / Cell::height;
 	int BottomCell = (r.y - r.height) / Cell::height;
 
-	cells[TopCell][LeftCell]->objects.insert(obj);
-
-	if (LeftCell != RightCell)
+	for (int y = BottomCell; y <= TopCell; ++y)
 	{
-		cells[TopCell][RightCell]->objects.insert(obj);
-	}
-
-	if (TopCell != BottomCell)
-	{
-		cells[BottomCell][LeftCell]->objects.insert(obj);
-
-		if (LeftCell != RightCell)
+		for (int x = LeftCell; x <= RightCell; ++x)
 		{
-			cells[BottomCell][RightCell]->objects.insert(obj);
+			cells[y][x]->objects.insert(obj);
 		}
 	}
 }

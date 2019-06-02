@@ -1,41 +1,60 @@
-﻿
 #pragma once
-#include "Object.h"
+#include "Player.h"
 #include "EnemySprite.h"
 #include "Cell.h"
 #include <algorithm>
-
+#include <ctime>
+#include <cstdlib>
 
 class Enemy : public Object
 {
 protected:
 	std::unordered_map<State, Animation*> animations;
+	Rect groundBound;
 	Animation* curAnimation;
 
 public:
+	float speed;
+	State StateName;
+	bool isActive;
+	int bulletCount;
+	int bullets;
+
 	Enemy()
 	{
 		tag = ENEMY;
+		isDead = false;
+		isActive = false;
 		animations[DEAD] = new Animation(WEAPON, 0, 2, 85);
 	}
 
-	~Enemy() {};
-	State StateName;
-	Type type;
-	bool isActive;
-	bool isDead;
-	float moveSpaceHead, moveSpaceTail;
+	~Enemy()
+	{
+		for (auto ani : animations)
+		{
+			delete ani.second;
+		}
+	}
 
+	void DectectGround(std::unordered_set<Rect*> grounds)
+	{
+		for (auto g : grounds)
+		{
+			if (g->x < this->posX && this->posX < g->x + g->width
+				&& g->y >= groundBound.y && this->posY > g->y)
+			{
+				groundBound = *g;
+			}
+		}
+		this->posY = groundBound.y + (this->height >> 1);
+	}
 	void Render(float translateX = 0, float translateY = 0)
 	{
-		if (this->isActive)
-		{
-			auto posX = this->posX + translateX;
-			auto posY = this->posY + translateY;
-			camera->ConvertPositionToViewPort(posX, posY);
-			curAnimation->isReverse = this->isReverse;
-			curAnimation->Render(posX, posY);
-		}
+		auto posX = this->posX + translateX;
+		auto posY = this->posY + translateY;
+		camera->ConvertPositionToViewPort(posX, posY);
+		curAnimation->isReverse = this->isReverse;
+		curAnimation->Render(posX, posY);
 	}
 
 	virtual void UpdateDistance(float dt)
@@ -46,17 +65,14 @@ public:
 
 	virtual void Update(float dt)
 	{
-		if (this->isActive)
+		if (isFrozenEnemies)
 		{
-			if (isFrozenEnemies)
-			{
-				this->dx = this->dy = 0;
-			}
-			else 
-			{
-				curAnimation->Update(dt);
-				this->UpdateDistance(dt);
-			}
+			this->dx = this->dy = 0;
+		}
+		else
+		{
+			this->UpdateDistance(dt);
+			curAnimation->Update(dt);
 		}
 
 		if (this->StateName == DEAD)
@@ -74,28 +90,6 @@ public:
 				this->isActive = false;
 			}
 		}
-
-		//Xét hướng đi của enemy đối với player
-		if (this->posX > player->posX && this->posX < moveSpaceTail)
-		{
-			if (this->vx > 0)
-			{
-				this->vx = -vx;
-			}
-
-			if (!this->isReverse)
-			{
-				this->isReverse = true;
-			}
-		}
-		if (this->posX < player->posX && this->posX < moveSpaceTail)
-		{
-			if (this->vx < 0)
-			{
-				this->vx = -vx;
-			}
-			this->isReverse = false;
-		}
 	}
 
 	bool IsRespawnOnScreen()
@@ -103,21 +97,29 @@ public:
 		return Rect(spawnX - (width >> 1), spawnY - (height >> 1), width, height).IsContain(camera->GetRect());
 	}
 
-	void ChangeState(State StateName)
+	bool IsFinishAttack()
+	{
+		return (this->StateName == ATTACKING && curAnimation->isLastFrame);
+	}
+
+	virtual void ChangeState(State StateName)
 	{
 		switch (StateName)
 		{
-		case DEAD:
+		case STANDING:
 		{
-			break;
-		}
-		default:
-		{
-			this->isActive = true;
+			this->isActive = false;
 			this->isDead = false;
 			break;
 		}
+
+		case RUNNING:
+		{
+			this->isActive = true;
+			break;
 		}
+		}
+
 		this->StateName = StateName;
 		this->curAnimation = animations[StateName];
 	}

@@ -1,8 +1,9 @@
 ﻿#pragma once
-#include "Object.h"
+#include "Player.h"
 #include "Enemy.h"
 #include "Holder.h"
 #include <unordered_set>
+#include "ScoreBoard.h"
 #include <map>
 
 class Weapon : public Object
@@ -14,10 +15,6 @@ public:
 	Weapon() { tag = WEAPON; }
 	~Weapon() { if (animation) delete animation; }
 
-	Type type;
-	bool isOnScreen;
-	bool isDead;
-
 	virtual void Update(float dt) {};			// Update thông số của Object sau khoảng thời gian delta-time
 
 	virtual void Render(float translateX = 0, float translateY = 0)
@@ -28,25 +25,50 @@ public:
 		animation->Render(posX, posY);
 	}
 
+	virtual void UpdateDistance(float dt)
+	{
+		this->dx = vx * dt;
+		this->dy = vy * dt;
+	}
+
 	virtual void Update(float dt, std::unordered_set<Object*> ColliableObjects)
 	{
-		Object::Update(dt);
+		this->UpdateDistance(dt);
+		this->posX += dx;
+		this->posY += dy;
+
+		animation->isReverse = this->isReverse;
 		animation->Update(dt);
+
+		auto rect = this->GetRect();
 
 		for (auto obj : ColliableObjects)
 		{
-			if (this->GetRect().IsContain(obj->GetRect()))
+			if (rect.IsContain(obj->GetRect()))
 			{
-				if (obj->tag == ENEMY)
+				switch (obj->tag)
+				{
+				case BULLET:
+				{
+					auto b = (Bullet*)obj;
+					b->ChangeState(DEAD);
+					break;
+				}
+
+				case ENEMY:
 				{
 					auto e = (Enemy*)obj;
 					e->ChangeState(DEAD);
+					scoreboard->score += 200;
+					break;
 				}
 
-				else if (obj->tag == HOLDER)
+				case HOLDER:
 				{
 					auto h = (Holder*)obj;
 					h->isDead = true;
+					break;
+				}
 				}
 			}
 		}

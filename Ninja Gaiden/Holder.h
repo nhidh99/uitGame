@@ -10,7 +10,6 @@ protected:
 public:
 	bool isDead;
 	int itemID;
-	Type type;
 
 	Holder() 
 	{
@@ -24,7 +23,6 @@ public:
 	{
 		auto posX = this->posX + translateX;
 		auto posY = this->posY + translateY;
-
 		camera->ConvertPositionToViewPort(posX, posY);
 		animation->Render(posX, posY);
 	}

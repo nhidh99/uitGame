@@ -5,7 +5,6 @@ PlayerClingingState::PlayerClingingState()
 	player->allow[CLINGING] = false;
 	player->allow[ATTACKING] = false;
 	player->allow[JUMPING] = true;
-	player->sword->isOnScreen = false;
 
 	player->vx = 0;
 	player->vy = 0;

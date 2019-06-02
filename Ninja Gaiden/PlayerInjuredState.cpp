@@ -4,8 +4,7 @@ PlayerInjuredState::PlayerInjuredState()
 {
 	player->allow[THROWING] = player->allow[JUMPING] = player->allow[ATTACKING] = false;
 	player->vy = PLAYER_JUMPING_SPEED;
-	player->vx = player->isReverse ? PLAYER_RUNNING_SPEED : -PLAYER_RUNNING_SPEED;
-	player->sword->isOnScreen = false;
+	player->vx = player->isReverse ? PLAYER_INJURED_SPEED : -PLAYER_INJURED_SPEED;
 	StateName = INJURED;
 }
 

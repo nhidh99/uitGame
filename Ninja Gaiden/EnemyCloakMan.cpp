@@ -3,25 +3,58 @@
 EnemyCloakMan::EnemyCloakMan()
 {
 	animations[STANDING] = new Animation(ENEMY, 12, 12);
-	animations[ATTACKING] = new Animation(ENEMY, 12, 14);
-	curAnimation = animations[ATTACKING];
-	tag = ENEMY;
+	animations[RUNNING] = new Animation(ENEMY, 12, 13);
+	animations[ATTACKING] = new Animation(ENEMY, 13, 14);
 	type = CLOAKMAN;
-	height = ENEMY_CLOAKMAN_HEIGHT;	
+	height = ENEMY_CLOAKMAN_HEIGHT;
 	width = ENEMY_CLOAKMAN_WIDTH;
-	vx = ENEMY_CLOAKMAN_VX;
+	speed = ENEMY_CLOAKMAN_SPEED;
+	delayTime = ENEMY_CLOAKMAN_DELAY_TIME;
+	bullets = bulletCount = BULLET_CLOAKMAN_COUNT;
 }
 
 EnemyCloakMan::~EnemyCloakMan()
 {
 }
 
-void EnemyCloakMan::Render(float translateX, float translateY)
+void EnemyCloakMan::UpdateDistance(float dt)
 {
-	Enemy::Render(translateX, translateY);
+	this->isReverse = (player->posX < this->posX);
+	delayTime -= dt;
+
+	switch (this->StateName)
+	{
+	case RUNNING:
+	{
+		this->dx = vx * dt;
+
+		if ((vx > 0 && this->posX + (this->width >> 1) >= groundBound.x + groundBound.width)
+			|| (vx < 0 && this->posX - (this->width >> 1) <= groundBound.x))
+		{
+			this->vx = -vx;
+		}
+
+		if (delayTime <= 0)
+		{
+			this->ChangeState(ATTACKING);
+			this->vx = -vx;
+			delayTime = ENEMY_CLOAKMAN_DELAY_TIME;
+		}
+		break;
+	}
+	case ATTACKING:
+	{
+		this->dx = 0;
+		break;
+	}
+	}
 }
 
 void EnemyCloakMan::Update(float dt)
 {
 	Enemy::Update(dt);
+	if (this->isDead)
+	{
+		delayTime = ENEMY_EAGLE_DELAY_TIME;
+	}
 }

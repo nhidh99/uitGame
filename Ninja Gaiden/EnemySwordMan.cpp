@@ -3,20 +3,30 @@
 EnemySwordMan::EnemySwordMan()
 {
 	animations[STANDING] = new Animation(ENEMY, 0, 0);
-	animations[ATTACKING] = new Animation(ENEMY, 0, 2);
-	curAnimation = animations[ATTACKING];
+	animations[RUNNING] = new Animation(ENEMY, 0, 2);
 	tag = ENEMY;
 	type = SWORDMAN;
 	width = ENEMY_SWORDMAN_WIDTH;
 	height = ENEMY_SWORDMAN_HEIGHT;
-	vx = ENEMY_SWORDMAN_VX;
+	speed = ENEMY_SWORDMAN_SPEED;
 }
 
 EnemySwordMan::~EnemySwordMan()
 {
 }
 
-void EnemySwordMan::Update(float dt)
+void EnemySwordMan::UpdateDistance(float dt)
 {
-	Enemy::Update(dt);
+	this->dx = vx * dt;
+
+	if (vx > 0 && this->posX + (this->width >> 1) >= groundBound.x + groundBound.width)
+	{
+			this->vx = -vx;
+			this->isReverse = true;
+	}
+	else if (vx < 0 && this->posX - (this->width >> 1) <= groundBound.x)
+	{
+			this->vx = -vx;
+			this->isReverse = false;
+	}
 }

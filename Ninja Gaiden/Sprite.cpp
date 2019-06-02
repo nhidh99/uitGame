@@ -31,3 +31,19 @@ void Sprite::Render(float x, float y, float translateX, float translateY)
 	spriteHandler->Draw(_texture, &_rect, &_center, &pPosition, D3DCOLOR_XRGB(255, 255, 255));
 	spriteHandler->SetTransform(&oldMatrix);
 }
+
+void Sprite::ScaleRender(float x, float y, float scaleX, float scaleY, float translateX, float translateY)
+{
+	auto pPosition = D3DXVECTOR3(x, y, 0);
+	auto pRotationCenter = D3DXVECTOR2(_center.x, _center.y);
+	auto pScalingCenter = D3DXVECTOR2(x, y);
+	auto pTranslation = D3DXVECTOR2(translateX, translateY);
+	auto pScaling = D3DXVECTOR2(scaleX,scaleY);
+
+	D3DXMATRIX oldMatrix, curMatrix;
+	D3DXMatrixTransformation2D(&curMatrix, &pScalingCenter, 0, &pScaling, &pRotationCenter, 0, &pTranslation);
+	spriteHandler->GetTransform(&oldMatrix);
+	spriteHandler->SetTransform(&curMatrix);
+	spriteHandler->Draw(_texture, &_rect, &_center, &pPosition, D3DCOLOR_XRGB(255, 255, 255));
+	spriteHandler->SetTransform(&oldMatrix);
+}

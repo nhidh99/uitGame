@@ -1,15 +1,17 @@
 #pragma once
+#define _USE_MATH_DEFINES
 #include "Enemy.h"
-#include "Math.h"
+#include <ctime>
+#include <stdlib.h>
 
+class EnemyEagle : public Enemy 
+{
+private:
+	float delayTime;
 
-class EnemyEagle :public Enemy {
 public:
-	float reversePointX,reversePointY;
-	float maxDepth, maxHigh;
-
 	EnemyEagle();
 	~EnemyEagle();
-
+	void UpdateDistance(float dt);
 	void Update(float dt);
 };

@@ -1,4 +1,4 @@
-﻿	#pragma once
+﻿#pragma once
 #include "Sprite.h"
 #include "SpriteFactory.h"
 #include <vector>

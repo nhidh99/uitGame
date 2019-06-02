@@ -38,9 +38,4 @@ public:
 			return NULL;
 		}
 	}
-
-	static Item* ConvertToItem(Object* obj)
-	{
-		return (Item*)obj;
-	}
 };

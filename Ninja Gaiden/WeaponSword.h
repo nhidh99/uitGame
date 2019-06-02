@@ -4,14 +4,89 @@
 class WeaponSword : public Weapon
 {
 public:
-	WeaponSword();
-	void Update(float dt);
+	WeaponSword()
+	{
+		animation = new Animation(WEAPON, 3, 4, DEFAULT_TPS >> 1);
+		width = WEAPON_SWORD_WIDTH;
+		height = WEAPON_SWORD_HEIGHT;
+		vx = vy = 0;
+		type = SWORD;
+	}
+
 	void Update(float dt, std::unordered_set<Object*> ColliableObjects)
 	{
-		if (this->isOnScreen)
+		for (auto obj : ColliableObjects)
 		{
-			Weapon::Update(dt, ColliableObjects);
+			if (this->GetRect().IsContain(obj->GetRect()))
+			{
+				switch (obj->tag)
+				{
+				case BULLET:
+				{
+					auto b = (Bullet*)obj;
+					b->ChangeState(DEAD);
+					break;
+				}
+
+				case ENEMY:
+				{
+					auto e = (Enemy*)obj;
+					if (e->StateName == DEAD)
+					{
+						return;
+					}
+					e->ChangeState(DEAD);
+					switch (e->type)
+					{
+					case EAGLE:
+					case CLOAKMAN:
+						scoreboard->score += 300;
+						break;
+					case PANTHER:
+					case GUNMAN:
+						scoreboard->score += 200;
+						break;
+					default:
+						scoreboard->score += 100;
+						break;
+					}
+					break;
+				}
+
+				case HOLDER:
+				{
+					auto h = (Holder*)obj;
+					h->isDead = true;
+					break;
+				}
+				}
+			}
 		}
 	}
-	void Render(float x, float y, int frameIndex, float translateX = 0, float translateY = 0);
+
+	void Render(float translateX = 0, float translateY = 0)
+	{
+		auto frameIndex = player->curAnimation->CurFrameIndex - 1;
+		if (frameIndex != 0 && frameIndex != 1) return;
+
+		auto sprite = animation->GetSprite(frameIndex);
+		auto x = player->posX;
+		auto y = player->posY + 10;
+		sprite->isReverse = this->isReverse;
+
+		switch (frameIndex)
+		{
+		case 0:
+			x += (isReverse ? -22 : 22);
+			break;
+
+		case 1:
+			x += (isReverse ? -18 : 18);
+			this->isDead = true;
+			break;
+		}
+
+		camera->ConvertPositionToViewPort(x, y);
+		sprite->Render(x, y);
+	}
 };

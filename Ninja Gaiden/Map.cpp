@@ -42,6 +42,8 @@ Map::Map(int level)
 		}
 	}
 	ifile.close();
+
+	
 }
 
 void Map::Update()

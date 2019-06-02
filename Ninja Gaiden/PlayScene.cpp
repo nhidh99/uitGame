@@ -3,8 +3,8 @@
 PlayScene::PlayScene()
 {
 	map = MapFactory::GetInstance()->GetMap(0);
-	grid = new Grid(map->rect);
-	grid->LoadObjects();
+	grid = new Grid(1);
+	//grid->LoadObjects();
 
 	player->spawnX = player->posX = 50;
 	player->spawnY = player->posY = 100;
@@ -24,14 +24,22 @@ void PlayScene::Update(float dt)
 	this->UpdateScene();
 	this->UpdateObjects(dt);
 	this->UpdatePlayer(dt);
-
+	
+	if (scoreboard->timer == 0 || scoreboard->playerHealth == 0)
+	{
+		this->RestartScene();
+	}
+	scoreboard->Update(dt);
+	if (scoreboard->timer == 1000)
+	{
+		scoreboard->isEndGame = true;
+	}
 	if (isFrozenEnemies)
 	{
 		frozenEnemiesTime -= dt;
 		if (frozenEnemiesTime <= 0)
 		{
 			isFrozenEnemies = false;
-			frozenEnemiesTime = ENEMY_FROZEN_TIME;
 		}
 	}
 }
@@ -63,8 +71,6 @@ void PlayScene::UpdateVisibleObjects()
 
 void PlayScene::UpdateObjects(float dt)
 {
-	this->UpdateVisibleObjects();
-
 	auto it = visibleObjects.begin();
 	while (it != visibleObjects.end())
 	{
@@ -73,8 +79,35 @@ void PlayScene::UpdateObjects(float dt)
 		{
 		case ENEMY:
 		{
-			EnemyFactory::ConvertToEnemy(o)->Update(dt);
-			grid->MoveObject(o, o->posX + o->dx, o->posY + o->dy);
+			auto e = EnemyFactory::ConvertToEnemy(o);
+			e->Update(dt);
+			grid->MoveObject(e, e->posX + e->dx, e->posY + e->dy);
+
+			switch (e->type)
+			{
+			case CLOAKMAN:
+			case GUNMAN:
+			{
+				if (e->IsFinishAttack())
+				{
+					auto b = BulletFactory::CreateBullet(e->type);
+					b->isReverse = e->isReverse;
+					if (b->isReverse) b->vx = -b->vx;
+					b->posX = e->posX + (e->isReverse ? -5 : 5);
+					b->posY = e->posY + 3;
+					b->ChangeState(ACTIVE);
+					grid->AddObject(b);
+					e->bulletCount--;
+
+					if (e->bulletCount == 0)
+					{
+						e->bulletCount = e->bullets;
+						e->ChangeState(RUNNING);
+					}
+				}
+				break;
+			}
+			}
 			break;
 		}
 		case HOLDER:
@@ -89,29 +122,37 @@ void PlayScene::UpdateObjects(float dt)
 			grid->MoveObject(i, i->posX, i->posY + i->dy);
 			break;
 		}
+		case BULLET:
+		{
+			BulletFactory::ConvertToBullet(o)->Update(dt);
+			grid->MoveObject(o, o->posX + o->dx, o->posY + o->dy);
+			break;
+		}
+
 		case WEAPON:
 		{
 			auto w = WeaponFactory::ConvertToWeapon(o);
-			w->Update(dt, grid->GetColliableObjects(w));
 
-			if (w->isDead || !w->IsCollide(camera->GetRect()))
+			if (w->isDead || !w->IsCollide(camera->GetRect())
+				|| (w->type == SWORD && player->stateName != ATTACKING_STAND
+					&& player->stateName != ATTACKING_SIT))
 			{
-				w->isDead = true;
 				it = visibleObjects.erase(it);
-				player->allow[THROWING] = true;
+				delete w;
 				continue;
 			}
+			w->Update(dt, grid->GetColliableObjects(w));
 			break;
 		}
 		}
 		++it;
 	}
+	this->UpdateVisibleObjects();
 }
 
 void PlayScene::UpdatePlayer(float dt)
 {
 	auto p = player;
-	p->rect = p->GetRect();
 
 	p->Update(dt, grid->GetColliableObjects(p));
 	p->CheckGroundCollision(grid->GetVisibleGrounds());
@@ -120,22 +161,75 @@ void PlayScene::UpdatePlayer(float dt)
 	p->posX += p->dx;
 	p->posY += p->dy;
 
-	if (p->rect.y < 0)
+	if (p->GetRect().y < 0)
 	{
-		grid->RestartGame();
-		p->posX = p->spawnX;
-		p->posY = p->spawnY;
+		this->RestartScene();
 	}
 
-	if (p->isThrowing)
+	if (p->isAttacking)
 	{
-		Weapon* weapon = WeaponFactory::CreateWeapon(p->weaponID);
+		Weapon* weapon = WeaponFactory::CreateWeapon(SWORD);
+		weapon->isReverse = p->isReverse;
+		weapon->posX = p->posX + (p->isReverse ? -22 : 22);
+		weapon->posY = p->posY + 8;
+		visibleObjects.insert(weapon);
+		p->isAttacking = false;
+	}
+
+	else if (p->isThrowing)
+	{
+		Weapon* weapon = WeaponFactory::CreateWeapon(p->weaponType);
 		weapon->posX = p->posX + (p->isReverse ? -5 : 5);
 		weapon->posY = p->posY + 5;
+		weapon->isReverse = p->isReverse;
 		if (p->isReverse) weapon->vx = -weapon->vx;
 		visibleObjects.insert(weapon);
 		p->isThrowing = false;
+		p->allow[THROWING] = false;
 	}
+}
+
+void PlayScene::RestartScene()
+{
+	isFrozenEnemies = false;
+	player->weaponType = NONE;
+	player->health = 16;
+	player->energy = 0;
+	scoreboard->timer = GAME_TIMER;
+
+	for (auto o : grid->respawnObjects)
+	{
+		switch (o->tag)
+		{
+		case ENEMY:
+		{
+			auto e = (Enemy*)o;
+			e->ChangeState(STANDING);
+			break;
+		}
+		case HOLDER:
+		{
+			auto h = (Holder*)o;
+			h->isDead = false;
+			break;
+		}
+		}
+		grid->MoveObject(o, o->spawnX, o->spawnY);
+	}
+
+	for (auto o : visibleObjects)
+	{
+		if (o->tag == ENEMY)
+		{
+			grid->MoveObject(o, o->spawnX, o->spawnY);
+		}
+	}
+
+	player->posX = player->spawnX;
+	player->posY = player->spawnY;
+
+	this->visibleObjects.clear();
+	grid->respawnObjects.clear();
 }
 
 // Tải Scene lên màn hình bằng cách vẽ object có trong trong Scene
@@ -149,6 +243,8 @@ void PlayScene::Render()
 	}
 
 	player->Render();
+
+	scoreboard->Render();
 }
 
 // Xử lí Scene khi nhấn phím

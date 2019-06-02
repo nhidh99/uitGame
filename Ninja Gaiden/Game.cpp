@@ -39,7 +39,7 @@ void Game::Init(HWND hWnd)
 	D3DXCreateSprite(d3ddev, &spriteHandler);
 
 	// Tạo Keyboard
-	DirectInput8Create((HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE), DIRECTINPUT_VERSION, IID_IDirectInput8, (VOID**)&di, NULL);
+	DirectInput8Create((HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE), DIRECTINPUT_VERSION, IID_IDirectInput8, (VOID * *)& di, NULL);
 
 	di->CreateDevice(GUID_SysKeyboard, &didv, NULL);
 	didv->SetDataFormat(&c_dfDIKeyboard);

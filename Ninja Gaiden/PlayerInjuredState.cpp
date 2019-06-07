@@ -14,7 +14,6 @@ PlayerInjuredState::PlayerInjuredState()
 	}
 
 	player->height = PLAYER_STANDING_HEIGHT;
-	player->allow[JUMPING] = player->allow[ATTACKING] = false;
 	player->vy = PLAYER_JUMPING_SPEED;
 	player->vx = player->isReverse ? PLAYER_INJURED_SPEED : -PLAYER_INJURED_SPEED;
 	StateName = INJURED;

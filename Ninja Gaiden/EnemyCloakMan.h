@@ -1,6 +1,5 @@
 #pragma once
 #include "Enemy.h"
-#include "WeaponDagger.h"
 
 class EnemyCloakMan : public Enemy 
 {

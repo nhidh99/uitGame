@@ -10,18 +10,65 @@ EnemyRunMan::EnemyRunMan()
 	speed = ENEMY_RUNMAN_SPEED;
 }
 
+void EnemyRunMan::DetectCurGround(std::unordered_set<Rect*> grounds)
+{
+	for (auto g : grounds)
+	{
+		if (this->posX >= g->x && this->posX <= g->x + g->width &&
+			this->posY - (this->height >> 1) <= g->y && this->posY > g->y)
+		{
+			this->vy = 0;
+			this->posY = g->y + (this->height >> 1);
+			this->curGroundBound = *g;
+			this->isOnGround = true;
+			this->curAnimation = animations[RUNNING];
+			break;
+		}
+	}
+}
+
 void EnemyRunMan::UpdateDistance(float dt)
 {
-	this->dx = vx * dt;
+	if (!this->isOnGround) this->vy -= 0.015;
 
-	if (this->vx > 0 && this->posX + (this->width >> 1) >= groundBound.x + groundBound.width)
+	if (this->isOnGround && ((this->vx < 0 && this->posX - 30 < curGroundBound.x)
+		|| (this->vx > 0 && this->posX + 30 > curGroundBound.x + curGroundBound.width)))
 	{
-		this->isReverse = true;
-		this->vx = -vx;
+		this->isOnGround = false;
+		this->vy = 0.25f;
+		this->curAnimation = animations[STANDING];
 	}
-	else if (this->vx < 0 && this->posX - (this->width >> 1) <= groundBound.x)
+
+	this->dx = vx * dt;
+	this->dy = vy * dt;
+}
+
+void EnemyRunMan::ChangeState(State StateName)
+{
+	switch (StateName)
 	{
-		this->isReverse = false;
-		this->vx = -vx;
+	case STANDING:
+	{
+		this->isActive = false;
+		this->isDead = false;
+		this->isOutScreen = false;
+		break;
 	}
+
+	case RUNNING:
+	{
+		auto distance = player->posX - this->spawnX;
+
+		if (activeDistance * distance > 0 && distance >= this->activeDistance)
+		{
+			this->curGroundBound = groundBound;
+			this->isOnGround = true;
+			this->vy = 0;
+			this->isActive = true;
+		}
+		break;
+	}
+	}
+	this->StateName = StateName;
+	this->curAnimation = animations[StateName];
 }

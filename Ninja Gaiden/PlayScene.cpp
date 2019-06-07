@@ -24,6 +24,10 @@ PlayScene::PlayScene(int level)
 	case 2:
 		endPoint = 3050;
 		break;
+
+	case 3:
+		endPoint = 300;
+		break;
 	}
 }
 
@@ -133,9 +137,46 @@ void PlayScene::UpdateObjects(float dt)
 				}
 				break;
 			}
+			case PANTHER:
+			{
+				auto p = (EnemyPanther*)e;
+				if (!p->isOnGround)
+				{
+					p->vy = -0.12f;
+					p->DetectCurGround(grid->GetVisibleGrounds());
+				}
+				break;
+			}
+			case RUNMAN:
+			{
+				auto r = (EnemyRunMan*)e;
+				if (!r->isOnGround)
+				{
+					r->DetectCurGround(grid->GetColliableGrounds(r));
+				}
+				break;
+			}
+			case BOSS:
+			{
+				auto boss = (EnemyBoss*)e;
+				if (boss->bulletCountdown == 0)
+				{
+					for (int i = 0; i < 3; ++i)
+					{
+						auto b = BulletFactory::CreateBullet(BOSS);
+						b->vx = e->isReverse ? -BULLET_BOSS_SPEED : BULLET_BOSS_SPEED;
+						b->posX = e->posX + (e->isReverse ? 15 * i : -15 * i);
+						b->posY = e->posY + (i - 1) * 20;
+						b->ChangeState(ACTIVE);
+						grid->AddObject(b);
+					}
+					boss->bulletCountdown = 3;
+				}
+			}
 			}
 			break;
 		}
+
 		case HOLDER:
 		{
 			auto h = (Holder*)o;
@@ -227,6 +268,7 @@ void PlayScene::RestartScene()
 	isFrozenEnemies = false;
 	p->isAttacking = false;
 	p->isThrowing = false;
+	p->allow[THROWING] = true;
 
 	for (auto o : grid->respawnObjects)
 	{
@@ -252,6 +294,8 @@ void PlayScene::RestartScene()
 	{
 		if (o->tag == ENEMY)
 		{
+			auto e = (Enemy*)o;
+			e->ChangeState(STANDING);
 			grid->MoveObject(o, o->spawnX, o->spawnY);
 		}
 	}

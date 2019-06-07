@@ -3,20 +3,18 @@
 #include "EnemySprite.h"
 #include "Cell.h"
 #include <algorithm>
-#include <ctime>
-#include <cstdlib>
 
 class Enemy : public Object
 {
 protected:
 	std::unordered_map<State, Animation*> animations;
-	Rect groundBound;
 	Animation* curAnimation;
+	Rect groundBound;
 
 public:
 	float speed;
 	State StateName;
-	bool isActive;
+	bool isActive, isOutScreen;
 	int bulletCount;
 	int bullets;
 
@@ -32,7 +30,7 @@ public:
 	{
 	}
 
-	void DetectGround(std::unordered_set<Rect*> grounds)
+	virtual void DetectGround(std::unordered_set<Rect*> grounds)
 	{
 		for (auto g : grounds)
 		{
@@ -42,8 +40,9 @@ public:
 				groundBound = *g;
 			}
 		}
-		this->spawnY = this->posY = groundBound.y + (this->height >> 1);
+		this->spawnY = this->posY = this->groundBound.y + (this->height >> 1);
 	}
+
 	void Render(float translateX = 0, float translateY = 0)
 	{
 		auto posX = this->posX + translateX;
@@ -104,6 +103,7 @@ public:
 		{
 		case STANDING:
 		{
+			this->isOutScreen = false;
 			this->isActive = false;
 			this->isDead = false;
 			break;

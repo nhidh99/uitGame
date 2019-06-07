@@ -136,6 +136,7 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="EnemyBazokaMan.cpp" />
+    <ClCompile Include="EnemyBoss.cpp" />
     <ClCompile Include="EnemyCloakMan.cpp" />
     <ClCompile Include="EnemyEagle.cpp" />
     <ClCompile Include="EnemyGunMan.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletBazokaMan.h" />
+    <ClInclude Include="BulletBoss.h" />
     <ClInclude Include="BulletFactory.h" />
     <ClInclude Include="BulletGunMan.h" />
     <ClInclude Include="BulletSprite.h" />
@@ -182,6 +184,7 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBazokaMan.h" />
+    <ClInclude Include="EnemyBoss.h" />
     <ClInclude Include="EnemyCloakMan.h" />
     <ClInclude Include="EnemyEagle.h" />
     <ClInclude Include="EnemyFactory.h" />

@@ -8,14 +8,14 @@
 // Các thông số và biến tổng dùng cho toàn bộ Game
 #define WINDOW_CLASS_NAME "Ninja Gaiden"		// Class Windows
 #define MAIN_WINDOW_TITLE "Ninja Gaiden"		// Tên cửa sổ
-#define SCREEN_WIDTH 312						// Chiều rộng cửa sổ
+#define SCREEN_WIDTH 256						// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176						// Chiều dài cửa sổ
-#define MAX_FRAME_RATE 90						// FPS
+#define MAX_FRAME_RATE 120						// FPS
 #define BACK_COLOR D3DCOLOR_XRGB(0, 0, 0)		// Màu nền BackBuffer
-#define DEFAULT_TPS 150							// Thời gian tồn tại của mỗi Frame (cho Animation)
+#define DEFAULT_TPS 120							// Thời gian tồn tại của mỗi Frame (cho Animation)
 #define GRAVITY_SPEED 0.014f					// Tốc độ trọng lực
 #define KEYBOARD_BUFFER_SIZE 1024
-#define NUMBER_MAP_LEVEL 2
+#define NUMBER_MAP_LEVEL 3
 #define TILE_SIZE 16
 
 // ===== Các thông số cho PLAYER ====
@@ -25,7 +25,7 @@
 #define PLAYER_JUMPING_SPEED 0.28f
 #define PLAYER_FALLING_SPEED 0.25f
 #define PLAYER_CLIMBING_SPEED 0.1f
-#define PLAYER_WIDTH 18
+#define PLAYER_WIDTH 20
 #define PLAYER_STANDING_HEIGHT 26
 #define PLAYER_SITTING_HEIGHT 18
 
@@ -67,14 +67,19 @@
 #define ENEMY_PANTHER_WIDTH 35
 #define ENEMY_PANTHER_HEIGHT 20
 #define ENEMY_PANTHER_SPEED 0.14f
+#define ENEMY_PANTHER_ACTIVE_DISTANCE 90
 #define ENEMY_RUNMAN_WIDTH 18
 #define ENEMY_RUNMAN_HEIGHT 32
-#define ENEMY_RUNMAN_SPEED 0.14f
+#define ENEMY_RUNMAN_SPEED 0.17f
+#define ENEMY_RUNMAN_ACTIVE_DISTANCE 85
 #define ENEMY_EAGLE_WIDTH 20
 #define ENEMY_EAGLE_HEIGHT 20
 #define ENEMY_EAGLE_MIN_SPEEDX 2.5f
 #define ENEMY_EAGLE_MIN_SPEEDY 1.5f
-#define ENEMY_EAGLE_DELAY_TIME 2000
+#define ENEMY_EAGLE_DELAY_TIME 1400
+#define ENEMY_EAGLE_ACTIVE_DISTANCE 80
+#define ENEMY_BOSS_WIDTH 36
+#define ENEMY_BOSS_HEIGHT 50
 
 // ===== CÁC THÔNG SỐ CHO HOLDERS & ITEM ====
 #define HOLDER_WIDTH 20
@@ -99,6 +104,9 @@
 #define BULLET_BAZOKAMAN_WIDTH 8
 #define BULLET_BAZOKAMAN_SPEED 0.15f
 #define BULLET_BAZOKAMAN_COUNT 1
+#define BULLET_BOSS_WIDTH 12
+#define BULLET_BOSS_HEIGHT 12
+#define BULLET_BOSS_SPEED 0.1f
 
 // ===== CAMERA =====
 #define camera Camera::GetInstance()
@@ -122,6 +130,7 @@ extern enum Tag
 	GROUND,
 	MAP1,
 	MAP2,
+	MAP3,
 	ENEMY,
 	HOLDER,
 	BULLET
@@ -141,8 +150,10 @@ extern enum Type
 	EAGLE,
 	BUTTERFLY,
 	BIRD,
+	BOSS,
 	DAGGER,
 	EXPLODED,
+	BIGEXPLODED,
 	BLUESPIRIT,
 	REDSPIRIT,
 	GLASSHOUR,

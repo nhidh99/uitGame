@@ -7,6 +7,7 @@
 #include "EnemyPanther.h"
 #include "EnemyBazokaMan.h"
 #include "EnemyRunMan.h"
+#include "EnemyBoss.h"
 
 class EnemyFactory
 {
@@ -25,6 +26,7 @@ public:
 		case 5: return new EnemyCloakMan();
 		case 6: return new EnemyBazokaMan();
 		case 7: return new EnemyRunMan();
+		case 8: return new EnemyBoss();
 		default: return NULL;
 		}
 	}

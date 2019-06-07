@@ -7,7 +7,7 @@ PlayerStandingState::PlayerStandingState()
 	player->vy = 0;
 	player->allow[MOVING] = true;
 	player->allow[JUMPING] = true;
-	player->allow[ATTACKING] = true;
+	player->allow[SITTING] = true;
 	StateName = STANDING;
 }
 

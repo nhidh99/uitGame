@@ -11,10 +11,10 @@ protected:
 	Animation* animation;
 
 public:
-	Weapon() 
-	{ 
-		tag = WEAPON; 
-		if (type != SWORD)
+	Weapon()
+	{
+		tag = WEAPON;
+		if (player->isThrowing)
 		{
 			player->allow[THROWING] = false;
 		}
@@ -22,7 +22,10 @@ public:
 
 	~Weapon()
 	{
-		player->allow[THROWING] = true;
+		if (type != SWORD)
+		{
+			player->allow[THROWING] = true;
+		}
 	}
 
 	virtual void Update(float dt) {};			// Update thông số của Object sau khoảng thời gian delta-time

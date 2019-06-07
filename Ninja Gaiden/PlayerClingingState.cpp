@@ -19,7 +19,7 @@ void PlayerClingingState::Update(float dt)
 
 void PlayerClingingState::HandleKeyboard()
 {
-	if (keyCode[DIK_SPACE])
+	if (keyCode[DIK_C])
 	{
 		if (!player->isReverse && keyCode[DIK_LEFT])
 		{
@@ -43,5 +43,4 @@ void PlayerClingingState::HandleKeyboard()
 		player->ChangeState(new PlayerClimbingState());
 		return;
 	}
-
 }

@@ -79,31 +79,13 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 		switch (obj->tag)
 		{
 		case ENEMY:
-		{
-			auto e = (Enemy*)obj;
-			if (e->StateName != DEAD)
-			{
-				auto r = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
-				if (r.isCollide)
-				{
-					result = r;
-					break;
-				}
-			}
-			break;
-		}
-
 		case BULLET:
 		{
-			auto b = (Bullet*)obj;
-			if (b->StateName != DEAD)
+			auto r = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
+			if (r.isCollide)
 			{
-				auto r = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
-				if (r.isCollide)
-				{
-					result = r;
-					break;
-				}
+				result = r;
+				break;
 			}
 			break;
 		}
@@ -285,48 +267,48 @@ void Player::Render(float translateX, float translateY)
 }
 
 // Xử lí nhấn phím (chung cho các State)
-void Player::OnKeyDown(int keyCode)
+void Player::OnKeyDown(int key)
 {
+	if (key == DIK_Z)
+	{
+		isFrozenEnemies = true;
+		frozenEnemiesTime = ENEMY_FROZEN_TIME;
+	}
+
 	if (this->stateName == INJURED) return;
 
-	switch (keyCode)
+	switch (key)
 	{
-		// Phím A: tấn công với vũ khí
-	case DIK_A:
-		if (allow[ATTACKING])
+		// Phím X: tấn công với vũ khí
+	case DIK_X:
+		if (!keyCode[DIK_UP])
 		{
-			allow[ATTACKING] = false;
-			ChangeState(new PlayerAttackingState());
-			this->isAttacking = true;
+			if (allow[ATTACKING])
+			{
+				allow[ATTACKING] = false;
+				ChangeState(new PlayerAttackingState());
+				this->isAttacking = true;
+			}
+		}
+		else
+		{
+			if (allow[THROWING] && weaponType != NONE && !this->isOnWall
+				&& this->stateName != ATTACKING_SIT && this->stateName != ATTACKING_STAND)
+			{
+				ChangeState(new PlayerAttackingState());
+				this->isThrowing = true;
+			}
 		}
 		break;
 
-		// Phím S: tấn công với item
-	case DIK_S:
-		if (allow[THROWING] && weaponType != NONE && !this->isOnWall
-			&& this->stateName != ATTACKING_SIT && this->stateName != ATTACKING_STAND)
-		{
-			ChangeState(new PlayerAttackingState());
-			this->isThrowing = true;
-		}
-		break;
-
-
-		// Phím Space: nhảy
-	case DIK_SPACE:
+		// Phím C: nhảy
+	case DIK_C:
 		if (allow[JUMPING])
 		{
 			allow[JUMPING] = false;
 			ChangeState(new PlayerJumpingState());
 		}
 		break;
-
-	case DIK_Z:
-	{
-		isFrozenEnemies = true;
-		frozenEnemiesTime = ENEMY_FROZEN_TIME;
-		break;
-	}
 	}
 }
 

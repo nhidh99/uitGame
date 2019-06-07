@@ -1,22 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Game Components</Filter>
-    </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
     <ClCompile Include="GameGlobal.cpp">
-      <Filter>Game Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Game Components</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteFactory.cpp">
-      <Filter>Game Components</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureFactory.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
@@ -53,28 +41,28 @@
       <Filter>Game Objects\Player</Filter>
     </ClCompile>
     <ClCompile Include="EnemySprite.cpp">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="EnemySwordMan.cpp">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Game Scenes</Filter>
+      <Filter>Game Scene</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
     <ClCompile Include="EnemyCloakMan.cpp">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="EnemyEagle.cpp">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="EnemyGunMan.cpp">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="EnemyPanther.cpp">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Cell.cpp">
       <Filter>Game Components</Filter>
@@ -82,17 +70,11 @@
     <ClCompile Include="Grid.cpp">
       <Filter>Game Components</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Game Components</Filter>
-    </ClCompile>
-    <ClCompile Include="MapFactory.cpp">
-      <Filter>Game Components</Filter>
-    </ClCompile>
     <ClCompile Include="PlayScene.cpp">
-      <Filter>Game Scenes</Filter>
+      <Filter>Game Scene</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>Game Scenes</Filter>
+      <Filter>Game Scene</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>Game Objects\Object</Filter>
@@ -104,19 +86,37 @@
       <Filter>Game Objects\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="EnemyBazokaMan.cpp">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="EnemyRunMan.cpp">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="WeaponRedShuriken.cpp">
       <Filter>Game Objects\Weapon</Filter>
     </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Game Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteFactory.cpp">
+      <Filter>Game Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureFactory.cpp">
+      <Filter>Game Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="MapFactory.cpp">
+      <Filter>Game Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Game Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Game Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBoss.cpp">
+      <Filter>Game Objects\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h">
-      <Filter>Game Components</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Game Components</Filter>
     </ClInclude>
@@ -124,15 +124,6 @@
       <Filter>Game Components</Filter>
     </ClInclude>
     <ClInclude Include="GameGlobal.h">
-      <Filter>Game Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Game Components</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteFactory.h">
-      <Filter>Game Components</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureFactory.h">
       <Filter>Game Components</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
@@ -172,13 +163,13 @@
       <Filter>Game Objects\Player</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemySprite.h">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemySwordMan.h">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Game Objects\Object</Filter>
@@ -187,28 +178,28 @@
       <Filter>Game Components</Filter>
     </ClInclude>
     <ClInclude Include="EnemyCloakMan.h">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemyEagle.h">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemyFactory.h">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemyGunMan.h">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemyPanther.h">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Holder.h">
-      <Filter>Game Objects\Holders</Filter>
+      <Filter>Game Objects\Holder</Filter>
     </ClInclude>
     <ClInclude Include="HolderButterfly.h">
-      <Filter>Game Objects\Holders</Filter>
+      <Filter>Game Objects\Holder</Filter>
     </ClInclude>
     <ClInclude Include="HolderSprite.h">
-      <Filter>Game Objects\Holders</Filter>
+      <Filter>Game Objects\Holder</Filter>
     </ClInclude>
     <ClInclude Include="Cell.h">
       <Filter>Game Components</Filter>
@@ -216,20 +207,14 @@
     <ClInclude Include="Grid.h">
       <Filter>Game Components</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Game Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MapFactory.h">
-      <Filter>Game Components</Filter>
-    </ClInclude>
     <ClInclude Include="PlayScene.h">
-      <Filter>Game Scenes</Filter>
+      <Filter>Game Scene</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Game Scenes</Filter>
+      <Filter>Game Scene</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
-      <Filter>Game Scenes</Filter>
+      <Filter>Game Scene</Filter>
     </ClInclude>
     <ClInclude Include="PlayerAttackingState.h">
       <Filter>Game Objects\Player</Filter>
@@ -247,7 +232,7 @@
       <Filter>Game Objects\Item</Filter>
     </ClInclude>
     <ClInclude Include="HolderFactory.h">
-      <Filter>Game Objects\Holders</Filter>
+      <Filter>Game Objects\Holder</Filter>
     </ClInclude>
     <ClInclude Include="ItemFactory.h">
       <Filter>Game Objects\Item</Filter>
@@ -304,22 +289,46 @@
       <Filter>Game Objects\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="HolderBird.h">
-      <Filter>Game Objects\Holders</Filter>
+      <Filter>Game Objects\Holder</Filter>
     </ClInclude>
     <ClInclude Include="EnemyBazokaMan.h">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="BulletBazokaMan.h">
       <Filter>Game Objects\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="EnemyRunMan.h">
-      <Filter>Game Objects\Enemies</Filter>
+      <Filter>Game Objects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ItemRedShuriken.h">
       <Filter>Game Objects\Item</Filter>
     </ClInclude>
     <ClInclude Include="WeaponRedShuriken.h">
       <Filter>Game Objects\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureFactory.h">
+      <Filter>Game Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Game Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteFactory.h">
+      <Filter>Game Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="MapFactory.h">
+      <Filter>Game Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Game Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Game Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBoss.h">
+      <Filter>Game Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletBoss.h">
+      <Filter>Game Objects\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -332,17 +341,8 @@
     <Filter Include="Game Objects\Player">
       <UniqueIdentifier>{926c6d78-9f98-4b75-bc52-1798ff89c8f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Objects\Enemies">
-      <UniqueIdentifier>{49202c04-ee6f-4a67-86f3-fdcd21b66279}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Scenes">
-      <UniqueIdentifier>{24633098-6da2-4532-abc5-aba5edb116d7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game Objects\Object">
       <UniqueIdentifier>{d6e68f4f-36d4-48a2-956b-4e9a33791b8d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Objects\Holders">
-      <UniqueIdentifier>{5ea9c494-dfa2-48be-bc3b-260cd6efaf0d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game Objects\Weapon">
       <UniqueIdentifier>{9c15a219-2622-45d4-aa02-5bcbe4d98392}</UniqueIdentifier>
@@ -352,6 +352,18 @@
     </Filter>
     <Filter Include="Game Objects\Bullet">
       <UniqueIdentifier>{770b8ccd-4dc6-4499-9882-fb8a051e2f06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Enemy">
+      <UniqueIdentifier>{49202c04-ee6f-4a67-86f3-fdcd21b66279}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Holder">
+      <UniqueIdentifier>{5ea9c494-dfa2-48be-bc3b-260cd6efaf0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Scene">
+      <UniqueIdentifier>{24633098-6da2-4532-abc5-aba5edb116d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Graphics">
+      <UniqueIdentifier>{3886177c-12cd-4ede-8b90-701ef62833dd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

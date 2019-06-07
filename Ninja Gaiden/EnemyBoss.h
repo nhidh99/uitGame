@@ -1,15 +1,20 @@
 #pragma once
 #include "Enemy.h"
 
-class EnemyBazokaMan : public Enemy
+class EnemyBoss : public Enemy
 {
 private:
+	bool firstJump;
+	int explodeTimes;
 	float delayTime;
-	Sprite* explodeBullet;
+	float delayDead;
 
 public:
-	EnemyBazokaMan();
+	int bulletCountdown;
+	EnemyBoss();
+	~EnemyBoss() {};
 	void UpdateDistance(float dt);
 	void Update(float dt);
+	void ChangeState(State StateName);
 	void Render(float translateX = 0, float translateY = 0);
 };

@@ -84,6 +84,19 @@ void Grid::CreateGridFile(int level)
 				auto e = EnemyFactory::CreateEnemy(obj->value[0]);
 				e->posX = obj->value[1];
 				e->posY = obj->value[2];
+
+				// PANTHER, EAGLE, RUNMAN: đọc thêm isReverseActive
+				switch (e->type)
+				{
+				case PANTHER:
+				case EAGLE:
+				case RUNMAN:
+				{
+					ifile >> value;
+					obj->value.push_back(value);
+					break;
+				}
+				}
 				rect = new Rect(e->GetRect());
 				delete e;
 				break;
@@ -96,7 +109,6 @@ void Grid::CreateGridFile(int level)
 			obj->topCell = rect->y / Cell::height;
 			obj->bottomCell = (rect->y - rect->height) / Cell::height;
 			delete rect;
-
 			objs.push_back(obj);
 		}
 
@@ -234,6 +246,7 @@ Grid::Grid(int level)
 			enemy->spawnX = enemy->posX = values[1];
 			enemy->spawnY = enemy->posY = values[2];
 
+			// Xác định ground xuất hiện cho các enemy ở đất
 			switch (enemy->type)
 			{
 			case SWORDMAN:
@@ -242,8 +255,35 @@ Grid::Grid(int level)
 			case PANTHER:
 			case RUNMAN:
 			case BAZOKAMAN:
+			case BOSS:
 				enemy->DetectGround(this->GetColliableGrounds(enemy));
 				break;
+			}
+
+			// Xác định hướng active cho các Enemy Panther, Eagle, Runman
+			switch (enemy->type)
+			{
+			case PANTHER:
+			{
+				ifile >> value;
+				auto panther = (EnemyPanther*)enemy;
+				panther->activeDistance = (value ? ENEMY_PANTHER_ACTIVE_DISTANCE : -ENEMY_PANTHER_ACTIVE_DISTANCE);
+				break;
+			}
+			case EAGLE:
+			{
+				ifile >> value;
+				auto eagle = (EnemyEagle*)enemy;
+				eagle->activeDistance = (value ? ENEMY_EAGLE_ACTIVE_DISTANCE : -ENEMY_EAGLE_ACTIVE_DISTANCE);
+				break;
+			}
+			case RUNMAN:
+			{
+				ifile >> value;
+				auto runman = (EnemyRunMan*)enemy;
+				runman->activeDistance = (value ? ENEMY_RUNMAN_ACTIVE_DISTANCE : -ENEMY_RUNMAN_ACTIVE_DISTANCE);
+				break;
+			}
 			}
 
 			ifile >> left >> top >> right >> bottom;
@@ -332,7 +372,6 @@ void Grid::RespawnEnemies()
 			auto e = (Enemy*)o;
 			if (!e->IsRespawnOnScreen())
 			{
-				e->isDead = false;
 				e->ChangeState(STANDING);
 				it = respawnObjects.erase(it);
 				this->MoveObject(e, e->spawnX, e->spawnY);
@@ -345,6 +384,12 @@ void Grid::RespawnEnemies()
 
 void Grid::MoveObject(Object * obj, float posX, float posY)
 {
+	if (obj->tag == ENEMY)
+	{
+		auto e = (Enemy*)obj;
+		if (e->isOutScreen) return;
+	}
+
 	auto r = obj->GetRect();
 	int oldLeftCell = r.x / Cell::width;
 	int oldRightCell = (r.x + r.width) / Cell::width;
@@ -413,31 +458,32 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 				cells[oldBottomCell][oldRightCell]->RemoveObject(obj);
 			}
 		}
-	}
 
-	if (TopCell < rows)
-	{
-		if (LeftCell >= 0)
+
+		if (TopCell < rows)
 		{
-			cells[TopCell][LeftCell]->objects.insert(obj);
+			if (LeftCell >= 0)
+			{
+				cells[TopCell][LeftCell]->objects.insert(obj);
+			}
+
+			if (LeftCell != RightCell && RightCell < columns)
+			{
+				cells[TopCell][RightCell]->objects.insert(obj);
+			}
 		}
 
-		if (LeftCell != RightCell && RightCell < columns)
+		if (BottomCell < rows)
 		{
-			cells[TopCell][RightCell]->objects.insert(obj);
-		}
-	}
+			if (LeftCell >= 0)
+			{
+				cells[BottomCell][LeftCell]->objects.insert(obj);
+			}
 
-	if (BottomCell < rows)
-	{
-		if (LeftCell >= 0)
-		{
-			cells[BottomCell][LeftCell]->objects.insert(obj);
-		}
-
-		if (LeftCell != RightCell && RightCell < columns)
-		{
-			cells[BottomCell][RightCell]->objects.insert(obj);
+			if (LeftCell != RightCell && RightCell < columns)
+			{
+				cells[BottomCell][RightCell]->objects.insert(obj);
+			}
 		}
 	}
 }
@@ -498,16 +544,19 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 					if (e->isDead)
 					{
 						it = c->objects.erase(it);
-						//this->RemoveObject(e);
 						respawnObjects.insert(e);
 						continue;
 					}
-
-					else if (!e->isActive)
+					else if (!(e->isActive || e->isOutScreen))
 					{
+						e->ChangeState(RUNNING);
 						e->isReverse = (player->posX < e->posX);
 						e->vx = (e->isReverse ? -e->speed : e->speed);
-						e->ChangeState(RUNNING);
+					}
+
+					if (e->isActive)
+					{
+						setObjects.insert(e);
 					}
 					break;
 				}
@@ -524,10 +573,10 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 						i->DetectGround(this->GetVisibleGrounds());
 						setObjects.insert(i);
 						this->AddObject(i);
-						//this->RemoveObject(h);
 						this->respawnObjects.insert(h);
 						continue;
 					}
+					else setObjects.insert(o);
 					break;
 				}
 
@@ -540,10 +589,10 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 						delete o;
 						continue;
 					}
+					else setObjects.insert(o);
 					break;
 				}
 				}
-				setObjects.insert(o);
 			}
 
 			else //Object is out of camera
@@ -559,7 +608,7 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 						it = c->objects.erase(it);
 						if (e->IsRespawnOnScreen())
 						{
-							//this->RemoveObject(e);
+							e->isOutScreen = true;
 							respawnObjects.insert(e);
 						}
 						else
@@ -655,15 +704,32 @@ std::unordered_set<Object*> Grid::GetColliableObjects(Object * obj)
 			if (x < 0 || x >= columns) continue;
 			for (auto o : cells[y][x]->objects)
 			{
-				if (o->tag == ENEMY)
+				switch (o->tag)
+				{
+				case ENEMY:
 				{
 					auto e = (Enemy*)o;
-					if (e->isActive)
+					if (e->isActive && e->StateName != DEAD)
 					{
 						objs.insert(e);
 					}
+					break;
 				}
-				else objs.insert(o);
+				case BULLET:
+				{
+					auto b = (Bullet*)o;
+					if (b->StateName != DEAD)
+					{
+						objs.insert(b);
+					}
+					break;
+				}
+				default:
+				{
+					objs.insert(o);
+					break;
+				}
+				}
 			}
 		}
 	}

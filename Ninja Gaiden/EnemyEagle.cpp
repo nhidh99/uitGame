@@ -71,3 +71,32 @@ void EnemyEagle::Update(float dt)
 		delayTime = ENEMY_EAGLE_DELAY_TIME >> 1;
 	}
 }
+
+void EnemyEagle::ChangeState(State StateName)
+{
+	switch (StateName)
+	{
+	case STANDING:
+	{
+		this->isActive = false;
+		this->isDead = false;
+		this->isOutScreen = false;
+		break;
+	}
+
+	case RUNNING:
+	{
+		auto distance = player->posX - this->spawnX;
+
+		if (activeDistance * distance > 0 && distance >= this->activeDistance)
+		{
+			this->dx = this->dy = 0;
+			this->isActive = true;
+		}
+		break;
+	}
+	}
+
+	this->StateName = StateName;
+	this->curAnimation = animations[StateName];
+}

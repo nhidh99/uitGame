@@ -121,6 +121,9 @@
     <ClCompile Include="ScoreBoard.cpp">
       <Filter>Game Objects\Font</Filter>
     </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Game Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -321,6 +324,9 @@
     <ClInclude Include="ScoreBoard.h">
       <Filter>Game Objects\Font</Filter>
     </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Game Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game Components">
@@ -356,5 +362,8 @@
     <Filter Include="Game Objects\Font">
       <UniqueIdentifier>{cd1b4b8d-c807-41a8-aa5e-693ad61f14e3}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -50,6 +50,7 @@ public:
 						scoreboard->score += 100;
 						break;
 					}
+					Sound::getInstance()->play("sound13", false, 1);
 					break;
 				}
 

@@ -230,6 +230,12 @@ void ScoreBoard::Update(float dt)
 		{
 			this->score += 200;
 			this->timer -= 1000;
+			Sound::getInstance()->play("sound9", false, 1);
+		}
+
+		if (this->timer == 0)
+		{
+			this->isEndGame = false;
 		}
 	}
 	else

@@ -2,6 +2,7 @@
 #include "TextureFactory.h"
 #include "SpriteFactory.h"
 #include "MapFactory.h"
+#include "Sound.h"
 
 class Scene
 {
@@ -13,4 +14,5 @@ public:
 	virtual void OnKeyDown(int keyCode) {};		// Xử lí Scene khi nhấn phím
 	virtual void OnKeyUp(int keyCode) {};		// Xử lí Scene khi thả phím
 	virtual void LoadFonts();
+	virtual void LoadSound();
 };

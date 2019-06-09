@@ -5,7 +5,7 @@ Game::Game(HWND hWnd)
 {
 	// Khởi tạo các Components cần thiết
 	this->Init(hWnd);
-
+	Sound::create(hWnd);
 	// Tạo CurScene
 	SceneManager::GetInstance()->ReplaceScene(new PlayScene());
 	CurScene = SceneManager::GetInstance()->GetCurScene();

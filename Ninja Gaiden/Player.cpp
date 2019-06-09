@@ -99,7 +99,7 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 		case ITEM:
 		{
 			auto i = (Item*)obj;
-
+			Sound::getInstance()->play("sound17", false, 1); //item
 			if (this->GetRect().IsContain(i->GetRect()))
 			{
 				i->isDead = true;
@@ -280,6 +280,7 @@ void Player::OnKeyDown(int keyCode)
 			allow[ATTACKING] = false;
 			ChangeState(new PlayerAttackingState());
 			this->isAttacking = true;
+			Sound::getInstance()->play("sound1", false, 1);
 		}
 		break;
 
@@ -314,6 +315,7 @@ void Player::OnKeyDown(int keyCode)
 		{
 			allow[JUMPING] = false;
 			ChangeState(new PlayerJumpingState());
+			Sound::getInstance()->play("sound2", false, 1);
 		}
 		break;
 

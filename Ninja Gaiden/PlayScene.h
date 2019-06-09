@@ -6,6 +6,7 @@
 #include "WeaponFactory.h"
 #include "BulletFactory.h"
 #include "ScoreBoard.h"
+#include "Sound.h"
 
 class PlayScene : public Scene
 {

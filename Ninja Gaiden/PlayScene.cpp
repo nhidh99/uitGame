@@ -12,6 +12,8 @@ PlayScene::PlayScene()
 
 	camera->x = 0;
 	camera->y = SCREEN_HEIGHT;
+
+	Sound::getInstance()->play("stage3-1", true, 5);
 }
 
 PlayScene::~PlayScene()
@@ -30,7 +32,7 @@ void PlayScene::Update(float dt)
 		this->RestartScene();
 	}
 	scoreboard->Update(dt);
-	if (scoreboard->timer == 1000)
+	if (player->posX >= 1910)
 	{
 		scoreboard->isEndGame = true;
 	}

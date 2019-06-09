@@ -7,6 +7,7 @@ Scene::Scene()
 	SpriteFactory::GetInstance()->LoadResources();
 	MapFactory::GetInstance()->LoadResources();
 	this->LoadFonts();
+	this->LoadSound();
 }
 
 void Scene::LoadFonts()
@@ -117,4 +118,46 @@ void Scene::LoadFonts()
 	//Add health sprite
 	SpriteFactory::GetInstance()->AddSprite(new FontSprite('*', 489, 6,	495, 31));
 	SpriteFactory::GetInstance()->AddSprite(new FontSprite('*', 533, 6, 539, 31));
+}
+
+void Scene::LoadSound()
+{
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/01.wav", "sound1");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/02.wav", "sound2");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/03.wav", "sound3");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/04.wav", "sound4");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/05.wav", "sound5");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/06.wav", "sound6");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/07.wav", "sound7");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/08.wav", "sound8");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/09.wav", "sound9");//score gain
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/10.wav", "sound10");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/11.wav", "sound11");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/12.wav", "sound12");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/13.wav", "sound13");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/14.wav", "sound14");//score gain
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/15.wav", "sound15");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/16.wav", "sound16");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/17.wav", "sound17");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/18.wav", "sound18"); //Gunman
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/19.wav", "sound19");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/20.wav", "sound20");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/21.wav", "sound21");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/22.wav", "sound22");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/23.wav", "sound23");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/24.wav", "sound24");//gunman
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/25.wav", "sound25");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/26.wav", "sound26");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/27.wav", "sound27");//bazokaman
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/28.wav", "sound28");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/29.wav", "sound29");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/30.wav", "sound30");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/31.wav", "sound31");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/32.wav", "sound32");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/33.wav", "sound33");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/34.wav", "sound34");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/35.wav", "sound35");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/Stage3-1.wav", "stage3-1");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/Stage3-2.wav", "stage3-2");
+	Sound::getInstance()->loadSound((char*)"Resources/Sound/Stage3-3.wav", "stage3-3");
 }

@@ -115,6 +115,9 @@
     <ClCompile Include="EnemyBoss.cpp">
       <Filter>Game Objects\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Game Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -330,6 +333,9 @@
     <ClInclude Include="BulletBoss.h">
       <Filter>Game Objects\Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Game Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game Components">
@@ -365,5 +371,8 @@
     <Filter Include="Game Graphics">
       <UniqueIdentifier>{3886177c-12cd-4ede-8b90-701ef62833dd}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Bullet.h"
 #include <unordered_set>
+#include "Sound.h"
 
 class Player : public Object
 {

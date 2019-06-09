@@ -7,6 +7,7 @@
 #include <vector>
 #include <sstream>
 #include "Player.h"
+#include "Sound.h"
 
 class ScoreBoard {
 public:

@@ -29,6 +29,11 @@ Player::Player()
 	tag = PLAYER;
 	width = PLAYER_WIDTH;
 	height = PLAYER_STANDING_HEIGHT;
+
+	health = 16;
+	score = 0;
+	energy = 0;
+}
 }
 
 // Destructor
@@ -93,7 +98,7 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 		case ITEM:
 		{
 			auto i = (Item*)obj;
-
+			Sound::getInstance()->play("sound17", false, 1); //item
 			if (this->GetRect().IsContain(i->GetRect()))
 			{
 				i->isDead = true;
@@ -267,34 +272,38 @@ void Player::Render(float translateX, float translateY)
 }
 
 // Xử lí nhấn phím (chung cho các State)
-void Player::OnKeyDown(int key)
+void Player::OnKeyDown(int keyCode)
 {
-	if (key == DIK_Z)
+	switch (keyCode)
 	{
-		isFrozenEnemies = true;
-		frozenEnemiesTime = ENEMY_FROZEN_TIME;
-	}
-
-	if (this->stateName == INJURED) return;
-
-	switch (key)
-	{
-		// Phím X: tấn công với vũ khí
-	case DIK_X:
-		if (!keyCode[DIK_UP])
+		// Phím A: tấn công với vũ khí
+	case DIK_A:
+		if (allow[ATTACKING])
 		{
-			if (allow[ATTACKING])
-			{
-				allow[ATTACKING] = false;
-				ChangeState(new PlayerAttackingState());
-				this->isAttacking = true;
-			}
+			allow[ATTACKING] = false;
+			ChangeState(new PlayerAttackingState());
+			this->isAttacking = true;
 		}
-		else
+		break;
+
+		// Phím S: tấn công với item
+	case DIK_S:
+		if (allow[THROWING] && weaponType != NONE
+			&& stateName != ATTACKING_STAND && stateName != ATTACKING_SIT)
 		{
-			if (allow[THROWING] && weaponType != NONE && !this->isOnWall
-				&& this->stateName != ATTACKING_SIT && this->stateName != ATTACKING_STAND)
+			if (this->energy >= 3)
 			{
+				switch (this->weaponType)
+				{
+					case BLUESHURIKEN:
+						this->energy -= 3;
+						break;
+					case FIREWHEEL:
+						if(this->energy >= 5)
+							this->energy -= 5;
+						break;
+				}
+				allow[THROWING] = false;
 				ChangeState(new PlayerAttackingState());
 				this->isThrowing = true;
 			}
@@ -307,6 +316,7 @@ void Player::OnKeyDown(int key)
 		{
 			allow[JUMPING] = false;
 			ChangeState(new PlayerJumpingState());
+			Sound::getInstance()->play("sound2", false, 1);
 		}
 		break;
 	}

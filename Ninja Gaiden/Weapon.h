@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Holder.h"
+#include "ScoreBoard.h"
 #include <unordered_set>
 #include <map>
 
@@ -72,6 +73,22 @@ public:
 				{
 					auto e = (Enemy*)obj;
 					e->ChangeState(DEAD);
+
+					switch (e->type)
+					{
+					case EAGLE:
+					case CLOAKMAN:
+						scoreboard->score += 300;
+						break;
+					case PANTHER:
+					case GUNMAN:
+						scoreboard->score += 200;
+						break;
+					default:
+						scoreboard->score += 100;
+						break;
+					}
+					Sound::getInstance()->play("sound13", false, 1);
 					break;
 				}
 

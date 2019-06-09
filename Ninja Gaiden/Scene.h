@@ -11,5 +11,4 @@ public:
 	virtual void Render() {};					// Render các UI Components lên Scene
 	virtual void OnKeyDown(int keyCode) {};		// Xử lí Scene khi nhấn phím
 	virtual void OnKeyUp(int keyCode) {};		// Xử lí Scene khi thả phím
-	virtual void LoadFonts();
 };

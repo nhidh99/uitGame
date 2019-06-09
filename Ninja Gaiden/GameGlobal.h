@@ -10,7 +10,7 @@
 #define MAIN_WINDOW_TITLE "Ninja Gaiden"		// Tên cửa sổ
 #define SCREEN_WIDTH 256						// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176						// Chiều dài cửa sổ
-#define MAX_FRAME_RATE 120						// FPS
+#define MAX_FRAME_RATE 90						// FPS
 #define BACK_COLOR D3DCOLOR_XRGB(0, 0, 0)		// Màu nền BackBuffer
 #define DEFAULT_TPS 120							// Thời gian tồn tại của mỗi Frame (cho Animation)
 #define GRAVITY_SPEED 0.014f					// Tốc độ trọng lực
@@ -108,6 +108,11 @@
 #define BULLET_BOSS_HEIGHT 12
 #define BULLET_BOSS_SPEED 0.1f
 
+// ==== SCOREBOARD ====
+#define scoreboard ScoreBoard::GetInstance()
+#define GAME_TIMER 150000
+#define SCALE_RATE 0.5
+
 // ===== CAMERA =====
 #define camera Camera::GetInstance()
 extern HINSTANCE hInstance;										// hInstance của windows hiện tại
@@ -131,6 +136,7 @@ extern enum Tag
 	MAP1,
 	MAP2,
 	MAP3,
+	FONT,
 	ENEMY,
 	HOLDER,
 	BULLET

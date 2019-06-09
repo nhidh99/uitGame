@@ -23,7 +23,6 @@ public:
 	~PlayScene();
 
 	bool PlayerIsOnAirGround();
-
 	void Update(float dt);
 	void UpdateScene();						// Update các thông số các đối tượng trong Scene
 	void UpdateVisibleObjects();

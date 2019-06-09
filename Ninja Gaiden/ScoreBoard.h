@@ -1,10 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #pragma once
 #include "GameGlobal.h"
-#include <unordered_map>
-#include <string.h>
 #include "SpriteFactory.h"
-#include <vector>
 #include <sstream>
 #include "Player.h"
 #include "Sound.h"
@@ -19,11 +16,10 @@ public:
 	int playerEnergy;
 	bool isEndGame;
 	Type playerWeapon;
+	SpriteFactory* sprites;
 	static ScoreBoard* _instance;
 
 	ScoreBoard();
-
-
 	void Render();
 	void RenderScore();
 	void RenderStage();

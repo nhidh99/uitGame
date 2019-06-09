@@ -15,6 +15,16 @@ PlayScene::PlayScene(int level)
 	camera->x = 0;
 	camera->y = SCREEN_HEIGHT;
 
+	char soundFileName[10];
+	sprintf_s(soundFileName, "stage3-%d", level);
+	Sound::getInstance()->play(soundFileName, true, 5);
+
+	if (level > 1)
+	{
+		sprintf_s(soundFileName, "stage3-%d", level-1);
+		Sound::getInstance()->stop(soundFileName);
+	}
+
 	switch (level)
 	{
 	case 1:
@@ -318,6 +328,8 @@ void PlayScene::Render()
 	}
 
 	p->Render();
+
+	scoreboard->Render();
 }
 
 // Xử lí Scene khi nhấn phím

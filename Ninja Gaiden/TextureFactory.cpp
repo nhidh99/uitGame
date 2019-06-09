@@ -12,6 +12,7 @@ void TextureFactory::LoadResources()
 	textures->AddTexture(MAP3, "Resources\\tiles3.png");
 	textures->AddTexture(ITEM, "Resources\\item.png");
 	textures->AddTexture(ENEMY, "Resources\\enemy.png");
+	textures->AddTexture(FONT, "Resources\\font.png");
 }
 
 // Thêm một Texture vào danh sách, quy định theo Tag

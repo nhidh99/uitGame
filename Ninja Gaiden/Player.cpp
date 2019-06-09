@@ -34,7 +34,6 @@ Player::Player()
 	score = 0;
 	energy = 0;
 }
-}
 
 // Destructor
 Player::~Player()
@@ -90,7 +89,7 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 			if (r.isCollide)
 			{
 				result = r;
-				break;
+				--health;
 			}
 			break;
 		}
@@ -98,13 +97,23 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 		case ITEM:
 		{
 			auto i = (Item*)obj;
-			Sound::getInstance()->play("sound17", false, 1); //item
+			Sound::getInstance()->play("sound17", false, 1);
 			if (this->GetRect().IsContain(i->GetRect()))
 			{
 				i->isDead = true;
 
 				switch (i->type)
 				{
+				case BLUESPIRIT:
+				{
+					this->energy += 5;
+					break;
+				}
+				case REDSPIRIT:
+				{
+					this->energy += 10;
+					break;
+				}
 				case GLASSHOUR:
 				{
 					isFrozenEnemies = true;
@@ -121,6 +130,7 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 				}
 				}
 			}
+			break;
 		}
 		}
 	}
@@ -272,43 +282,67 @@ void Player::Render(float translateX, float translateY)
 }
 
 // Xử lí nhấn phím (chung cho các State)
-void Player::OnKeyDown(int keyCode)
+void Player::OnKeyDown(int key)
 {
-	switch (keyCode)
+	if (key == DIK_Z)
 	{
-		// Phím A: tấn công với vũ khí
-	case DIK_A:
-		if (allow[ATTACKING])
-		{
-			allow[ATTACKING] = false;
-			ChangeState(new PlayerAttackingState());
-			this->isAttacking = true;
-		}
-		break;
+		isFrozenEnemies = true;
+		frozenEnemiesTime = ENEMY_FROZEN_TIME;
+	}
 
-		// Phím S: tấn công với item
-	case DIK_S:
-		if (allow[THROWING] && weaponType != NONE
-			&& stateName != ATTACKING_STAND && stateName != ATTACKING_SIT)
+	if (this->stateName == INJURED) return;
+
+	switch (key)
+	{
+		// Phím X: tấn công với vũ khí
+	case DIK_X:
+	{
+		if (!keyCode[DIK_UP])
 		{
-			if (this->energy >= 3)
+			if (allow[ATTACKING])
+			{
+				allow[ATTACKING] = false;
+				Sound::getInstance()->play("sound1", false, 1);
+				ChangeState(new PlayerAttackingState());
+				this->isAttacking = true;
+			}
+		}
+		else
+		{
+			if (allow[THROWING] && weaponType != NONE && !this->isOnWall
+				&& this->stateName != ATTACKING_SIT && this->stateName != ATTACKING_STAND)
 			{
 				switch (this->weaponType)
 				{
-					case BLUESHURIKEN:
+				case BLUESHURIKEN:
+				{
+					if (this->energy >= 3)
+					{
 						this->energy -= 3;
 						break;
-					case FIREWHEEL:
-						if(this->energy >= 5)
-							this->energy -= 5;
+					}
+					else return;
+				}
+
+				case FIREWHEEL:
+				case REDSHURIKEN:
+				{
+					if (this->energy >= 5)
+					{
+						this->energy -= 5;
 						break;
+					}
+					else return;
 				}
 				allow[THROWING] = false;
+				Sound::getInstance()->play("sound1", false, 1);
 				ChangeState(new PlayerAttackingState());
 				this->isThrowing = true;
+				}
 			}
 		}
 		break;
+	}
 
 		// Phím C: nhảy
 	case DIK_C:
@@ -316,7 +350,6 @@ void Player::OnKeyDown(int keyCode)
 		{
 			allow[JUMPING] = false;
 			ChangeState(new PlayerJumpingState());
-			Sound::getInstance()->play("sound2", false, 1);
 		}
 		break;
 	}

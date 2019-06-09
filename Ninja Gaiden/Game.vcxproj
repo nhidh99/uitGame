@@ -143,12 +143,15 @@
     <ClCompile Include="EnemyPanther.cpp" />
     <ClCompile Include="EnemyRunMan.cpp" />
     <ClCompile Include="EnemySprite.cpp" />
+    <ClCompile Include="FontSprite.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameGlobal.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapFactory.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ScoreBoard.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="WeaponBlueShuriken.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="WeaponRedShuriken.cpp" />
@@ -192,6 +195,7 @@
     <ClInclude Include="EnemyPanther.h" />
     <ClInclude Include="EnemyRunMan.h" />
     <ClInclude Include="EnemySprite.h" />
+    <ClInclude Include="FontSprite.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameGlobal.h" />
     <ClInclude Include="Grid.h" />
@@ -214,6 +218,8 @@
     <ClInclude Include="ItemSprite.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapFactory.h" />
+    <ClInclude Include="ScoreBoard.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WeaponFactory.h" />
     <ClInclude Include="WeaponBlueShuriken.h" />

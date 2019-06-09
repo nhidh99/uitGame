@@ -22,6 +22,10 @@ public:
 	~Player();
 	static Player* GetInstance();
 
+	int health;
+	int score;
+	int energy;
+
 	bool isOnGround, isOnWall;
 	bool isThrowing, isAttacking;
 	Rect groundBound;

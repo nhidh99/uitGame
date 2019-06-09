@@ -1,13 +1,14 @@
 #pragma once
 #include "dsound.h"
 #include "windows.h"
-#include <map>
+#include <unordered_map>
 #include <string>
 #include <iostream>
 #include <mmsystem.h>
 #pragma comment(lib, "dsound.lib")
 #pragma comment(lib, "dxguid.lib")
 #pragma comment(lib, "winmm.lib")
+
 class Sound
 {
 public:
@@ -27,8 +28,10 @@ public:
 		char dataChunkId[4];
 		unsigned long dataSize;
 	};
+
 	float volume;
 	void static create(HWND hWnd);
+	void LoadResources();
 	void setVolume(float percentage, std::string name = "");
 	void loadSound(char* fileName, std::string name);
 	void play(std::string name, bool infiniteLoop, int times);
@@ -39,12 +42,13 @@ public:
 	void mute();
 	void unMute();
 	void cleanUp();
+
 private:
 	Sound(HWND hWnd);
 	static Sound * instance;
 	IDirectSound8* pDevice;
 	IDirectSoundBuffer* primaryBuffer;
-	std::map<std::string, IDirectSoundBuffer8*> soundBufferMap;
+	std::unordered_map<std::string, IDirectSoundBuffer8*> soundBufferMap;
 	bool isMute;
 
 };

@@ -12,6 +12,7 @@ void Game::LoadResources()
 	TextureFactory::GetInstance()->LoadResources();
 	SpriteFactory::GetInstance()->LoadResources();
 	MapFactory::GetInstance()->LoadResources();
+	Sound::getInstance()->LoadResources();
 	SceneManager::GetInstance()->ReplaceScene(new PlayScene(1));
 }
 
@@ -58,6 +59,9 @@ void Game::Init(HWND hWnd)
 
 	didv->SetProperty(DIPROP_BUFFERSIZE, &dipdw.diph);
 	didv->Acquire();
+
+	// Tạo Sound
+	Sound::create(hWnd);
 }
 
 void Game::ProcessKeyboard()

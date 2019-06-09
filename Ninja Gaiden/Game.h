@@ -6,7 +6,6 @@
 #include "TextureFactory.h"
 #include "PlayScene.h"
 #include <WinUser.h>
-#include "Audio.h"
 
 class Game
 {
@@ -15,9 +14,6 @@ private:
 	LPDIRECTINPUTDEVICE8 didv;								// The keyboard device
 	BYTE  keyStates[256];									// DirectInput keyboard state buffer 
 	DIDEVICEOBJECTDATA keyEvents[KEYBOARD_BUFFER_SIZE];		// Buffered keyboard data
-
-	std::unique_ptr<DirectX::SoundEffect> m_explode;
-	std::unique_ptr<DirectX::SoundEffect> m_ambient;
 	
 public:
 	Game(HWND hWnd);				// Constructor Game từ Windows đã tạo

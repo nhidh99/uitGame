@@ -620,7 +620,7 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 					break;
 				}
 
-				case WEAPON: case ITEM: case BULLET:
+				case ITEM: case BULLET:
 				{
 					it = c->objects.erase(it);
 					this->RemoveObject(o);

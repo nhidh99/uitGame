@@ -52,7 +52,7 @@ void Player::Respawn()
 	this->isThrowing = false;
 	this->SetHealth(16);
 	this->SetEnergy(0);
-	this->SetWeapon(NONE);
+	this->SetWeapon(FIREWHEEL);
 	this->posX = this->spawnX;
 	this->posY = this->spawnY;
 }

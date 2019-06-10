@@ -14,6 +14,7 @@ PlayScene::PlayScene(int level)
 
 	camera->x = 0;
 	camera->y = SCREEN_HEIGHT;
+	scoreboard->stage = level;
 
 	char soundFileName[10];
 	sprintf_s(soundFileName, "stage%d", level);

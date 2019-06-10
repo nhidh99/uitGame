@@ -1,4 +1,4 @@
-﻿  Game.cpp
+﻿  ScoreBoard.cpp
   C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
 C:\uitGame\Ninja Gaiden\GameGlobal.h(151): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
 C:\uitGame\Ninja Gaiden\GameGlobal.h(180): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
@@ -8,10 +8,45 @@ C:\uitGame\Ninja Gaiden\WeaponSprite.h(16): warning C4244: 'argument': conversio
 C:\uitGame\Ninja Gaiden\HolderSprite.h(20): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
 C:\uitGame\Ninja Gaiden\ItemSprite.h(19): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
 C:\uitGame\Ninja Gaiden\BulletSprite.h(20): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\uitGame\Ninja Gaiden\Item.h(29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\uitGame\Ninja Gaiden\Item.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\uitGame\Ninja Gaiden\Enemy.h(96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\uitGame\Ninja Gaiden\WeaponFireWheel.h(20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\uitGame\Ninja Gaiden\Game.cpp(126): warning C4018: '>=': signed/unsigned mismatch
-C:\uitGame\Ninja Gaiden\Game.cpp(129): warning C4244: 'argument': conversion from 'unsigned long' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(43): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(48): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(55): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(56): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(57): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(58): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(71): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(77): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(82): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(83): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(84): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(88): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(91): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(91): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(102): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(106): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(107): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(108): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(109): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(111): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(115): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(115): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(120): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(120): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(128): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(140): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(151): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(161): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(162): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(163): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(164): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(185): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(192): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(204): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(204): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\ScoreBoard.cpp(227): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
   Game.vcxproj -> C:\uitGame\Ninja Gaiden\x64\Debug\Game.exe

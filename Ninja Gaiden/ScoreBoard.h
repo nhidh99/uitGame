@@ -14,10 +14,14 @@ public:
 	int playerEnergy;
 	Type playerWeapon;
 	SpriteFactory* sprites;
-	static ScoreBoard* _instance;
 
 	ScoreBoard();
 	void Render();
+	void Update(float dt);
+	static ScoreBoard* GetInstance();
+
+private:
+	static ScoreBoard* _instance;
 	void RenderScore();
 	void RenderStage();
 	void RenderTimer();
@@ -27,7 +31,4 @@ public:
 	void RenderPlayerHealth();
 	void RenderEnemyHealth();
 	void RenderString(std::string str, int x, int y);
-
-	void Update(float dt);
-	static ScoreBoard* GetInstance();
 };

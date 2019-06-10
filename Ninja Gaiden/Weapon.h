@@ -73,6 +73,7 @@ public:
 				{
 					auto e = (Enemy*)obj;
 					e->ChangeState(DEAD);
+					break;
 				}
 
 				case HOLDER:

@@ -53,9 +53,9 @@ void ScoreBoard::RenderStage()
 {
 	RenderString("STAGE", 135, 15);
 	sprites->GetSprite(FONT, 36)->ScaleRender(185, 15, SCALE_RATE, SCALE_RATE);
-	sprites->GetSprite(FONT, int('3' - '0') + 26)->ScaleRender(195, 15, SCALE_RATE, SCALE_RATE);
+	sprites->GetSprite(FONT, 29)->ScaleRender(195, 15, SCALE_RATE, SCALE_RATE);
 	sprites->GetSprite(FONT, 36)->ScaleRender(205, 15, SCALE_RATE, SCALE_RATE);
-	sprites->GetSprite(FONT, int('1' - '0') + 26)->ScaleRender(215, 15, SCALE_RATE, SCALE_RATE);
+	sprites->GetSprite(FONT, stage + 26)->ScaleRender(215, 15, SCALE_RATE, SCALE_RATE);
 }
 
 void ScoreBoard::RenderTimer()

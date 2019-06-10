@@ -5,10 +5,10 @@ PlayScene::PlayScene(int level)
 	map = MapFactory::GetInstance()->GetMap(level);
 	grid = new Grid(level);
 	this->level = level;
-	p = player;
 
-	p->spawnX = p->posX = 50;
-	p->spawnY = p->posY = 50;
+	p = player;
+	p->spawnX = p->spawnY = 50;
+	p->Respawn();
 	p->DetectSpawnY(grid->GetColliableGrounds(p));
 	p->ChangeState(new PlayerStandingState());
 
@@ -16,12 +16,13 @@ PlayScene::PlayScene(int level)
 	camera->y = SCREEN_HEIGHT;
 
 	char soundFileName[10];
-	sprintf_s(soundFileName, "stage3-%d", level);
-	Sound::getInstance()->play(soundFileName, true, 5);
+	sprintf_s(soundFileName, "stage%d", level);
+	Sound::getInstance()->play(soundFileName, true);
+	Sound::getInstance()->setVolume(90.0f, soundFileName);
 
 	if (level > 1)
 	{
-		sprintf_s(soundFileName, "stage3-%d", level-1);
+		sprintf_s(soundFileName, "stage%d", level - 1);
 		Sound::getInstance()->stop(soundFileName);
 	}
 
@@ -64,12 +65,19 @@ bool PlayScene::PlayerIsOnAirGround()
 // Update các thông số các đối tượng trong Scene
 void PlayScene::Update(float dt)
 {
+	this->UpdateScoreboard(dt);
 	this->UpdateScene();
 	this->UpdateObjects(dt);
 	this->UpdatePlayer(dt);
 
 	if (isFrozenEnemies)
 	{
+		if (frozenEnemiesTime / 1000 == frozenCount)
+		{
+			Sound::getInstance()->play("glasshour");
+			--frozenCount;
+		}
+
 		frozenEnemiesTime -= dt;
 		if (frozenEnemiesTime <= 0)
 		{
@@ -80,6 +88,15 @@ void PlayScene::Update(float dt)
 	if (p->posX >= endPoint)
 	{
 		SceneManager::GetInstance()->ReplaceScene(new PlayScene(level + 1));
+	}
+}
+
+void PlayScene::UpdateScoreboard(float dt)
+{
+	scoreboard->Update(dt);
+	if (scoreboard->timer == 0)
+	{
+		this->RestartScene();
 	}
 }
 
@@ -243,7 +260,7 @@ void PlayScene::UpdatePlayer(float dt)
 	p->posX += p->dx;
 	p->posY += p->dy;
 
-	if (p->GetRect().y < 0)
+	if (p->GetRect().y < 0 || p->health == 0)
 	{
 		this->RestartScene();
 		return;
@@ -274,11 +291,11 @@ void PlayScene::UpdatePlayer(float dt)
 
 void PlayScene::RestartScene()
 {
-	p->weaponType = NONE;
+	p->Respawn();
+	p->ChangeState(new PlayerStandingState());
+
+	scoreboard->timer = GAME_TIMER;
 	isFrozenEnemies = false;
-	p->isAttacking = false;
-	p->isThrowing = false;
-	p->allow[THROWING] = true;
 
 	for (auto o : grid->respawnObjects)
 	{
@@ -309,10 +326,6 @@ void PlayScene::RestartScene()
 			grid->MoveObject(o, o->spawnX, o->spawnY);
 		}
 	}
-
-	p->posX = p->spawnX;
-	p->posY = p->spawnY;
-
 	this->visibleObjects.clear();
 	grid->respawnObjects.clear();
 }
@@ -322,14 +335,14 @@ void PlayScene::Render()
 {
 	map->Render();
 
+	scoreboard->Render();
+
 	for (auto o : visibleObjects)
 	{
 		o->Render();
 	}
 
 	p->Render();
-
-	scoreboard->Render();
 }
 
 // Xử lí Scene khi nhấn phím

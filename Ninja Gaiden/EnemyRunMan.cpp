@@ -68,6 +68,13 @@ void EnemyRunMan::ChangeState(State StateName)
 		}
 		break;
 	}
+
+	case DEAD:
+	{
+		scoreboard->score += score;
+		Sound::getInstance()->play("enemydie");
+		break;
+	}
 	}
 	this->StateName = StateName;
 	this->curAnimation = animations[StateName];

@@ -79,8 +79,10 @@ void EnemyBoss::Update(float dt)
 
 		if (delayDead <= 0)
 		{
+			Sound::getInstance()->stop("bossdie");
 			this->isDead = true;
 			this->isActive = false;
+			isEndGame = true;
 		}
 	}
 }
@@ -118,6 +120,7 @@ void EnemyBoss::ChangeState(State StateName)
 	{
 		this->vx = this->dx = 0;
 		this->vy = this->dy = 0;
+		Sound::getInstance()->play("bossdie", true);
 		break;
 	}
 	}
@@ -136,10 +139,11 @@ void EnemyBoss::Render(float translateX, float translateY)
 	auto posY = this->posY + translateY;
 	camera->ConvertPositionToViewPort(posX, posY);
 	curAnimation->isReverse = this->isReverse;
-	curAnimation->Render(posX, posY);
+	curAnimation->Render(posX, posY + SCREEN_TRANSLATEY);
 
 	if (StateName == DEAD)
 	{
+		posY += SCREEN_TRANSLATEY;
 		switch (explodeTimes)
 		{
 		case 0:

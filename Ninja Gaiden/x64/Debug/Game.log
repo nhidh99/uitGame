@@ -1,1 +1,17 @@
-﻿  Game.vcxproj -> C:\uitGame\Ninja Gaiden\x64\Debug\Game.exe
+﻿  Game.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGame\Ninja Gaiden\GameGlobal.h(151): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGame\Ninja Gaiden\GameGlobal.h(180): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGame\Ninja Gaiden\GameGlobal.h(200): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGame\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\WeaponSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\HolderSprite.h(20): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\ItemSprite.h(19): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\BulletSprite.h(20): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\Item.h(29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\Item.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\Enemy.h(96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\WeaponFireWheel.h(20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\Game.cpp(126): warning C4018: '>=': signed/unsigned mismatch
+C:\uitGame\Ninja Gaiden\Game.cpp(129): warning C4244: 'argument': conversion from 'unsigned long' to 'float', possible loss of data
+  Game.vcxproj -> C:\uitGame\Ninja Gaiden\x64\Debug\Game.exe

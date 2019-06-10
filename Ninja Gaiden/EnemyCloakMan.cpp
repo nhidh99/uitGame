@@ -11,6 +11,7 @@ EnemyCloakMan::EnemyCloakMan()
 	speed = ENEMY_CLOAKMAN_SPEED;
 	delayTime = ENEMY_CLOAKMAN_DELAY_TIME;
 	bullets = bulletCount = BULLET_CLOAKMAN_COUNT;
+	score = ENEMY_CLOAKMAN_SCORE;
 }
 
 void EnemyCloakMan::UpdateDistance(float dt)

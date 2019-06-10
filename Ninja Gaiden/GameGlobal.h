@@ -10,6 +10,7 @@
 #define MAIN_WINDOW_TITLE "Ninja Gaiden"		// Tên cửa sổ
 #define SCREEN_WIDTH 256						// Chiều rộng cửa sổ
 #define SCREEN_HEIGHT 176						// Chiều dài cửa sổ
+#define SCREEN_TRANSLATEY 60
 #define MAX_FRAME_RATE 90						// FPS
 #define BACK_COLOR D3DCOLOR_XRGB(0, 0, 0)		// Màu nền BackBuffer
 #define DEFAULT_TPS 120							// Thời gian tồn tại của mỗi Frame (cho Animation)
@@ -49,7 +50,9 @@
 #define WEAPON_FIREWHEEL_SPEED 0.14f
 
 // ===== CÁC THÔNG SỐ CHO ENEMIES ====
+#define ENEMY_DEFAULT_SCORE 100
 #define ENEMY_FROZEN_TIME 3000
+#define ENEMY_FROZEN_TIME_COUNT 3
 #define ENEMY_SWORDMAN_WIDTH 25
 #define ENEMY_SWORDMAN_HEIGHT 40
 #define ENEMY_SWORDMAN_SPEED 0.02f
@@ -59,15 +62,18 @@
 #define ENEMY_GUNMAN_WIDTH 20
 #define ENEMY_GUNMAN_HEIGHT 30
 #define ENEMY_GUNMAN_SPEED 0.02f
+#define ENEMY_GUNMAN_SCORE 200
 #define ENEMY_GUNMAN_DELAY_TIME 1800
 #define ENEMY_CLOAKMAN_WIDTH 20
 #define ENEMY_CLOAKMAN_HEIGHT 35
 #define ENEMY_CLOAKMAN_SPEED 0.012f
 #define ENEMY_CLOAKMAN_DELAY_TIME 1200
+#define ENEMY_CLOAKMAN_SCORE 300
 #define ENEMY_PANTHER_WIDTH 35
 #define ENEMY_PANTHER_HEIGHT 20
 #define ENEMY_PANTHER_SPEED 0.14f
 #define ENEMY_PANTHER_ACTIVE_DISTANCE 90
+#define ENEMY_PANTHER_SCORE 200
 #define ENEMY_RUNMAN_WIDTH 18
 #define ENEMY_RUNMAN_HEIGHT 32
 #define ENEMY_RUNMAN_SPEED 0.17f
@@ -78,6 +84,7 @@
 #define ENEMY_EAGLE_MIN_SPEEDY 1.5f
 #define ENEMY_EAGLE_DELAY_TIME 1400
 #define ENEMY_EAGLE_ACTIVE_DISTANCE 80
+#define ENEMY_EAGLE_SCORE 300
 #define ENEMY_BOSS_WIDTH 36
 #define ENEMY_BOSS_HEIGHT 50
 
@@ -111,7 +118,7 @@
 // ==== SCOREBOARD ====
 #define scoreboard ScoreBoard::GetInstance()
 #define GAME_TIMER 150000
-#define SCALE_RATE 0.5
+#define SCALE_RATE 0.45
 
 // ===== CAMERA =====
 #define camera Camera::GetInstance()
@@ -120,9 +127,10 @@ extern HWND hWnd;												// hWnd hiện tại
 extern LPD3DXSPRITE spriteHandler;								// SpriteHanlder hiện tại
 extern LPDIRECT3DDEVICE9 d3ddev;								// Device directX hiện tại (nhằm đại diện card màn hình)
 extern LPDIRECT3DSURFACE9 backBuffer;							// BackBuffer
-extern bool isGameRunning;										// Kiểm tra trạng thái game đang chạy
+extern bool isGameRunning, isEndGame;							// Kiểm tra trạng thái game đang chạy
 extern bool isFrozenEnemies;
 extern int frozenEnemiesTime;
+extern int frozenCount;
 extern std::unordered_map<int, bool> keyCode;
 
 // === ENUM dùng định dạng loại Object và State ====

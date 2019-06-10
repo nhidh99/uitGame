@@ -76,7 +76,7 @@ void Map::Render()
 		for (auto c = cBegin; c != cEnd; ++c)
 		{
 			auto sprite = sprites->GetSprite(mapLevel, mapTiles[r][c]);
-			sprite->Render((c << 4) + MOVE_TILE - (int)camera->x, (r << 4) + MOVE_TILE);
+			sprite->Render((c << 4) + MOVE_TILE - (int)camera->x, (r << 4) + MOVE_TILE + SCREEN_TRANSLATEY);
 		}
 	}
 }

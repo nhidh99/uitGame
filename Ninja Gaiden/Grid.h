@@ -9,6 +9,7 @@
 #include "BulletFactory.h"
 #include "ItemFactory.h"
 #include "Player.h"
+#include "ScoreBoard.h"
 #include <fstream>
 
 class Grid

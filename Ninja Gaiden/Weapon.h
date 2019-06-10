@@ -36,7 +36,7 @@ public:
 		auto posX = this->posX + translateX;
 		auto posY = this->posY + translateY;
 		camera->ConvertPositionToViewPort(posX, posY);
-		animation->Render(posX, posY);
+		animation->Render(posX, posY+ SCREEN_TRANSLATEY);
 	}
 
 	virtual void UpdateDistance(float dt)
@@ -73,23 +73,6 @@ public:
 				{
 					auto e = (Enemy*)obj;
 					e->ChangeState(DEAD);
-
-					switch (e->type)
-					{
-					case EAGLE:
-					case CLOAKMAN:
-						scoreboard->score += 300;
-						break;
-					case PANTHER:
-					case GUNMAN:
-						scoreboard->score += 200;
-						break;
-					default:
-						scoreboard->score += 100;
-						break;
-					}
-					Sound::getInstance()->play("sound13", false, 1);
-					break;
 				}
 
 				case HOLDER:

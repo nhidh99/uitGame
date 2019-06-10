@@ -58,6 +58,6 @@ public:
 		auto posX = this->posX + translateX;
 		auto posY = this->posY + translateY;
 		camera->ConvertPositionToViewPort(posX, posY);
-		sprite->Render(posX, posY);
+		sprite->Render(posX, posY + SCREEN_TRANSLATEY);
 	}
 };

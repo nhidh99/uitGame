@@ -23,7 +23,6 @@ public:
 	static Player* GetInstance();
 
 	int health;
-	int score;
 	int energy;
 
 	bool isOnGround, isOnWall;
@@ -36,6 +35,7 @@ public:
 	Type weaponType;
 	std::unordered_map<State, bool> allow;
 
+	void Respawn();
 	void DetectSpawnY(std::unordered_set<Rect*> grounds);
 	void Update(float dt, std::unordered_set<Object*> ColliableObjects);
 	void CheckGroundCollision(std::unordered_set<Rect*> grounds);
@@ -44,4 +44,8 @@ public:
 	void OnKeyDown(int keyCode);							
 	void OnKeyUp(int keyCode);							
 	void ChangeState(PlayerState* newState);
+
+	void SetHealth(int health);
+	void SetWeapon(Type weaponType);
+	void SetEnergy(int energy);
 };

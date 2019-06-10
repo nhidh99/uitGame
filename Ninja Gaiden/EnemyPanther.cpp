@@ -8,6 +8,7 @@ EnemyPanther::EnemyPanther()
 	height = ENEMY_PANTHER_HEIGHT;
 	width = ENEMY_PANTHER_WIDTH;
 	speed = ENEMY_PANTHER_SPEED;
+	score = ENEMY_PANTHER_SCORE;
 }
 
 EnemyPanther::~EnemyPanther()
@@ -85,6 +86,13 @@ void EnemyPanther::ChangeState(State StateName)
 			this->isOnGround = true;
 			this->isActive = true;
 		}
+		break;
+	}
+
+	case DEAD:
+	{
+		scoreboard->score += score;
+		Sound::getInstance()->play("enemydie");
 		break;
 	}
 	}

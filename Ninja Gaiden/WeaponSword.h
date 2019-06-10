@@ -32,22 +32,6 @@ public:
 				{
 					auto e = (Enemy*)obj;
 					e->ChangeState(DEAD);
-
-					switch (e->type)
-					{
-					case EAGLE:
-					case CLOAKMAN:
-						scoreboard->score += 300;
-						break;
-					case PANTHER:
-					case GUNMAN:
-						scoreboard->score += 200;
-						break;
-					default:
-						scoreboard->score += 100;
-						break;
-					}
-					Sound::getInstance()->play("sound13", false, 1);
 					break;
 				}
 
@@ -85,6 +69,6 @@ public:
 		}
 
 		camera->ConvertPositionToViewPort(x, y);
-		sprite->Render(x, y);
+		sprite->Render(x, y + SCREEN_TRANSLATEY);
 	}
 };

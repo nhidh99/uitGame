@@ -27,7 +27,7 @@ public:
 		auto posX = this->posX + translateX;
 		auto posY = this->posY + translateY;
 		camera->ConvertPositionToViewPort(posX, posY);
-		animation->Render(posX, posY);
+		animation->Render(posX, posY + SCREEN_TRANSLATEY);
 	}
 
 	void Update(float dt)

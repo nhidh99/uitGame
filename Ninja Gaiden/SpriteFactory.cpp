@@ -198,6 +198,10 @@ void SpriteFactory::LoadResources()
 	//Add health sprite
 	sprites->AddSprite(new FontSprite('*', 489, 6, 495, 31));
 	sprites->AddSprite(new FontSprite('*', 533, 6, 539, 31));
+	sprites->AddSprite(new FontSprite('@', 515, 44, 524, 53)); //top-left
+	sprites->AddSprite(new FontSprite('@', 521, 44, 530, 53)); //top-right
+	sprites->AddSprite(new FontSprite('@', 521, 38, 530, 47)); //bottom-left
+	sprites->AddSprite(new FontSprite('@', 512, 38, 525, 46)); //bottom-right
 }
 
 // Thêm một Sprite vào danh sách các Sprite, quy định theo Tag của Sprite

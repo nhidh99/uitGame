@@ -23,6 +23,7 @@ void PlayerClingingState::HandleKeyboard()
 	{
 		if (!player->isReverse && keyCode[DIK_LEFT])
 		{
+			Sound::getInstance()->play("jump");
 			player->isReverse = true;
 			player->posX--;
 			player->isOnWall = false;
@@ -31,6 +32,7 @@ void PlayerClingingState::HandleKeyboard()
 
 		else if (player->isReverse && keyCode[DIK_RIGHT])
 		{
+			Sound::getInstance()->play("jump");
 			player->isReverse = false;
 			player->posX++;
 			player->isOnWall = false;

@@ -15,6 +15,7 @@ void PlayerFallingState::Update(float dt)
 {
 	if (player->vy == 0)
 	{
+		Sound::getInstance()->play("jump");
 		player->ChangeState(new PlayerStandingState());
 		return;
 	}

@@ -11,6 +11,7 @@ EnemyGunMan::EnemyGunMan()
 	speed = ENEMY_GUNMAN_SPEED;
 	delayTime = ENEMY_GUNMAN_DELAY_TIME;
 	bullets = bulletCount = BULLET_GUNMAN_COUNT;
+	score = ENEMY_GUNMAN_SCORE;
 }
 
 EnemyGunMan::~EnemyGunMan()

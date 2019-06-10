@@ -41,11 +41,11 @@ void EnemyBazokaMan::Render(float translateX, float translateY)
 	auto posY = this->posY + translateY;
 	camera->ConvertPositionToViewPort(posX, posY);
 	curAnimation->isReverse = this->isReverse;
-	curAnimation->Render(posX, posY);
+	curAnimation->Render(posX, posY + SCREEN_TRANSLATEY);
 
 	if (this->StateName == ATTACKING && this->curAnimation->CurFrameIndex == 1)
 	{
 		this->explodeBullet->isReverse = this->isReverse;
-		this->explodeBullet->Render(posX + (isReverse ? -15 : 15), posY - 10);
+		this->explodeBullet->Render(posX + (isReverse ? -15 : 15), posY - 10 + SCREEN_TRANSLATEY);
 	}
 }

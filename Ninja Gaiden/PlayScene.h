@@ -24,6 +24,7 @@ public:
 
 	bool PlayerIsOnAirGround();
 	void Update(float dt);
+	void UpdateScoreboard(float dt);
 	void UpdateScene();						// Update các thông số các đối tượng trong Scene
 	void UpdateVisibleObjects();
 	void UpdateObjects(float dt);

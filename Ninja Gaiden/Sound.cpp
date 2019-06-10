@@ -33,7 +33,7 @@ Sound::Sound(HWND hWnd)
 	{
 		std::cout << "Can not create primaryBuffer";
 	}
-	volume = 80.0f;
+	volume = 95.0f;
 	isMute = false;
 }
 Sound::~Sound()
@@ -66,19 +66,16 @@ void Sound::create(HWND hWnd)
 
 void Sound::LoadResources()
 {
-	this->loadSound((char*)"Resources/Sound/01.wav", "sound1");
-	this->loadSound((char*)"Resources/Sound/02.wav", "sound2");
-	this->loadSound((char*)"Resources/Sound/03.wav", "sound3");
-	this->loadSound((char*)"Resources/Sound/09.wav", "sound9");		//score gain
-	this->loadSound((char*)"Resources/Sound/13.wav", "sound13");
-	this->loadSound((char*)"Resources/Sound/14.wav", "sound14");	//score gain
-	this->loadSound((char*)"Resources/Sound/17.wav", "sound17");
-	this->loadSound((char*)"Resources/Sound/18.wav", "sound18");	//Gunman
-	this->loadSound((char*)"Resources/Sound/24.wav", "sound24");	//gunman
-	this->loadSound((char*)"Resources/Sound/27.wav", "sound27");	//bazokaman
-	this->loadSound((char*)"Resources/Sound/Stage3-1.wav", "stage3-1");
-	this->loadSound((char*)"Resources/Sound/Stage3-2.wav", "stage3-2");
-	this->loadSound((char*)"Resources/Sound/Stage3-3.wav", "stage3-3");
+	this->loadSound((char*)"Resources/Sound/attack.wav", "attack");
+	this->loadSound((char*)"Resources/Sound/bossdie.wav", "bossdie");
+	this->loadSound((char*)"Resources/Sound/enemydie.wav", "enemydie");
+	this->loadSound((char*)"Resources/Sound/glasshour.wav", "glasshour");
+	this->loadSound((char*)"Resources/Sound/injured.wav", "injured");
+	this->loadSound((char*)"Resources/Sound/item.wav", "item");
+	this->loadSound((char*)"Resources/Sound/jump.wav", "jump");
+	this->loadSound((char*)"Resources/Sound/stage1.wav", "stage1");
+	this->loadSound((char*)"Resources/Sound/stage2.wav", "stage2");
+	this->loadSound((char*)"Resources/Sound/stage3.wav", "stage3");
 }
 
 float Sound::getVolume()
@@ -166,7 +163,7 @@ void Sound::loadSound(char* fileName, std::string name)
 	(*pSecondaryBuffer)->Unlock((void*)bufferPtr, bufferSize, NULL, 0);
 
 	if (wavData != NULL)
-		delete wavData;
+		delete[] wavData;
 
 	wavData = 0;
 	long tempVolume = (volume) / 100 * (-DSBVOLUME_MIN) + DSBVOLUME_MIN;

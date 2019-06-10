@@ -8,6 +8,7 @@ EnemyEagle::EnemyEagle()
 	height = ENEMY_EAGLE_HEIGHT;
 	width = ENEMY_EAGLE_WIDTH;
 	delayTime = ENEMY_EAGLE_DELAY_TIME >> 1;
+	score = ENEMY_EAGLE_SCORE;
 }
 
 void EnemyEagle::Update(float dt)
@@ -41,6 +42,13 @@ void EnemyEagle::ChangeState(State StateName)
 			this->dx = this->dy = 0;
 			this->isActive = true;
 		}
+		break;
+	}
+
+	case DEAD:
+	{
+		scoreboard->score += score;
+		Sound::getInstance()->play("enemydie");
 		break;
 	}
 	}

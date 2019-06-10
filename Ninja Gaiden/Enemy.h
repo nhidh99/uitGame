@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "EnemySprite.h"
 #include "Cell.h"
+#include "Sound.h"
+#include "ScoreBoard.h"
 #include <algorithm>
 
 class Enemy : public Object
@@ -17,6 +19,7 @@ public:
 	bool isActive, isOutScreen;
 	int bulletCount;
 	int bullets;
+	int score;
 
 	Enemy()
 	{
@@ -24,6 +27,7 @@ public:
 		isDead = false;
 		isActive = false;
 		animations[DEAD] = new Animation(WEAPON, 0, 2, 85);
+		score = ENEMY_DEFAULT_SCORE;
 	}
 
 	~Enemy()
@@ -49,7 +53,7 @@ public:
 		auto posY = this->posY + translateY;
 		camera->ConvertPositionToViewPort(posX, posY);
 		curAnimation->isReverse = this->isReverse;
-		curAnimation->Render(posX, posY);
+		curAnimation->Render(posX, posY + SCREEN_TRANSLATEY);
 	}
 
 	virtual void UpdateDistance(float dt)
@@ -112,6 +116,13 @@ public:
 		case RUNNING:
 		{
 			this->isActive = true;
+			break;
+		}
+
+		case DEAD:
+		{
+			scoreboard->score += score;
+			Sound::getInstance()->play("enemydie");
 			break;
 		}
 		}

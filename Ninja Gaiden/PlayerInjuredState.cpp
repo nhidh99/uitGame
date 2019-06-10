@@ -25,6 +25,7 @@ void PlayerInjuredState::Update(float dt)
 
 	if (player->isOnGround)
 	{
+		Sound::getInstance()->play("jump");
 		player->ChangeState(new PlayerStandingState());
 	}
 }

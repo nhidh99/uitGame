@@ -17,22 +17,10 @@ Player::Player()
 	animations[DEAD] = new Animation(PLAYER, 5);
 	animations[INJURED] = new Animation(PLAYER, 5);
 
-	// Allow một số state cho trạng thái khởi đầu (Standing)
-	allow[JUMPING] = true;
-	allow[ATTACKING] = true;
-	allow[MOVING] = true;
-	allow[THROWING] = true;
-
 	// Các thông số Object
-	weaponType = REDSHURIKEN;
-	isOnGround = false;
 	tag = PLAYER;
 	width = PLAYER_WIDTH;
 	height = PLAYER_STANDING_HEIGHT;
-
-	health = 16;
-	score = 0;
-	energy = 0;
 }
 
 // Destructor
@@ -54,6 +42,21 @@ Player* Player::GetInstance()
 	return _instance;
 }
 
+void Player::Respawn()
+{
+	this->allow[JUMPING] = true;
+	this->allow[ATTACKING] = true;
+	this->allow[MOVING] = true;
+	this->allow[THROWING] = true;
+	this->isAttacking = false;
+	this->isThrowing = false;
+	this->SetHealth(16);
+	this->SetEnergy(0);
+	this->SetWeapon(NONE);
+	this->posX = this->spawnX;
+	this->posY = this->spawnY;
+}
+
 void Player::DetectSpawnY(std::unordered_set<Rect*> grounds)
 {
 	for (auto g : grounds)
@@ -70,7 +73,6 @@ void Player::DetectSpawnY(std::unordered_set<Rect*> grounds)
 void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 {
 	curAnimation->Update(dt);
-
 	state->Update(dt);
 
 	CollisionResult result;
@@ -85,39 +87,42 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 		case ENEMY:
 		case BULLET:
 		{
-			auto r = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
-			if (r.isCollide)
+			if (this->stateName != INJURED)
 			{
-				result = r;
-				--health;
+				auto r = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
+				if (r.isCollide)
+				{
+					result = r;
+					break;
+				}
 			}
 			break;
 		}
 
 		case ITEM:
 		{
-			auto i = (Item*)obj;
-			Sound::getInstance()->play("sound17", false, 1);
-			if (this->GetRect().IsContain(i->GetRect()))
+			if (this->GetRect().IsContain(obj->GetRect()))
 			{
-				i->isDead = true;
+				obj->isDead = true;
+				Sound::getInstance()->play("item");
 
-				switch (i->type)
+				switch (obj->type)
 				{
 				case BLUESPIRIT:
 				{
-					this->energy += 5;
+					this->SetEnergy(energy + 5);
 					break;
 				}
 				case REDSPIRIT:
 				{
-					this->energy += 10;
+					this->SetEnergy(energy + 10);
 					break;
 				}
 				case GLASSHOUR:
 				{
 					isFrozenEnemies = true;
 					frozenEnemiesTime = ENEMY_FROZEN_TIME;
+					frozenCount = ENEMY_FROZEN_TIME_COUNT;
 					break;
 				}
 
@@ -125,7 +130,7 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 				case FIREWHEEL:
 				case REDSHURIKEN:
 				{
-					this->weaponType = i->type;
+					this->SetWeapon(obj->type);
 					break;
 				}
 				}
@@ -142,7 +147,9 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 	}
 	else
 	{
+		Sound::getInstance()->play("injured");
 		this->isReverse = (result.nx == 1);
+		this->SetHealth(--health);
 		this->ChangeState(new PlayerInjuredState());
 	}
 }
@@ -251,6 +258,7 @@ void Player::CheckWallCollision(std::unordered_set<Wall*> walls)
 				&& this->posY + (this->height >> 1) <= wallBound.rect.y
 				&& this->posY - (this->height >> 1) >= wallBound.rect.y - wallBound.rect.height)
 			{
+				Sound::getInstance()->play("jump");
 				this->isReverse = false;
 				this->ChangeState(new PlayerClingingState());
 			}
@@ -264,6 +272,7 @@ void Player::CheckWallCollision(std::unordered_set<Wall*> walls)
 				&& this->posY + (this->height >> 1) <= wallBound.rect.y
 				&& this->posY - (this->height >> 1) >= wallBound.rect.y - wallBound.rect.height)
 			{
+				Sound::getInstance()->play("jump");
 				this->isReverse = true;
 				this->ChangeState(new PlayerClingingState());
 			}
@@ -278,7 +287,7 @@ void Player::Render(float translateX, float translateY)
 	auto posY = this->posY + translateY;
 	camera->ConvertPositionToViewPort(posX, posY);
 	curAnimation->isReverse = this->isReverse;
-	curAnimation->Render(posX, posY);
+	curAnimation->Render(posX, posY + SCREEN_TRANSLATEY);
 }
 
 // Xử lí nhấn phím (chung cho các State)
@@ -288,6 +297,7 @@ void Player::OnKeyDown(int key)
 	{
 		isFrozenEnemies = true;
 		frozenEnemiesTime = ENEMY_FROZEN_TIME;
+		frozenCount = ENEMY_FROZEN_TIME_COUNT;
 	}
 
 	if (this->stateName == INJURED) return;
@@ -302,7 +312,7 @@ void Player::OnKeyDown(int key)
 			if (allow[ATTACKING])
 			{
 				allow[ATTACKING] = false;
-				Sound::getInstance()->play("sound1", false, 1);
+				Sound::getInstance()->play("attack");
 				ChangeState(new PlayerAttackingState());
 				this->isAttacking = true;
 			}
@@ -318,7 +328,7 @@ void Player::OnKeyDown(int key)
 				{
 					if (this->energy >= 3)
 					{
-						this->energy -= 3;
+						this->SetEnergy(energy - 3);
 						break;
 					}
 					else return;
@@ -329,16 +339,16 @@ void Player::OnKeyDown(int key)
 				{
 					if (this->energy >= 5)
 					{
-						this->energy -= 5;
+						this->SetEnergy(energy - 5);
 						break;
 					}
 					else return;
 				}
-				allow[THROWING] = false;
-				Sound::getInstance()->play("sound1", false, 1);
-				ChangeState(new PlayerAttackingState());
-				this->isThrowing = true;
 				}
+				allow[THROWING] = false;
+				Sound::getInstance()->play("attack");
+				this->isThrowing = true;
+				ChangeState(new PlayerAttackingState());
 			}
 		}
 		break;
@@ -348,6 +358,7 @@ void Player::OnKeyDown(int key)
 	case DIK_C:
 		if (allow[JUMPING])
 		{
+			Sound::getInstance()->play("jump");
 			allow[JUMPING] = false;
 			ChangeState(new PlayerJumpingState());
 		}
@@ -377,4 +388,22 @@ void Player::ChangeState(PlayerState * newState)
 	state = newState;
 	stateName = newState->StateName;
 	curAnimation = animations[stateName];
+}
+
+void Player::SetHealth(int health)
+{
+	this->health = health;
+	scoreboard->playerHealth = health;
+}
+
+void Player::SetWeapon(Type weaponType)
+{
+	this->weaponType = weaponType;
+	scoreboard->playerWeapon = weaponType;
+}
+
+void Player::SetEnergy(int energy)
+{
+	this->energy = energy;
+	scoreboard->playerEnergy = energy;
 }

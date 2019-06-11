@@ -21,8 +21,8 @@ void ScoreBoard::Render()
 	RenderEnergy();
 	RenderStage();
 	RenderPlayerHealth();
-	RenderEnemyHealth();
 	RenderPlayerWeapon();
+	RenderEnemyHealth();
 }
 
 void ScoreBoard::RenderScore()
@@ -157,7 +157,6 @@ void ScoreBoard::RenderHealth(float x, float y, int obj)
 
 void ScoreBoard::RenderPlayerWeapon()
 {
-
 	sprites->GetSprite(FONT, 39)->ScaleRender(121, 25, 0.8, 0.8);
 	sprites->GetSprite(FONT, 40)->ScaleRender(101, 25, 0.8, 0.8);
 	sprites->GetSprite(FONT, 41)->ScaleRender(101, 45, 0.8, 0.8);
@@ -182,15 +181,15 @@ void ScoreBoard::RenderPlayerWeapon()
 void ScoreBoard::RenderPlayerHealth()
 {
 	RenderString("NINJA", 135, 30);
-	sprites->GetSprite(FONT, 36)->ScaleRender(185, 30, SCALE_RATE, SCALE_RATE);
 	RenderHealth(190, 30, 1);
+	sprites->GetSprite(FONT, 36)->ScaleRender(185, 30, SCALE_RATE, SCALE_RATE);
 }
 
 void ScoreBoard::RenderEnemyHealth()
 {
 	RenderString("ENEMY", 135, 45);
-	sprites->GetSprite(FONT, 36)->ScaleRender(185, 45, SCALE_RATE, SCALE_RATE);
 	RenderHealth(190, 45, 2);
+	sprites->GetSprite(FONT, 36)->ScaleRender(185, 45, SCALE_RATE, SCALE_RATE);
 }
 
 

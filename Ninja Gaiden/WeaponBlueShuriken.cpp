@@ -38,13 +38,15 @@ void WeaponBlueShuriken::Update(float dt, std::unordered_set<Object*> ColliableO
 
 			case ENEMY:
 			{
-				auto e = (Enemy*)obj;
-
-				if (e->StateName != DEAD)
+				if (obj->type != BOSS)
 				{
+					auto e = (Enemy*)obj;
 					e->ChangeState(DEAD);
-					this->isDead = true;
-					break;
+				}
+				else
+				{
+					auto e = (EnemyBoss*)obj;
+					e->SubtractHealth();
 				}
 				break;
 			}

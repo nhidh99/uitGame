@@ -53,16 +53,22 @@ void Player::Respawn()
 	this->SetHealth(16);
 	this->SetEnergy(0);
 	this->SetWeapon(FIREWHEEL);
+	this->vx = this->vy = this->dx = this->dy = 0;
 	this->posX = this->spawnX;
 	this->posY = this->spawnY;
+	this->isDead = false;
+	this->isReverse = false;
+	this->ChangeState(new PlayerStandingState());
 }
 
 void Player::DetectSpawnY(std::unordered_set<Rect*> grounds)
 {
+	this->groundBound = Rect();
+
 	for (auto g : grounds)
 	{
-		if (g->x < this->posX && this->posX < g->x + g->width
-			&& g->y >= groundBound.y && this->posY > g->y)
+		if (g->x < this->spawnX && this->spawnX < g->x + g->width
+			&& g->y >= groundBound.y && this->spawnY > g->y)
 		{
 			groundBound = *g;
 		}
@@ -72,6 +78,12 @@ void Player::DetectSpawnY(std::unordered_set<Rect*> grounds)
 
 void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 {
+	if (this->posY + (this->height >> 1) <= 0)
+	{
+		this->isDead = true;
+		return;
+	}
+
 	curAnimation->Update(dt);
 	state->Update(dt);
 
@@ -394,6 +406,11 @@ void Player::SetHealth(int health)
 {
 	this->health = health;
 	scoreboard->playerHealth = health;
+
+	if (this->health == 0)
+	{
+		this->isDead = true;
+	}
 }
 
 void Player::SetWeapon(Type weaponType)

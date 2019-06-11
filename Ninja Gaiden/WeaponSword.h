@@ -30,8 +30,16 @@ public:
 
 				case ENEMY:
 				{
-					auto e = (Enemy*)obj;
-					e->ChangeState(DEAD);
+					if (obj->type != BOSS)
+					{
+						auto e = (Enemy*)obj;
+						e->ChangeState(DEAD);
+					}
+					else
+					{
+						auto e = (EnemyBoss*)obj;
+						e->SubtractHealth();
+					}
 					break;
 				}
 

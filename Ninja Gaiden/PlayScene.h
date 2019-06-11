@@ -16,6 +16,7 @@ private:
 	Grid* grid;
 	int level;
 	float endPoint;
+	float delayRestart;
 	std::unordered_set<Object*> visibleObjects;
 
 public:
@@ -29,6 +30,7 @@ public:
 	void UpdateVisibleObjects();
 	void UpdateObjects(float dt);
 	void UpdatePlayer(float dt);
+	void SetRestartScene();
 
 	void RestartScene();
 	void Render();									// Tải Scene lên màn hình

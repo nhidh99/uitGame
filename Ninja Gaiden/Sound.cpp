@@ -76,6 +76,8 @@ void Sound::LoadResources()
 	this->loadSound((char*)"Resources/Sound/stage1.wav", "stage1");
 	this->loadSound((char*)"Resources/Sound/stage2.wav", "stage2");
 	this->loadSound((char*)"Resources/Sound/stage3.wav", "stage3");
+	this->loadSound((char*)"Resources/Sound/over.wav", "over");
+	this->loadSound((char*)"Resources/Sound/win.wav", "win");
 }
 
 float Sound::getVolume()
@@ -129,8 +131,7 @@ void Sound::loadSound(char* fileName, std::string name)
 	IDirectSoundBuffer8** pSecondaryBuffer = &secondaryBuffer;
 
 	pDevice->CreateSoundBuffer(&bufferDesc, &tempBuffer, NULL);
-
-	long result = tempBuffer->QueryInterface(IID_IDirectSoundBuffer8, (void**)&(*pSecondaryBuffer));
+	auto result = tempBuffer->QueryInterface(IID_IDirectSoundBuffer8, (void**)&(*pSecondaryBuffer));
 
 	tempBuffer->Release();
 	tempBuffer = 0;

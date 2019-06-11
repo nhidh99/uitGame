@@ -8,12 +8,14 @@ EnemyBoss::EnemyBoss()
 	animations[DEAD] = new Animation(WEAPON, 13);
 	tag = ENEMY;
 	type = BOSS;
+	health = 16;
 	width = ENEMY_BOSS_WIDTH;
 	height = ENEMY_BOSS_HEIGHT;
 	speed = delayTime = 0;
 	bulletCountdown = 3;
 	firstJump = true;
 	delayDead = 3000;
+	delayHit = 500;
 }
 
 void EnemyBoss::UpdateDistance(float dt)
@@ -66,6 +68,15 @@ void EnemyBoss::Update(float dt)
 	{
 		this->UpdateDistance(dt);
 		curAnimation->Update(dt);
+	}
+
+	if (delayHit)
+	{
+		delayHit -= dt;
+		if (delayHit <= 0)
+		{
+			delayHit = 0;
+		}
 	}
 
 	if (this->StateName == DEAD)
@@ -130,6 +141,21 @@ void EnemyBoss::ChangeState(State StateName)
 	if (StateName != DEAD)
 	{
 		this->curAnimation = animations[StateName];
+	}
+}
+
+void EnemyBoss::SubtractHealth()
+{
+	if (!delayHit)
+	{
+		--this->health;
+		--scoreboard->bossHealth;
+		this->delayHit = 400;
+
+		if (this->health == 0)
+		{
+			this->ChangeState(DEAD);
+		}
 	}
 }
 

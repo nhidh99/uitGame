@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Player.h"
-#include "Enemy.h"
+#include "EnemyBoss.h"
 #include "Holder.h"
 #include "ScoreBoard.h"
 #include <unordered_set>
@@ -71,8 +71,16 @@ public:
 
 				case ENEMY:
 				{
-					auto e = (Enemy*)obj;
-					e->ChangeState(DEAD);
+					if (obj->type != BOSS)
+					{
+						auto e = (Enemy*)obj;
+						e->ChangeState(DEAD);
+					}
+					else
+					{
+						auto e = (EnemyBoss*)obj;
+						e->SubtractHealth();
+					}
 					break;
 				}
 

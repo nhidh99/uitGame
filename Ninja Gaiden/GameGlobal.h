@@ -18,6 +18,7 @@
 #define KEYBOARD_BUFFER_SIZE 1024
 #define NUMBER_MAP_LEVEL 3
 #define TILE_SIZE 16
+#define GAME_RESTART_DELAY 4500
 
 // ===== Các thông số cho PLAYER ====
 #define player Player::GetInstance()
@@ -127,10 +128,13 @@ extern HWND hWnd;												// hWnd hiện tại
 extern LPD3DXSPRITE spriteHandler;								// SpriteHanlder hiện tại
 extern LPDIRECT3DDEVICE9 d3ddev;								// Device directX hiện tại (nhằm đại diện card màn hình)
 extern LPDIRECT3DSURFACE9 backBuffer;							// BackBuffer
-extern bool isGameRunning, isEndGame;							// Kiểm tra trạng thái game đang chạy
+extern bool isGameRunning;										// Kiểm tra trạng thái game đang chạy
 extern bool isFrozenEnemies;
 extern int frozenEnemiesTime;
 extern int frozenCount;
+extern bool isEndGame;
+extern float delayEnd, delayStart;
+extern int gameLevel;
 extern std::unordered_map<int, bool> keyCode;
 
 // === ENUM dùng định dạng loại Object và State ====

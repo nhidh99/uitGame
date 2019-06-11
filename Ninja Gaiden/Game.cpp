@@ -126,8 +126,24 @@ void Game::Run()
 		if (dt >= tickPerFrame)
 		{
 			frameStart = now;
-			Update(dt);
-			ProcessKeyboard();
+
+			if (delayEnd)
+			{
+				delayEnd -= dt;
+				if (delayEnd <= 0)
+				{
+					delayEnd = 0;
+					char soundFileName[10];
+					sprintf_s(soundFileName, "stage%d", gameLevel);
+					Sound::getInstance()->play(soundFileName, true);
+					Sound::getInstance()->setVolume(90.0f, soundFileName);
+				}
+			}
+			else
+			{
+				Update(dt);
+				ProcessKeyboard();
+			}
 			Render();
 		}
 		else
@@ -153,5 +169,7 @@ void Game::Render()
 		spriteHandler->End();
 		d3ddev->EndScene();
 	}
-	d3ddev->Present(NULL, NULL, NULL, NULL);
+
+	if (!delayEnd)
+		d3ddev->Present(NULL, NULL, NULL, NULL);
 }

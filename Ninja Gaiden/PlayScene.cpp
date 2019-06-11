@@ -4,30 +4,37 @@ PlayScene::PlayScene(int level)
 {
 	map = MapFactory::GetInstance()->GetMap(level);
 	grid = new Grid(level);
-	this->level = level;
+
+	delayStart = 3000;
+	gameLevel = level;
+	isFrozenEnemies = false;
 
 	p = player;
-	p->spawnX = p->spawnY = 50;
-	p->Respawn();
+	p->posX = p->spawnX = 50;
+	p->posY = p->spawnY = 50;
 	p->DetectSpawnY(grid->GetColliableGrounds(p));
-	p->ChangeState(new PlayerStandingState());
+	p->Respawn();
 
 	camera->x = 0;
 	camera->y = SCREEN_HEIGHT;
-	scoreboard->stage = level;
+	scoreboard->stage = gameLevel;
 
 	char soundFileName[10];
-	sprintf_s(soundFileName, "stage%d", level);
-	Sound::getInstance()->play(soundFileName, true);
-	Sound::getInstance()->setVolume(90.0f, soundFileName);
 
-	if (level > 1)
+	if (!delayEnd)
 	{
-		sprintf_s(soundFileName, "stage%d", level - 1);
+		sprintf_s(soundFileName, "stage%d", gameLevel);
+		Sound::getInstance()->setVolume(90.0f, soundFileName);
+		Sound::getInstance()->play(soundFileName, true);
+	}
+
+	if (gameLevel > 1)
+	{
+		sprintf_s(soundFileName, "stage%d", gameLevel - 1);
 		Sound::getInstance()->stop(soundFileName);
 	}
 
-	switch (level)
+	switch (gameLevel)
 	{
 	case 1:
 		endPoint = 1950;
@@ -50,7 +57,7 @@ PlayScene::~PlayScene()
 
 bool PlayScene::PlayerIsOnAirGround()
 {
-	if (level == 2)
+	if (gameLevel == 2)
 	{
 		float airGroundX[5] = { 1153,1282,1376,1473,1565 };
 		for (int i = 0; i < 5; ++i)
@@ -66,8 +73,32 @@ bool PlayScene::PlayerIsOnAirGround()
 // Update các thông số các đối tượng trong Scene
 void PlayScene::Update(float dt)
 {
-	this->UpdateScoreboard(dt);
+	if (delayRestart)
+	{
+		delayRestart -= dt;
+		if (delayRestart <= 0)
+		{
+			delayRestart = 0;
+			this->RestartScene();
+		}
+		return;
+	}
+
 	this->UpdateScene();
+
+	if (delayStart)
+	{
+		delayStart -= dt;
+		this->UpdateVisibleObjects();
+
+		if (delayStart <= 0)
+		{
+			delayStart = 0;
+		}
+		return;
+	}
+
+	this->UpdateScoreboard(dt);
 	this->UpdateObjects(dt);
 	this->UpdatePlayer(dt);
 
@@ -88,16 +119,18 @@ void PlayScene::Update(float dt)
 
 	if (p->posX >= endPoint)
 	{
-		SceneManager::GetInstance()->ReplaceScene(new PlayScene(level + 1));
+		delayEnd = 2000;
+		Sound::getInstance()->play("win");
+		SceneManager::GetInstance()->ReplaceScene(new PlayScene(gameLevel + 1));
 	}
 }
 
 void PlayScene::UpdateScoreboard(float dt)
 {
 	scoreboard->Update(dt);
-	if (scoreboard->timer == 0)
+	if (!scoreboard->timer && !isEndGame)
 	{
-		this->RestartScene();
+		this->SetRestartScene();
 	}
 }
 
@@ -250,6 +283,12 @@ void PlayScene::UpdateObjects(float dt)
 
 void PlayScene::UpdatePlayer(float dt)
 {
+	if (p->isDead)
+	{
+		this->SetRestartScene();
+		return;
+	}
+
 	p->Update(dt, grid->GetColliableObjects(p));
 	p->CheckGroundCollision(grid->GetColliableGrounds(p));
 
@@ -260,12 +299,6 @@ void PlayScene::UpdatePlayer(float dt)
 
 	p->posX += p->dx;
 	p->posY += p->dy;
-
-	if (p->GetRect().y < 0 || p->health == 0)
-	{
-		this->RestartScene();
-		return;
-	}
 
 	if (p->isAttacking)
 	{
@@ -290,8 +323,21 @@ void PlayScene::UpdatePlayer(float dt)
 	}
 }
 
+void PlayScene::SetRestartScene()
+{
+	char soundFileName[10];
+	sprintf_s(soundFileName, "stage%d", gameLevel);
+	Sound::getInstance()->stop(soundFileName);
+	Sound::getInstance()->play("over");
+	delayRestart = GAME_RESTART_DELAY;
+}
+
 void PlayScene::RestartScene()
 {
+	char soundFileName[10];
+	sprintf_s(soundFileName, "stage%d", gameLevel);
+	Sound::getInstance()->play(soundFileName);
+
 	p->Respawn();
 	p->ChangeState(new PlayerStandingState());
 

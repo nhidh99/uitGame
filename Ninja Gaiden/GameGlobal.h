@@ -30,6 +30,7 @@
 #define PLAYER_WIDTH 20
 #define PLAYER_STANDING_HEIGHT 26
 #define PLAYER_SITTING_HEIGHT 18
+#define PLAYER_HEALTH 16
 
 // ===== Các thông số cho WEAPON SWORD ====
 #define WEAPON_SWORD_WIDTH 32
@@ -226,15 +227,15 @@ struct Rect
 struct Wall
 {
 	Rect rect;
-	bool climbable;
+	int type;
 	
 	Wall() {}
-	Wall(float x, float y, float width, float height, bool climbable)
+	Wall(float x, float y, float width, float height, int type)
 	{
 		this->rect.x = x;
 		this->rect.y = y;
 		this->rect.width = width;
 		this->rect.height = height;
-		this->climbable = climbable;
+		this->type = type;
 	}
 };

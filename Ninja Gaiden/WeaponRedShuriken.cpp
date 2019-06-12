@@ -20,7 +20,7 @@ void WeaponRedShuriken::UpdateDistance(float dt)
 		{
 			dx = min(3.5f, dx);
 		}
-		vx -= 0.014f;
+		vx -= 0.02f;
 
 		if (this->isReverse)
 		{
@@ -34,7 +34,7 @@ void WeaponRedShuriken::UpdateDistance(float dt)
 		{
 			dx = max(-3.5f, dx);
 		}
-		vx += 0.014f;
+		vx += 0.02f;
 
 		if (this->isReverse)
 		{

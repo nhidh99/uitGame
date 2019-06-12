@@ -1,4 +1,4 @@
-﻿  PlayScene.cpp
+﻿  WeaponRedShuriken.cpp
   C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
 C:\uitGame\Ninja Gaiden\GameGlobal.h(155): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
 C:\uitGame\Ninja Gaiden\GameGlobal.h(184): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
@@ -11,7 +11,5 @@ C:\uitGame\Ninja Gaiden\BulletSprite.h(20): warning C4244: 'argument': conversio
 C:\uitGame\Ninja Gaiden\Item.h(29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\uitGame\Ninja Gaiden\Item.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\uitGame\Ninja Gaiden\Enemy.h(96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\uitGame\Ninja Gaiden\WeaponFireWheel.h(20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\uitGame\Ninja Gaiden\PlayScene.cpp(113): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-C:\uitGame\Ninja Gaiden\BulletFactory.h(19): warning C4715: 'BulletFactory::CreateBullet': not all control paths return a value
+C:\uitGame\Ninja Gaiden\WeaponRedShuriken.cpp(15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Game.vcxproj -> C:\uitGame\Ninja Gaiden\x64\Debug\Game.exe

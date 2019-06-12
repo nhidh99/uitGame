@@ -142,7 +142,11 @@ void Game::Run()
 			else
 			{
 				Update(dt);
-				ProcessKeyboard();
+
+				if (!delayStart)
+				{
+					ProcessKeyboard();
+				}
 			}
 			Render();
 		}

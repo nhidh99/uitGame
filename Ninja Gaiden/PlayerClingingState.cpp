@@ -42,7 +42,10 @@ void PlayerClingingState::HandleKeyboard()
 
 	else if (keyCode[DIK_UP] || keyCode[DIK_DOWN])
 	{
-		player->ChangeState(new PlayerClimbingState());
-		return;
+		if (player->wallBound.type == 2)
+		{
+			player->ChangeState(new PlayerClimbingState());
+			return;
+		}
 	}
 }

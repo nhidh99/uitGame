@@ -50,9 +50,9 @@ void Player::Respawn()
 	this->allow[THROWING] = true;
 	this->isAttacking = false;
 	this->isThrowing = false;
-	this->SetHealth(16);
+	this->SetHealth(PLAYER_HEALTH);
 	this->SetEnergy(0);
-	this->SetWeapon(FIREWHEEL);
+	this->SetWeapon(NONE);
 	this->vx = this->vy = this->dx = this->dy = 0;
 	this->posX = this->spawnX;
 	this->posY = this->spawnY;
@@ -266,7 +266,7 @@ void Player::CheckWallCollision(std::unordered_set<Wall*> walls)
 			this->vx = this->dx = 0;
 			this->posX = wallLeft - (this->width >> 1);
 
-			if (wallBound.climbable && this->vy
+			if (wallBound.type && this->vy
 				&& this->posY + (this->height >> 1) <= wallBound.rect.y
 				&& this->posY - (this->height >> 1) >= wallBound.rect.y - wallBound.rect.height)
 			{
@@ -280,7 +280,7 @@ void Player::CheckWallCollision(std::unordered_set<Wall*> walls)
 			this->vx = this->dx = 0;
 			this->posX = wallRight + (this->width >> 1);
 
-			if (wallBound.climbable && this->vy
+			if (wallBound.type && this->vy
 				&& this->posY + (this->height >> 1) <= wallBound.rect.y
 				&& this->posY - (this->height >> 1) >= wallBound.rect.y - wallBound.rect.height)
 			{

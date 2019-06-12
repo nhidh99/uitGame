@@ -30,7 +30,6 @@
 #define PLAYER_WIDTH 20
 #define PLAYER_STANDING_HEIGHT 26
 #define PLAYER_SITTING_HEIGHT 18
-#define PLAYER_HEALTH 16
 
 // ===== Các thông số cho WEAPON SWORD ====
 #define WEAPON_SWORD_WIDTH 32
@@ -152,7 +151,9 @@ extern enum Tag
 	FONT,
 	ENEMY,
 	HOLDER,
-	BULLET
+	BULLET,
+	INTROSCENE,
+	ENDSCENE,
 };
 
 extern enum Type
@@ -227,15 +228,15 @@ struct Rect
 struct Wall
 {
 	Rect rect;
-	int type;
+	bool climbable;
 	
 	Wall() {}
-	Wall(float x, float y, float width, float height, int type)
+	Wall(float x, float y, float width, float height, bool climbable)
 	{
 		this->rect.x = x;
 		this->rect.y = y;
 		this->rect.width = width;
 		this->rect.height = height;
-		this->type = type;
+		this->climbable = climbable;
 	}
 };

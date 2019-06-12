@@ -26,22 +26,6 @@ void PlayerJumpingState::Update(float dt)
 		player->ChangeState(new PlayerFallingState());
 		return;
 	}
-
-	//if (player->allow[CLINGING] && player->posY < (SCREEN_HEIGHT >> 1) - 20)
-	//{
-	//	//if (player->posX == SCREEN_WIDTH - player->width)
-	//	//{
-	//	//	player->ChangeState(new PlayerClingingState());
-	//	//	return;
-	//	//}
-
-	//	if (player->posX == player->width >> 1)
-	//	{
-	//		player->ChangeState(new PlayerClingingState());
-	//		return;
-	//	}
-	//}
-
 	this->HandleKeyboard();
 }
 

@@ -1,12 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #pragma once
-#include "GameGlobal.h"
-#include <unordered_map>
-#include <string.h>
 #include "SpriteFactory.h"
-#include <vector>
 #include <sstream>
-#include "Player.h"
 #include "Sound.h"
 
 class ScoreBoard {
@@ -17,24 +12,23 @@ public:
 	int playerHealth;
 	int bossHealth;
 	int playerEnergy;
-	bool isEndGame;
 	Type playerWeapon;
-	static ScoreBoard* _instance;
+	SpriteFactory* sprites;
 
 	ScoreBoard();
-
-
 	void Render();
+	void Update(float dt);
+	static ScoreBoard* GetInstance();
+
+private:
+	static ScoreBoard* _instance;
 	void RenderScore();
 	void RenderStage();
 	void RenderTimer();
 	void RenderEnergy();
-	void RenderHealth(float x, float y);
+	void RenderHealth(float x, float y, int type);
 	void RenderPlayerWeapon();
 	void RenderPlayerHealth();
 	void RenderEnemyHealth();
 	void RenderString(std::string str, int x, int y);
-
-	void Update(float dt);
-	static ScoreBoard* GetInstance();
 };

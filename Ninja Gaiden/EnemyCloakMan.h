@@ -1,6 +1,5 @@
 #pragma once
 #include "Enemy.h"
-#include "WeaponDagger.h"
 
 class EnemyCloakMan : public Enemy 
 {
@@ -9,7 +8,6 @@ private:
 
 public:
 	EnemyCloakMan();
-	~EnemyCloakMan();
 	void UpdateDistance(float dt);
 	void Update(float dt);
 };

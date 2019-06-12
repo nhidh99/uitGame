@@ -5,24 +5,33 @@
 #include "Grid.h"
 #include "WeaponFactory.h"
 #include "BulletFactory.h"
-#include "ScoreBoard.h"
-#include "Sound.h"
+#include "MapFactory.h"
+#include "SceneManager.h"
+#include "EndScene.h"
 
 class PlayScene : public Scene
 {
 private:
+	Player* p;
 	Map* map;
 	Grid* grid;
+	int level;
+	float endPoint;
+	float delayRestart;
 	std::unordered_set<Object*> visibleObjects;
+
 public:
-	PlayScene();
+	PlayScene(int level);
 	~PlayScene();
 
+	bool PlayerIsOnAirGround();
 	void Update(float dt);
+	void UpdateScoreboard(float dt);
 	void UpdateScene();						// Update các thông số các đối tượng trong Scene
 	void UpdateVisibleObjects();
 	void UpdateObjects(float dt);
 	void UpdatePlayer(float dt);
+	void SetRestartScene();
 
 	void RestartScene();
 	void Render();									// Tải Scene lên màn hình

@@ -5,11 +5,16 @@ TextureFactory* TextureFactory::_instance = NULL;
 // Load các Texture cần dùng cho Game
 void TextureFactory::LoadResources()
 {
-	TextureFactory::GetInstance()->AddTexture(PLAYER, "Resources\\player.png");
-	TextureFactory::GetInstance()->AddTexture(ITEM, "Resources\\item.png");
-	TextureFactory::GetInstance()->AddTexture(MAP1, "Resources\\tiles1.png");
-	TextureFactory::GetInstance()->AddTexture(ENEMY, "Resources\\Enemy.png");
-	TextureFactory::GetInstance()->AddTexture(FONT, "Resources\\PressStart2P.png");
+	auto textures = TextureFactory::GetInstance();
+	textures->AddTexture(PLAYER, "Resources\\player.png");
+	textures->AddTexture(MAP1, "Resources\\tiles1.png");
+	textures->AddTexture(MAP2, "Resources\\tiles2.png");
+	textures->AddTexture(MAP3, "Resources\\tiles3.png");
+	textures->AddTexture(ITEM, "Resources\\item.png");
+	textures->AddTexture(ENEMY, "Resources\\enemy.png");
+	textures->AddTexture(FONT, "Resources\\font.png");
+	textures->AddTexture(INTROSCENE, "Resources\\IntroScene.png");
+	textures->AddTexture(ENDSCENE, "Resources\\EndScene.png");
 }
 
 // Thêm một Texture vào danh sách, quy định theo Tag

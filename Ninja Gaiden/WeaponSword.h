@@ -30,27 +30,16 @@ public:
 
 				case ENEMY:
 				{
-					auto e = (Enemy*)obj;
-					if (e->StateName == DEAD)
+					if (obj->type != BOSS)
 					{
-						return;
+						auto e = (Enemy*)obj;
+						e->ChangeState(DEAD);
 					}
-					e->ChangeState(DEAD);
-					switch (e->type)
+					else
 					{
-					case EAGLE:
-					case CLOAKMAN:
-						scoreboard->score += 300;
-						break;
-					case PANTHER:
-					case GUNMAN:
-						scoreboard->score += 200;
-						break;
-					default:
-						scoreboard->score += 100;
-						break;
+						auto e = (EnemyBoss*)obj;
+						e->SubtractHealth();
 					}
-					Sound::getInstance()->play("sound13", false, 1);
 					break;
 				}
 
@@ -88,6 +77,6 @@ public:
 		}
 
 		camera->ConvertPositionToViewPort(x, y);
-		sprite->Render(x, y);
+		sprite->Render(x, y + SCREEN_TRANSLATEY);
 	}
 };

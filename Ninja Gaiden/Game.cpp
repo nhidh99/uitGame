@@ -3,12 +3,17 @@
 // Constructor khởi tạo Game
 Game::Game(HWND hWnd)
 {
-	// Khởi tạo các Components cần thiết
 	this->Init(hWnd);
-	Sound::create(hWnd);
-	// Tạo CurScene
-	SceneManager::GetInstance()->ReplaceScene(new PlayScene());
-	CurScene = SceneManager::GetInstance()->GetCurScene();
+	this->LoadResources();
+}
+
+void Game::LoadResources()
+{
+	TextureFactory::GetInstance()->LoadResources();
+	SpriteFactory::GetInstance()->LoadResources();
+	MapFactory::GetInstance()->LoadResources();
+	Sound::getInstance()->LoadResources();
+	SceneManager::GetInstance()->ReplaceScene(new PlayScene(3));
 }
 
 // Khởi tạo Game từ Windows với các Device-Components cần thiết
@@ -54,6 +59,9 @@ void Game::Init(HWND hWnd)
 
 	didv->SetProperty(DIPROP_BUFFERSIZE, &dipdw.diph);
 	didv->Acquire();
+
+	// Tạo Sound
+	Sound::create(hWnd);
 }
 
 void Game::ProcessKeyboard()
@@ -85,6 +93,7 @@ void Game::ProcessKeyboard()
 	{
 		int KeyCode = keyEvents[i].dwOfs;
 		int KeyState = keyEvents[i].dwData;
+		auto CurScene = SceneManager::GetInstance()->CurScene;
 		if ((KeyState & 0x80) > 0)
 			CurScene->OnKeyDown(KeyCode);
 		else CurScene->OnKeyUp(KeyCode);
@@ -117,8 +126,24 @@ void Game::Run()
 		if (dt >= tickPerFrame)
 		{
 			frameStart = now;
-			Update(dt);
-			ProcessKeyboard();
+
+			if (delayEnd)
+			{
+				delayEnd -= dt;
+				if (delayEnd <= 0)
+				{
+					delayEnd = 0;
+					char soundFileName[10];
+					sprintf_s(soundFileName, "stage%d", gameLevel);
+					Sound::getInstance()->play(soundFileName, true);
+					Sound::getInstance()->setVolume(90.0f, soundFileName);
+				}
+			}
+			else
+			{
+				Update(dt);
+				ProcessKeyboard();
+			}
 			Render();
 		}
 		else
@@ -130,20 +155,21 @@ void Game::Run()
 
 void Game::Update(float dt)
 {
-	CurScene->Update(dt);
+	SceneManager::GetInstance()->CurScene->Update(dt);
 }
 
 // Render lại Frame hình sau khi đã Update các thông số
 void Game::Render()
 {
-	d3ddev->ColorFill(backBuffer, NULL, BACK_COLOR);
-
 	if (d3ddev->BeginScene())
 	{
+		d3ddev->ColorFill(backBuffer, NULL, BACK_COLOR);
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-		CurScene->Render();
+		SceneManager::GetInstance()->CurScene->Render();
 		spriteHandler->End();
 		d3ddev->EndScene();
 	}
-	d3ddev->Present(NULL, NULL, NULL, NULL);
+
+	if (!delayEnd)
+		d3ddev->Present(NULL, NULL, NULL, NULL);
 }

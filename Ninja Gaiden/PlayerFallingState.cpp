@@ -7,7 +7,6 @@ PlayerFallingState::PlayerFallingState()
 	player->allow[ATTACKING] = true;
 	player->allow[CLINGING] = true;
 	player->vy = -PLAYER_FALLING_SPEED;
-
 	StateName = FALLING;
 }
 
@@ -16,19 +15,10 @@ void PlayerFallingState::Update(float dt)
 {
 	if (player->vy == 0)
 	{
+		Sound::getInstance()->play("jump");
 		player->ChangeState(new PlayerStandingState());
 		return;
 	}
-
-	//if (player->allow[CLINGING] && player->posY < SCREEN_HEIGHT - 20)
-	//{
-	//	if (player->posX == player->width >> 1)
-	//	{
-	//		player->isReverse = true;
-	//		player->ChangeState(new PlayerClingingState());
-	//		return;
-	//	}
-	//}
 	this->HandleKeyboard();
 }
 

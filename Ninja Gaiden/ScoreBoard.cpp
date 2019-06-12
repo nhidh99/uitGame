@@ -1,17 +1,17 @@
 ﻿#include "ScoreBoard.h"
-ScoreBoard* ScoreBoard::_instance = NULL;
 
+ScoreBoard* ScoreBoard::_instance = NULL;
 
 ScoreBoard::ScoreBoard()
 {
 	score = 0;
 	timer = GAME_TIMER;
+	this->sprites = SpriteFactory::GetInstance();
 	this->stage = 1;
 	this->playerEnergy = 0;
 	this->bossHealth = 16;
 	this->playerHealth = 16;
-	this->playerWeapon = NONE;
-	this->isEndGame = false;
+	this->playerWeapon = BLUESHURIKEN;
 }
 
 void ScoreBoard::Render()
@@ -21,165 +21,157 @@ void ScoreBoard::Render()
 	RenderEnergy();
 	RenderStage();
 	RenderPlayerHealth();
-	RenderEnemyHealth();
 	RenderPlayerWeapon();
+	RenderEnemyHealth();
 }
 
 void ScoreBoard::RenderScore()
 {
-	RenderString("SCORE", 30, 15);
-	SpriteFactory::GetInstance()->GetSprite(FONT, 36)->ScaleRender(80, 15, SCALE_RATE, SCALE_RATE);
-
 	std::string str;
 	std::ostringstream convert;
-
 	convert << score;
-
 	str = convert.str();
 	int n = std::strlen(str.c_str());
 	char scoreArr[8];
-
 	std::strcpy(scoreArr, str.c_str());
 
-	switch (n)
+	RenderString("SCORE", 10, 15);
+	sprites->GetSprite(FONT, 36)->ScaleRender(60, 15, SCALE_RATE, SCALE_RATE);
+
+	for (int i = 0; i < 6 - n; i++)
 	{
-	case 1:
-		for (int i = 0; i < 5; ++i)
-		{
-			SpriteFactory::GetInstance()->GetSprite(FONT, 26)->ScaleRender(90 + i * 10, 15, SCALE_RATE, SCALE_RATE);
-		}
-		break;
-	case 2:
-		for (int i = 0; i < 4; ++i)
-		{
-			SpriteFactory::GetInstance()->GetSprite(FONT, 26)->ScaleRender(90 + i * 10, 15, SCALE_RATE, SCALE_RATE);
-		}
-		break;
-	case 3:
-		for (int i = 0; i < 3; ++i)
-		{
-			SpriteFactory::GetInstance()->GetSprite(FONT, 26)->ScaleRender(90 + i * 10, 15, SCALE_RATE, SCALE_RATE);
-		}
-		break;
-	case 4:
-		for (int i = 0; i < 2; ++i)
-		{
-			SpriteFactory::GetInstance()->GetSprite(FONT, 26)->ScaleRender(90 + i * 10, 15, SCALE_RATE, SCALE_RATE);
-		}
-		break;
-	case 5:
-			SpriteFactory::GetInstance()->GetSprite(FONT, 26)->ScaleRender(90, 15, SCALE_RATE, SCALE_RATE);
-		break;
+		sprites->GetSprite(FONT, 26)->ScaleRender(70 + i * 10, 15, SCALE_RATE, SCALE_RATE);
 	}
-	
+
 	for (int i = 0; i < n; i++)
 	{
-		SpriteFactory::GetInstance()->GetSprite(FONT, (int(scoreArr[i] - '0') + 26))->ScaleRender(90 + (6 -  n + i) * 10, 15, SCALE_RATE, SCALE_RATE);
-	}	
+		sprites->GetSprite(FONT, (int(scoreArr[i] - '0') + 26))->ScaleRender(70 + (6 - n + i) * 10, 15, SCALE_RATE, SCALE_RATE);
+	}
 }
 
 void ScoreBoard::RenderStage()
 {
-	RenderString("STAGE", 155, 15);
-	SpriteFactory::GetInstance()->GetSprite(FONT, 36)->ScaleRender(205, 15, SCALE_RATE, SCALE_RATE);
-	SpriteFactory::GetInstance()->GetSprite(FONT, int('3' - '0') + 26)->ScaleRender(215, 15, SCALE_RATE, SCALE_RATE);
-	SpriteFactory::GetInstance()->GetSprite(FONT, 36)->ScaleRender(225, 15, SCALE_RATE, SCALE_RATE);
-	SpriteFactory::GetInstance()->GetSprite(FONT, int('1' - '0') + 26)->ScaleRender(235, 15, SCALE_RATE, SCALE_RATE);
+	RenderString("STAGE", 135, 15);
+	sprites->GetSprite(FONT, 36)->ScaleRender(185, 15, SCALE_RATE, SCALE_RATE);
+	sprites->GetSprite(FONT, 29)->ScaleRender(195, 15, SCALE_RATE, SCALE_RATE);
+	sprites->GetSprite(FONT, 36)->ScaleRender(205, 15, SCALE_RATE, SCALE_RATE);
+	sprites->GetSprite(FONT, stage + 26)->ScaleRender(215, 15, SCALE_RATE, SCALE_RATE);
 }
 
 void ScoreBoard::RenderTimer()
 {
-	RenderString("TIMER", 30, 30);
-	SpriteFactory::GetInstance()->GetSprite(FONT, 36)->ScaleRender(80, 30, SCALE_RATE, SCALE_RATE);
-
 	std::string str;
 	std::ostringstream convert;
-
 	convert << timer / 1000;
-
 	str = convert.str();
 	char timerArr[8];
-
 	std::strcpy(timerArr, str.c_str());
+
+	RenderString("TIMER", 10, 30);
+	sprites->GetSprite(FONT, 36)->ScaleRender(60, 30, SCALE_RATE, SCALE_RATE);
 
 	if (timer >= 100000)
 	{
 		for (int i = 0; i < 3; i++)
 		{
-			SpriteFactory::GetInstance()->GetSprite(FONT, (int(timerArr[i] - '0') + 26))->ScaleRender(90 + 10 * i, 30, SCALE_RATE, SCALE_RATE);
+			sprites->GetSprite(FONT, (int(timerArr[i] - '0') + 26))->ScaleRender(70 + 10 * i, 30, SCALE_RATE, SCALE_RATE);
 		}
 	}
 	else if (timer < 10000)
 	{
-		SpriteFactory::GetInstance()->GetSprite(FONT, 26)->ScaleRender(90, 30, SCALE_RATE, SCALE_RATE);
-		SpriteFactory::GetInstance()->GetSprite(FONT, 26)->ScaleRender(100, 30, SCALE_RATE, SCALE_RATE);
-		SpriteFactory::GetInstance()->GetSprite(FONT, (int(timerArr[0] - '0') + 26))->ScaleRender(110, 30, SCALE_RATE, SCALE_RATE);
+		sprites->GetSprite(FONT, 26)->ScaleRender(70, 30, SCALE_RATE, SCALE_RATE);
+		sprites->GetSprite(FONT, 26)->ScaleRender(80, 30, SCALE_RATE, SCALE_RATE);
+		sprites->GetSprite(FONT, (int(timerArr[0] - '0') + 26))->ScaleRender(90, 30, SCALE_RATE, SCALE_RATE);
 	}
 	else if (timer < 100000)
 	{
-		SpriteFactory::GetInstance()->GetSprite(FONT, 26)->ScaleRender(90, 30, SCALE_RATE, SCALE_RATE);
+		sprites->GetSprite(FONT, 26)->ScaleRender(70, 30, SCALE_RATE, SCALE_RATE);
 		for (int i = 0; i < 2; i++)
 		{
-			SpriteFactory::GetInstance()->GetSprite(FONT, (int(timerArr[i] - '0') + 26))->ScaleRender(100 + 10 * i, 30, SCALE_RATE, SCALE_RATE);
+			sprites->GetSprite(FONT, (int(timerArr[i] - '0') + 26))->ScaleRender(80 + 10 * i, 30, SCALE_RATE, SCALE_RATE);
 		}
 	}
 }
 
 void ScoreBoard::RenderEnergy()
 {
-	SpriteFactory::GetInstance()->GetSprite(FONT, int('P' - 'A'))->ScaleRender(30, 45, SCALE_RATE, SCALE_RATE);
-	SpriteFactory::GetInstance()->GetSprite(FONT, 36)->ScaleRender(40, 45, SCALE_RATE, SCALE_RATE);
-	SpriteFactory::GetInstance()->GetSprite(FONT, int('0' - '0') + 26)->ScaleRender(50, 45, SCALE_RATE, SCALE_RATE);
-	SpriteFactory::GetInstance()->GetSprite(FONT, int('2' - '0') + 26)->ScaleRender(60, 45, SCALE_RATE, SCALE_RATE);
-	SpriteFactory::GetInstance()->GetSprite(ITEM, 1)->Render(75, 42);
-	SpriteFactory::GetInstance()->GetSprite(FONT, 36)->ScaleRender(90, 45, SCALE_RATE, SCALE_RATE);
-
 	std::string str;
 	std::ostringstream convert;
-
 	convert << playerEnergy;
-
 	str = convert.str();
 	int n = std::strlen(str.c_str());
 	char energyArr[8];
-
 	std::strcpy(energyArr, str.c_str());
 
-	switch (n)
+	sprites->GetSprite(FONT, int('P' - 'A'))->ScaleRender(10, 45, SCALE_RATE, SCALE_RATE);
+	sprites->GetSprite(FONT, 36)->ScaleRender(20, 45, SCALE_RATE, SCALE_RATE);
+	sprites->GetSprite(FONT, int('0' - '0') + 26)->ScaleRender(30, 45, SCALE_RATE, SCALE_RATE);
+	sprites->GetSprite(FONT, int('2' - '0') + 26)->ScaleRender(40, 45, SCALE_RATE, SCALE_RATE);
+	sprites->GetSprite(ITEM, 1)->Render(55, 42);
+	sprites->GetSprite(FONT, 36)->ScaleRender(70, 45, SCALE_RATE, SCALE_RATE);
+
+	for (int i = 0; i < 2 - n; i++)
 	{
-	case 1:
-		SpriteFactory::GetInstance()->GetSprite(FONT, int('0' - '0') + 26)->ScaleRender(100, 45, SCALE_RATE, SCALE_RATE);
-		SpriteFactory::GetInstance()->GetSprite(FONT, int( energyArr[0]- '0') + 26)->ScaleRender(110, 45, SCALE_RATE, SCALE_RATE);
-		break;
-	case 2:
-		SpriteFactory::GetInstance()->GetSprite(FONT, int(energyArr[0] - '0') + 26)->ScaleRender(100, 45, SCALE_RATE, SCALE_RATE);
-		SpriteFactory::GetInstance()->GetSprite(FONT, int(energyArr[1] - '0') + 26)->ScaleRender(110, 45, SCALE_RATE, SCALE_RATE);
-		break;
+		sprites->GetSprite(FONT, 26)->ScaleRender(80 + i * 10, 45, SCALE_RATE, SCALE_RATE);
+	}
+
+	for (int i = 0; i < n; ++i)
+	{
+		sprites->GetSprite(FONT, (int(energyArr[i] - '0') + 26))->ScaleRender(80 + (2 - n + i) * 10, 45, SCALE_RATE, SCALE_RATE);
 	}
 }
 
-void ScoreBoard::RenderHealth(float x, float y)
+void ScoreBoard::RenderHealth(float x, float y, int obj)
 {
 	for (int i = 0; i < 16; ++i)
 	{
-		SpriteFactory::GetInstance()->GetSprite(FONT, 37)->ScaleRender(x + i * 4, y,SCALE_RATE,SCALE_RATE);
+		sprites->GetSprite(FONT, 37)->ScaleRender(x + i * 3, y, SCALE_RATE, SCALE_RATE);
 	}
-	if (this->playerHealth < 16)
+
+	switch (obj)
 	{
-		int num = 16 - playerHealth;
-		for (int j = 0; j < num; ++j)
+	case 1:
+	{
+		if (this->playerHealth < 16)
 		{
-			SpriteFactory::GetInstance()->GetSprite(FONT, 38)->ScaleRender(x + (playerHealth +j) * 4, y, SCALE_RATE, SCALE_RATE);
+			int num = 16 - playerHealth;
+			for (int j = 0; j < num; ++j)
+			{
+				sprites->GetSprite(FONT, 38)->ScaleRender(x + (playerHealth + j) * 3, y, SCALE_RATE, SCALE_RATE);
+			}
 		}
+		break;
+	}
+	case 2:
+		if (this->bossHealth < 16)
+		{
+			int num = 16 - bossHealth;
+			for (int j = 0; j < num; ++j)
+			{
+				sprites->GetSprite(FONT, 38)->ScaleRender(x + (bossHealth + j) * 3, y, SCALE_RATE, SCALE_RATE);
+			}
+		}
+		break;
 	}
 }
 
 void ScoreBoard::RenderPlayerWeapon()
 {
+	sprites->GetSprite(FONT, 39)->ScaleRender(121, 25, 0.8, 0.8);
+	sprites->GetSprite(FONT, 40)->ScaleRender(101, 25, 0.8, 0.8);
+	sprites->GetSprite(FONT, 41)->ScaleRender(101, 45, 0.8, 0.8);
+	sprites->GetSprite(FONT, 42)->ScaleRender(121, 45, 0.8, 0.8);
+
 	switch (this->playerWeapon)
 	{
 	case BLUESHURIKEN:
-		SpriteFactory::GetInstance()->GetSprite(ITEM, 3)->ScaleRender(132,40,1.25,1.25);
+		sprites->GetSprite(ITEM, 3)->ScaleRender(113, 35, 1.25, 1.25);
+		break;
+	case FIREWHEEL:
+		sprites->GetSprite(ITEM, 5)->ScaleRender(113, 35, 1.25, 1.25);
+		break;
+	case REDSHURIKEN:
+		sprites->GetSprite(ITEM, 8)->ScaleRender(113, 35, 1.25, 1.25);
 		break;
 	default:
 		break;
@@ -188,20 +180,16 @@ void ScoreBoard::RenderPlayerWeapon()
 
 void ScoreBoard::RenderPlayerHealth()
 {
-	RenderString("NINJA", 155, 30);
-	SpriteFactory::GetInstance()->GetSprite(FONT, 36)->ScaleRender(205, 30, SCALE_RATE, SCALE_RATE);
-	RenderHealth(215, 30);
+	RenderString("NINJA", 135, 30);
+	RenderHealth(190, 30, 1);
+	sprites->GetSprite(FONT, 36)->ScaleRender(185, 30, SCALE_RATE, SCALE_RATE);
 }
 
 void ScoreBoard::RenderEnemyHealth()
 {
-	RenderString("ENEMY", 155, 45);
-	SpriteFactory::GetInstance()->GetSprite(FONT, 36)->ScaleRender(205, 45, SCALE_RATE, SCALE_RATE);
-	
-	for (int i = 0; i < 16; ++i)
-	{
-		SpriteFactory::GetInstance()->GetSprite(FONT, 37)->ScaleRender(215 + i * 4, 45, SCALE_RATE, SCALE_RATE);
-	}
+	RenderString("ENEMY", 135, 45);
+	RenderHealth(190, 45, 2);
+	sprites->GetSprite(FONT, 36)->ScaleRender(185, 45, SCALE_RATE, SCALE_RATE);
 }
 
 
@@ -212,42 +200,34 @@ void ScoreBoard::RenderString(std::string str, int x, int y)
 
 	for (int i = 0; i < 5; ++i)
 	{
-		SpriteFactory::GetInstance()->GetSprite(FONT, int(cstr[i] - 'A'))->ScaleRender(x + i * 10, y, SCALE_RATE, SCALE_RATE);
+		sprites->GetSprite(FONT, int(cstr[i] - 'A'))->ScaleRender(x + i * 10, y, SCALE_RATE, SCALE_RATE);
 	}
 }
-
 
 void ScoreBoard::Update(float dt)
 {
 	if (isEndGame)
 	{
-		if(this->playerEnergy > 0)
+		if (this->playerEnergy > 0)
 		{
 			this->score += 200;
 			this->playerEnergy--;
 		}
-		if (this->timer > 0)
-		{
-			this->score += 200;
-			this->timer -= 1000;
-			Sound::getInstance()->play("sound9", false, 1);
-		}
 
-		if (this->timer == 0)
+		if (this->timer >= 500)
 		{
-			this->isEndGame = false;
+			this->score += 100;
+			this->timer -= 500;
+			Sound::getInstance()->play("glasshour");
 		}
 	}
 	else
 	{
 		timer -= dt;
-		this->playerHealth = player->health;
-		this->playerEnergy = player->energy;
-		this->playerWeapon = player->weaponType;
 	}
 }
 
-ScoreBoard * ScoreBoard::GetInstance()
+ScoreBoard* ScoreBoard::GetInstance()
 {
 	if (_instance == NULL)
 		_instance = new ScoreBoard();

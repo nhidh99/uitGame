@@ -10,4 +10,5 @@ public:
 	EnemyGunMan();
 	~EnemyGunMan();
 	void UpdateDistance(float dt);
+	void Update(float dt);
 };

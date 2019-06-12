@@ -42,10 +42,8 @@ void Camera::ConvertPositionToViewPort(float& x, float& y)
 	matrix._22 = -1;
 	matrix._41 = -this->x;
 	matrix._42 = this->y;
-
 	D3DXVECTOR4 MatrixResult;
 	D3DXVec2Transform(&MatrixResult, &D3DXVECTOR2(x, y), &matrix);
-
 	x = MatrixResult.x;
 	y = MatrixResult.y;
 }

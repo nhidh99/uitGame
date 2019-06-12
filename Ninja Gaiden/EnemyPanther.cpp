@@ -7,25 +7,95 @@ EnemyPanther::EnemyPanther()
 	type = PANTHER;
 	height = ENEMY_PANTHER_HEIGHT;
 	width = ENEMY_PANTHER_WIDTH;
-	speed = 0.14f;
+	speed = ENEMY_PANTHER_SPEED;
+	score = ENEMY_PANTHER_SCORE;
 }
 
 EnemyPanther::~EnemyPanther()
 {
 }
 
+void EnemyPanther::DetectGround(std::unordered_set<Rect*> grounds)
+{
+	Enemy::DetectGround(grounds);
+	curGroundBound = groundBound;
+	isOnGround = true;
+}
+
+void EnemyPanther::DetectCurGround(std::unordered_set<Rect*> grounds)
+{
+	Rect nextGround = curGroundBound;
+
+	for (auto g : grounds)
+	{
+		if (g->y < this->posY - (this->height >> 1))
+		{
+			if (this->isReverse)
+			{
+				if (g->x <= curGroundBound.x && (nextGround.x == curGroundBound.x || g->x > nextGround.x))
+				{
+					nextGround = (*g);
+				}
+			}
+			else
+			{
+				if (g->x >= curGroundBound.x && (nextGround.x == curGroundBound.x || g->x < nextGround.x))
+				{
+					nextGround = (*g);
+				}
+			}
+		}
+	}
+	curGroundBound = nextGround;
+}
+
 void EnemyPanther::UpdateDistance(float dt)
 {
-	this->dx = vx * dt;
+	if (this->posY - (this->height >> 1) <= this->curGroundBound.y)
+	{
+		this->vy = 0;
+		this->posY = this->curGroundBound.y + (this->height >> 1);
+	}
 
-	if (this->vx > 0 && this->posX + (this->width >> 1) >= groundBound.x + groundBound.width)
+	this->isOnGround = (this->posX > curGroundBound.x
+		&& this->posX < curGroundBound.x + curGroundBound.width);
+
+	this->dx = vx * dt;
+	this->dy = vy * dt;
+}
+
+void EnemyPanther::ChangeState(State StateName)
+{
+	switch (StateName)
 	{
-		this->isReverse = true;
-		this->vx = -vx;
-	}
-	else if (this->vx < 0 && this->posX - (this->width >> 1) <= groundBound.x)
+	case STANDING:
 	{
-		this->isReverse = false;
-		this->vx = -vx;
+		this->isActive = false;
+		this->isDead = false;
+		this->isOutScreen = false;
+		break;
 	}
+
+	case RUNNING:
+	{
+		auto distance = player->posX - this->spawnX;
+
+		if (activeDistance * distance > 0 && distance >= this->activeDistance)
+		{
+			this->curGroundBound = groundBound;
+			this->isOnGround = true;
+			this->isActive = true;
+		}
+		break;
+	}
+
+	case DEAD:
+	{
+		scoreboard->score += score;
+		Sound::getInstance()->play("enemydie");
+		break;
+	}
+	}
+	this->StateName = StateName;
+	this->curAnimation = animations[StateName];
 }

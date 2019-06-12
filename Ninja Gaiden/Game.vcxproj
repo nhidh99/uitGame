@@ -135,17 +135,20 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="EndScene.cpp" />
+    <ClCompile Include="EnemyBazokaMan.cpp" />
+    <ClCompile Include="EnemyBoss.cpp" />
     <ClCompile Include="EnemyCloakMan.cpp" />
     <ClCompile Include="EnemyEagle.cpp" />
     <ClCompile Include="EnemyGunMan.cpp" />
     <ClCompile Include="EnemyPanther.cpp" />
+    <ClCompile Include="EnemyRunMan.cpp" />
     <ClCompile Include="EnemySprite.cpp" />
     <ClCompile Include="FontSprite.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameGlobal.cpp" />
     <ClCompile Include="Grid.cpp" />
-    <ClCompile Include="HolderButterfly.cpp" />
-    <ClCompile Include="HolderSprite.cpp" />
+    <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapFactory.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -153,7 +156,7 @@
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="WeaponBlueShuriken.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="WeaponSwingSword.cpp" />
+    <ClCompile Include="WeaponRedShuriken.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerAttackingState.cpp" />
     <ClCompile Include="PlayerClimbingState.cpp" />
@@ -166,7 +169,6 @@
     <ClCompile Include="PlayerSittingState.cpp" />
     <ClCompile Include="PlayerStandingState.cpp" />
     <ClCompile Include="PlayScene.cpp" />
-    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteFactory.cpp" />
@@ -176,6 +178,8 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletBazokaMan.h" />
+    <ClInclude Include="BulletBoss.h" />
     <ClInclude Include="BulletFactory.h" />
     <ClInclude Include="BulletGunMan.h" />
     <ClInclude Include="BulletSprite.h" />
@@ -183,17 +187,23 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="EndScene.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyBazokaMan.h" />
+    <ClInclude Include="EnemyBoss.h" />
     <ClInclude Include="EnemyCloakMan.h" />
     <ClInclude Include="EnemyEagle.h" />
     <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="EnemyGunMan.h" />
     <ClInclude Include="EnemyPanther.h" />
+    <ClInclude Include="EnemyRunMan.h" />
     <ClInclude Include="EnemySprite.h" />
     <ClInclude Include="FontSprite.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameGlobal.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="HolderBird.h" />
+    <ClInclude Include="IntroScene.h" />
     <ClInclude Include="ItemBlueBag.h" />
     <ClInclude Include="ItemBlueShuriken.h" />
     <ClInclude Include="ItemFireWheel.h" />
@@ -207,6 +217,7 @@
     <ClInclude Include="ItemFactory.h" />
     <ClInclude Include="ItemRedBag.h" />
     <ClInclude Include="ItemRedPotion.h" />
+    <ClInclude Include="ItemRedShuriken.h" />
     <ClInclude Include="ItemRedSpirit.h" />
     <ClInclude Include="ItemSprite.h" />
     <ClInclude Include="Map.h" />
@@ -217,9 +228,9 @@
     <ClInclude Include="WeaponFactory.h" />
     <ClInclude Include="WeaponBlueShuriken.h" />
     <ClInclude Include="WeaponFireWheel.h" />
+    <ClInclude Include="WeaponRedShuriken.h" />
     <ClInclude Include="WeaponSword.h" />
     <ClInclude Include="Object.h" />
-    <ClInclude Include="WeaponSwingSword.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAttackingState.h" />
     <ClInclude Include="PlayerClimbingState.h" />
@@ -242,17 +253,7 @@
     <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="WeaponSprite.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="packages\directxtk_desktop_2015.2019.5.31.1\build\native\directxtk_desktop_2015.targets" Condition="Exists('packages\directxtk_desktop_2015.2019.5.31.1\build\native\directxtk_desktop_2015.targets')" />
   </ImportGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\directxtk_desktop_2015.2019.5.31.1\build\native\directxtk_desktop_2015.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\directxtk_desktop_2015.2019.5.31.1\build\native\directxtk_desktop_2015.targets'))" />
-  </Target>
 </Project>

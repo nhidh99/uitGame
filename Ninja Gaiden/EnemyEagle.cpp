@@ -8,10 +8,53 @@ EnemyEagle::EnemyEagle()
 	height = ENEMY_EAGLE_HEIGHT;
 	width = ENEMY_EAGLE_WIDTH;
 	delayTime = ENEMY_EAGLE_DELAY_TIME >> 1;
+	score = ENEMY_EAGLE_SCORE;
 }
 
-EnemyEagle::~EnemyEagle()
+void EnemyEagle::Update(float dt)
 {
+	Enemy::Update(dt);
+
+	if (this->isDead)
+	{
+		delayTime = ENEMY_EAGLE_DELAY_TIME >> 1;
+	}
+}
+
+void EnemyEagle::ChangeState(State StateName)
+{
+	switch (StateName)
+	{
+	case STANDING:
+	{
+		this->isActive = false;
+		this->isDead = false;
+		this->isOutScreen = false;
+		break;
+	}
+
+	case RUNNING:
+	{
+		auto distance = player->posX - this->spawnX;
+
+		if (activeDistance * distance > 0 && distance >= this->activeDistance)
+		{
+			this->dx = this->dy = 0;
+			this->isActive = true;
+		}
+		break;
+	}
+
+	case DEAD:
+	{
+		scoreboard->score += score;
+		Sound::getInstance()->play("enemydie");
+		break;
+	}
+	}
+
+	this->StateName = StateName;
+	this->curAnimation = animations[StateName];
 }
 
 void EnemyEagle::UpdateDistance(float dt)
@@ -64,14 +107,4 @@ void EnemyEagle::UpdateDistance(float dt)
 	{
 		this->dy += 0.035f;
 	}
-}
-
-void EnemyEagle::Update(float dt)
-{
-	Enemy::Update(dt);
-
-		if (this->isDead)
-		{
-			delayTime = ENEMY_EAGLE_DELAY_TIME >> 1; 
-		}
 }

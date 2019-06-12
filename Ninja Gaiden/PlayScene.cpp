@@ -1,54 +1,145 @@
 ﻿#include "PlayScene.h"
 
-PlayScene::PlayScene()
+PlayScene::PlayScene(int level)
 {
-	map = MapFactory::GetInstance()->GetMap(0);
-	grid = new Grid(1);
-	//grid->LoadObjects();
+	map = MapFactory::GetInstance()->GetMap(level);
+	grid = new Grid(level);
 
-	player->spawnX = player->posX = 50;
-	player->spawnY = player->posY = 100;
-	player->ChangeState(new PlayerStandingState());
+	delayStart = 3000;
+	gameLevel = level;
+	isFrozenEnemies = false;
+
+	p = player;
+	p->posX = p->spawnX = 50;
+	p->posY = p->spawnY = 50;
+	p->DetectSpawnY(grid->GetColliableGrounds(p));
+	p->Respawn();
 
 	camera->x = 0;
 	camera->y = SCREEN_HEIGHT;
+	scoreboard->stage = gameLevel;
 
-	Sound::getInstance()->play("stage3-1", true, 5);
+	char soundFileName[10];
+
+	if (!delayEnd)
+	{
+		sprintf_s(soundFileName, "stage%d", gameLevel);
+		Sound::getInstance()->setVolume(90.0f, soundFileName);
+		Sound::getInstance()->play(soundFileName, true);
+	}
+
+	if (gameLevel > 1)
+	{
+		sprintf_s(soundFileName, "stage%d", gameLevel - 1);
+		Sound::getInstance()->stop(soundFileName);
+	}
+
+	switch (gameLevel)
+	{
+	case 1:
+		endPoint = 1950;
+		break;
+
+	case 2:
+		endPoint = 3050;
+		break;
+
+	case 3:
+		endPoint = 300;
+		break;
+	}
 }
 
 PlayScene::~PlayScene()
 {
+	if (grid) delete grid;
+}
+
+bool PlayScene::PlayerIsOnAirGround()
+{
+	if (gameLevel == 2)
+	{
+		float airGroundX[5] = { 1153,1282,1376,1473,1565 };
+		for (int i = 0; i < 5; ++i)
+		{
+			if (p->groundBound.x == airGroundX[i])
+				return true;
+		}
+		return false;
+	}
+	return false;
 }
 
 // Update các thông số các đối tượng trong Scene
 void PlayScene::Update(float dt)
 {
+	if (p->deathTimes < 0)
+		SceneManager::GetInstance()->ReplaceScene(new EndScene());
+
+	if (delayRestart)
+	{
+		delayRestart -= dt;
+		if (delayRestart <= 0)
+		{
+			delayRestart = 0;
+			this->RestartScene();
+		}
+		return;
+	}
+
 	this->UpdateScene();
+
+	if (delayStart)
+	{
+		delayStart -= dt;
+		this->UpdateVisibleObjects();
+
+		if (delayStart <= 0)
+		{
+			delayStart = 0;
+		}
+		return;
+	}
+
+	this->UpdateScoreboard(dt);
 	this->UpdateObjects(dt);
 	this->UpdatePlayer(dt);
-	
-	if (scoreboard->timer == 0 || scoreboard->playerHealth == 0)
-	{
-		this->RestartScene();
-	}
-	scoreboard->Update(dt);
-	if (player->posX >= 1910)
-	{
-		scoreboard->isEndGame = true;
-	}
+
 	if (isFrozenEnemies)
 	{
+		if (frozenEnemiesTime / 1000 == frozenCount)
+		{
+			Sound::getInstance()->play("glasshour");
+			--frozenCount;
+		}
+
 		frozenEnemiesTime -= dt;
 		if (frozenEnemiesTime <= 0)
 		{
 			isFrozenEnemies = false;
 		}
 	}
+
+	if (p->posX >= endPoint)
+	{
+		delayEnd = 2000;
+		Sound::getInstance()->play("win");
+		SceneManager::GetInstance()->ReplaceScene(new PlayScene(gameLevel + 1));
+	}
+}
+
+void PlayScene::UpdateScoreboard(float dt)
+{
+	scoreboard->Update(dt);
+	if (!scoreboard->timer && !isEndGame)
+	{
+		this->SetRestartScene();
+	}
 }
 
 void PlayScene::UpdateScene()
 {
-	camera->x = player->posX - (camera->width >> 1);
+	camera->x = p->posX - (camera->width >> 1);
 	map->Update();
 	grid->Update();
 }
@@ -81,7 +172,7 @@ void PlayScene::UpdateObjects(float dt)
 		{
 		case ENEMY:
 		{
-			auto e = EnemyFactory::ConvertToEnemy(o);
+			auto e = (Enemy*)o;
 			e->Update(dt);
 			grid->MoveObject(e, e->posX + e->dx, e->posY + e->dy);
 
@@ -89,6 +180,7 @@ void PlayScene::UpdateObjects(float dt)
 			{
 			case CLOAKMAN:
 			case GUNMAN:
+			case BAZOKAMAN:
 			{
 				if (e->IsFinishAttack())
 				{
@@ -109,12 +201,54 @@ void PlayScene::UpdateObjects(float dt)
 				}
 				break;
 			}
+			case PANTHER:
+			{
+				auto p = (EnemyPanther*)e;
+				if (!p->isOnGround)
+				{
+					p->vy = -0.12f;
+					p->DetectCurGround(grid->GetVisibleGrounds());
+				}
+				break;
+			}
+			case RUNMAN:
+			{
+				auto r = (EnemyRunMan*)e;
+				if (!r->isOnGround)
+				{
+					r->DetectCurGround(grid->GetColliableGrounds(r));
+				}
+				break;
+			}
+			case BOSS:
+			{
+				auto boss = (EnemyBoss*)e;
+				if (boss->bulletCountdown == 0)
+				{
+					for (int i = 0; i < 3; ++i)
+					{
+						auto b = BulletFactory::CreateBullet(BOSS);
+						b->vx = e->isReverse ? -BULLET_BOSS_SPEED : BULLET_BOSS_SPEED;
+						b->posX = e->posX + (e->isReverse ? 15 * i : -15 * i);
+						b->posY = e->posY + (i - 1) * 20;
+						b->ChangeState(ACTIVE);
+						grid->AddObject(b);
+					}
+					boss->bulletCountdown = 3;
+				}
+				if (boss->health == 0)
+				{
+					SceneManager::GetInstance()->ReplaceScene(new EndScene());
+				}
+			}
 			}
 			break;
 		}
+
 		case HOLDER:
 		{
-			HolderFactory::ConvertToHolder(o)->Update(dt);
+			auto h = (Holder*)o;
+			h->Update(dt);
 			break;
 		}
 		case ITEM:
@@ -126,8 +260,9 @@ void PlayScene::UpdateObjects(float dt)
 		}
 		case BULLET:
 		{
-			BulletFactory::ConvertToBullet(o)->Update(dt);
-			grid->MoveObject(o, o->posX + o->dx, o->posY + o->dy);
+			Bullet* b = (Bullet*)o;
+			b->Update(dt);
+			grid->MoveObject(b, b->posX + b->dx, b->posY + b->dy);
 			break;
 		}
 
@@ -136,13 +271,14 @@ void PlayScene::UpdateObjects(float dt)
 			auto w = WeaponFactory::ConvertToWeapon(o);
 
 			if (w->isDead || !w->IsCollide(camera->GetRect())
-				|| (w->type == SWORD && player->stateName != ATTACKING_STAND
-					&& player->stateName != ATTACKING_SIT))
+				|| (w->type == SWORD && p->stateName != ATTACKING_STAND
+					&& p->stateName != ATTACKING_SIT))
 			{
 				it = visibleObjects.erase(it);
 				delete w;
 				continue;
 			}
+
 			w->Update(dt, grid->GetColliableObjects(w));
 			break;
 		}
@@ -154,19 +290,22 @@ void PlayScene::UpdateObjects(float dt)
 
 void PlayScene::UpdatePlayer(float dt)
 {
-	auto p = player;
+	if (p->isDead)
+	{
+		this->SetRestartScene();
+		return;
+	}
 
 	p->Update(dt, grid->GetColliableObjects(p));
-	p->CheckGroundCollision(grid->GetVisibleGrounds());
-	p->CheckWallCollision(grid->GetVisibleWalls());
+	p->CheckGroundCollision(grid->GetColliableGrounds(p));
+
+	if (!this->PlayerIsOnAirGround())
+	{
+		p->CheckWallCollision(grid->GetColliableWalls(p));
+	}
 
 	p->posX += p->dx;
 	p->posY += p->dy;
-
-	if (p->GetRect().y < 0)
-	{
-		this->RestartScene();
-	}
 
 	if (p->isAttacking)
 	{
@@ -191,13 +330,26 @@ void PlayScene::UpdatePlayer(float dt)
 	}
 }
 
+void PlayScene::SetRestartScene()
+{
+	char soundFileName[10];
+	sprintf_s(soundFileName, "stage%d", gameLevel);
+	Sound::getInstance()->stop(soundFileName);
+	Sound::getInstance()->play("over");
+	delayRestart = GAME_RESTART_DELAY;
+}
+
 void PlayScene::RestartScene()
 {
-	isFrozenEnemies = false;
-	player->weaponType = NONE;
-	player->health = 16;
-	player->energy = 0;
+	char soundFileName[10];
+	sprintf_s(soundFileName, "stage%d", gameLevel);
+	Sound::getInstance()->play(soundFileName);
+
+	p->Respawn();
+	p->ChangeState(new PlayerStandingState());
+
 	scoreboard->timer = GAME_TIMER;
+	isFrozenEnemies = false;
 
 	for (auto o : grid->respawnObjects)
 	{
@@ -223,13 +375,11 @@ void PlayScene::RestartScene()
 	{
 		if (o->tag == ENEMY)
 		{
+			auto e = (Enemy*)o;
+			e->ChangeState(STANDING);
 			grid->MoveObject(o, o->spawnX, o->spawnY);
 		}
 	}
-
-	player->posX = player->spawnX;
-	player->posY = player->spawnY;
-
 	this->visibleObjects.clear();
 	grid->respawnObjects.clear();
 }
@@ -239,26 +389,26 @@ void PlayScene::Render()
 {
 	map->Render();
 
+	scoreboard->Render();
+
 	for (auto o : visibleObjects)
 	{
 		o->Render();
 	}
 
-	player->Render();
-
-	scoreboard->Render();
+	p->Render();
 }
 
 // Xử lí Scene khi nhấn phím
 void PlayScene::OnKeyDown(int key)
 {
 	keyCode[key] = true;
-	player->OnKeyDown(key);
+	p->OnKeyDown(key);
 }
 
 // Xử lí Scene khi thả phím
 void PlayScene::OnKeyUp(int key)
 {
 	keyCode[key] = false;
-	player->OnKeyUp(key);
+	p->OnKeyUp(key);
 }

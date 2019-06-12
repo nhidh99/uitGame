@@ -4,20 +4,14 @@ SceneManager* SceneManager::_instance = NULL;
 
 SceneManager::SceneManager()
 {
-	_curScene = nullptr;
+	CurScene = nullptr;
 }
 
 // Thay thế Scene hiện có bằng Scene khác (dùng cho chuyển cảnh)
 void SceneManager::ReplaceScene(Scene * scene)
 {
-	delete _curScene;
-	_curScene = scene;
-}
-
-// Get Scene hiện tại
-Scene * SceneManager::GetCurScene()
-{
-	return _curScene;
+	delete CurScene;
+	CurScene = scene;
 }
 
 // Get Instance (Singleton Pattern)

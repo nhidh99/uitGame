@@ -6,6 +6,7 @@
 #include "ItemBlueBag.h"
 #include "ItemFireWheel.h"
 #include "ItemBlueShuriken.h"
+#include "ItemRedShuriken.h"
 #include "ItemRedPotion.h"
 
 class ItemFactory
@@ -34,6 +35,8 @@ public:
 			return new ItemBlueBag();
 		case 8:
 			return new ItemRedPotion();
+		case 9:
+			return new ItemRedShuriken();
 		default:
 			return NULL;
 		}

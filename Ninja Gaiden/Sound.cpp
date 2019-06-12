@@ -1,6 +1,5 @@
 #include "Sound.h"
 
-
 Sound* Sound::instance = nullptr;
 
 Sound* Sound::getInstance()
@@ -12,9 +11,7 @@ Sound::Sound(HWND hWnd)
 {
 	primaryBuffer = 0;
 	HRESULT result;
-
 	DSBUFFERDESC bufferDesc; //describe the buffer
-
 	result = DirectSoundCreate8(NULL, &pDevice, NULL);
 
 	if (FAILED(result))
@@ -23,7 +20,6 @@ Sound::Sound(HWND hWnd)
 	}
 
 	result = pDevice->SetCooperativeLevel(hWnd, DSSCL_PRIORITY); // set the cooperative level.
-
 	bufferDesc.dwSize = sizeof(DSBUFFERDESC);
 	bufferDesc.dwFlags = DSBCAPS_PRIMARYBUFFER | DSBCAPS_CTRLVOLUME;
 	bufferDesc.dwBufferBytes = 0;
@@ -37,7 +33,7 @@ Sound::Sound(HWND hWnd)
 	{
 		std::cout << "Can not create primaryBuffer";
 	}
-	volume = 80.0f;
+	volume = 95.0f;
 	isMute = false;
 }
 Sound::~Sound()
@@ -51,17 +47,14 @@ Sound::~Sound()
 		}
 
 	}
+
 	if (primaryBuffer)
 		primaryBuffer->Release();
 	if (pDevice)
 		pDevice->Release();
 	pDevice = NULL;
-
 	primaryBuffer = NULL;
-
-
 }
-
 
 void Sound::create(HWND hWnd)
 {
@@ -69,6 +62,22 @@ void Sound::create(HWND hWnd)
 	{
 		instance = new Sound(hWnd);
 	}
+}
+
+void Sound::LoadResources()
+{
+	this->loadSound((char*)"Resources/Sound/attack.wav", "attack");
+	this->loadSound((char*)"Resources/Sound/bossdie.wav", "bossdie");
+	this->loadSound((char*)"Resources/Sound/enemydie.wav", "enemydie");
+	this->loadSound((char*)"Resources/Sound/glasshour.wav", "glasshour");
+	this->loadSound((char*)"Resources/Sound/injured.wav", "injured");
+	this->loadSound((char*)"Resources/Sound/item.wav", "item");
+	this->loadSound((char*)"Resources/Sound/jump.wav", "jump");
+	this->loadSound((char*)"Resources/Sound/stage1.wav", "stage1");
+	this->loadSound((char*)"Resources/Sound/stage2.wav", "stage2");
+	this->loadSound((char*)"Resources/Sound/stage3.wav", "stage3");
+	this->loadSound((char*)"Resources/Sound/over.wav", "over");
+	this->loadSound((char*)"Resources/Sound/win.wav", "win");
 }
 
 float Sound::getVolume()
@@ -97,8 +106,6 @@ void Sound::loadSound(char* fileName, std::string name)
 	}
 
 	fread(&waveHeaderStruct, sizeof(WaveHeaderStruct), 1, filePtr);
-	//fread(&waveFileHeader, sizeof(waveFileHeader), 1, filePtr);
-
 	if ((waveHeaderStruct.format[0] != 'W') || (waveHeaderStruct.format[1] != 'A') ||
 		(waveHeaderStruct.format[2] != 'V') || (waveHeaderStruct.format[3] != 'E'))
 	{
@@ -122,13 +129,9 @@ void Sound::loadSound(char* fileName, std::string name)
 
 	IDirectSoundBuffer8* secondaryBuffer = 0;
 	IDirectSoundBuffer8** pSecondaryBuffer = &secondaryBuffer;
-	//IDirectSoundBuffer8
-
-	//long result = pDevice->CreateSoundBuffer(&bufferDesc, &secondaryBuffer, NULL);
 
 	pDevice->CreateSoundBuffer(&bufferDesc, &tempBuffer, NULL);
-
-	long result = tempBuffer->QueryInterface(IID_IDirectSoundBuffer8, (void**)&(*pSecondaryBuffer));
+	auto result = tempBuffer->QueryInterface(IID_IDirectSoundBuffer8, (void**)&(*pSecondaryBuffer));
 
 	tempBuffer->Release();
 	tempBuffer = 0;
@@ -139,15 +142,8 @@ void Sound::loadSound(char* fileName, std::string name)
 		return;
 	}
 
-	//fseek(filePtr, sizeof(WaveHeaderStruct), SEEK_SET); // move the filePointer cursor to data section
-
 	fseek(filePtr, sizeof(WaveHeaderStruct), SEEK_SET);
-
-
 	wavData = new unsigned char[waveHeaderStruct.dataSize];
-
-
-
 	fread(wavData, waveHeaderStruct.dataSize, 1, filePtr);
 
 	error = fclose(filePtr);
@@ -168,14 +164,12 @@ void Sound::loadSound(char* fileName, std::string name)
 	(*pSecondaryBuffer)->Unlock((void*)bufferPtr, bufferSize, NULL, 0);
 
 	if (wavData != NULL)
-		delete wavData;
+		delete[] wavData;
+
 	wavData = 0;
 	long tempVolume = (volume) / 100 * (-DSBVOLUME_MIN) + DSBVOLUME_MIN;
 	(*pSecondaryBuffer)->SetVolume(tempVolume);
-
 	soundBufferMap[name] = secondaryBuffer;
-
-
 }
 
 
@@ -185,10 +179,11 @@ void Sound::play(std::string name, bool infiniteLoop, int times)
 	{
 		return;
 	}
-	std::map< std::string, IDirectSoundBuffer8*> ::iterator it;
+
+	std::unordered_map< std::string, IDirectSoundBuffer8*> ::iterator it;
 	it = soundBufferMap.find(name);
-	if (it == soundBufferMap.end())
-		return;
+	if (it == soundBufferMap.end()) return;
+
 	if (infiniteLoop)
 	{
 		it->second->Play(0, 0, DSBPLAY_LOOPING);
@@ -199,14 +194,13 @@ void Sound::play(std::string name, bool infiniteLoop, int times)
 		it->second->SetCurrentPosition(0);
 		it->second->Play(0, 0, times - 1);
 	}
-
 }
 
 void Sound::stop(std::string name)
 {
 	if (name == "")
 	{
-		for (std::map< std::string, IDirectSoundBuffer8*> ::iterator it = soundBufferMap.begin(); it != soundBufferMap.end(); it++)
+		for (auto it = soundBufferMap.begin(); it != soundBufferMap.end(); it++)
 		{
 			it->second->Stop();
 			it->second->SetCurrentPosition(0);
@@ -214,7 +208,7 @@ void Sound::stop(std::string name)
 	}
 	else
 	{
-		std::map< std::string, IDirectSoundBuffer8*> ::iterator it;
+		std::unordered_map<std::string, IDirectSoundBuffer8*> ::iterator it;
 		it = soundBufferMap.find(name);
 		if (it == soundBufferMap.end())
 			return;
@@ -228,14 +222,14 @@ void Sound::setVolume(float percentage, std::string name)
 	if (name == "")
 	{
 		long volumne = (percentage) / 100 * (-DSBVOLUME_MIN) + DSBVOLUME_MIN;
-		for (std::map< std::string, IDirectSoundBuffer8*> ::iterator it = soundBufferMap.begin(); it != soundBufferMap.end(); it++)
+		for (auto it = soundBufferMap.begin(); it != soundBufferMap.end(); it++)
 		{
 			it->second->SetVolume(volumne);
 		}
 	}
 	else
 	{
-		std::map< std::string, IDirectSoundBuffer8*> ::iterator it;
+		std::unordered_map< std::string, IDirectSoundBuffer8*> ::iterator it;
 		it = soundBufferMap.find(name);
 		if (it == soundBufferMap.end())
 			return;
@@ -247,7 +241,7 @@ void Sound::setVolume(float percentage, std::string name)
 void Sound::mute()
 {
 	isMute = true;
-	Sound::getInstance()->stop();
+	this->stop();
 }
 void Sound::unMute()
 {

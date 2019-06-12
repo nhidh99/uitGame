@@ -2,23 +2,24 @@
 #include "Player.h"
 #include "EnemySprite.h"
 #include "Cell.h"
+#include "Sound.h"
+#include "ScoreBoard.h"
 #include <algorithm>
-#include <ctime>
-#include <cstdlib>
 
 class Enemy : public Object
 {
 protected:
 	std::unordered_map<State, Animation*> animations;
-	Rect groundBound;
 	Animation* curAnimation;
+	Rect groundBound;
 
 public:
 	float speed;
 	State StateName;
-	bool isActive;
+	bool isActive, isOutScreen;
 	int bulletCount;
 	int bullets;
+	int score;
 
 	Enemy()
 	{
@@ -26,17 +27,14 @@ public:
 		isDead = false;
 		isActive = false;
 		animations[DEAD] = new Animation(WEAPON, 0, 2, 85);
+		score = ENEMY_DEFAULT_SCORE;
 	}
 
 	~Enemy()
 	{
-		for (auto ani : animations)
-		{
-			delete ani.second;
-		}
 	}
 
-	void DectectGround(std::unordered_set<Rect*> grounds)
+	virtual void DetectGround(std::unordered_set<Rect*> grounds)
 	{
 		for (auto g : grounds)
 		{
@@ -46,15 +44,16 @@ public:
 				groundBound = *g;
 			}
 		}
-		this->posY = groundBound.y + (this->height >> 1);
+		this->spawnY = this->posY = this->groundBound.y + (this->height >> 1);
 	}
+
 	void Render(float translateX = 0, float translateY = 0)
 	{
 		auto posX = this->posX + translateX;
 		auto posY = this->posY + translateY;
 		camera->ConvertPositionToViewPort(posX, posY);
 		curAnimation->isReverse = this->isReverse;
-		curAnimation->Render(posX, posY);
+		curAnimation->Render(posX, posY + SCREEN_TRANSLATEY);
 	}
 
 	virtual void UpdateDistance(float dt)
@@ -108,6 +107,7 @@ public:
 		{
 		case STANDING:
 		{
+			this->isOutScreen = false;
 			this->isActive = false;
 			this->isDead = false;
 			break;
@@ -116,6 +116,13 @@ public:
 		case RUNNING:
 		{
 			this->isActive = true;
+			break;
+		}
+
+		case DEAD:
+		{
+			scoreboard->score += score;
+			Sound::getInstance()->play("enemydie");
 			break;
 		}
 		}

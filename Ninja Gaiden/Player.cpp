@@ -13,26 +13,15 @@ Player::Player()
 	animations[ATTACKING_STAND] = new Animation(PLAYER, 9, 11, DEFAULT_TPS >> 1);
 	animations[ATTACKING_SIT] = new Animation(PLAYER, 12, 14, DEFAULT_TPS >> 1);
 	animations[CLINGING] = new Animation(PLAYER, 15);
-	animations[CLIMBING] = new Animation(PLAYER, 15, 16);
+	animations[CLIMBING] = new Animation(PLAYER, 15, 16, DEFAULT_TPS >> 1);
 	animations[DEAD] = new Animation(PLAYER, 5);
 	animations[INJURED] = new Animation(PLAYER, 5);
 
-	// Allow một số state cho trạng thái khởi đầu (Standing)
-	allow[JUMPING] = true;
-	allow[ATTACKING] = true;
-	allow[MOVING] = true;
-	allow[THROWING] = true;
-
 	// Các thông số Object
-	weaponType = NONE;
-	isOnGround = false;
 	tag = PLAYER;
 	width = PLAYER_WIDTH;
 	height = PLAYER_STANDING_HEIGHT;
-
-	health = 16;
-	score = 0;
-	energy = 0;
+	deathTimes = 3;
 }
 
 // Destructor
@@ -54,43 +43,71 @@ Player* Player::GetInstance()
 	return _instance;
 }
 
+void Player::Respawn()
+{
+	this->allow[JUMPING] = true;
+	this->allow[ATTACKING] = true;
+	this->allow[MOVING] = true;
+	this->allow[THROWING] = true;
+	this->isAttacking = false;
+	this->isThrowing = false;
+	this->SetHealth(16);
+	this->SetEnergy(0);
+	this->SetWeapon(FIREWHEEL);
+	this->vx = this->vy = this->dx = this->dy = 0;
+	this->posX = this->spawnX;
+	this->posY = this->spawnY;
+	this->isDead = false;
+	this->isReverse = false;
+	this->ChangeState(new PlayerStandingState());
+	this->deathTimes--;
+}
+
+void Player::DetectSpawnY(std::unordered_set<Rect*> grounds)
+{
+	this->groundBound = Rect();
+
+	for (auto g : grounds)
+	{
+		if (g->x < this->spawnX && this->spawnX < g->x + g->width
+			&& g->y >= groundBound.y && this->spawnY > g->y)
+		{
+			groundBound = *g;
+		}
+	}
+	this->spawnY = this->posY = groundBound.y + (this->height >> 1);
+}
+
 void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 {
-	curAnimation->Update(dt);
+	if (this->posY + (this->height >> 1) <= 0)
+	{
+		this->isDead = true;
+		return;
+	}
 
+	curAnimation->Update(dt);
 	state->Update(dt);
 
-	std::vector<CollisionResult> ResultCollisions;
+	CollisionResult result;
+	result.isCollide = false;
+	result.nx = result.ny = 0;
+	result.entryTime = 1.0f;
 
 	for (auto obj : ColliableObjects)
 	{
 		switch (obj->tag)
 		{
 		case ENEMY:
-		{
-			auto e = (Enemy*)obj;
-			if (e->StateName != DEAD)
-			{
-				auto result = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
-				if (result.isCollide)
-				{
-					ResultCollisions.push_back(result);
-					this->health--;
-				}
-			}
-			break;
-		}
-
 		case BULLET:
 		{
-			auto b = (Bullet*)obj;
-			if (b->StateName != DEAD)
+			if (this->stateName != INJURED)
 			{
-				auto result = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
-				if (result.isCollide)
+				auto r = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
+				if (r.isCollide)
 				{
-					ResultCollisions.push_back(result);
-					this->health--;
+					result = r;
+					break;
 				}
 			}
 			break;
@@ -98,90 +115,76 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 
 		case ITEM:
 		{
-			auto i = (Item*)obj;
-			Sound::getInstance()->play("sound17", false, 1); //item
-			if (this->GetRect().IsContain(i->GetRect()))
+			if (this->GetRect().IsContain(obj->GetRect()))
 			{
-				i->isDead = true;
+				obj->isDead = true;
+				Sound::getInstance()->play("item");
 
-				switch (i->type)
+				switch (obj->type)
 				{
 				case BLUESPIRIT:
 				{
-					this->energy += 5;
+					this->SetEnergy(energy + 5);
 					break;
 				}
 				case REDSPIRIT:
 				{
-					this->energy += 10;
+					this->SetEnergy(energy + 10);
 					break;
 				}
 				case GLASSHOUR:
 				{
 					isFrozenEnemies = true;
 					frozenEnemiesTime = ENEMY_FROZEN_TIME;
+					frozenCount = ENEMY_FROZEN_TIME_COUNT;
 					break;
 				}
 
 				case BLUESHURIKEN:
 				case FIREWHEEL:
+				case REDSHURIKEN:
 				{
-					this->weaponType = i->type;
+					this->SetWeapon(obj->type);
 					break;
 				}
 				}
 			}
+			break;
 		}
 		}
 	}
 
-	if (!ResultCollisions.size() || stateName == INJURED)
+	if (!result.isCollide || stateName == INJURED)
 	{
 		dx = (allow[MOVING] ? vx * dt : 0);
 		dy = vy * dt;
-		return;
 	}
-
-	float minEntryTimeX = 1.0f;
-	//float minEntryTimeY = 1.0f;
-	int nx = 0;
-	//int ny = 0;
-
-	for (auto result : ResultCollisions)
+	else
 	{
-		if (result.entryTime < minEntryTimeX)
-		{
-			minEntryTimeX = result.entryTime;
-			nx = result.nx;
-		}	
-
-		/*if (result.entryTime < minEntryTimeY)
-		{
-			minEntryTimeY = result.entryTime;
-			ny = result.ny;
-		}*/
+		Sound::getInstance()->play("injured");
+		this->isReverse = (result.nx == 1);
+		this->SetHealth(--health);
+		this->ChangeState(new PlayerInjuredState());
 	}
-
-	this->isReverse = (nx == 1);
-	this->ChangeState(new PlayerInjuredState());
 }
 
 // Duyệt tìm lại vùng đất va chạm của player khi ra khỏi vùng hiện tại
 // Dùng cách nâng sàn Collision duyệt trước
 bool Player::DetectGround(std::unordered_set<Rect*> grounds)
 {
-	auto r = this->GetRect();
-	r.y = r.y + dy;
-	r.height = r.height - dy;
+	auto rbp = this->GetRect();					//rect broading-phase
+	auto bottom = rbp.y - rbp.height;
+	rbp.y = rbp.y + dy;
+	rbp.height = rbp.height - dy;
 
-	if (r.IsContain(curGroundBound))
+	if (rbp.IsContain(groundBound) && (bottom >= groundBound.y))
 		return true;
 
 	for (auto g : grounds)
 	{
-		if (r.IsContain(*g) && (r.y >= g->y + g->height))
+		if (rbp.IsContain(*g) && (bottom >= g->y))
 		{
-			curGroundBound = *g;
+			groundBound = *g;
 			return true;
 		}
 	}
@@ -190,14 +193,14 @@ bool Player::DetectGround(std::unordered_set<Rect*> grounds)
 
 // Duyệt tìm tường va chạm
 // Bằng cách dịch tường và duyệt trước
-bool Player::DectectWall(std::unordered_set<Wall*> walls)
+bool Player::DetectWall(std::unordered_set<Wall*> walls)
 {
 	bool flag = false;
 	auto r = this->GetRect();
 	r.x = dx > 0 ? r.x : r.x + dx;
 	r.width = dx > 0 ? dx + r.width : r.width - dx;
 
-	if (r.IsContain(curWallBound))
+	if (r.IsContain(wallBound.rect))
 	{
 		flag = true;
 	}
@@ -207,7 +210,7 @@ bool Player::DectectWall(std::unordered_set<Wall*> walls)
 		{
 			if (w->rect.IsContain(r))
 			{
-				curWallBound = w->rect;
+				wallBound = *w;
 				flag = true;
 				break;
 			}
@@ -219,6 +222,8 @@ bool Player::DectectWall(std::unordered_set<Wall*> walls)
 // Xử lí va chạm với mặt đất theo các vùng đất hiển thị
 void Player::CheckGroundCollision(std::unordered_set<Rect*> grounds)
 {
+	if (this->isOnWall) return;
+
 	// Trên không
 	if (this->vy)
 	{
@@ -228,11 +233,11 @@ void Player::CheckGroundCollision(std::unordered_set<Rect*> grounds)
 	// Tìm được vùng đất va chạm
 	if (DetectGround(grounds))
 	{
-		if (this->vy < 0 && this->GetRect().IsContain(curGroundBound))
+		if (this->vy < 0)
 		{
 			this->isOnGround = true;
 			this->vy = this->dy = 0;
-			this->posY = curGroundBound.y + (this->height >> 1);
+			this->posY = groundBound.y + (this->height >> 1);
 
 			if (stateName == ATTACKING_STAND)
 				this->allow[MOVING] = false;
@@ -249,11 +254,43 @@ void Player::CheckGroundCollision(std::unordered_set<Rect*> grounds)
 // Kiểm tra va chạm tường
 void Player::CheckWallCollision(std::unordered_set<Wall*> walls)
 {
-	if (this->vx && this->DectectWall(walls))
+	if (this->isOnWall) return;
+
+	if (this->vx && this->DetectWall(walls))
 	{
-		this->vx = 0;
-		this->dx = dx > 0 ? curWallBound.x - (this->posX + (this->width >> 1)) - 1
-			: curWallBound.x + curWallBound.width - (this->posX - (this->width >> 1)) + 1;
+		float wallLeft = wallBound.rect.x;
+		float wallRight = wallLeft + wallBound.rect.width;
+		float playerLeft = this->posX - (this->width >> 1);
+		float playerRight = this->posX + (this->width >> 1);
+
+		if (this->vx > 0 && playerRight > wallLeft && playerRight < wallRight)
+		{
+			this->vx = this->dx = 0;
+			this->posX = wallLeft - (this->width >> 1);
+
+			if (wallBound.climbable && this->vy
+				&& this->posY + (this->height >> 1) <= wallBound.rect.y
+				&& this->posY - (this->height >> 1) >= wallBound.rect.y - wallBound.rect.height)
+			{
+				Sound::getInstance()->play("jump");
+				this->isReverse = false;
+				this->ChangeState(new PlayerClingingState());
+			}
+		}
+		else if (this->vx < 0 && playerLeft < wallRight && playerLeft > wallLeft)
+		{
+			this->vx = this->dx = 0;
+			this->posX = wallRight + (this->width >> 1);
+
+			if (wallBound.climbable && this->vy
+				&& this->posY + (this->height >> 1) <= wallBound.rect.y
+				&& this->posY - (this->height >> 1) >= wallBound.rect.y - wallBound.rect.height)
+			{
+				Sound::getInstance()->play("jump");
+				this->isReverse = true;
+				this->ChangeState(new PlayerClingingState());
+			}
+		}
 	}
 }
 
@@ -262,75 +299,92 @@ void Player::Render(float translateX, float translateY)
 {
 	auto posX = this->posX + translateX;
 	auto posY = this->posY + translateY;
-
 	camera->ConvertPositionToViewPort(posX, posY);
 	curAnimation->isReverse = this->isReverse;
-	curAnimation->Render(posX, posY);
+	curAnimation->Render(posX, posY + SCREEN_TRANSLATEY);
 }
 
 // Xử lí nhấn phím (chung cho các State)
-void Player::OnKeyDown(int keyCode)
+void Player::OnKeyDown(int key)
 {
-	switch (keyCode)
-	{
-		// Phím A: tấn công với vũ khí
-	case DIK_A:
-		if (allow[ATTACKING])
-		{
-			allow[ATTACKING] = false;
-			ChangeState(new PlayerAttackingState());
-			this->isAttacking = true;
-			Sound::getInstance()->play("sound1", false, 1);
-		}
-		break;
-
-		// Phím S: tấn công với item
-	case DIK_S:
-		if (allow[THROWING] && weaponType != NONE
-			&& stateName != ATTACKING_STAND && stateName != ATTACKING_SIT)
-		{
-			if (this->energy >= 3)
-			{
-				switch (this->weaponType)
-				{
-					case BLUESHURIKEN:
-						this->energy -= 3;
-						break;
-					case FIREWHEEL:
-						if(this->energy >= 5)
-							this->energy -= 5;
-						break;
-				}
-				allow[THROWING] = false;
-				ChangeState(new PlayerAttackingState());
-				this->isThrowing = true;
-			}
-		}
-		break;
-
-
-		// Phím Space: nhảy
-	case DIK_SPACE:
-		if (allow[JUMPING])
-		{
-			allow[JUMPING] = false;
-			ChangeState(new PlayerJumpingState());
-			Sound::getInstance()->play("sound2", false, 1);
-		}
-		break;
-
-	case DIK_Z:
+	if (key == DIK_Z)
 	{
 		isFrozenEnemies = true;
 		frozenEnemiesTime = ENEMY_FROZEN_TIME;
+		frozenCount = ENEMY_FROZEN_TIME_COUNT;
+	}
+
+	if (this->stateName == INJURED) return;
+
+	switch (key)
+	{
+		// Phím X: tấn công với vũ khí
+	case DIK_X:
+	{
+		if (!keyCode[DIK_UP])
+		{
+			if (allow[ATTACKING])
+			{
+				allow[ATTACKING] = false;
+				Sound::getInstance()->play("attack");
+				ChangeState(new PlayerAttackingState());
+				this->isAttacking = true;
+			}
+		}
+		else
+		{
+			if (allow[THROWING] && weaponType != NONE && !this->isOnWall
+				&& this->stateName != ATTACKING_SIT && this->stateName != ATTACKING_STAND)
+			{
+				switch (this->weaponType)
+				{
+				case BLUESHURIKEN:
+				{
+					if (this->energy >= 3)
+					{
+						this->SetEnergy(energy - 3);
+						break;
+					}
+					else return;
+				}
+
+				case FIREWHEEL:
+				case REDSHURIKEN:
+				{
+					if (this->energy >= 5)
+					{
+						this->SetEnergy(energy - 5);
+						break;
+					}
+					else return;
+				}
+				}
+				allow[THROWING] = false;
+				Sound::getInstance()->play("attack");
+				this->isThrowing = true;
+				ChangeState(new PlayerAttackingState());
+			}
+		}
 		break;
 	}
+
+		// Phím C: nhảy
+	case DIK_C:
+		if (allow[JUMPING])
+		{
+			Sound::getInstance()->play("jump");
+			allow[JUMPING] = false;
+			ChangeState(new PlayerJumpingState());
+		}
+		break;
 	}
 }
 
 // Xử lí sự kiện thả phím (dùng chung cho các State)
 void Player::OnKeyUp(int keyCode)
 {
+	if (this->stateName == INJURED) return;
+
 	switch (keyCode)
 	{
 		// Khi thả phím DOWN: state hiện tại chuyển thành đứng
@@ -348,4 +402,27 @@ void Player::ChangeState(PlayerState * newState)
 	state = newState;
 	stateName = newState->StateName;
 	curAnimation = animations[stateName];
+}
+
+void Player::SetHealth(int health)
+{
+	this->health = health;
+	scoreboard->playerHealth = health;
+
+	if (this->health == 0)
+	{
+		this->isDead = true;
+	}
+}
+
+void Player::SetWeapon(Type weaponType)
+{
+	this->weaponType = weaponType;
+	scoreboard->playerWeapon = weaponType;
+}
+
+void Player::SetEnergy(int energy)
+{
+	this->energy = energy;
+	scoreboard->playerEnergy = energy;
 }

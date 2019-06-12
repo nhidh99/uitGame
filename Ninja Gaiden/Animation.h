@@ -14,6 +14,7 @@ private:
 
 public:
 	Animation() {};
+	~Animation();
 	Animation(Tag tag, int index);
 	Animation(Tag tag, int firstIndex, int lastIndex, int timePerFrame = DEFAULT_TPS);			
 	void Render(float x, float y, float translateX = 0, float translateY = 0);

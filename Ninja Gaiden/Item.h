@@ -1,7 +1,6 @@
 #pragma once
 #include "Object.h"
 #include <unordered_set>
-#include "Audio.h"
 
 class Item : public Object
 {
@@ -20,11 +19,17 @@ public:
 		this->height = ITEM_HEIGHT;
 	}
 
-	void DectectGround(std::unordered_set<Rect*> grounds)
+	void DetectGround(std::unordered_set<Rect*> grounds)
 	{
 		for (auto g : grounds)
 		{
-			if (g->x < this->posX && this->posX < g->x + g->width && g->y >= groundBound.y)
+			Rect rect;
+			rect.x = this->posX - (this->width >> 1);
+			rect.y = g->y;
+			rect.width = this->width;
+			rect.height = this->height;
+
+			if (rect.IsContain(*g) && g->y >= groundBound.y)
 			{
 				groundBound = *g;
 			}
@@ -37,7 +42,7 @@ public:
 		{
 			this->vy = 0;
 			this->dy = 0;
-		} 
+		}
 		else this->dy = vy * dt;
 
 		existsTime -= dt;
@@ -53,6 +58,6 @@ public:
 		auto posX = this->posX + translateX;
 		auto posY = this->posY + translateY;
 		camera->ConvertPositionToViewPort(posX, posY);
-		sprite->Render(posX, posY);
+		sprite->Render(posX, posY + SCREEN_TRANSLATEY);
 	}
 };

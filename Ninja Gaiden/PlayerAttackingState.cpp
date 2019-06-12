@@ -5,8 +5,8 @@ PlayerAttackingState::PlayerAttackingState()
 {
 	_curState = player->state->StateName;
 	_reverse = player->isReverse;
-	player->allow[JUMPING] = false;
 	StateName = (_curState == SITTING) ? ATTACKING_SIT : ATTACKING_STAND;
+	player->allow[JUMPING] = player->allow[SITTING] = false;
 }
 
 // Update lại tráng thái khi đang ATTACK
@@ -17,7 +17,7 @@ void PlayerAttackingState::Update(float dt)
 	// Khi đã đánh xong
 	if (player->curAnimation->isLastFrame)
 	{
-		player->allow[ATTACKING] = true;
+		player->allow[ATTACKING] = player->allow[JUMPING] = player->allow[SITTING] = true;
 
 		switch (_curState)
 		{
@@ -26,7 +26,8 @@ void PlayerAttackingState::Update(float dt)
 			return;
 
 		case SITTING:
-			player->posY += 5;
+			player->posY += 4;
+			player->height += 8;
 			player->ChangeState(new PlayerSittingState());
 			return;
 
@@ -70,15 +71,6 @@ void PlayerAttackingState::Update(float dt)
 			}
 			break;
 		}
-
-		/*case FALLING:
-			if ((player->posX == SCREEN_WIDTH - player->width
-				|| player->posX == player->width >> 1) && player->allow[CLINGING])
-			{
-				player->ChangeState(new PlayerClingingState());
-				return;
-			}
-			break;*/
 		}
 	}
 }

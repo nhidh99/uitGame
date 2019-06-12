@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include "Player.h"
-#include "Enemy.h"
+#include "EnemyBoss.h"
 #include "Holder.h"
-#include <unordered_set>
 #include "ScoreBoard.h"
+#include <unordered_set>
 #include <map>
 
 class Weapon : public Object
@@ -12,8 +12,22 @@ protected:
 	Animation* animation;
 
 public:
-	Weapon() { tag = WEAPON; }
-	~Weapon() { if (animation) delete animation; }
+	Weapon()
+	{
+		tag = WEAPON;
+		if (player->isThrowing)
+		{
+			player->allow[THROWING] = false;
+		}
+	}
+
+	~Weapon()
+	{
+		if (type != SWORD)
+		{
+			player->allow[THROWING] = true;
+		}
+	}
 
 	virtual void Update(float dt) {};			// Update thông số của Object sau khoảng thời gian delta-time
 
@@ -22,7 +36,7 @@ public:
 		auto posX = this->posX + translateX;
 		auto posY = this->posY + translateY;
 		camera->ConvertPositionToViewPort(posX, posY);
-		animation->Render(posX, posY);
+		animation->Render(posX, posY+ SCREEN_TRANSLATEY);
 	}
 
 	virtual void UpdateDistance(float dt)
@@ -57,9 +71,16 @@ public:
 
 				case ENEMY:
 				{
-					auto e = (Enemy*)obj;
-					e->ChangeState(DEAD);
-					scoreboard->score += 200;
+					if (obj->type != BOSS)
+					{
+						auto e = (Enemy*)obj;
+						e->ChangeState(DEAD);
+					}
+					else
+					{
+						auto e = (EnemyBoss*)obj;
+						e->SubtractHealth();
+					}
 					break;
 				}
 

@@ -17,14 +17,17 @@ public:
 		this->width = HOLDER_WIDTH;
 		this->height = HOLDER_HEIGHT;
 	}
-	~Holder() { if (animation) delete animation; }
+
+	~Holder()
+	{
+	}
 
 	void Render(float translateX = 0, float translateY = 0)
 	{
 		auto posX = this->posX + translateX;
 		auto posY = this->posY + translateY;
 		camera->ConvertPositionToViewPort(posX, posY);
-		animation->Render(posX, posY);
+		animation->Render(posX, posY + SCREEN_TRANSLATEY);
 	}
 
 	void Update(float dt)

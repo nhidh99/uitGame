@@ -13,12 +13,16 @@ Cell::Cell(int xID, int yID)
 	rect.height = SCREEN_HEIGHT >> 1;
 }
 
+Cell::~Cell()
+{
+}
+
 bool Cell::IsContain(Rect r)
 {
 	return rect.IsContain(r);
 }
 
-void Cell::RemoveObject(Object* obj)
+void Cell::RemoveObject(Object * obj)
 {
 	if (objects.find(obj) != objects.end())
 	{

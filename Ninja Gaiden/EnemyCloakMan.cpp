@@ -11,10 +11,7 @@ EnemyCloakMan::EnemyCloakMan()
 	speed = ENEMY_CLOAKMAN_SPEED;
 	delayTime = ENEMY_CLOAKMAN_DELAY_TIME;
 	bullets = bulletCount = BULLET_CLOAKMAN_COUNT;
-}
-
-EnemyCloakMan::~EnemyCloakMan()
-{
+	score = ENEMY_CLOAKMAN_SCORE;
 }
 
 void EnemyCloakMan::UpdateDistance(float dt)
@@ -55,6 +52,6 @@ void EnemyCloakMan::Update(float dt)
 	Enemy::Update(dt);
 	if (this->isDead)
 	{
-		delayTime = ENEMY_EAGLE_DELAY_TIME;
+		delayTime = ENEMY_CLOAKMAN_DELAY_TIME;
 	}
 }

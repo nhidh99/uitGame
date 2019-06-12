@@ -5,6 +5,9 @@
 #include "EnemyCloakMan.h"
 #include "EnemyEagle.h"
 #include "EnemyPanther.h"
+#include "EnemyBazokaMan.h"
+#include "EnemyRunMan.h"
+#include "EnemyBoss.h"
 
 class EnemyFactory
 {
@@ -21,46 +24,10 @@ public:
 		case 3: return new EnemyPanther();
 		case 4: return new EnemyEagle();
 		case 5: return new EnemyCloakMan();
+		case 6: return new EnemyBazokaMan();
+		case 7: return new EnemyRunMan();
+		case 8: return new EnemyBoss();
 		default: return NULL;
 		}
-	}
-
-	static Enemy* ConvertToEnemy(Object* o)
-	{
-		Enemy* e = (Enemy*)o;
-
-		switch (o->type)
-		{
-		case SWORDMAN:
-		{
-			e = (EnemySwordMan*)o;
-			break;
-		}
-
-		case GUNMAN:
-		{
-			e = (EnemyGunMan*)o;
-			break;
-		}
-
-		case PANTHER:
-		{
-			e = (EnemyPanther*)o;
-			break;
-		}
-
-		case EAGLE:
-		{
-			e = (EnemyEagle*)o;
-			break;
-		}
-
-		case CLOAKMAN:
-		{
-			e = (EnemyCloakMan*)o;
-			break;
-		}
-		}
-		return e;
 	}
 };

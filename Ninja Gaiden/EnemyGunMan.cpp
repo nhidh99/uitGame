@@ -11,6 +11,7 @@ EnemyGunMan::EnemyGunMan()
 	speed = ENEMY_GUNMAN_SPEED;
 	delayTime = ENEMY_GUNMAN_DELAY_TIME;
 	bullets = bulletCount = BULLET_GUNMAN_COUNT;
+	score = ENEMY_GUNMAN_SCORE;
 }
 
 EnemyGunMan::~EnemyGunMan()
@@ -47,5 +48,14 @@ void EnemyGunMan::UpdateDistance(float dt)
 		this->dx = 0;
 		break;
 	}
+	}
+}
+
+void EnemyGunMan::Update(float dt)
+{
+	Enemy::Update(dt);
+	if (this->isDead)
+	{
+		delayTime = ENEMY_CLOAKMAN_DELAY_TIME >> 1;
 	}
 }

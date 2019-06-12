@@ -84,6 +84,19 @@ void Grid::CreateGridFile(int level)
 				auto e = EnemyFactory::CreateEnemy(obj->value[0]);
 				e->posX = obj->value[1];
 				e->posY = obj->value[2];
+
+				// PANTHER, EAGLE, RUNMAN: đọc thêm isReverseActive
+				switch (e->type)
+				{
+				case PANTHER:
+				case EAGLE:
+				case RUNMAN:
+				{
+					ifile >> value;
+					obj->value.push_back(value);
+					break;
+				}
+				}
 				rect = new Rect(e->GetRect());
 				delete e;
 				break;
@@ -96,7 +109,6 @@ void Grid::CreateGridFile(int level)
 			obj->topCell = rect->y / Cell::height;
 			obj->bottomCell = (rect->y - rect->height) / Cell::height;
 			delete rect;
-
 			objs.push_back(obj);
 		}
 
@@ -148,6 +160,7 @@ Grid::Grid(int level)
 	char type;
 	int top, left, right, bottom;
 	std::vector<int> values;
+	std::unordered_set<Rect*> grounds;
 
 	for (int i = 0; i < numObjects; ++i)
 	{
@@ -166,8 +179,10 @@ Grid::Grid(int level)
 			ifile >> left >> top >> right >> bottom;
 			for (int r = bottom; r <= top; ++r)
 			{
+				if (r < 0 || r >= rows) continue;
 				for (int c = left; c <= right; ++c)
 				{
+					if (c < 0 || c >= columns) continue;
 					cells[r][c]->grounds.push_back(ground);
 				}
 			}
@@ -186,8 +201,10 @@ Grid::Grid(int level)
 			ifile >> left >> top >> right >> bottom;
 			for (int r = bottom; r <= top; ++r)
 			{
+				if (r < 0 || r >= rows) continue;
 				for (int c = left; c <= right; ++c)
 				{
+					if (c < 0 || c >= columns) continue;
 					cells[r][c]->walls.push_back(wall);
 				}
 			}
@@ -208,8 +225,10 @@ Grid::Grid(int level)
 			ifile >> left >> top >> right >> bottom;
 			for (int r = bottom; r <= top; ++r)
 			{
+				if (r < 0 || r >= rows) continue;
 				for (int c = left; c <= right; ++c)
 				{
+					if (c < 0 || c >= columns) continue;
 					cells[r][c]->objects.insert(holder);
 				}
 			}
@@ -227,11 +246,53 @@ Grid::Grid(int level)
 			enemy->spawnX = enemy->posX = values[1];
 			enemy->spawnY = enemy->posY = values[2];
 
+			// Xác định ground xuất hiện cho các enemy ở đất
+			switch (enemy->type)
+			{
+			case SWORDMAN:
+			case CLOAKMAN:
+			case GUNMAN:
+			case PANTHER:
+			case RUNMAN:
+			case BAZOKAMAN:
+			case BOSS:
+				enemy->DetectGround(this->GetColliableGrounds(enemy));
+				break;
+			}
+
+			// Xác định hướng active cho các Enemy Panther, Eagle, Runman
+			switch (enemy->type)
+			{
+			case PANTHER:
+			{
+				ifile >> value;
+				auto panther = (EnemyPanther*)enemy;
+				panther->activeDistance = (value ? ENEMY_PANTHER_ACTIVE_DISTANCE : -ENEMY_PANTHER_ACTIVE_DISTANCE);
+				break;
+			}
+			case EAGLE:
+			{
+				ifile >> value;
+				auto eagle = (EnemyEagle*)enemy;
+				eagle->activeDistance = (value ? ENEMY_EAGLE_ACTIVE_DISTANCE : -ENEMY_EAGLE_ACTIVE_DISTANCE);
+				break;
+			}
+			case RUNMAN:
+			{
+				ifile >> value;
+				auto runman = (EnemyRunMan*)enemy;
+				runman->activeDistance = (value ? ENEMY_RUNMAN_ACTIVE_DISTANCE : -ENEMY_RUNMAN_ACTIVE_DISTANCE);
+				break;
+			}
+			}
+
 			ifile >> left >> top >> right >> bottom;
 			for (int r = bottom; r <= top; ++r)
 			{
+				if (r < 0 || r >= rows) continue;
 				for (int c = left; c <= right; ++c)
 				{
+					if (c < 0 || c >= columns) continue;
 					cells[r][c]->objects.insert(enemy);
 				}
 			}
@@ -241,6 +302,56 @@ Grid::Grid(int level)
 		values.clear();
 	}
 	ifile.close();
+}
+
+Grid::~Grid()
+{
+	std::unordered_set<Object*> objs;
+	std::unordered_set<Wall*> walls;
+	std::unordered_set<Rect*> grounds;
+
+	for (int i = 0; i < rows; ++i)
+	{
+		for (int j = 0; j < columns; ++j)
+		{
+			for (auto o : cells[i][j]->objects)
+			{
+				objs.insert(o);
+			}
+
+			for (auto w : cells[i][j]->walls)
+			{
+				walls.insert(w);
+			}
+
+			for (auto g : cells[i][j]->grounds)
+			{
+				grounds.insert(g);
+			}
+
+			cells[i][j]->objects.clear();
+			cells[i][j]->walls.clear();
+			cells[i][j]->grounds.clear();
+			delete cells[i][j];
+		}
+		cells[i].clear();
+	}
+	cells.clear();
+
+	for (auto o : objs)
+	{
+		o = nullptr;
+	}
+
+	for (auto g : grounds)
+	{
+		delete g;
+	}
+
+	for (auto w : walls)
+	{
+		delete w;
+	}
 }
 
 void Grid::Update()
@@ -261,7 +372,6 @@ void Grid::RespawnEnemies()
 			auto e = (Enemy*)o;
 			if (!e->IsRespawnOnScreen())
 			{
-				e->isDead = false;
 				e->ChangeState(STANDING);
 				it = respawnObjects.erase(it);
 				this->MoveObject(e, e->spawnX, e->spawnY);
@@ -274,6 +384,12 @@ void Grid::RespawnEnemies()
 
 void Grid::MoveObject(Object * obj, float posX, float posY)
 {
+	if (obj->tag == ENEMY)
+	{
+		auto e = (Enemy*)obj;
+		if (e->isOutScreen) return;
+	}
+
 	auto r = obj->GetRect();
 	int oldLeftCell = r.x / Cell::width;
 	int oldRightCell = (r.x + r.width) / Cell::width;
@@ -342,31 +458,32 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 				cells[oldBottomCell][oldRightCell]->RemoveObject(obj);
 			}
 		}
-	}
 
-	if (TopCell < rows)
-	{
-		if (LeftCell >= 0)
+
+		if (TopCell < rows)
 		{
-			cells[TopCell][LeftCell]->objects.insert(obj);
+			if (LeftCell >= 0)
+			{
+				cells[TopCell][LeftCell]->objects.insert(obj);
+			}
+
+			if (LeftCell != RightCell && RightCell < columns)
+			{
+				cells[TopCell][RightCell]->objects.insert(obj);
+			}
 		}
 
-		if (LeftCell != RightCell && RightCell < columns)
+		if (BottomCell < rows)
 		{
-			cells[TopCell][RightCell]->objects.insert(obj);
-		}
-	}
+			if (LeftCell >= 0)
+			{
+				cells[BottomCell][LeftCell]->objects.insert(obj);
+			}
 
-	if (BottomCell < rows)
-	{
-		if (LeftCell >= 0)
-		{
-			cells[BottomCell][LeftCell]->objects.insert(obj);
-		}
-
-		if (LeftCell != RightCell && RightCell < columns)
-		{
-			cells[BottomCell][RightCell]->objects.insert(obj);
+			if (LeftCell != RightCell && RightCell < columns)
+			{
+				cells[BottomCell][RightCell]->objects.insert(obj);
+			}
 		}
 	}
 }
@@ -427,26 +544,19 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 					if (e->isDead)
 					{
 						it = c->objects.erase(it);
-						this->RemoveObject(e);
-						respawnObjects.push_back(e);
+						respawnObjects.insert(e);
 						continue;
 					}
-
-					else if (!e->isActive)
+					else if (!(e->isActive || e->isOutScreen))
 					{
+						e->ChangeState(RUNNING);
 						e->isReverse = (player->posX < e->posX);
 						e->vx = (e->isReverse ? -e->speed : e->speed);
+					}
 
-						switch (e->type)
-						{
-						case SWORDMAN:
-						case CLOAKMAN:
-						case GUNMAN:
-						case PANTHER:
-							e->DectectGround(this->GetVisibleGrounds());
-							break;
-						}
-						e->ChangeState(RUNNING);
+					if (e->isActive)
+					{
+						setObjects.insert(e);
 					}
 					break;
 				}
@@ -460,14 +570,13 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 						auto i = ItemFactory::CreateItem(h->itemID);
 						i->posX = h->posX;
 						i->posY = h->posY;
-						i->DectectGround(this->GetVisibleGrounds());
-						this->AddObject(i);
+						i->DetectGround(this->GetVisibleGrounds());
 						setObjects.insert(i);
-
-						this->RemoveObject(h);
-						this->respawnObjects.push_back(h);
+						this->AddObject(i);
+						this->respawnObjects.insert(h);
 						continue;
 					}
+					else setObjects.insert(o);
 					break;
 				}
 
@@ -480,10 +589,10 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 						delete o;
 						continue;
 					}
+					else setObjects.insert(o);
 					break;
 				}
 				}
-				setObjects.insert(o);
 			}
 
 			else //Object is out of camera
@@ -499,8 +608,8 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 						it = c->objects.erase(it);
 						if (e->IsRespawnOnScreen())
 						{
-							this->RemoveObject(e);
-							respawnObjects.push_back(e);
+							e->isOutScreen = true;
+							respawnObjects.insert(e);
 						}
 						else
 						{
@@ -511,7 +620,7 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 					break;
 				}
 
-				case WEAPON: case ITEM: case BULLET:
+				case ITEM: case BULLET:
 				{
 					it = c->objects.erase(it);
 					this->RemoveObject(o);
@@ -525,6 +634,125 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 		}
 	}
 	return setObjects;
+}
+
+std::unordered_set<Wall*> Grid::GetColliableWalls(Object * obj)
+{
+	std::unordered_set<Wall*> walls;
+
+	auto r = obj->GetRect();
+	int LeftCell = r.x / Cell::width;
+	int RightCell = (r.x + r.width) / Cell::width;
+	int TopCell = r.y / Cell::height;
+	int BottomCell = (r.y - r.height) / Cell::height;
+
+	for (int y = BottomCell; y <= TopCell; ++y)
+	{
+		if (y < 0 || y >= rows) continue;
+		for (int x = LeftCell; x <= RightCell; ++x)
+		{
+			if (x < 0 || x >= columns) continue;
+			for (auto w : cells[y][x]->walls)
+			{
+				walls.insert(w);
+			}
+		}
+	}
+	return walls;
+}
+
+std::unordered_set<Rect*> Grid::GetColliableGrounds(Object * obj)
+{
+	std::unordered_set<Rect*> grounds;
+
+	auto r = obj->GetRect();
+	int LeftCell = r.x / Cell::width;
+	int RightCell = (r.x + r.width) / Cell::width;
+	int TopCell = r.y / Cell::height;
+	int BottomCell = (r.y - r.height) / Cell::height;
+
+	for (int y = BottomCell; y <= TopCell; ++y)
+	{
+		if (y < 0 || y >= rows) continue;
+		for (int x = LeftCell; x <= RightCell; ++x)
+		{
+			if (x < 0 || x >= columns) continue;
+			for (auto g : cells[y][x]->grounds)
+			{
+				grounds.insert(g);
+			}
+		}
+	}
+	return grounds;
+}
+
+std::unordered_set<Object*> Grid::GetColliableObjects(Object * obj)
+{
+	std::unordered_set<Object*> objs;
+
+	auto r = obj->GetRect();
+	int LeftCell = r.x / Cell::width;
+	int RightCell = (r.x + r.width) / Cell::width;
+	int TopCell = r.y / Cell::height;
+	int BottomCell = (r.y - r.height) / Cell::height;
+
+	for (int y = BottomCell; y <= TopCell; ++y)
+	{
+		if (y < 0 || y >= rows) continue;
+		for (int x = LeftCell; x <= RightCell; ++x)
+		{
+			if (x < 0 || x >= columns) continue;
+			for (auto o : cells[y][x]->objects)
+			{
+				switch (o->tag)
+				{
+				case ENEMY:
+				{
+					auto e = (Enemy*)o;
+					if (e->isActive && e->StateName != DEAD)
+					{
+						objs.insert(e);
+					}
+					break;
+				}
+				case BULLET:
+				{
+					auto b = (Bullet*)o;
+					if (b->StateName != DEAD)
+					{
+						objs.insert(b);
+					}
+					break;
+				}
+				default:
+				{
+					objs.insert(o);
+					break;
+				}
+				}
+			}
+		}
+	}
+	return objs;
+}
+
+void Grid::AddObject(Object * obj)
+{
+	if (obj == NULL) return;
+
+	auto r = obj->GetRect();
+	int LeftCell = r.x / Cell::width;
+	int RightCell = (r.x + r.width) / Cell::width;
+	int TopCell = r.y / Cell::height;
+	int BottomCell = (r.y - r.height) / Cell::height;
+
+	for (int y = BottomCell; y <= TopCell; ++y)
+	{
+		for (int x = LeftCell; x <= RightCell; ++x)
+		{
+			cells[y][x]->objects.insert(obj);
+		}
+	}
 }
 
 std::unordered_set<Wall*> Grid::GetVisibleWalls()
@@ -559,56 +787,4 @@ std::unordered_set<Rect*> Grid::GetVisibleGrounds()
 		}
 	}
 	return setGrounds;
-}
-
-std::unordered_set<Object*> Grid::GetColliableObjects(Object * obj)
-{
-	std::unordered_set<Object*> objs;
-
-	auto r = obj->GetRect();
-	int LeftCell = r.x / Cell::width;
-	int RightCell = (r.x + r.width) / Cell::width;
-	int TopCell = r.y / Cell::height;
-	int BottomCell = (r.y - r.height) / Cell::height;
-
-	for (int y = BottomCell; y <= TopCell; ++y)
-	{
-		if (y < 0 || y >= rows) continue;
-		for (int x = LeftCell; x <= RightCell; ++x)
-		{
-			if (x < 0 || x >= columns) continue;
-			for (auto o : cells[y][x]->objects)
-			{
-				if (o->tag == ENEMY)
-				{
-					auto e = (Enemy*)o;
-					if (e->isActive)
-					{
-						objs.insert(e);
-					}
-				}
-				else objs.insert(o);
-			}
-		}
-	}
-	return objs;
-}
-
-void Grid::AddObject(Object * obj)
-{
-	if (obj == NULL) return;
-
-	auto r = obj->GetRect();
-	int LeftCell = r.x / Cell::width;
-	int RightCell = (r.x + r.width) / Cell::width;
-	int TopCell = r.y / Cell::height;
-	int BottomCell = (r.y - r.height) / Cell::height;
-
-	for (int y = BottomCell; y <= TopCell; ++y)
-	{
-		for (int x = LeftCell; x <= RightCell; ++x)
-		{
-			cells[y][x]->objects.insert(obj);
-		}
-	}
 }

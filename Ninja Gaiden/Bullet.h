@@ -2,6 +2,7 @@
 #include "Object.h"
 #include "Camera.h"
 #include <unordered_set>
+#include "Sound.h"
 
 class Bullet : public Object
 {
@@ -29,7 +30,7 @@ public:
 		auto posY = this->posY + translateY;
 		camera->ConvertPositionToViewPort(posX, posY);
 		curAnimation->isReverse = this->isReverse;
-		curAnimation->Render(posX, posY);
+		curAnimation->Render(posX, posY + SCREEN_TRANSLATEY);
 	}
 
 	virtual void UpdateDistance(float dt)
@@ -82,6 +83,7 @@ public:
 		case DEAD:
 		{
 			curAnimation = deadAnimation;
+			Sound::getInstance()->play("enemydie");
 			break;
 		}
 		}

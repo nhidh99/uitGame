@@ -4,7 +4,7 @@ void Grid::CreateGridFile(int level)
 {
 	std::ifstream ifile;
 	char gridFileName[30];
-	sprintf_s(gridFileName, "Resources\\grid%d.txt", level);
+	sprintf_s(gridFileName, "Resources\\Texts\\grid%d.txt", level);
 
 	// Nếu không tìm thấy file grid -> Tạo file từ map objects trong level đó
 	ifile.open(gridFileName);
@@ -14,7 +14,7 @@ void Grid::CreateGridFile(int level)
 
 		// Đọc file matrix để lấy size map -> xác định số cell trong grid
 		char fileMapName[30];
-		sprintf_s(fileMapName, "Resources\\matrix%d.txt", level);
+		sprintf_s(fileMapName, "Resources\\Texts\\matrix%d.txt", level);
 		ifile.open(fileMapName);
 
 		int numTiles, rowTiles, colTiles;
@@ -22,11 +22,11 @@ void Grid::CreateGridFile(int level)
 		ifile.close();
 
 		int colCell = ceil((float)(colTiles * TILE_SIZE) / (SCREEN_WIDTH >> 1));
-		int rowCell = ceil((float)(rowTiles * TILE_SIZE) / (SCREEN_HEIGHT >> 1));
+		int rowCell = ceil((float)(rowTiles * TILE_SIZE) / (SCREEN_HEIGHT >> 1)) + 1;
 
 		// Đọc từng loại object và đẩy vào grid (mỗi loại có thông số cách tính Rect khác nhau)
 		char objectsFileName[30];
-		sprintf_s(objectsFileName, "Resources\\objects%d.txt", level);
+		sprintf_s(objectsFileName, "Resources\\Texts\\objects%d.txt", level);
 		ifile.open(objectsFileName);
 
 		auto objs = std::vector<GameObject*>();
@@ -140,7 +140,7 @@ Grid::Grid(int level)
 
 	std::ifstream ifile;
 	char gridFileName[30];
-	sprintf_s(gridFileName, "Resources\\grid%d.txt", level);
+	sprintf_s(gridFileName, "Resources\\Texts\\grid%d.txt", level);
 
 	int numObjects;
 	ifile.open(gridFileName);
@@ -356,7 +356,7 @@ Grid::~Grid()
 
 void Grid::Update()
 {
-	this->viewPort = camera->GetRect();
+	this->viewPort = Rect(camera->x, camera->y + Cell::height, camera->width, camera->height + Cell::height);
 	this->UpdateVisibleCells();
 	this->RespawnEnemies();
 }
@@ -370,7 +370,7 @@ void Grid::RespawnEnemies()
 		if (o->tag == ENEMY)
 		{
 			auto e = (Enemy*)o;
-			if (!e->IsRespawnOnScreen())
+			if (!e->GetSpawnRect().IsContain(viewPort))
 			{
 				e->ChangeState(STANDING);
 				it = respawnObjects.erase(it);
@@ -387,7 +387,10 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 	if (obj->tag == ENEMY)
 	{
 		auto e = (Enemy*)obj;
-		if (e->isOutScreen) return;
+		if (e->isOutScreen)
+		{
+			return;
+		}
 	}
 
 	auto r = obj->GetRect();
@@ -459,7 +462,6 @@ void Grid::MoveObject(Object * obj, float posX, float posY)
 			}
 		}
 
-
 		if (TopCell < rows)
 		{
 			if (LeftCell >= 0)
@@ -515,7 +517,7 @@ void Grid::UpdateVisibleCells()
 	//int bottom = viewPort.y / Cell::height;
 	//int top = floor(viewPort.y + viewPort.height) / Cell::height);
 
-	for (int r = 0; r < 2; ++r)
+	for (int r = 0; r < rows; ++r)
 	{
 		for (int c = left; c < right; ++c)
 		{
@@ -606,7 +608,7 @@ std::unordered_set<Object*> Grid::GetVisibleObjects()
 					{
 						e->isActive = false;
 						it = c->objects.erase(it);
-						if (e->IsRespawnOnScreen())
+						if (e->GetSpawnRect().IsContain(viewPort))
 						{
 							e->isOutScreen = true;
 							respawnObjects.insert(e);

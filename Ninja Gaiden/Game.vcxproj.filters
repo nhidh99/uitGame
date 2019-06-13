@@ -19,9 +19,6 @@
     <ClCompile Include="PlayerClingingState.cpp">
       <Filter>Game Objects\Player</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerDeadState.cpp">
-      <Filter>Game Objects\Player</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerFallingState.cpp">
       <Filter>Game Objects\Player</Filter>
     </ClCompile>
@@ -45,9 +42,6 @@
     </ClCompile>
     <ClCompile Include="EnemySwordMan.cpp">
       <Filter>Game Objects\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Game Scene</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Game Components</Filter>
@@ -124,6 +118,15 @@
     <ClCompile Include="ScoreBoard.cpp">
       <Filter>Game Scoreboard</Filter>
     </ClCompile>
+    <ClCompile Include="EndScene.cpp">
+      <Filter>Game Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroScene.cpp">
+      <Filter>Game Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Game Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -142,9 +145,6 @@
       <Filter>Game Objects\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerClingingState.h">
-      <Filter>Game Objects\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerDeadState.h">
       <Filter>Game Objects\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerFallingState.h">
@@ -347,6 +347,12 @@
     </ClInclude>
     <ClInclude Include="ScoreBoard.h">
       <Filter>Game Scoreboard</Filter>
+    </ClInclude>
+    <ClInclude Include="EndScene.h">
+      <Filter>Game Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroScene.h">
+      <Filter>Game Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

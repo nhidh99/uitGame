@@ -66,18 +66,19 @@ void Sound::create(HWND hWnd)
 
 void Sound::LoadResources()
 {
-	this->loadSound((char*)"Resources/Sound/attack.wav", "attack");
-	this->loadSound((char*)"Resources/Sound/bossdie.wav", "bossdie");
-	this->loadSound((char*)"Resources/Sound/enemydie.wav", "enemydie");
-	this->loadSound((char*)"Resources/Sound/glasshour.wav", "glasshour");
-	this->loadSound((char*)"Resources/Sound/injured.wav", "injured");
-	this->loadSound((char*)"Resources/Sound/item.wav", "item");
-	this->loadSound((char*)"Resources/Sound/jump.wav", "jump");
-	this->loadSound((char*)"Resources/Sound/stage1.wav", "stage1");
-	this->loadSound((char*)"Resources/Sound/stage2.wav", "stage2");
-	this->loadSound((char*)"Resources/Sound/stage3.wav", "stage3");
-	this->loadSound((char*)"Resources/Sound/over.wav", "over");
-	this->loadSound((char*)"Resources/Sound/win.wav", "win");
+	this->loadSound((char*)"Resources/Sounds/attack.wav", "attack");
+	this->loadSound((char*)"Resources/Sounds/bossdie.wav", "bossdie");
+	this->loadSound((char*)"Resources/Sounds/enemydie.wav", "enemydie");
+	this->loadSound((char*)"Resources/Sounds/glasshour.wav", "glasshour");
+	this->loadSound((char*)"Resources/Sounds/injured.wav", "injured");
+	this->loadSound((char*)"Resources/Sounds/item.wav", "item");
+	this->loadSound((char*)"Resources/Sounds/jump.wav", "jump");
+	this->loadSound((char*)"Resources/Sounds/stage1.wav", "stage1");
+	this->loadSound((char*)"Resources/Sounds/stage2.wav", "stage2");
+	this->loadSound((char*)"Resources/Sounds/stage3.wav", "stage3");
+	this->loadSound((char*)"Resources/Sounds/over.wav", "over");
+	this->loadSound((char*)"Resources/Sounds/win.wav", "win");
+	this->loadSound((char*)"Resources/Sounds/intro.wav", "intro");
 }
 
 float Sound::getVolume()
@@ -212,7 +213,11 @@ void Sound::stop(std::string name)
 		it = soundBufferMap.find(name);
 		if (it == soundBufferMap.end())
 			return;
-		else it->second->Stop();
+		else
+		{
+			it->second->Stop();
+			it->second->SetCurrentPosition(0);
+		}
 	}
 }
 
@@ -236,16 +241,6 @@ void Sound::setVolume(float percentage, std::string name)
 		long volumne = (percentage) / 100 * (-DSBVOLUME_MIN) + DSBVOLUME_MIN;
 		it->second->SetVolume(volumne);
 	}
-}
-
-void Sound::mute()
-{
-	isMute = true;
-	this->stop();
-}
-void Sound::unMute()
-{
-	isMute = false;
 }
 
 void Sound::cleanUp()

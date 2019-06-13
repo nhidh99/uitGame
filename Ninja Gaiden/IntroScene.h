@@ -8,14 +8,15 @@
 
 class IntroScene : public Scene
 {
-public:
+private:
 	Sprite* ninjaSprite;
-	Sprite* game_nameSprite;
-	Sprite* game_infoSprite;
+	Sprite* nameSprite;
+	Sprite* infoSprite;
 	Sprite* stageSprite;
 	float vx;
 	float vy;
 
+public:
 	IntroScene();
 	~IntroScene();
 

@@ -1,15 +1,22 @@
-﻿  WeaponRedShuriken.cpp
+﻿  PlayScene.cpp
   C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-C:\uitGame\Ninja Gaiden\GameGlobal.h(155): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
-C:\uitGame\Ninja Gaiden\GameGlobal.h(184): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
-C:\uitGame\Ninja Gaiden\GameGlobal.h(204): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
-C:\uitGame\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\uitGame\Ninja Gaiden\WeaponSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\uitGame\Ninja Gaiden\HolderSprite.h(20): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\uitGame\Ninja Gaiden\ItemSprite.h(19): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\uitGame\Ninja Gaiden\BulletSprite.h(20): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-C:\uitGame\Ninja Gaiden\Item.h(29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\uitGame\Ninja Gaiden\Item.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\uitGame\Ninja Gaiden\Enemy.h(96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\uitGame\Ninja Gaiden\WeaponRedShuriken.cpp(15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\GameGlobal.h(189,2): warning C4091:  'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGame\Ninja Gaiden\GameGlobal.h(218,2): warning C4091:  'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGame\Ninja Gaiden\GameGlobal.h(238,2): warning C4091:  'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGame\Ninja Gaiden\PlayerSprite.h(17,60): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\PlayerSprite.h(17,39): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\WeaponSprite.h(16,60): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\WeaponSprite.h(16,39): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\HolderSprite.h(20,60): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\HolderSprite.h(20,39): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\ItemSprite.h(19,60): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\ItemSprite.h(19,39): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\BulletSprite.h(20,60): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\BulletSprite.h(20,39): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\Item.h(29,21): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\Item.h(30,22): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\Enemy.h(96,69): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\Enemy.h(96,62): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\PlayScene.cpp(116,26): warning C4244:  '-=': conversion from 'float' to 'int', possible loss of data
+C:\uitGame\Ninja Gaiden\PlayScene.cpp(116,26): warning C4244: C:\uitGame\Ninja Gaiden\BulletFactory.h(19) : warning C4715: 'BulletFactory::CreateBullet': not all control paths return a value
   Game.vcxproj -> C:\uitGame\Ninja Gaiden\x64\Debug\Game.exe

@@ -135,6 +135,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="EnemyBazokaMan.cpp" />
     <ClCompile Include="EnemyBoss.cpp" />
     <ClCompile Include="EnemyCloakMan.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameGlobal.cpp" />
     <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapFactory.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -159,7 +161,6 @@
     <ClCompile Include="PlayerAttackingState.cpp" />
     <ClCompile Include="PlayerClimbingState.cpp" />
     <ClCompile Include="PlayerClingingState.cpp" />
-    <ClCompile Include="PlayerDeadState.cpp" />
     <ClCompile Include="PlayerFallingState.cpp" />
     <ClCompile Include="PlayerInjuredState.cpp" />
     <ClCompile Include="PlayerJumpingState.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="EndScene.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBazokaMan.h" />
     <ClInclude Include="EnemyBoss.h" />
@@ -200,6 +202,7 @@
     <ClInclude Include="GameGlobal.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="HolderBird.h" />
+    <ClInclude Include="IntroScene.h" />
     <ClInclude Include="ItemBlueBag.h" />
     <ClInclude Include="ItemBlueShuriken.h" />
     <ClInclude Include="ItemFireWheel.h" />
@@ -231,7 +234,6 @@
     <ClInclude Include="PlayerAttackingState.h" />
     <ClInclude Include="PlayerClimbingState.h" />
     <ClInclude Include="PlayerClingingState.h" />
-    <ClInclude Include="PlayerDeadState.h" />
     <ClInclude Include="PlayerFallingState.h" />
     <ClInclude Include="PlayerInjuredState.h" />
     <ClInclude Include="PlayerJumpingState.h" />

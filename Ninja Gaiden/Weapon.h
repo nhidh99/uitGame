@@ -80,6 +80,7 @@ public:
 					{
 						auto e = (EnemyBoss*)obj;
 						e->SubtractHealth();
+						this->isDead = true;
 					}
 					break;
 				}

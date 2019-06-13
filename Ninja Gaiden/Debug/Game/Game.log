@@ -1,6 +1,13 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(396,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
-  Sound.cpp
-C:\uitGame\Ninja Gaiden\Sound.cpp(172): warning C4244: 'initializing': conversion from 'float' to 'long', possible loss of data
-C:\uitGame\Ninja Gaiden\Sound.cpp(226): warning C4244: 'initializing': conversion from 'float' to 'long', possible loss of data
-C:\uitGame\Ninja Gaiden\Sound.cpp(238): warning C4244: 'initializing': conversion from 'float' to 'long', possible loss of data
-  Game.vcxproj -> C:\uitGame\Ninja Gaiden\Debug\Game.exe
+  EnemyBazokaMan.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\uitGame\Ninja Gaiden\GameGlobal.h(158): warning C4091: 'extern ': ignored on left of 'Tag' when no variable is declared
+C:\uitGame\Ninja Gaiden\GameGlobal.h(187): warning C4091: 'extern ': ignored on left of 'Type' when no variable is declared
+C:\uitGame\Ninja Gaiden\GameGlobal.h(207): warning C4091: 'extern ': ignored on left of 'State' when no variable is declared
+C:\uitGame\Ninja Gaiden\PlayerSprite.h(17): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\WeaponSprite.h(16): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\HolderSprite.h(20): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\ItemSprite.h(19): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\BulletSprite.h(20): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\uitGame\Ninja Gaiden\Item.h(29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\uitGame\Ninja Gaiden\Item.h(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data

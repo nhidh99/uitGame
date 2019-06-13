@@ -8,43 +8,43 @@ EnemyBoss::EnemyBoss()
 	animations[DEAD] = new Animation(WEAPON, 13);
 	tag = ENEMY;
 	type = BOSS;
-	health = 16;
+	health = ENEMY_BOSS_HEALTH;
 	width = ENEMY_BOSS_WIDTH;
 	height = ENEMY_BOSS_HEIGHT;
-	speed = delayTime = 0;
+	speed = delayJump = 0;
 	bulletCountdown = 3;
 	firstJump = true;
-	delayDead = 3000;
-	delayHit = 500;
+	delayDead = ENEMY_BOSS_DELAY_DEATH;
+	delayHit = ENEMY_BOSS_DELAY_HIT;
 }
 
 void EnemyBoss::UpdateDistance(float dt)
 {
 	if (StateName == DEAD) return;
 
-	if (delayTime <= 0)
+	if (delayJump <= 0)
 	{
 		--bulletCountdown;
 		this->ChangeState(JUMPING);
-		delayTime = 1200;
+		delayJump = ENEMY_BOSS_DELAY_JUMP;
 	}
 	else
 	{
-		delayTime -= dt;
+		delayJump -= dt;
 		if (StateName == JUMPING)
 		{
-			this->vy -= 0.012f;
+			this->vy -= GRAVITY_SPEED;
 		}
 
-		if (this->posX - (this->width >> 1) + dx <= 30)
+		if (this->posX - (this->width >> 1) + dx <= ENEMY_BOSS_LEFT)
 		{
 			this->dx = 0;
-			this->posX = 30 + (this->width >> 1);
+			this->posX = ENEMY_BOSS_LEFT + (this->width >> 1);
 		}
-		else if (this->posX + (this->width >> 1) + dx >= 230)
+		else if (this->posX + (this->width >> 1) + dx >= ENEMY_BOSS_RIGHT)
 		{
 			this->dx = 0;
-			this->posX = 230 - (this->width >> 1);
+			this->posX = ENEMY_BOSS_RIGHT - (this->width >> 1);
 		}
 
 		if (this->posY - (this->height >> 1) + dy < this->groundBound.y)
@@ -118,13 +118,13 @@ void EnemyBoss::ChangeState(State StateName)
 
 	case JUMPING:
 	{
-		this->vy = 0.35f;
+		this->vy = ENEMY_BOSS_JUMP_SPEED;
 		if (!firstJump)
 		{
 			this->isReverse = !this->isReverse;
-			this->vx = isReverse ? -0.175f : 0.175f;
+			this->vx = isReverse ? -ENEMY_BOSS_SPEED : ENEMY_BOSS_SPEED;
 		}
-		else this->vx = -0.175f;
+		else this->vx = -ENEMY_BOSS_SPEED;
 		break;
 	}
 	case DEAD:
@@ -150,7 +150,7 @@ void EnemyBoss::SubtractHealth()
 	{
 		--this->health;
 		--scoreboard->bossHealth;
-		this->delayHit = 400;
+		this->delayHit = ENEMY_BOSS_DELAY_HIT;
 
 		if (this->health == 0)
 		{

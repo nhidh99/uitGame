@@ -7,16 +7,16 @@
 class Animation
 {
 private:
-	int _totalFrames;						// Tổng số Frame
-	int _timePerFrame;						// Thời gian tồn tại mỗi frame trước khi chuyển
-	int _curFrameTime;						// Thời gian hiện tại của Frame đang xét
-	std::vector<Sprite*> _sprites;			// Các Sprite (Frame) để tạo nên Animation
+	int totalFrames;						// Tổng số Frame
+	int timePerFrame;						// Thời gian tồn tại mỗi frame trước khi chuyển
+	int curFrameTime;						// Thời gian hiện tại của Frame đang xét
+	std::vector<Sprite*> sprites;			// Các Sprite (Frame) để tạo nên Animation
 
 public:
 	Animation() {};
 	~Animation();
 	Animation(Tag tag, int index);
-	Animation(Tag tag, int firstIndex, int lastIndex, int timePerFrame = DEFAULT_TPS);			
+	Animation(Tag tag, int firstIndex, int lastIndex, int timePerFrame = DEFAULT_TPF);			
 	void Render(float x, float y, float translateX = 0, float translateY = 0);
 	void Update(float dt);
 

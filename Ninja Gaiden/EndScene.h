@@ -1,9 +1,8 @@
 #pragma once
-#include "GameGlobal.h"
 #include "SpriteFactory.h"
-#include "Scene.h"
 #include "SceneManager.h"
-
+#include "PlayScene.h"
+#include "IntroScene.h"
 
 class EndScene : public Scene
 {
@@ -14,4 +13,5 @@ public:
 	~EndScene();
 
 	void Render();
+	void OnKeyDown(int key);
 };

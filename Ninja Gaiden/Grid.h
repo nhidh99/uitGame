@@ -17,7 +17,6 @@ class Grid
 private:
 	int rows;
 	int columns;
-	Rect viewPort;
 
 	struct GameObject
 	{
@@ -27,6 +26,7 @@ private:
 	};
 
 public:
+	Rect viewPort;
 	void CreateGridFile(int level);
 	Grid(int level);
 	~Grid();

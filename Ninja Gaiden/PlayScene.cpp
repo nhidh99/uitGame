@@ -5,9 +5,10 @@ PlayScene::PlayScene(int level)
 	map = MapFactory::GetInstance()->GetMap(level);
 	grid = new Grid(level);
 
-	delayStart = 3000;
+	delayStart = SCENE_DELAY_START;
 	gameLevel = level;
 	isFrozenEnemies = false;
+	frozenCount = ENEMY_FROZEN_TIME_COUNT;
 
 	p = player;
 	p->posX = p->spawnX = 50;
@@ -17,10 +18,11 @@ PlayScene::PlayScene(int level)
 
 	camera->x = 0;
 	camera->y = SCREEN_HEIGHT;
+
+	scoreboard->timer = GAME_TIMER;
 	scoreboard->stage = gameLevel;
 
 	char soundFileName[10];
-
 	if (!delayEnd)
 	{
 		sprintf_s(soundFileName, "stage%d", gameLevel);
@@ -28,24 +30,18 @@ PlayScene::PlayScene(int level)
 		Sound::getInstance()->play(soundFileName, true);
 	}
 
-	if (gameLevel > 1)
-	{
-		sprintf_s(soundFileName, "stage%d", gameLevel - 1);
-		Sound::getInstance()->stop(soundFileName);
-	}
-
 	switch (gameLevel)
 	{
 	case 1:
-		endPoint = 1950;
+		endRect = Rect(1980, 135, 60, 135);
 		break;
 
 	case 2:
-		endPoint = 3050;
+		endRect = Rect(3050, 53, 22, 25);
 		break;
 
 	case 3:
-		endPoint = 300;
+		endRect = Rect(0,0,0,0);
 		break;
 	}
 }
@@ -88,6 +84,12 @@ void PlayScene::Update(float dt)
 
 	if (delayStart)
 	{
+		if (delayStart / 1000 == frozenCount)
+		{
+			Sound::getInstance()->play("glasshour");
+			--frozenCount;
+		}
+
 		delayStart -= dt;
 		this->UpdateVisibleObjects();
 
@@ -117,20 +119,40 @@ void PlayScene::Update(float dt)
 		}
 	}
 
-	if (p->posX >= endPoint)
+	if (p->GetRect().IsContain(endRect))
 	{
-		delayEnd = 2000;
+		delayEnd = SCENE_DELAY_END;
+		char soundFileName[10];
+		sprintf_s(soundFileName, "stage%d", gameLevel);
+		Sound::getInstance()->stop(soundFileName);
 		Sound::getInstance()->play("win");
-		SceneManager::GetInstance()->ReplaceScene(new PlayScene(gameLevel + 1));
+
+		if (gameLevel < NUMBER_MAP_LEVEL)
+		{
+			SceneManager::GetInstance()->ReplaceScene(new PlayScene(gameLevel + 1));
+			return;
+		}
+		else
+		{
+			SceneManager::GetInstance()->ReplaceScene(new EndScene());
+			return;
+		}
 	}
 }
 
 void PlayScene::UpdateScoreboard(float dt)
 {
 	scoreboard->Update(dt);
-	if (!scoreboard->timer && !isEndGame)
+	if (!scoreboard->timer)
 	{
-		this->SetRestartScene();
+		if (!isEndGame)
+		{
+			this->SetRestartScene();
+		}
+		else
+		{
+			endRect = p->GetRect();
+		}
 	}
 }
 
@@ -203,7 +225,7 @@ void PlayScene::UpdateObjects(float dt)
 				auto p = (EnemyPanther*)e;
 				if (!p->isOnGround)
 				{
-					p->vy = -0.12f;
+					p->vy = -ENEMY_PANTHER_FALLING_SPEED;
 					p->DetectCurGround(grid->GetVisibleGrounds());
 				}
 				break;
@@ -263,7 +285,7 @@ void PlayScene::UpdateObjects(float dt)
 		{
 			auto w = WeaponFactory::ConvertToWeapon(o);
 
-			if (w->isDead || !w->IsCollide(camera->GetRect())
+			if (w->isDead || !w->IsCollide(grid->viewPort)
 				|| (w->type == SWORD && p->stateName != ATTACKING_STAND
 					&& p->stateName != ATTACKING_SIT))
 			{
@@ -312,12 +334,29 @@ void PlayScene::UpdatePlayer(float dt)
 
 	else if (p->isThrowing)
 	{
-		Weapon* weapon = WeaponFactory::CreateWeapon(p->weaponType);
-		weapon->posX = p->posX + (p->isReverse ? -5 : 5);
-		weapon->posY = p->posY + 5;
-		weapon->isReverse = p->isReverse;
-		if (p->isReverse) weapon->vx = -weapon->vx;
-		visibleObjects.insert(weapon);
+		if (p->weaponType != FIREWHEEL)
+		{
+			Weapon* weapon = WeaponFactory::CreateWeapon(p->weaponType);
+			weapon->posX = p->posX + (p->isReverse ? -5 : 5);
+			weapon->posY = p->posY + 5;
+			weapon->isReverse = p->isReverse;
+			if (p->isReverse) weapon->vx = -weapon->vx;
+			visibleObjects.insert(weapon);
+		}
+		else
+		{
+			for (int i = 0; i < 2; ++i)
+			{
+				WeaponFireWheel* weapon = new WeaponFireWheel();
+				weapon->ankle = (i == 0 ? 0.25f : 0.75f);
+				weapon->posX = p->posX + (p->isReverse ? -5 : 5);
+				weapon->posY = p->posY + 5;
+				weapon->isReverse = p->isReverse;
+				if (p->isReverse) weapon->vx = -weapon->vx;
+				visibleObjects.insert(weapon);
+			}
+		}
+
 		p->isThrowing = false;
 		p->allow[THROWING] = false;
 	}
@@ -329,15 +368,23 @@ void PlayScene::SetRestartScene()
 	sprintf_s(soundFileName, "stage%d", gameLevel);
 	Sound::getInstance()->stop(soundFileName);
 	Sound::getInstance()->play("over");
-	delayRestart = GAME_RESTART_DELAY;
+	delayRestart = SCENE_DELAY_RESTART;
 }
 
 void PlayScene::RestartScene()
 {
+	if (player->lives == 0)
+	{
+		SceneManager::GetInstance()->ReplaceScene(new EndScene());
+		return;
+	}
+
 	char soundFileName[10];
 	sprintf_s(soundFileName, "stage%d", gameLevel);
 	Sound::getInstance()->play(soundFileName);
 
+	p->SetEnergy(0);
+	p->SetWeapon(NONE);
 	p->Respawn();
 	p->ChangeState(new PlayerStandingState());
 

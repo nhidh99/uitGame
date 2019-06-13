@@ -6,6 +6,7 @@
 #include "WeaponFactory.h"
 #include "BulletFactory.h"
 #include "MapFactory.h"
+#include "EndScene.h"
 #include "SceneManager.h"
 
 class PlayScene : public Scene
@@ -15,7 +16,7 @@ private:
 	Map* map;
 	Grid* grid;
 	int level;
-	float endPoint;
+	Rect endRect;
 	float delayRestart;
 	std::unordered_set<Object*> visibleObjects;
 

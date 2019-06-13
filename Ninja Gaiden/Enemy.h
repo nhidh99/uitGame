@@ -91,9 +91,9 @@ public:
 		}
 	}
 
-	bool IsRespawnOnScreen()
+	Rect GetSpawnRect()
 	{
-		return Rect(spawnX - (width >> 1), spawnY - (height >> 1), width, height).IsContain(camera->GetRect());
+		return Rect(spawnX - (width >> 1), spawnY - (height >> 1), width, height);
 	}
 
 	bool IsFinishAttack()

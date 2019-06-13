@@ -6,7 +6,7 @@ class WeaponSword : public Weapon
 public:
 	WeaponSword()
 	{
-		animation = new Animation(WEAPON, 3, 4, DEFAULT_TPS >> 1);
+		animation = new Animation(WEAPON, 3, 4, DEFAULT_TPF >> 1);
 		width = WEAPON_SWORD_WIDTH;
 		height = WEAPON_SWORD_HEIGHT;
 		vx = vy = 0;

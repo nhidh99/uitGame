@@ -8,7 +8,7 @@ Map::Map(int level)
 	std::ifstream ifile;
 	char fileName[30];
 	int numSetTiles;
-	sprintf_s(fileName, "Resources\\matrix%d.txt", level);
+	sprintf_s(fileName, "Resources\\Texts\\matrix%d.txt", level);
 
 	// Lấy thông tin hàng, cột và chiều dài, rộng của Map tương ứng
 	ifile.open(fileName);

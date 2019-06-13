@@ -6,9 +6,9 @@
 class Sprite
 {
 protected:
-	LPDIRECT3DTEXTURE9 _texture;
-	RECT _rect;
-	D3DXVECTOR3 _center;
+	LPDIRECT3DTEXTURE9 texture;
+	RECT rect;
+	D3DXVECTOR3 center;
 
 public:
 	Sprite() {};

@@ -8,7 +8,7 @@ private:
 	bool firstJump;
 	int health;
 	int explodeTimes;
-	float delayTime;
+	float delayJump;
 	float delayDead;
 	float delayHit;
 

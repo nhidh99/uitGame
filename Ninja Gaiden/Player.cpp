@@ -4,23 +4,25 @@ Player* Player::_instance = NULL;
 
 Player::Player()
 {
-	// Tải các Animation cho Player
 	animations[STANDING] = new Animation(PLAYER, 0);
-	animations[RUNNING] = new Animation(PLAYER, 1, 3, DEFAULT_TPS >> 1);
+	animations[RUNNING] = new Animation(PLAYER, 1, 3, DEFAULT_TPF >> 1);
 	animations[SITTING] = new Animation(PLAYER, 4, 4);
-	animations[JUMPING] = new Animation(PLAYER, 5, 8, DEFAULT_TPS >> 2);
-	animations[FALLING] = new Animation(PLAYER, 5, 8, DEFAULT_TPS >> 2);
-	animations[ATTACKING_STAND] = new Animation(PLAYER, 9, 11, DEFAULT_TPS >> 1);
-	animations[ATTACKING_SIT] = new Animation(PLAYER, 12, 14, DEFAULT_TPS >> 1);
+	animations[JUMPING] = new Animation(PLAYER, 5, 8, DEFAULT_TPF >> 2);
+	animations[FALLING] = new Animation(PLAYER, 5, 8, DEFAULT_TPF >> 2);
+	animations[ATTACKING_STAND] = new Animation(PLAYER, 9, 11, DEFAULT_TPF >> 1);
+	animations[ATTACKING_SIT] = new Animation(PLAYER, 12, 14, DEFAULT_TPF >> 1);
 	animations[CLINGING] = new Animation(PLAYER, 15);
-	animations[CLIMBING] = new Animation(PLAYER, 15, 16, DEFAULT_TPS >> 1);
-	animations[DEAD] = new Animation(PLAYER, 5);
+	animations[CLIMBING] = new Animation(PLAYER, 15, 16, DEFAULT_TPF >> 1);
 	animations[INJURED] = new Animation(PLAYER, 5);
 
-	// Các thông số Object
 	tag = PLAYER;
 	width = PLAYER_WIDTH;
 	height = PLAYER_STANDING_HEIGHT;
+	lives = PLAYER_LIVES;
+
+	this->SetHealth(PLAYER_HEALTH);
+	this->SetEnergy(0);
+	this->SetWeapon(NONE);
 }
 
 // Destructor
@@ -51,8 +53,6 @@ void Player::Respawn()
 	this->isAttacking = false;
 	this->isThrowing = false;
 	this->SetHealth(PLAYER_HEALTH);
-	this->SetEnergy(0);
-	this->SetWeapon(NONE);
 	this->vx = this->vy = this->dx = this->dy = 0;
 	this->posX = this->spawnX;
 	this->posY = this->spawnY;
@@ -81,6 +81,7 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 	if (this->posY + (this->height >> 1) <= 0)
 	{
 		this->isDead = true;
+		this->lives--;
 		return;
 	}
 
@@ -410,6 +411,7 @@ void Player::SetHealth(int health)
 	if (this->health == 0)
 	{
 		this->isDead = true;
+		this->lives--;
 	}
 }
 

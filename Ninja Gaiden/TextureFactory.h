@@ -6,7 +6,7 @@
 class Texture
 {
 private:
-	LPDIRECT3DTEXTURE9 _texture;
+	LPDIRECT3DTEXTURE9 texture;
 
 public:
 	Texture(const char* filePath)
@@ -14,18 +14,18 @@ public:
 		D3DXIMAGE_INFO imageInfo;
 		D3DXGetImageInfoFromFile(filePath, &imageInfo);
 		D3DXCreateTextureFromFileEx(d3ddev, filePath, imageInfo.Width, imageInfo.Height, 1, D3DUSAGE_DYNAMIC,
-			D3DFMT_UNKNOWN, D3DPOOL_DEFAULT, D3DX_DEFAULT, D3DX_DEFAULT, NULL, &imageInfo, NULL, &_texture);
+			D3DFMT_UNKNOWN, D3DPOOL_DEFAULT, D3DX_DEFAULT, D3DX_DEFAULT, NULL, &imageInfo, NULL, &texture);
 	}
-	~Texture() { _texture->Release(); }
-	LPDIRECT3DTEXTURE9 GetTexture() { return _texture; }
+	~Texture() { texture->Release(); }
+	LPDIRECT3DTEXTURE9 GetTexture() { return texture; }
 };
 
 // Chứa tất cả các Texture dùng cho Game
 class TextureFactory
 {
 private:
-	static TextureFactory* _instance;
-	std::unordered_map<Tag, LPDIRECT3DTEXTURE9> _textures;
+	static TextureFactory* instance;
+	std::unordered_map<Tag, LPDIRECT3DTEXTURE9> textures;
 
 public:
 	void LoadResources();

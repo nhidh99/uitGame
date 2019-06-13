@@ -48,6 +48,7 @@ void WeaponBlueShuriken::Update(float dt, std::unordered_set<Object*> ColliableO
 					auto e = (EnemyBoss*)obj;
 					e->SubtractHealth();
 				}
+				this->isDead = true;
 				break;
 			}
 

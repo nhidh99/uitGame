@@ -7,10 +7,10 @@ ScoreBoard::ScoreBoard()
 	score = 0;
 	timer = GAME_TIMER;
 	this->sprites = SpriteFactory::GetInstance();
-	this->stage = 1;
+	this->stage = gameLevel;
 	this->playerEnergy = 0;
-	this->bossHealth = 16;
-	this->playerHealth = 16;
+	this->bossHealth = ENEMY_BOSS_HEALTH;
+	this->playerHealth = PLAYER_HEALTH;
 	this->playerWeapon = BLUESHURIKEN;
 }
 
@@ -214,11 +214,16 @@ void ScoreBoard::Update(float dt)
 			this->playerEnergy--;
 		}
 
-		if (this->timer >= 500)
+		if (this->timer > 0)
 		{
 			this->score += 100;
 			this->timer -= 500;
-			Sound::getInstance()->play("glasshour");
+		}
+		Sound::getInstance()->play("glasshour");
+
+		if (timer < 0)
+		{
+			timer = 0;
 		}
 	}
 	else

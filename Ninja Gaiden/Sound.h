@@ -39,7 +39,7 @@ public:
 	float getVolume();
 	~Sound();
 	static Sound* getInstance();
-	void mute();
+	bool isMute;
 	void unMute();
 	void cleanUp();
 
@@ -49,6 +49,4 @@ private:
 	IDirectSound8* pDevice;
 	IDirectSoundBuffer* primaryBuffer;
 	std::unordered_map<std::string, IDirectSoundBuffer8*> soundBufferMap;
-	bool isMute;
-
 };

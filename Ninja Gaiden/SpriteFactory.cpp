@@ -56,8 +56,8 @@ void SpriteFactory::LoadResources()
 	sprites->AddSprite(new EnemySprite(CLOAKMAN, 404, 0, 437, 43));
 	sprites->AddSprite(new EnemySprite(CLOAKMAN, 440, 0, 474, 43));
 	sprites->AddSprite(new EnemySprite(CLOAKMAN, 488, 0, 518, 43));
-	sprites->AddSprite(new EnemySprite(PANTHER, 309, 74, 342, 90));
-	sprites->AddSprite(new EnemySprite(PANTHER, 342, 74, 377, 90));
+	sprites->AddSprite(new EnemySprite(PANTHER, 310, 74, 343, 94));
+	sprites->AddSprite(new EnemySprite(PANTHER, 348, 74, 380, 90));
 	sprites->AddSprite(new EnemySprite(EAGLE, 471, 54, 497, 92));
 	sprites->AddSprite(new EnemySprite(EAGLE, 500, 54, 526, 92));
 	sprites->AddSprite(new EnemySprite(EAGLE, 500, 54, 526, 92));
@@ -76,7 +76,7 @@ void SpriteFactory::LoadResources()
 	sprites->AddSprite(new ItemSprite(REDSPIRIT, 20, 7, 40, 24));
 	sprites->AddSprite(new ItemSprite(GLASSHOUR, 400, 50, 416, 70));
 	sprites->AddSprite(new ItemSprite(BLUESHURIKEN, 50, 6, 68, 26));
-	sprites->AddSprite(new ItemSprite(REDBAG, 192, 6, 210, 26));
+	sprites->AddSprite(new ItemSprite(REDBAG, 196, 6, 208, 26));
 	sprites->AddSprite(new ItemSprite(FIREWHEEL, 110, 6, 128, 26));
 	sprites->AddSprite(new ItemSprite(BLUEBAG, 172, 6, 190, 26));
 	sprites->AddSprite(new ItemSprite(REDPOTION, 227, 6, 245, 26));

@@ -2,12 +2,12 @@
 
 EnemyEagle::EnemyEagle()
 {
-	animations[STANDING] = new Animation(ENEMY, 17, 17, DEFAULT_TPS >> 1);
-	animations[RUNNING] = new Animation(ENEMY, 17, 18, DEFAULT_TPS >> 1);
+	animations[STANDING] = new Animation(ENEMY, 17, 17, DEFAULT_TPF >> 1);
+	animations[RUNNING] = new Animation(ENEMY, 17, 18, DEFAULT_TPF >> 1);
 	type = EAGLE;
 	height = ENEMY_EAGLE_HEIGHT;
 	width = ENEMY_EAGLE_WIDTH;
-	delayTime = ENEMY_EAGLE_DELAY_TIME >> 1;
+	delayTime = ENEMY_EAGLE_DELAY_TIME >> 2;
 	score = ENEMY_EAGLE_SCORE;
 }
 
@@ -48,6 +48,7 @@ void EnemyEagle::ChangeState(State StateName)
 	case DEAD:
 	{
 		scoreboard->score += score;
+		delayTime = ENEMY_EAGLE_DELAY_TIME >> 2;
 		Sound::getInstance()->play("enemydie");
 		break;
 	}
@@ -92,19 +93,19 @@ void EnemyEagle::UpdateDistance(float dt)
 
 	if (dx > 0 && this->posX > player->posX)
 	{
-		this->dx -= 0.05f;
+		this->dx -= ENEMY_EAGLE_REVERSE_DISTANCEX;
 	}
 	else if (dx < 0 && this->posX <= player->posX)
 	{
-		this->dx += 0.05f;
+		this->dx += ENEMY_EAGLE_REVERSE_DISTANCEX;
 	}
 
 	if (dy > 0 && this->posY > player->posY)
 	{
-		this->dy -= 0.035f;
+		this->dy -= ENEMY_EAGLE_REVERSE_DISTANCEY;
 	}
 	else if (dy < 0 && this->posY <= player->posY)
 	{
-		this->dy += 0.035f;
+		this->dy += ENEMY_EAGLE_REVERSE_DISTANCEY;
 	}
 }

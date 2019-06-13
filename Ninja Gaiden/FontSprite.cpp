@@ -9,12 +9,12 @@ FontSprite::FontSprite(char c, int left, int top, int right, int bottom)
 	this->c = c;
 	this->tag = FONT;
 
-	this->_texture = TextureFactory::GetInstance()->GetTexture(this->tag);
-	this->_rect.left = left;
-	this->_rect.top = top;
-	this->_rect.right = right;
-	this->_rect.bottom = bottom;
-	_center = D3DXVECTOR3((right - left) >> 1, (bottom - top) >> 1, 0);
+	this->texture = TextureFactory::GetInstance()->GetTexture(this->tag);
+	this->rect.left = left;
+	this->rect.top = top;
+	this->rect.right = right;
+	this->rect.bottom = bottom;
+	center = D3DXVECTOR3((right - left) >> 1, (bottom - top) >> 1, 0);
 }
 
 void FontSprite::Render(char _c, float x, float y)

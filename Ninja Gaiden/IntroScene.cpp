@@ -2,25 +2,27 @@
 
 IntroScene::IntroScene()
 {
-	game_nameSprite = SpriteFactory::GetInstance()->GetSprite(INTROSCENE, 0);
-	game_infoSprite = SpriteFactory::GetInstance()->GetSprite(INTROSCENE, 1);
-	ninjaSprite = SpriteFactory::GetInstance()->GetSprite(INTROSCENE, 3);
+	nameSprite = SpriteFactory::GetInstance()->GetSprite(INTROSCENE, 0);
+	infoSprite = SpriteFactory::GetInstance()->GetSprite(INTROSCENE, 1);
 	stageSprite = SpriteFactory::GetInstance()->GetSprite(INTROSCENE, 2);
+	ninjaSprite = SpriteFactory::GetInstance()->GetSprite(INTROSCENE, 3);
 
-	vx = 0.1;
-	vy = 0.02;
+	vx = 0.25;
+	vy = 0.1;
 
-	game_nameSprite->posX = 100;
-	game_nameSprite->posY = 20;
+	nameSprite->posX = 100;
+	nameSprite->posY = SCREEN_HEIGHT >> 2;
 
-	game_infoSprite->posX = 120;
-	game_infoSprite->posY = 300;
+	infoSprite->posX = SCREEN_WIDTH >> 1;
+	infoSprite->posY = 300;
 
 	ninjaSprite->posX = 400;
-	ninjaSprite->posY = 100;
+	ninjaSprite->posY = (SCREEN_HEIGHT >> 1) + 30;
 
-	stageSprite->posX = 600;
-	stageSprite->posY = 100;
+	stageSprite->posX = 500;
+	stageSprite->posY = (SCREEN_HEIGHT >> 1) + 30;
+
+	Sound::getInstance()->play("intro", true);
 }
 
 IntroScene::~IntroScene()
@@ -30,52 +32,43 @@ IntroScene::~IntroScene()
 
 void IntroScene::Render()
 {
-
-	game_nameSprite->ScaleRender(game_nameSprite->posX, game_nameSprite->posY, 0.7, 0.7);
-
-	game_infoSprite->ScaleRender(game_infoSprite->posX, game_infoSprite->posY, 0.7, 0.7);
-
+	nameSprite->ScaleRender(nameSprite->posX, nameSprite->posY, 0.7, 0.7);
+	infoSprite->ScaleRender(infoSprite->posX, infoSprite->posY, 0.7, 0.7);
 	ninjaSprite->ScaleRender(ninjaSprite->posX, ninjaSprite->posY, 0.7, 0.7);
-
 	stageSprite->ScaleRender(stageSprite->posX, stageSprite->posY, 0.7, 0.7);
 }
 
 void IntroScene::Update(float dt)
 {
-	if (game_nameSprite->posX >= 120)
+	if (nameSprite->posX >= SCREEN_WIDTH >> 1)
 	{
-		game_nameSprite->posX = 120;
+		nameSprite->posX = SCREEN_WIDTH >> 1;
+
+		infoSprite->posY -= vy * dt;
+
+		if (infoSprite->posY <= 190)
+		{
+			infoSprite->posY = 190;
+		}
 	}
 	else
 	{
-		game_nameSprite->posX += vx * dt;
+		nameSprite->posX += vx * dt;
 	}
 
-	if (game_infoSprite->posY <= 200)
+	if (ninjaSprite->posX <= 90)
 	{
-		game_infoSprite->posY = 200;
+		ninjaSprite->posX = 90;
 	}
+	else ninjaSprite->posX -= vx * dt;
 
-	if (ninjaSprite->posX <= 60)
+	if (stageSprite->posX <= 160)
 	{
-		ninjaSprite->posX = 60;
-	}
-	else
-		ninjaSprite->posX -= vx * dt;
-
-	if (stageSprite->posX <= 180)
-	{
-		stageSprite->posX = 180;
+		stageSprite->posX = 160;
 	}
 	else
 	{
 		stageSprite->posX -= vx * dt;
-
-	}
-
-	if (game_nameSprite->posX == 120)
-	{
-		game_infoSprite->posY -= vy * dt;
 	}
 }
 
@@ -83,6 +76,7 @@ void IntroScene::OnKeyDown(int key)
 {
 	if (key == DIK_RETURN)
 	{
+		Sound::getInstance()->stop("intro");
 		SceneManager::GetInstance()->ReplaceScene(new PlayScene(1));
 	}
 }

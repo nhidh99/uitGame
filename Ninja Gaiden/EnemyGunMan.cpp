@@ -4,12 +4,12 @@ EnemyGunMan::EnemyGunMan()
 {
 	animations[STANDING] = new Animation(ENEMY, 7, 7);
 	animations[RUNNING] = new Animation(ENEMY, 7, 8);
-	animations[ATTACKING] = new Animation(ENEMY, 9, 10, DEFAULT_TPS >> 2);
+	animations[ATTACKING] = new Animation(ENEMY, 9, 10, DEFAULT_TPF >> 2);
 	type = GUNMAN;
 	height = ENEMY_GUNMAN_HEIGHT;
 	width = ENEMY_GUNMAN_WIDTH;
 	speed = ENEMY_GUNMAN_SPEED;
-	delayTime = ENEMY_GUNMAN_DELAY_TIME;
+	delayTime = ENEMY_GUNMAN_DELAY_TIME >> 1;
 	bullets = bulletCount = BULLET_GUNMAN_COUNT;
 	score = ENEMY_GUNMAN_SCORE;
 }

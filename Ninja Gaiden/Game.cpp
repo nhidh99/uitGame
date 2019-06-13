@@ -13,7 +13,7 @@ void Game::LoadResources()
 	SpriteFactory::GetInstance()->LoadResources();
 	MapFactory::GetInstance()->LoadResources();
 	Sound::getInstance()->LoadResources();
-	SceneManager::GetInstance()->ReplaceScene(new PlayScene(1));
+	SceneManager::GetInstance()->ReplaceScene(new IntroScene());
 }
 
 // Khởi tạo Game từ Windows với các Device-Components cần thiết
@@ -87,13 +87,13 @@ void Game::ProcessKeyboard()
 	// Kiểm tra các sự kiện của keyboard
 	DWORD dwElements = KEYBOARD_BUFFER_SIZE;
 	hr = didv->GetDeviceData(sizeof(DIDEVICEOBJECTDATA), keyEvents, &dwElements, 0);
+	auto CurScene = SceneManager::GetInstance()->CurScene;
 
 	// Scan các sự kiện, xem có phím nào được nhấn hay thả hay không
 	for (DWORD i = 0; i < dwElements; ++i)
 	{
 		int KeyCode = keyEvents[i].dwOfs;
 		int KeyState = keyEvents[i].dwData;
-		auto CurScene = SceneManager::GetInstance()->CurScene;
 		if ((KeyState & 0x80) > 0)
 			CurScene->OnKeyDown(KeyCode);
 		else CurScene->OnKeyUp(KeyCode);

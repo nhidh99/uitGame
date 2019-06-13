@@ -29,13 +29,13 @@ void EnemyRunMan::DetectCurGround(std::unordered_set<Rect*> grounds)
 
 void EnemyRunMan::UpdateDistance(float dt)
 {
-	if (!this->isOnGround) this->vy -= 0.015;
+	if (!this->isOnGround) this->vy -= GRAVITY_SPEED;
 
 	if (this->isOnGround && ((this->vx < 0 && this->posX - 30 < curGroundBound.x)
 		|| (this->vx > 0 && this->posX + 30 > curGroundBound.x + curGroundBound.width)))
 	{
 		this->isOnGround = false;
-		this->vy = 0.25f;
+		this->vy = ENEMY_RUNMAN_JUMP_SPEED;
 		this->curAnimation = animations[STANDING];
 	}
 

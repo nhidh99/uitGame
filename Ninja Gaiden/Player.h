@@ -24,6 +24,7 @@ public:
 
 	int health;
 	int energy;
+	int lives;
 
 	bool isOnGround, isOnWall;
 	bool isThrowing, isAttacking;

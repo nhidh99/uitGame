@@ -3,7 +3,7 @@
 EnemySwordMan::EnemySwordMan()
 {
 	animations[STANDING] = new Animation(ENEMY, 0, 0);
-	animations[RUNNING] = new Animation(ENEMY, 0, 2, DEFAULT_TPS << 1);
+	animations[RUNNING] = new Animation(ENEMY, 0, 2, DEFAULT_TPF << 1);
 	tag = ENEMY;
 	type = SWORDMAN;
 	width = ENEMY_SWORDMAN_WIDTH;

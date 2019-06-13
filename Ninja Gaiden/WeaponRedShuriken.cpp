@@ -2,9 +2,9 @@
 
 WeaponRedShuriken::WeaponRedShuriken()
 {
-	animation = new Animation(WEAPON, 11, 12, DEFAULT_TPS >> 1);
-	width = WEAPON_BLUESHURIKEN_WIDTH;
-	height = WEAPON_BLUESHURIKEN_HEIGHT;
+	animation = new Animation(WEAPON, 11, 12, DEFAULT_TPF >> 1);
+	width = WEAPON_REDSHURIKEN_WIDTH;
+	height = WEAPON_REDSHURIKEN_HEIGHT;
 	vx = 0.6f;
 	type = REDSHURIKEN;
 }
@@ -18,29 +18,29 @@ void WeaponRedShuriken::UpdateDistance(float dt)
 	{
 		if (vx > 0)
 		{
-			dx = min(3.5f, dx);
+			dx = min(WEAPON_REDSHURIKEN_MAX_DISTANCEX, dx);
 		}
-		vx -= 0.02f;
+		vx -= WEAPON_REDSHURIKEN_REVERSE_ACCELERATEX;
 
 		if (this->isReverse)
 		{
-			dy -= 0.4f;
+			dy -= WEAPON_REDSHURIKEN_REVERSE_DISTANCEY;
 		}
-		else dy += 0.4f;
+		else dy += WEAPON_REDSHURIKEN_REVERSE_DISTANCEY;
 	}
 	else
 	{
 		if (vx < 0)
 		{
-			dx = max(-3.5f, dx);
+			dx = max(-WEAPON_REDSHURIKEN_MAX_DISTANCEX, dx);
 		}
-		vx += 0.02f;
+		vx += WEAPON_REDSHURIKEN_REVERSE_ACCELERATEX;
 
 		if (this->isReverse)
 		{
-			dy += 0.4f;
+			dy += WEAPON_REDSHURIKEN_REVERSE_DISTANCEY;
 		}
-		else dy -= 0.4f;
+		else dy -= WEAPON_REDSHURIKEN_REVERSE_DISTANCEY;
 	}
 
 	if (this->GetRect().IsContain(player->GetRect()))

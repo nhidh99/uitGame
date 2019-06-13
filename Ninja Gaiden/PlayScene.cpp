@@ -37,7 +37,7 @@ PlayScene::PlayScene(int level)
 		break;
 
 	case 2:
-		endRect = Rect(3050, 53, 22, 25);
+		endRect = Rect(3050, 65, 22, 35);
 		break;
 
 	case 3:
@@ -253,7 +253,19 @@ void PlayScene::UpdateObjects(float dt)
 						b->ChangeState(ACTIVE);
 						grid->AddObject(b);
 					}
-					boss->bulletCountdown = 3;
+					boss->bulletCountdown = BULLET_BOSS_COUNT;
+				}
+
+				if (boss->StateName == DEAD)
+				{
+					for (auto o : visibleObjects)
+					{
+						if (o->tag == BULLET) 
+						{
+							auto b = (Bullet*)o;
+							b->ChangeState(DEAD);
+						}
+					}
 				}
 			}
 			}

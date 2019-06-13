@@ -11,11 +11,11 @@ EnemyBoss::EnemyBoss()
 	health = ENEMY_BOSS_HEALTH;
 	width = ENEMY_BOSS_WIDTH;
 	height = ENEMY_BOSS_HEIGHT;
-	speed = delayJump = 0;
-	bulletCountdown = 3;
-	firstJump = true;
+	bulletCountdown = BULLET_BOSS_COUNT;
 	delayDead = ENEMY_BOSS_DELAY_DEATH;
 	delayHit = ENEMY_BOSS_DELAY_HIT;
+	speed = delayJump = 0;
+	firstJump = true;
 }
 
 void EnemyBoss::UpdateDistance(float dt)

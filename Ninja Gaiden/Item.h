@@ -29,7 +29,7 @@ public:
 			rect.width = this->width;
 			rect.height = this->height;
 
-			if (rect.IsContain(*g) && g->y >= groundBound.y)
+			if (rect.IsContain(*g) && g->y >= groundBound.y && this->posY - (this->height >> 1) >= g->y)
 			{
 				groundBound = *g;
 			}

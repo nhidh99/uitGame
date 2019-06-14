@@ -18,7 +18,6 @@ Player::Player()
 	tag = PLAYER;
 	width = PLAYER_WIDTH;
 	height = PLAYER_STANDING_HEIGHT;
-	lives = PLAYER_LIVES;
 
 	this->SetHealth(PLAYER_HEALTH);
 	this->SetEnergy(0);
@@ -105,6 +104,20 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 				auto r = Collision::GetInstance()->SweptAABB(this->GetBoundingBox(), obj->GetBoundingBox());
 				if (r.isCollide)
 				{
+					switch (obj->type)
+					{
+					case RUNMAN:
+						this->SetHealth(health - 2);
+						break;
+
+					case EAGLE:
+						this->SetHealth(health - 3);
+						break;
+						
+					default:
+						this->SetHealth(health - 1);
+						break;
+					}
 					result = r;
 					break;
 				}
@@ -146,6 +159,24 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 					this->SetWeapon(obj->type);
 					break;
 				}
+
+				case BLUEBAG:
+				{
+					scoreboard->score += 500;
+					break;
+				}
+
+				case REDBAG:
+				{
+					scoreboard->score += 1000;
+					break;
+				}
+
+				case REDPOTION:
+				{
+					this->SetHealth(PLAYER_HEALTH);
+					break;
+				}
 				}
 			}
 			break;
@@ -162,7 +193,6 @@ void Player::Update(float dt, std::unordered_set<Object*> ColliableObjects)
 	{
 		Sound::getInstance()->play("injured");
 		this->isReverse = (result.nx == 1);
-		this->SetHealth(--health);
 		this->ChangeState(new PlayerInjuredState());
 	}
 }
@@ -408,8 +438,10 @@ void Player::SetHealth(int health)
 	this->health = health;
 	scoreboard->playerHealth = health;
 
-	if (this->health == 0)
+	if (this->health <= 0)
 	{
+		scoreboard->playerHealth = 0;
+		this->health = 0;
 		this->isDead = true;
 		this->lives--;
 	}

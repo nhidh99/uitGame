@@ -11,6 +11,7 @@ PlayScene::PlayScene(int level)
 	frozenCount = ENEMY_FROZEN_TIME_COUNT;
 
 	p = player;
+	p->lives = PLAYER_LIVES;
 	p->posX = p->spawnX = 50;
 	p->posY = p->spawnY = 50;
 	p->DetectSpawnY(grid->GetColliableGrounds(p));

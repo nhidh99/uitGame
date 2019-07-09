@@ -4,4 +4,3 @@
 - Tài liệu google Drive: https://bit.ly/2sJN3iy
 - Code Samples thầy Dũng: http://bit.ly/2TfDtQ2
 - Blog LocTho95: http://bit.ly/2BcmBTDs
-- Excel sửa lỗi của lớp: http://bit.ly/2WjC3WU
